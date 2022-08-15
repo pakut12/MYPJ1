@@ -24,27 +24,21 @@
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
-                                ดึงข้อมูลจาก SAP
+                                ส่งข้อมูลให้ทาง QC
                             </div>
                             <div class="card-body">
                                 <form action="" method="post" name="myform" class="needs-validation" novalidate>
                                     <div class="row mb-3">
-                                        
-                                        <div class="col-4">
-                                            <label>Purchase Order : </label>
-                                            <input class="form-control form-control-sm" type="number" name="" id="" required></input>
-                                            <div class="invalid-feedback mb-3 text-center">
-                                                กรุณาใส่ข้อมูลให้ถูกต้อง
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="" id="" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-6">
+                                            <button class="btn btn-warning mt-4 btn-sm" type="button" id="ch" name="ch">เลือกทั้งหมด</button>
+                                            <button class="btn btn-danger mt-4 btn-sm" type="button" id="nch">เอาออกทั้งหมด</button>
                                             <button class="btn btn-success mt-4 btn-sm" type="submit">ดึงข้อมูล</button>
                                         </div>
                                     </div>
@@ -53,6 +47,11 @@
                                     <table class="table table-sm table-bordered text-center" id="mytable" >
                                         <thead>
                                             <tr>
+                                                <th >
+                                                    <div class="form-check">
+                                                        <input class="form-check-input " type="checkbox" value=""  name="chkAll" id="chkAll">
+                                                    </div>
+                                                </th>
                                                 <th class="text-center">ลำดับ</th>
                                                 <th class="text-center">เลขที่เอกสาร</th>
                                                 <th class="text-center">รหัสวัตถุดิบ</th>
@@ -62,6 +61,23 @@
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <td width="5%">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input " type="checkbox" value="" name="chkItem[]" id="chkItem[]">
+                                                    </div>
+                                                </td>
+                                                <td>ลำดับ</td>
+                                                <td>เลขที่เอกสาร</td>
+                                                <td>รหัสวัตถุดิบ</td>
+                                                <td>ม้วนที่</td>
+                                                <td>ลำดับ</td>  
+                                            </tr>
+                                            <tr>
+                                                <td width="5%">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input " type="checkbox" value="" name="chkItem[]" id="chkItem[]">
+                                                    </div>
+                                                </td>
                                                 <td>ลำดับ</td>
                                                 <td>เลขที่เอกสาร</td>
                                                 <td>รหัสวัตถุดิบ</td>
@@ -80,7 +96,11 @@
         </div>
         <script>
             $(document).ready(function () {
-                $("#page2").addClass("active");
+                $("#chkAll").click(function () {
+                    $('input:checkbox').prop('checked', this.checked); 
+                });
+                 
+                $("#page3").addClass("active");
                 $("#mytable").DataTable({
                     responsive: true
                 });

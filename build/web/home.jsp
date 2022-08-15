@@ -27,7 +27,7 @@
                                 Home
                             </div>
                             <div class="card-body">
-                                Welcome
+                                Welcome <% out.print(request.getSession().getAttribute("user"));%>
                             </div>
                         </div>
                     </div>

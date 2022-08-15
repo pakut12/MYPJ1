@@ -15,11 +15,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="home.jsp" id="page1">Home</a>
+                    <a class="nav-link " aria-current="page" href="home.jsp" id="page1">หน้าเเรก</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="table.jsp" id="page2">Table</a>
+                    <a class="nav-link" href="table.jsp" id="page2">ดึงข้อมูลจาก SAP</a>
                 </li>  
+                 <li class="nav-item">
+                    <a class="nav-link" href="table1.jsp" id="page3">ส่งข้อมูลให้ทาง QC</a>
+                </li> 
                 <li class="nav-item">
                     <a class="nav-link" href="sap" id="page7" >SAP</a>   
                 </li>
@@ -27,10 +30,7 @@
                     <a class="nav-link" href="index.jsp">Logout</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            
         </div>
     </div>
 </nav>
