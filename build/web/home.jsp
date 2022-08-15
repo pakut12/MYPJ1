@@ -38,7 +38,6 @@
         <script>
             $(document).ready(function () {
                 $("#page1").addClass("active");
-
             });
 
         </script>

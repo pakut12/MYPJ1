@@ -13,6 +13,10 @@
         <servlet-name>SVsap</servlet-name>
         <servlet-class>SV.SVsap</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVpdf</servlet-name>
+        <servlet-class>SV.SVpdf</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SVlogin</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -24,6 +28,10 @@
     <servlet-mapping>
         <servlet-name>SVsap</servlet-name>
         <url-pattern>/sap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVpdf</servlet-name>
+        <url-pattern>/pdf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -27,7 +27,25 @@
                                 ส่งข้อมูลให้ทาง QC
                             </div>
                             <div class="card-body">
-                                <form action="" method="post" name="myform" class="needs-validation" novalidate>
+                                
+                                <%
+
+            try {
+                String name[] = request.getParameterValues("chkItem");
+                if (name == null) {
+                    out.print("NO");
+                } else {
+                    for (String x : name) {
+                        out.print(x);
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+                                %>
+                                <form action="table1.jsp" method="post" name="myform" class="needs-validation" novalidate>
                                     <div class="row mb-3">
                                         <div class="col-6">
                                             <label>เลขที่เอกสาร : </label>
@@ -37,19 +55,16 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <button class="btn btn-warning mt-4 btn-sm" type="button" id="ch" name="ch">เลือกทั้งหมด</button>
-                                            <button class="btn btn-danger mt-4 btn-sm" type="button" id="nch">เอาออกทั้งหมด</button>
-                                            <button class="btn btn-success mt-4 btn-sm" type="submit">ดึงข้อมูล</button>
+                                            <button class="btn btn-success mt-4 btn-sm" type="submit">ส่งข้อมูลไป QC</button>
                                         </div>
                                     </div>
-                                </form>
-                                <div class="col-auto">
+                                    
                                     <table class="table table-sm table-bordered text-center" id="mytable" >
                                         <thead>
                                             <tr>
-                                                <th >
+                                                <th>
                                                     <div class="form-check">
-                                                        <input class="form-check-input " type="checkbox" value=""  name="chkAll" id="chkAll">
+                                                        <input class="form-check-input " type="checkbox" value="0"  name="chkAll" id="chkAll">
                                                     </div>
                                                 </th>
                                                 <th class="text-center">ลำดับ</th>
@@ -63,7 +78,7 @@
                                             <tr>
                                                 <td width="5%">
                                                     <div class="form-check">
-                                                        <input class="form-check-input " type="checkbox" value="" name="chkItem[]" id="chkItem[]">
+                                                        <input class="form-check-input " type="checkbox" value="1" name="chkItem" id="chkItem">
                                                     </div>
                                                 </td>
                                                 <td>ลำดับ</td>
@@ -75,7 +90,7 @@
                                             <tr>
                                                 <td width="5%">
                                                     <div class="form-check">
-                                                        <input class="form-check-input " type="checkbox" value="" name="chkItem[]" id="chkItem[]">
+                                                        <input class="form-check-input " type="checkbox" value="2" name="chkItem" id="chkItem">
                                                     </div>
                                                 </td>
                                                 <td>ลำดับ</td>
@@ -85,22 +100,22 @@
                                                 <td>ลำดับ</td>  
                                             </tr>
                                         </tbody>
-                                    </table>
-                                </div>
+                                    </table> 
+                                </form>        
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
+        
         <script>
             $(document).ready(function () {
-                $("#chkAll").click(function () {
-                    $('input:checkbox').prop('checked', this.checked); 
+                $("#chkAll").change(function () {
+                    $("input:checkbox").prop('checked', $(this).prop("checked"));
                 });
-                 
-                $("#page3").addClass("active");
+                
+                $("#page2").addClass("active");
                 $("#mytable").DataTable({
                     responsive: true
                 });
