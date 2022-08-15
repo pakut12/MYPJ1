@@ -19,36 +19,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="table.jsp" id="page2">Table</a>
-                </li>
+                </li>  
                 <li class="nav-item">
-                    <a class="nav-link" href="uploadexcel.jsp" id="page3">Upload Excel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="readexcel.jsp" id="page4">Read Excel</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="writeexcel.jsp" id="page5">Write Excel</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdown">
-                        PDF/Json
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a class="dropdown-item" href="pdf" id="page6">
-                                Create pdf
-                            </a>
-                        </li>      
-                        <li><hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="json" >Json</a></li>
-                        <li><a class="dropdown-item" href="getjson.jsp" >GetJson</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <!-- กันเข้า SAP 
-                    <a class="nav-link" href="sap.jsp" id="page7" >SAP</a> 
-                    -->
+                    <a class="nav-link" href="sap" id="page7" >SAP</a>   
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.jsp">Logout</a>

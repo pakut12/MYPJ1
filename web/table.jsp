@@ -37,7 +37,7 @@
         </div>
         <script>
             $(document).ready(function () {
-                $("#page1").addClass("active");
+                $("#page2").addClass("active");
 
             });
 
