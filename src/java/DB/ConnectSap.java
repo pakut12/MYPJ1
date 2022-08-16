@@ -40,6 +40,8 @@ public class ConnectSap {
         return client;
     }
 
+    
+
     public static IRepository createRepository(String nameRep) {
         // Create a new repository
         IRepository repository = JCO.createRepository(nameRep, SID);
