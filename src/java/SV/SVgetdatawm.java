@@ -104,8 +104,6 @@ public class SVgetdatawm extends HttpServlet {
                     n++;
                 }
 
-
-
                 obj.put("data", arrlist);
 
                 out.print(obj);
@@ -113,10 +111,6 @@ public class SVgetdatawm extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-
-
 
         } finally {
             out.close();

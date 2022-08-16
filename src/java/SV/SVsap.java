@@ -34,7 +34,8 @@ public class SVsap extends HttpServlet {
                 JCO.Client client = ConnectSap.createpool();
                 JCO.Repository repository = new JCO.Repository("Myrep", client);
                 IFunctionTemplate ftemplate1 = repository.getFunctionTemplate("ZBAPI_GET_WH2");
-                JCO.Function function1 = new JCO.Function(ftemplate1);
+                JCO.Function function1 = ftemplate1.getFunction();
+                client.execute(function1);
                 JCO.Table output = function1.getTableParameterList().getTable("I_TABLE");
                 out.print(ftemplate1);
                 out.print(output);
