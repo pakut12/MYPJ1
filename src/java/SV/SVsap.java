@@ -33,50 +33,35 @@ public class SVsap extends HttpServlet {
 
                 JCO.Client client = ConnectSap.createpool();
                 JCO.Repository repository = new JCO.Repository("Myrep", client);
-                IFunctionTemplate ftemplate1 = repository.getFunctionTemplate("ZBAPI_GET_WH2");
+                IFunctionTemplate ftemplate1 = repository.getFunctionTemplate("ZBAPI_BI_QI_DISPLAY");
                 JCO.Function function1 = new JCO.Function(ftemplate1);
-                JCO.Table output = function1.getTableParameterList().getTable("I_TABLE");
-                out.print(ftemplate1);
-                out.print(output);
+                JCO.ParameterList input1 = function1.getImportParameterList();
+
+                input1.setValue("4592200648", "PO");
+                input1.setValue("902208002765", "DOCQC");
+
+                client.execute(function1);
+                JCO.Table output = function1.getTableParameterList().getTable("TABLEDATA");
 
 
-//                out.print(customer_orders.getNumColumns());
-//                out.print(customer_orders.getString(""));
-//                while (customer_orders.nextRow()) {
-//                }
+
+                while (output.nextRow()) {
+                    for (int a = 0; a < output.getNumColumns(); a++) {
+                        out.print("<br>");
+                        out.print(output.getString(a));
+                        out.print("<br>");
+                    }
+                    out.print("-----------------------------------------------");
+                }
+
+
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
 
-            try {
-                // Get a client from the pool
-////////                PreparedStatement pstmtCp = con.prepareStatement("SELECT PRODUCT_GROUP_ID, PLANT, DELIVER_PLANT,SALES_ORG, " +
-////////                        "   DISTR_CHANNEL, STORAGE_LOC, CREATE_BY,    CREATE_DATE, UPD_BY, UPD_DATE " +
-////////                        "   FROM PGCA.BM_PRODUCT_COPYTOPLANT  " +
-////////                        "   WHERE PRODUCT_GROUP_ID = ?  ");
-////////                pstmtCp.setString(1, rs.getString("PRODUCT_GROUP_ID"));
-////////                ResultSet rsCp = pstmtCp.executeQuery();
-////////
-////////                JCO.ParameterList inputPlantList = function1.getTableParameterList();
-////////                JCO.Table inputPlant = inputPlantList.getTable("COPYTOPLANT");
-////////
-////////                while (rsCp.next()) {
-////////
-////////                    inputPlant.appendRow();
-////////                    inputPlant.setValue(rsCp.getString("PLANT"), "PLANT");
-////////                    inputPlant.setValue(rsCp.getString("STORAGE_LOC"), "STGE_LOC");
-////////                    inputPlant.setValue(rsCp.getString("SALES_ORG"), "SALES_ORG");
-////////                    inputPlant.setValue(rsCp.getString("DISTR_CHANNEL"), "DISTR_CHAN");
-////////                    inputPlant.setValue(rsCp.getString("DELIVER_PLANT"), "DELYG_PLNT");//Deliver.Plant     DELYG_PLNT
-////////
-////////                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } catch (Error e) {
-                e.printStackTrace();
-            }
+
 
         } finally {
             out.close();
