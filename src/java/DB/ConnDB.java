@@ -32,6 +32,7 @@ public class ConnDB {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@10.0.62.18:1521:stock", "pgca", "acgpg");
+       
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,8 +47,8 @@ public class ConnDB {
             Class.forName("com.mysql.jdbc.Driver");
             String portwork = "4306";
             String porthome = "3306";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:" + portwork + "/test" +
-                    "?user=root&password=");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:" + portwork + "/test?characterEncoding=UTF-8" +
+                    "&user=root&password=");
         } catch (Exception e) {
             e.printStackTrace();
             return null;

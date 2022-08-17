@@ -27,47 +27,73 @@
                                 ดึงข้อมูลจาก SAP
                             </div>
                             <div class="card-body">
-                                <form action="" method="post" name="myform" class="needs-validation" novalidate>
-                                    <div class="row mb-3">
-                                        
-                                        <div class="col-4">
-                                            <label>Purchase Order : </label>
-                                            <input class="form-control form-control-sm" type="number" name="" id="" required></input>
-                                            <div class="invalid-feedback mb-3 text-center">
-                                                กรุณาใส่ข้อมูลให้ถูกต้อง
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <label>เลขที่เอกสาร : </label>
-                                            <input class="form-control form-control-sm" type="number" name="" id="" required></input>
-                                            <div class="invalid-feedback mb-3 text-center">
-                                                กรุณาใส่ข้อมูลให้ถูกต้อง
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <button class="btn btn-success mt-4 btn-sm" type="submit">ดึงข้อมูล</button>
+                                
+                                <div class="row mb-3">
+                                    
+                                    <div class="col-4">
+                                        <label>Purchase Order : </label>
+                                        <input class="form-control form-control-sm" type="number" name="PO" id="PO" required></input>
+                                        <div class="invalid-feedback mb-3 text-center">
+                                            กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="col-4">
+                                        <label>เลขที่เอกสาร : </label>
+                                        <input class="form-control form-control-sm" type="number" name="DOCQC" id="DOCQC" required></input>
+                                        <div class="invalid-feedback mb-3 text-center">
+                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="getdata_sap" id="getdata_sap">ดึงข้อมูล</button>
+                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="savedata_sap" id="savedata_sap">จัดเก็บข้อมูล</button>
+                                        <button class="btn btn-danger mt-4 btn-sm" type="submit" name="claerdata_sap" id="claerdata_sap">เครียร์ข้อมูล</button>
+                                    </div>
+                                </div>
+                                
                                 <div class="col-auto">
                                     <table class="table table-sm table-bordered text-center" id="mytable" >
                                         <thead>
                                             <tr>
+                                                <th class="text-center"></th>
+                                                <th class="text-center">ลำดับ</th>
                                                 <th class="text-center">ลำดับ</th>
                                                 <th class="text-center">เลขที่เอกสาร</th>
                                                 <th class="text-center">รหัสวัตถุดิบ</th>
                                                 <th class="text-center">ม้วนที่</th>
                                                 <th class="text-center">ลำดับ</th>  
+                                                <th class="text-center">ลำดับ</th>
+                                                <th class="text-center">เลขที่เอกสาร</th>
+                                                <th class="text-center">รหัสวัตถุดิบ</th>
+                                                <th class="text-center">ม้วนที่</th>
+                                                <th class="text-center">ลำดับ</th>  
+                                                <th class="text-center">ลำดับ</th>
+                                                <th class="text-center">เลขที่เอกสาร</th>
+                                                <th class="text-center">รหัสวัตถุดิบ</th>
+                                                <th class="text-center">ม้วนที่</th>
+                                                <th class="text-center">ลำดับ</th>  
+                                                <th class="text-center">ลำดับ</th>
+                                                <th class="text-center">เลขที่เอกสาร</th>
+                                                <th class="text-center">รหัสวัตถุดิบ</th>
+                                                <th class="text-center">ม้วนที่</th>
+                                                <th class="text-center">ลำดับ</th>  
+                                                <th class="text-center">ลำดับ</th>
+                                                <th class="text-center">เลขที่เอกสาร</th>
+                                                <th class="text-center">รหัสวัตถุดิบ</th>
+                                                <th class="text-center">ม้วนที่</th>
+                                                <th class="text-center">ลำดับ</th>  
+                                                <th class="text-center">ลำดับ</th>
+                                                <th class="text-center">เลขที่เอกสาร</th>
+                                                <th class="text-center">รหัสวัตถุดิบ</th>
+                                                <th class="text-center">ม้วนที่</th>
+                                                <th class="text-center">ลำดับ</th>  
+                                                <th class="text-center">ลำดับ</th>
+                                                <th class="text-center">เลขที่เอกสาร</th>
+                                                <th class="text-center">รหัสวัตถุดิบ</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>ลำดับ</td>
-                                                <td>เลขที่เอกสาร</td>
-                                                <td>รหัสวัตถุดิบ</td>
-                                                <td>ม้วนที่</td>
-                                                <td>ลำดับ</td>  
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -81,9 +107,51 @@
         <script>
             $(document).ready(function () {
                 $("#page2").addClass("active");
-                $("#mytable").DataTable({
-                    responsive: true
+               
+                function getdatasap(po,docqc){
+                    $("#mytable").DataTable({
+                        bDestroy: true,
+                        ajax: 'sap?stasus=G&PO='+po+'&DOCQC='+docqc,
+                        responsive: true
+                    });  
+                }
+                function savedatasap(po,docqc){
+                    $("#mytable").DataTable({
+                        bDestroy: true,
+                        ajax: 'sap?stasus=S&PO='+po+'&DOCQC='+docqc,
+                        responsive: true
+                    });  
+                }
+                
+                getdatasap("", "");
+                $("#savedata_sap").addClass("disabled");
+              
+                
+                $("#getdata_sap").click(function(){
+                    var getpo =  $("#PO").val();
+                    var getdocqc = $("#DOCQC").val();
+                    
+                    if(getpo == "" || getdocqc == ""){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ข้อมูลไม่ถูกต้อง',
+                            text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
+                        })
+                    }else{
+                        getdatasap(getpo, getdocqc); 
+                        $("#savedata_sap").removeClass("disabled");
+                    }
                 });
+                
+    
+    
+                $("#claerdata_sap").click(function(){
+                    $("#PO").val("");
+                    $("#DOCQC").val("");
+                    getdatasap("", "");
+                });
+        
+                
             });
         </script>
         <script>

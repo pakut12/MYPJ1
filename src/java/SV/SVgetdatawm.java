@@ -65,7 +65,7 @@ public class SVgetdatawm extends HttpServlet {
                     arrjson.add(rec.getString("CREATEDATE"));
                     arrjson.add(rec.getString("QUANTITY"));
                     arrjson.add(rec.getString("UNIT"));
-                    arrjson.add(rec.getString("SUPNAME"));
+                    arrjson.add(rec.getString("SUPNAME").toString());
                     arrjson.add(rec.getString("INVOICE"));
                     arrjson.add(rec.getString("GRADE"));
                     arrjson.add(rec.getString("CODE"));
@@ -104,10 +104,7 @@ public class SVgetdatawm extends HttpServlet {
                     n++;
                 }
 
-
-
                 obj.put("data", arrlist);
-
                 out.print(obj);
 
             } catch (Exception e) {
