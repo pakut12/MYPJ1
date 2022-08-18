@@ -14,7 +14,20 @@
         <%@include file="share/head.jsp"%> 
     </head>
     <body>
-        
+        <%
+            Object error = (Object) request.getAttribute("status");
+            if (error == "error") {
+        %>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'ไม่สำเร็จ',
+                text: 'เข้าสู่ระบบไม่สำเร็จ'
+            })
+        </script>
+        <%            }
+
+        %>
         <form action="login" method="post" class="needs-validation" novalidate>
             <div class="container mt-5">
                 <div class="text-center h3 mb-3">โปรเเกรมดึงข้อมูลจากระบบ SAP ด้วยเลขที่ PO</div>

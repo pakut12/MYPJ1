@@ -6,6 +6,7 @@ package DB;
 
 import com.sap.mw.jco.IFunctionTemplate;
 import com.sap.mw.jco.JCO;
+import java.nio.charset.Charset;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class ConnDB {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection con = null;
         try {
+          
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@10.0.62.18:1521:stock", "comp", "pmoc4");
         } catch (Exception e) {
@@ -32,7 +34,7 @@ public class ConnDB {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@10.0.62.18:1521:stock", "pgca", "acgpg");
-       
+
         } catch (Exception e) {
             e.printStackTrace();
         }

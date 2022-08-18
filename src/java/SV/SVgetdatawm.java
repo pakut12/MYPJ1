@@ -26,6 +26,7 @@ public class SVgetdatawm extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -38,7 +39,7 @@ public class SVgetdatawm extends HttpServlet {
                 PreparedStatement ps = null;
                 String page = "";
 
-                String sql = "select * from wmbarcode where  wmbarcode.MRNO = ?";
+                String sql = "select * from wmbarcode where  wmbarcode.MRNO = ? ";
                 conn = DB.ConnDB.getConnection();
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, menr);
@@ -48,6 +49,7 @@ public class SVgetdatawm extends HttpServlet {
                 ArrayList arrlist = new ArrayList();
                 int n = 0;
                 while ((rec.next()) && (rec != null)) {
+
                     JSONArray arrjson = new JSONArray();
                     arrjson.add("");
                     arrjson.add(n);
@@ -65,7 +67,7 @@ public class SVgetdatawm extends HttpServlet {
                     arrjson.add(rec.getString("CREATEDATE"));
                     arrjson.add(rec.getString("QUANTITY"));
                     arrjson.add(rec.getString("UNIT"));
-                    arrjson.add(rec.getString("SUPNAME").toString());
+                    arrjson.add(rec.getString("SUPNAME"));
                     arrjson.add(rec.getString("INVOICE"));
                     arrjson.add(rec.getString("GRADE"));
                     arrjson.add(rec.getString("CODE"));
@@ -106,6 +108,8 @@ public class SVgetdatawm extends HttpServlet {
 
                 obj.put("data", arrlist);
                 out.print(obj);
+
+
 
             } catch (Exception e) {
                 e.printStackTrace();

@@ -59,6 +59,7 @@ public class SVlogin extends HttpServlet {
                     request.getSession().setAttribute("user", user);
                 } else {
                     page = "/index.jsp";
+                    request.setAttribute("status", "error");
                 }
 
                 RequestDispatcher rd = getServletContext().getRequestDispatcher(page);
