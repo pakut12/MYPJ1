@@ -116,9 +116,14 @@ public class SVsap extends HttpServlet {
 
                         for (int a = 1; a <= 48; a++) {
                             try {
-                                pr.setString(a, output.getString(a - 1));
+                                if (a == 3 || a == 4 || a == 10) {
+                                    pr.setInt(a, output.getInt(a - 1));
+                                } else {
+                                    pr.setString(a, output.getString(a - 1));
+                                }
                             } catch (Exception e) {
-                                pr.setString(a, "");
+                                pr.setString(a, null);
+                            //e.printStackTrace();
                             }
                         }
 
@@ -132,8 +137,8 @@ public class SVsap extends HttpServlet {
                             pr.executeUpdate();
                             chack++;
                         } catch (Exception e) {
-                            //e.printStackTrace();
-                            //out.print("false");
+                            e.printStackTrace();
+                        //out.print("false");
                         }
 
 

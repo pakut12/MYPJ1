@@ -45,7 +45,6 @@
             }
              */
 
-            
                                 %>
                                 
                                 <form action="" method="post" name="myform" class="needs-validation" novalidate>
@@ -58,7 +57,8 @@
                                             </div>
                                         </div>
                                         <div class="col-6">
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button">ส่งข้อมูลไป QC</button>
+                                            <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
+                                            <button class="btn btn-success mt-4 btn-sm mx-1" id="btn-send" type="button">ส่งข้อมูลไป QC</button>
                                         </div>
                                     </div>
                                 </form> 
@@ -152,25 +152,72 @@
                 }
                 
                 $("#page2").addClass("active");
-              
+                $("#btn-send").addClass("disabled");
                 getdata("");
-               
-                $("#mrno").change(function(){
-                    getdata($(this).val());
-                   
-                });
-                $("#mrno").keypress(function(){
-                    getdata($(this).val());
-                   
-                });
                 
-                
+                $("#btn-getdata").click(function(){
+                    if($("#mrno").val() == ""){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ข้อมูลไม่ถูกต้อง',
+                            text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
+                        })
+                       
+                    }else{
+                        $("#btn-send").removeClass("disabled");
+                        getdata($("#mrno").val());  
+                    }
+                             
+                });
+         
                 $("#btn-send").click(function(){
                     var select_row = table.column(1).checkboxes.selected();
+                    var arr = [];
+                    var txt1 = null ;
+                    if(select_row.length <= 0){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ข้อมูลไม่ถูกต้อง',
+                            text: 'กรุณาเลือกข้อมูลให้ถูกต้อง'
+                        })
+                    }else{
+                        $.each(select_row,function(k,v){
+                            if(v !== txt1){
+                                arr.push(v);
+                            }
+                            txt1 = v;
+                            //console.log(v);
+                        }); 
+                        function countdata(row){
+                            return row;
+                        }
+                        var row = 0;
+                        $.each(arr,function(k,v){
+                            $.ajax({
+                                type: "POST",
+                                url: 'sendtoqc?item='+v,
+                                success: function(msg,status){
+                                    //console.log(msg);
+                                    if(msg == "false"){ 
+                                        
+                                    }else if(msg == "true"){
+                                        row++;                            
+                                    }   
+                                    
+                                    console.log(status);
+                                    console.log(row);      
+                                }
+                            });
+                            
+                        });
+                        
+                        
+                                               
+                    }
                     
-                    $.each(select_row,function(k,v){
-                        console.log(v);
-                    });    
+                   
+                                    
+                    
                 });
             });
         </script>

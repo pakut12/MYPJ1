@@ -40,7 +40,7 @@ public class SVgetdatawm extends HttpServlet {
                 String page = "";
 
                 String sql = "select * from wmbarcode where  wmbarcode.MRNO = ? ";
-                conn = DB.ConnDB.getConnection();
+                conn = DB.ConnDB.getConnDB();
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, menr);
                 rec = ps.executeQuery();
@@ -52,7 +52,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     JSONArray arrjson = new JSONArray();
                     arrjson.add("");
-                    arrjson.add(n);
+                    arrjson.add(rec.getString("ITEM"));
                     arrjson.add(rec.getString("MRNO"));
                     arrjson.add(rec.getString("ITEM"));
                     arrjson.add(rec.getString("ROLL"));
