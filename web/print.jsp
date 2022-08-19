@@ -24,74 +24,57 @@
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header">
-                                Home
+                                พิมพ์ใบเเจ้งเข้าวัตถุดิบ
                             </div>
                             <div class="card-body">
                                 <form action="pdf" method="post" name="myform" class="needs-validation" novalidate>
                                     <div class="row mb-3">
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>เลขที่เอกสาร : </label>
-                                            <input class="form-control form-control-sm" type="number" name="" id="" required></input>
-                                            <div class="invalid-feedback mb-3 text-center">
-                                                กรุณาใส่ข้อมูลให้ถูกต้อง
-                                            </div>
+                                            <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
+                                            
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <label>รหัสวัตถุดิบ : </label>
-                                            <input class="form-control form-control-sm" type="number" name="" id="" required></input>
-                                            <div class="invalid-feedback mb-3 text-center">
-                                                กรุณาใส่ข้อมูลให้ถูกต้อง
-                                            </div>
+                                            <input class="form-control form-control-sm" type="text" name="item" id="item" required></input>
+                                            
                                         </div>
-                                        <div class="col-4">
-                                            <label>เลขที่เอกสาร : </label>
-                                            <input class="form-control form-control-sm" type="number" name="" id="" required></input>
-                                            <div class="invalid-feedback mb-3 text-center">
-                                                กรุณาใส่ข้อมูลให้ถูกต้อง
-                                            </div>
+                                        <div class="col-3">
+                                            <label>เลขที่พาเลท : </label>
+                                            <input class="form-control form-control-sm" type="number" name="palet" id="palet" required></input>
+                                            
                                         </div>
-                                        
+                                        <div class="col-3">
+                                            <button class="btn btn-sm btn-success mt-4 w-75" type="button" name="getdata" id="getdata">ดึงข้อมูล</button>
+                                        </div>
                                     </div>
                                     
                                     <div class="col-auto">
                                         <table class="table table-sm table-bordered text-center" id="mytable" >
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">ลำดับ</th>
-                                                    <th class="text-center">เลขที่เอกสาร</th>
-                                                    <th class="text-center">รหัสวัตถุดิบ</th>
                                                     <th class="text-center">ม้วนที่</th>
-                                                    <th class="text-center">ลำดับ</th>  
+                                                    <th class="text-center">ความยาว(เมตร)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <%
-            for (int a = 0; a < 3000; a++) {
-                                                %>
-                                                <tr>
-                                                    <td><%=a%></td>
-                                                    <td>เลขที่เอกสาร</td>
-                                                    <td>รหัสวัตถุดิบ</td>
-                                                    <td>ม้วนที่</td>
-                                                    <td>ลำดับ</td>  
-                                                </tr>
-                                                <%            }
-                                                %>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="row mt-3 text-center">
                                         <div class="col-3">
+                                            
                                             <label>วันที่ผ้าเข้า</label>
-                                            <input class="form-control form-control-sm" type="date"></input>
+                                            <input class="form-control form-control-sm" type="date" name="today" id="today" value=""></input>
                                         </div>
                                         <div class="col-3">
                                             <label>เเถวทั้งหมด</label>
-                                            <input class="form-control form-control-sm" type="text"></input>
+                                            <input class="form-control form-control-sm" type="number"></input>
                                         </div>
                                         <div class="col-3">
                                             <label>ความยาวทั้งหมด</label>
-                                            <input class="form-control form-control-sm" type="text"></input>
+                                            <input class="form-control form-control-sm" type="number"></input>
                                         </div>
                                         <div class="col-3">
                                             <button class="btn btn-sm btn-success mt-4 w-75" type="submit">พิมพ์ใบเเจ้งเข้า</button>
@@ -108,8 +91,45 @@
         <script>
             $(document).ready(function () {
                 $("#page2").addClass("active");
-                $("#mytable").DataTable({
-                    responsive: true
+                function getdatawmqck(mrno,item,palet){
+                    $("#mytable").DataTable({
+                        bDestroy: true,
+                        ajax: 'getdatawmqck?mrno='+mrno+'&item='+item+'&palet='+palet,
+                        responsive: true
+                    });  
+                }
+                function today(){
+                    var date = new Date();
+                    var d =date.getDate()
+                    var m = date.getMonth();
+                    var y = date.getFullYear();
+                    if(m <10){
+                        m = "0"+m;
+                    }
+                    var today = y+"-"+m+"-"+d;
+                    return today;
+                }
+                getdatawmqck("", "", "");
+                
+             
+                
+                $("#today").val(today());
+                
+                $("#getdata").click(function(){
+                    var mrno = $("#mrno").val();
+                    var item = $("#item").val();
+                    var palet = $("#palet").val();
+                    if(mrno == "" ||item == "" || palet == ""){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ข้อมูลไม่ถูกต้อง',
+                            text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
+                        })
+                    }else{
+                        getdatawmqck(mrno, item, palet);
+                    }
+                    
+                    
                 });
             });
         </script>

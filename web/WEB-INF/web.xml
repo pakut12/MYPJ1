@@ -25,6 +25,10 @@
         <servlet-name>SVsendtoqc</servlet-name>
         <servlet-class>SV.SVsendtoqc</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SVgetdatawmqck</servlet-name>
+        <servlet-class>SV.SVgetdatawmqck</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SVlogin</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -49,7 +53,7 @@
         <servlet-name>SVsendtoqc</servlet-name>
         <url-pattern>/sendtoqc</url-pattern>
     </servlet-mapping>
-    <session-config>
+    <servlet-mapping><servlet-name>SVgetdatawmqck</servlet-name><url-pattern>/getdatawmqck</url-pattern></servlet-mapping><session-config>
         <session-timeout>
             30
         </session-timeout>

@@ -7,15 +7,19 @@ package SV;
 import java.io.*;
 import java.net.*;
 
+
 import java.sql.*;
+import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  *
  * @author pakutsing
  */
-public class SVsendtoqc extends HttpServlet {
+public class SVgetdatawmqck extends HttpServlet {
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,51 +34,38 @@ public class SVsendtoqc extends HttpServlet {
             Connection con = null;
             ResultSet rec = null;
             PreparedStatement ps = null;
-            PreparedStatement psin = null;
             try {
+                String mrno = request.getParameter("mrno");
+                String item = request.getParameter("item");
+                String palet = request.getParameter("palet");
+
+                String sql = "select * from wmqck where wmqck.MRNO = ? and wmqck.ITEM = ? and wmqck.PALET =?;";
                 con = DB.ConnDB.getConnDB();
-                String id = request.getParameter("item");
-                String sql = "SELECT * FROM `wmbarcode` WHERE wmbarcode.ITEM = ?;";
                 ps = con.prepareStatement(sql);
-                ps.setString(1, id);
+                ps.setString(1, mrno);
+                ps.setString(2, item);
+                ps.setString(3, palet);
                 rec = ps.executeQuery();
-                int numrow = 0;
-                while (rec.next()) {
-                    try {
-                        String sqlin = "INSERT INTO `wmqck` (`MRNO`, `ITEM`, `ROLL`, `PALET`, `ACTQTY`, `ETHREAD`, `EOIL`, `EKNOT`, `EJOINT`, `EARCH`, `EFURROW`, `EDIRTY`, `EALKALI`, `EBROKEN`, `EREPEAT`, `TOTERR`, `WIDTH`, `GRADEQC`, `QCDATE`, `BYNAME`, `WEIGHT`, `QTYLAY`, `MARK`, `REMARK1`, `REMARK2`, `REMARK3`, `REJECT`, `BYNAME1`, `REMARK4`, `WEIGHT1`, `MARK_TOTERR`, `REFMRNO`) " +
-                                "VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-//                        out.print(rec.getString("MRNO"));
-//                        out.print(rec.getString("ITEM"));
-//                        out.print(rec.getString("ROLL"));
-//                        out.print(rec.getString("QUANTITY"));
+                JSONObject obj = new JSONObject();
+                ArrayList arrlist = new ArrayList();
+                int n = 0;
+                while ((rec.next()) && (rec != null)) {
 
-                        psin = con.prepareStatement(sqlin);
-                        psin.setString(1, rec.getString("MRNO"));
-                        psin.setString(2, rec.getString("ITEM"));
-                        psin.setString(3, rec.getString("ROLL"));
-                        psin.setString(4, rec.getString("PALET"));
-                        psin.setString(5, rec.getString("QUANTITY"));
+                    JSONArray arrjson = new JSONArray();
+                    arrjson.add(rec.getString("ROLL"));
+                    arrjson.add(rec.getString("ACTQTY"));
 
-                        for (int n = 6; n <= 32; n++) {
-                            psin.setString(n, null);
-                        }
-                        psin.executeUpdate();
-                        numrow++;
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    arrlist.add(arrjson);
+                    n++;
                 }
-                if (numrow > 0) {
-                    out.print("true");
-                } else {
-                    out.print("false");
-                }
+
+                obj.put("data", arrlist);
+                out.print(obj);
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         } finally {
             out.close();
         }

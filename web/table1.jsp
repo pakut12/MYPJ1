@@ -188,31 +188,33 @@
                             txt1 = v;
                             //console.log(v);
                         }); 
-                        function countdata(row){
-                            return row;
-                        }
-                        var row = 0;
+                     
+                      
                         $.each(arr,function(k,v){
+                        
                             $.ajax({
                                 type: "POST",
                                 url: 'sendtoqc?item='+v,
                                 success: function(msg,status){
                                     //console.log(msg);
-                                    if(msg == "false"){ 
-                                        
-                                    }else if(msg == "true"){
-                                        row++;                            
-                                    }   
                                     
-                                    console.log(status);
-                                    console.log(row);      
-                                }
+                                    if(msg == "false"){ 
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'ไม่สำเร็จ',
+                                            text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                        })
+                                    }else if(msg == "true"){
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'สำเร็จ',
+                                            text: 'บันทึกข้อมูลสำเร็จ'
+                                        })
+                                    }                            
+                                }    
                             });
                             
-                        });
-                        
-                        
-                                               
+                        });                 
                     }
                     
                    
