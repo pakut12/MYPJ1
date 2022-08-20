@@ -95,18 +95,18 @@ public class ConnDB {
     public static String getpathupload() {
         String pathwork = "C:/Users/pakutsing/Desktop/Github/MyApp/web/upload/";
         String pathhome = "C:/Users/Gus/Desktop/Github/MyApp/web/upload/";
-        return pathwork.toString();
+        return pathhome.toString();
     }
 
     public static String getpathfont() {
         String pathwork = "C:/Users/pakutsing/Desktop/Github/MyApp/web/font/";
         String pathhome = "C:/Users/Gus/Desktop/Github/MyApp/web/font/";
-        return pathwork.toString();
+        return pathhome.toString();
     }
 
     public static String getpathExport() {
         String pathwork = "C:/Users/pakutsing/Desktop/Github/MyApp/web/Export/";
         String pathhome = "C:/Users/Gus/Desktop/Github/MyApp/web/Export/";
-        return pathwork.toString();
+        return pathhome.toString();
     }
 }
