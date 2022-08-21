@@ -15,37 +15,44 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <style>
+        
+        body{
+            height:5.5in;
+            width:9in;                                 
+        }
+    </style>
     <body>
         <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
         
         <div class="row">
-            <div  class="col-6 ">
+            <div  class="col-8 ">
                 <label class="fw-bold">Name of Vendor : </label>
                 <label>บริษัท โทเร เท็กซ์ไทล์ (ประเทศไทย)</label> 
             </div>
-          
-            <div  class="col-6">
+            
+            <div  class="col-4">
                 <label class="fw-bold">Documaent No. :</label>
                 <label>902208002776</label> 
             </div>
         </div>
         <div class="row">
-            <div  class="col-6 ">
+            <div  class="col-8 ">
                 <label class="fw-bold">Po No. : </label>
                 <label>4592200652  /20</label> 
             </div>
             
-            <div  class="col-6 ">
+            <div  class="col-4 ">
                 <label class="fw-bold">Pallet : </label>
                 <label>39</label> 
             </div> 
         </div>
         <div class="row">
-            <div  class="col-3 ">
+            <div  class="col-4 ">
                 <label class="fw-bold">Current Date : </label>
                 <label>15/8/2022 11:33:55</label> 
             </div>
-            <div  class="col-3 ">
+            <div  class="col-4 ">
                 <label class="fw-bold">วันที่ผ้าเข้า : </label>
                 <label class="h3">11/8/2022</label> 
             </div>
@@ -55,12 +62,12 @@
             </div> 
         </div>
         <div class="row">
-            <div  class="col-6 ">
+            <div  class="col-8 ">
                 <label class="fw-bold">Plant : </label>
                 <label>9000</label> 
             </div>
             
-            <div  class="col-6 ">
+            <div  class="col-4 ">
                 <label class="fw-bold">Invoice date : </label>
                 <label>11/8/2022</label> 
             </div> 
@@ -68,23 +75,23 @@
             
         </div>
         <div class="row">
-            <div  class="col-6 ">
+            <div  class="col-8 ">
                 <label class="fw-bold ">Materal : </label>
                 <label class="h3">90BKL0174-DG65</label> 
             </div>
-           
-            <div  class="col-6 ">
+            
+            <div  class="col-4 ">
                 <label>20174EA POLY KNIT WD.66 C#92/DKCHARCOAL</label> 
             </div> 
             
         </div>
         <div class="row">
-            <div  class="col-6 ">
+            <div  class="col-8 ">
                 <label class="fw-bold">Lot : </label>
                 <label></label> 
             </div>
             
-            <div  class="col-6 ">
+            <div  class="col-4 ">
                 <label class="fw-bold">Quantity : </label>
                 <label class="h3">631</label> 
                 <label>YD</label> 
@@ -123,19 +130,38 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>40</td>
+                            <td>45</td>
+                            <td>45</td>
+                            <td>45</td>
+                            <td>45</td>
+                            <td>45</td>
+                            <td>45</td>
+                            <td>44</td>
+                            <td>45</td>
+                            <td>47</td>
+                            <td>631</td>
+                            <td>14</td>
+                            
                         </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>47</td>
+                            <td>47</td>
+                            <td>47</td>
+                            <td>44</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -144,15 +170,15 @@
         <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">ผู้เเจ้งเข้า : </label>
-                <label>..................................................</label> 
+                <label>.............................</label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">ผู้รับตรวจสอบ : </label>
-                <label>..................................................</label> 
+                <label>.............................</label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ตรวจเสร็จ : </label>
-                <label>..................................................</label> 
+                <label>.............................</label> 
             </div> 
             
         </div>

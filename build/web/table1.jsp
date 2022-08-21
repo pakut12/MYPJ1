@@ -189,15 +189,19 @@
                             //console.log(v);
                         }); 
                      
-                      
+                        var row = 0;
                         $.each(arr,function(k,v){
-                        
                             $.ajax({
                                 type: "POST",
                                 url: 'sendtoqc?item='+v,
                                 success: function(msg,status){
                                     //console.log(msg);
-                                    
+                                    if(msg == "false"){ 
+                                        
+                                    }else if(msg == "true"){
+                                        row++;
+                                    }
+                                    /*
                                     if(msg == "false"){ 
                                         Swal.fire({
                                             icon: 'error',
@@ -210,11 +214,13 @@
                                             title: 'สำเร็จ',
                                             text: 'บันทึกข้อมูลสำเร็จ'
                                         })
-                                    }                            
+                                    }     */                       
                                 }    
                             });
                             
-                        });                 
+                        }); 
+                        console.log(row);
+
                     }
                     
                    

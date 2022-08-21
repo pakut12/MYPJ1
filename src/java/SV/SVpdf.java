@@ -9,7 +9,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.*;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
@@ -72,14 +72,6 @@ public class SVpdf extends HttpServlet {
 
                 document.add(h);
                 document.add(new Paragraph("\n"));
-
-
-
-
-
-
-
-
 
 //Create Table object, Here 4 specify the no. of columns
                 PdfPTable Table = new PdfPTable(3);
