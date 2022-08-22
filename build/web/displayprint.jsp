@@ -22,54 +22,65 @@
             width:9in;                                 
         }
     </style>
+    <%!
+    public static String ctoD(String txt) {
+        String Y = txt.substring(0, 4);
+        String M = txt.substring(5, 7);
+        String D = txt.substring(8, 10);
+        String F = D + "/" + M + "/" + Y;
+        return F;
+    }
+
+    %>
+    
     <body>
         <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
         
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Name of Vendor : </label>
-                <label>บริษัท โทเร เท็กซ์ไทล์ (ประเทศไทย)</label> 
+                <label><%=request.getAttribute("SUPNAME")%></label> 
             </div>
             
             <div  class="col-4">
                 <label class="fw-bold">Documaent No. :</label>
-                <label>902208002776</label> 
+                <label><%=request.getAttribute("MRNO")%></label> 
             </div>
         </div>
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Po No. : </label>
-                <label>4592200652  /20</label> 
+                <label><%=request.getAttribute("PO")%>  /20</label> 
             </div>
             
             <div  class="col-4 ">
                 <label class="fw-bold">Pallet : </label>
-                <label>39</label> 
+                <label><%=request.getAttribute("PALET")%></label> 
             </div> 
         </div>
         <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">Current Date : </label>
-                <label>15/8/2022 11:33:55</label> 
+                <label id="today">15/8/2022 11:33:55</label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ผ้าเข้า : </label>
-                <label class="h3">11/8/2022</label> 
+                <label class="h3"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice No : </label>
-                <label>193139</label> 
+                <label><%=request.getAttribute("INVOICE")%></label> 
             </div> 
         </div>
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Plant : </label>
-                <label>9000</label> 
+                <label><%=request.getAttribute("PLANT")%></label> 
             </div>
             
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice date : </label>
-                <label>11/8/2022</label> 
+                <label><%=ctoD(request.getAttribute("INVOICEDATE").toString())%></label> 
             </div> 
             
             
@@ -77,24 +88,24 @@
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold ">Materal : </label>
-                <label class="h3">90BKL0174-DG65</label> 
+                <label class="h3"><%=request.getAttribute("ITEM")%></label> 
             </div>
             
             <div  class="col-4 ">
-                <label>20174EA POLY KNIT WD.66 C#92/DKCHARCOAL</label> 
+                <label><%=request.getAttribute("DESC1")%></label> 
             </div> 
             
         </div>
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Lot : </label>
-                <label></label> 
+                <label><%=request.getAttribute("LOT")%></label> 
             </div>
             
             <div  class="col-4 ">
                 <label class="fw-bold">Quantity : </label>
-                <label class="h3">631</label> 
-                <label>YD</label> 
+                <label class="h3"><%=request.getAttribute("roll")%></label> 
+                <label><%=request.getAttribute("UNIT")%></label> 
             </div> 
             
         </div>
@@ -122,8 +133,8 @@
                             <th>8</th>
                             <th>9</th>
                             <th>10</th>
-                            <th>YD</th>
-                            <th>ม้วย</th>
+                            <th><%=request.getAttribute("UNIT")%></th>
+                            <th>ม้วน</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,8 +151,8 @@
                             <td>44</td>
                             <td>45</td>
                             <td>47</td>
-                            <td>631</td>
-                            <td>14</td>
+                            <td><%=request.getAttribute("roll")%></td>
+                            <td><%=request.getAttribute("row")%></td>
                             
                         </tr>
                         <tr>
@@ -187,7 +198,27 @@
         
         <script>
             $(document).ready(function(){
+                function today(){
+                    var date = new Date();
+                    var d =date.getDate()
+                    var mo = date.getMonth();
+                    var y = date.getFullYear();
+                    var h = date.getHours();
+                    var i = date.getMinutes()
+                    var m = date.getSeconds();
+                    if(m <10){
+                        m = "0"+m;
+                    }
+                    var today = d+"/"+mo+"/"+y+" "+h+":"+i+":"+m;
+                    return today;
+                }
+                $("#today").text(today());
+                
+    
+    
+    
                 window.print();
+                
             });
         </script>
         

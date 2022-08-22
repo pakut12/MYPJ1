@@ -34,7 +34,7 @@ public class SVsendtoqc extends HttpServlet {
             try {
                 con = DB.ConnDB.getConnDB();
                 String id = request.getParameter("item");
-                String sql = "SELECT * FROM `wmbarcode` WHERE wmbarcode.ITEM = ?;";
+                String sql = "SELECT * FROM `wmbarcode` WHERE wmbarcode.ITEM = ?";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, id);
                 rec = ps.executeQuery();
@@ -59,8 +59,11 @@ public class SVsendtoqc extends HttpServlet {
                         for (int n = 6; n <= 32; n++) {
                             psin.setString(n, null);
                         }
-                        psin.executeUpdate();
-                        numrow++;
+                        if (psin.executeUpdate() > 0) {
+                            numrow++;
+                        }
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

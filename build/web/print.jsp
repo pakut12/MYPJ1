@@ -64,17 +64,16 @@
                                     </div>
                                     <div class="row mt-3 text-center">
                                         <div class="col-3">
-                                            
                                             <label>วันที่ผ้าเข้า</label>
-                                            <input class="form-control form-control-sm" type="date" name="today" id="today" value=""></input>
+                                            <input class="form-control form-control-sm text-center" type="date" name="today" id="today" value="" readonly></input>
                                         </div>
                                         <div class="col-3">
                                             <label>เเถวทั้งหมด</label>
-                                            <input class="form-control form-control-sm" type="number"></input>
+                                            <input class="form-control form-control-sm text-center" type="number" name="totalrow" id="totalrow" value="" readonly></input>
                                         </div>
                                         <div class="col-3">
                                             <label>ความยาวทั้งหมด</label>
-                                            <input class="form-control form-control-sm" type="number"></input>
+                                            <input class="form-control form-control-sm text-center" type="number" name="totallong" id="totallong" value="" readonly></input>
                                         </div>
                                         <div class="col-3">
                                             <button class="btn btn-sm btn-success mt-4 w-75" type="submit">พิมพ์ใบเเจ้งเข้า</button>
@@ -96,8 +95,22 @@
                         bDestroy: true,
                         ajax: 'getdatawmqck?mrno='+mrno+'&item='+item+'&palet='+palet,
                         responsive: true
-                    });  
+                    }); 
+                    $.ajax({
+                        type: "POST",
+                        url: 'getdatawmqck?mrno='+mrno+'&item='+item+'&palet='+palet,
+                        success: function(msg){
+                            var x = $.parseJSON(msg);
+                            var sumrow =x.count;
+                            var sumroll = x.sum;   
+                            $("#totalrow").val(sumrow);
+                            $("#totallong").val(sumroll);
+                            $("#today").val(x.datein);
+                        }
+                        
+                    });                    
                 }
+                
                 function today(){
                     var date = new Date();
                     var d =date.getDate()
@@ -112,9 +125,6 @@
                 getdatawmqck("", "", "");
                 
              
-                
-                $("#today").val(today());
-                
                 $("#getdata").click(function(){
                     var mrno = $("#mrno").val();
                     var item = $("#item").val();
@@ -127,6 +137,7 @@
                         })
                     }else{
                         getdatawmqck(mrno, item, palet);
+                        
                     }
                     
                     

@@ -34,12 +34,16 @@ public class SVgetdatawmqck extends HttpServlet {
             Connection con = null;
             ResultSet rec = null;
             PreparedStatement ps = null;
+
+            Connection con1 = null;
+            ResultSet rec1 = null;
+            PreparedStatement ps1 = null;
             try {
                 String mrno = request.getParameter("mrno");
                 String item = request.getParameter("item");
                 String palet = request.getParameter("palet");
 
-                String sql = "select * from wmqck where wmqck.MRNO = ? and wmqck.ITEM = ? and wmqck.PALET =?;";
+                String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
                 con = DB.ConnDB.getConnDB();
                 ps = con.prepareStatement(sql);
                 ps.setString(1, mrno);
@@ -50,16 +54,28 @@ public class SVgetdatawmqck extends HttpServlet {
                 JSONObject obj = new JSONObject();
                 ArrayList arrlist = new ArrayList();
                 int n = 0;
-                while ((rec.next()) && (rec != null)) {
+                ArrayList<Float> sum = new ArrayList<Float>();
+                String datein = null;
 
+                while ((rec.next()) && (rec != null)) {
+                    sum.add(Float.parseFloat(rec.getString("QUANTITY")));
                     JSONArray arrjson = new JSONArray();
                     arrjson.add(rec.getString("ROLL"));
-                    arrjson.add(rec.getString("ACTQTY"));
 
+                    arrjson.add(rec.getString("QUANTITY"));
                     arrlist.add(arrjson);
+                    datein = rec.getString("CREATEDATE");
                     n++;
                 }
-
+                int z = 0;
+                int x = 0;
+                while (z < sum.size()) {
+                    x += sum.get(z);
+                    z++;
+                }
+                obj.put("datein", datein);
+                obj.put("count", n);
+                obj.put("sum", x);
                 obj.put("data", arrlist);
                 out.print(obj);
 
