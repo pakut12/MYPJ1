@@ -30,7 +30,6 @@
         String F = D + "/" + M + "/" + Y;
         return F;
     }
-
     %>
     
     <body>
@@ -138,22 +137,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <%
+            String str[] = (String[]) request.getAttribute("data");
+
+                        %>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>40</td>
-                            <td>45</td>
-                            <td>45</td>
-                            <td>45</td>
-                            <td>45</td>
-                            <td>45</td>
-                            <td>45</td>
-                            <td>44</td>
-                            <td>45</td>
-                            <td>47</td>
+                            <%
+            for (int i = 0; i < 10; i++) {
+                try {
+                    out.print("<td>" + str[i] + "</td>");
+                } catch (Exception ex) {
+                    out.print("<td></td>");
+                }
+                
+            }
+                            %>
                             <td><%=request.getAttribute("roll")%></td>
-                            <td><%=request.getAttribute("row")%></td>
-                            
+                            <td><%=request.getAttribute("row")%></td> 
                         </tr>
                         <tr>
                             <td></td>
@@ -184,7 +186,7 @@
                 <label>.............................</label> 
             </div>
             <div  class="col-4 ">
-                <label class="fw-bold">ผู้รับตรวจสอบ : </label>
+                <label class="fw-bold">ผู้รับเข้าตรวจสอบ : </label>
                 <label>.............................</label> 
             </div>
             <div  class="col-4 ">
@@ -201,7 +203,7 @@
                 function today(){
                     var date = new Date();
                     var d =date.getDate()
-                    var mo = date.getMonth();
+                    var mo = date.getMonth()+1;
                     var y = date.getFullYear();
                     var h = date.getHours();
                     var i = date.getMinutes()

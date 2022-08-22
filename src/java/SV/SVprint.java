@@ -62,8 +62,8 @@ public class SVprint extends HttpServlet {
                 String LOT = null;
                 String UNIT = null;
 
-                ArrayList<String> ro = new ArrayList<String>();
-
+                String[] arr = new String[Integer.valueOf(row)];
+                int n = 0;
                 while ((rec.next()) && (rec != null)) {
 
                     SUPNAME = rec.getString("SUPNAME");
@@ -79,8 +79,8 @@ public class SVprint extends HttpServlet {
                     LOT = rec.getString("LOT");
                     UNIT = rec.getString("UNIT");
 
-                    ro.add(rec.getString("QUANTITY"));
-
+                    arr[n] = rec.getString("QUANTITY");
+                    n++;
                 }
                 request.setAttribute("SUPNAME", SUPNAME);
                 request.setAttribute("MRNO", MRNO);
@@ -94,25 +94,23 @@ public class SVprint extends HttpServlet {
                 request.setAttribute("DESC1", DESC1);
                 request.setAttribute("LOT", LOT);
                 request.setAttribute("UNIT", UNIT);
-                
+
                 request.setAttribute("row", row);
                 request.setAttribute("roll", roll);
-               // request.setAttribute("roll", ro);
+                request.setAttribute("data", arr);
+
+                
 
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/displayprint.jsp");
                 rd.forward(request, response);
 
-                out.print(ro);
+                
+                
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            out.print(mrno + "<br>");
-            out.print(item + "<br>");
-            out.print(palet + "<br>");
-            out.print(date + "<br>");
-            out.print(row + "<br>");
-            out.print(roll + "<br>");
+
 
 
         } finally {
