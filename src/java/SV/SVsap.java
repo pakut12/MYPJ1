@@ -60,17 +60,18 @@ public class SVsap extends HttpServlet {
                     client.execute(function1);
                     JCO.Table output = function1.getTableParameterList().getTable("TABLEDATA");
 
-
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
-                    while (output.nextRow()) {
+
+                    for (int z = 0; z < output.getNumRows(); z++) {
+                        output.setRow(z);
                         JSONArray arrjson = new JSONArray();
                         arrjson.add("");
                         arrjson.add(n + 1);
-                        for (int a = 1; a <= 48; a++) {
+                        for (int a = 0; a <= 48; a++) {
                             try {
-                                arrjson.add(output.getString(a - 1));
+                                arrjson.add(output.getString(a));
                             } catch (Exception e) {
                                 arrjson.add("");
                             }
@@ -102,18 +103,18 @@ public class SVsap extends HttpServlet {
 
 
 
-                    String sqlwmbarcode = "INSERT INTO `wmbarcode` (`MRNO`, `ITEM`, `ROLL`, `PALET`, `PLANT`, `DESC1`, `DESC2`, `DESC3`, `PO`, `POLN`, `INVOICEDATE`, `CREATEDATE`, `QUANTITY`, `UNIT`, `SUPNAME`, `INVOICE`, `GRADE`, `CODE`, `BATCH`, `CHANGEDATE`, `COLOR`, `SUPPLIER`, `DELIVERYNO`, `PUGROUP`, `PUNAME`, `TELEPHONE`, `PRICE`, `PRD`, `LOT`, `PER`, `CURR`, `TOQC`, `TOTEST`, `RESULTQC`, `RESULTTEST`, `PAGE`, `AFTERQTY`, `REMARKRM1`, `REMARKRM2`, `REMARKRM3`, `SAVEDATE`, `DMWEIGHT`, `MWEIGHT`, `RMWIDTH`, `REFMRNO`, `OLDINVOICE`, `REALQTY`, `WEIGHT`) " +
+                    String sqlwmbarcode = "INSERT INTO wmbarcode (MRNO, ITEM, ROLL, PALET, PLANT, DESC1, DESC2, DESC3, PO, POLN, INVOICEDATE, CREATEDATE, QUANTITY, UNIT, SUPNAME, INVOICE, GRADE, CODE, BATCH, CHANGEDATE, COLOR, SUPPLIER, DELIVERYNO, PUGROUP, PUNAME, TELEPHONE, PRICE, PRD, LOT, PER, CURR, TOQC, TOTEST, RESULTQC, RESULTTEST, PAGE, AFTERQTY, REMARKRM1, REMARKRM2, REMARKRM3, SAVEDATE, DMWEIGHT, MWEIGHT, RMWIDTH, REFMRNO, OLDINVOICE, REALQTY, WEIGHT) " +
                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-                    String sqlwmmaster = "INSERT INTO `wmmaster` (`BARCODE`, `MRNO`, `ITEM`, `ROLL`) VALUES (?,?,?,?);";
+                    String sqlwmmaster = "INSERT INTO wmmaster (BARCODE, MRNO, ITEM, ROLL) VALUES (?,?,?,?)";
                     con = DB.ConnDB.getConnDB();
 
                     pr = con.prepareStatement(sqlwmbarcode);
                     pr1 = con.prepareStatement(sqlwmmaster);
                     int chack = 0;
 
-                    while (output.nextRow()) {
-
+                    for (int z = 0; z < output.getNumRows(); z++) {
+                        output.setRow(z);
                         for (int a = 1; a <= 48; a++) {
                             try {
                                 if (a == 3 || a == 4 || a == 10) {
@@ -203,16 +204,14 @@ public class SVsap extends HttpServlet {
                         out.print("false");
                     }
                 }
-
-
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
-
         } finally {
             out.close();
         }
+
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

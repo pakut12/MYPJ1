@@ -49,7 +49,7 @@
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Po No. : </label>
-                <label><%=request.getAttribute("PO")%>  /20</label> 
+                <label><%=request.getAttribute("PO")%>  /<%=request.getAttribute("POLN")%></label> 
             </div>
             
             <div  class="col-4 ">

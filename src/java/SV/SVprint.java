@@ -52,6 +52,7 @@ public class SVprint extends HttpServlet {
                 String SUPNAME = null;
                 String MRNO = null;
                 String PO = null;
+                String POLN = null;
                 String PALET = null;
                 String CREATEDATE = null;
                 String INVOICE = null;
@@ -69,6 +70,7 @@ public class SVprint extends HttpServlet {
                     SUPNAME = rec.getString("SUPNAME");
                     MRNO = rec.getString("MRNO");
                     PO = rec.getString("PO");
+                    POLN = rec.getString("POLN");
                     PALET = rec.getString("PALET");
                     CREATEDATE = rec.getString("CREATEDATE");
                     INVOICE = rec.getString("INVOICE");
@@ -85,6 +87,7 @@ public class SVprint extends HttpServlet {
                 request.setAttribute("SUPNAME", SUPNAME);
                 request.setAttribute("MRNO", MRNO);
                 request.setAttribute("PO", PO);
+                request.setAttribute("POLN", POLN);
                 request.setAttribute("PALET", PALET);
                 request.setAttribute("CREATEDATE", CREATEDATE);
                 request.setAttribute("INVOICE", INVOICE);
@@ -99,13 +102,13 @@ public class SVprint extends HttpServlet {
                 request.setAttribute("roll", roll);
                 request.setAttribute("data", arr);
 
-                
+
 
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/displayprint.jsp");
                 rd.forward(request, response);
 
-                
-                
+
+
 
             } catch (Exception e) {
                 e.printStackTrace();

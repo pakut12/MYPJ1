@@ -34,14 +34,14 @@ public class SVsendtoqc extends HttpServlet {
             try {
                 con = DB.ConnDB.getConnDB();
                 String id = request.getParameter("item");
-                String sql = "SELECT * FROM `wmbarcode` WHERE wmbarcode.ITEM = ?";
+                String sql = "SELECT * FROM wmbarcode WHERE wmbarcode.ITEM = ?";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, id);
                 rec = ps.executeQuery();
                 int numrow = 0;
                 while (rec.next()) {
                     try {
-                        String sqlin = "INSERT INTO `wmqck` (`MRNO`, `ITEM`, `ROLL`, `PALET`, `ACTQTY`, `ETHREAD`, `EOIL`, `EKNOT`, `EJOINT`, `EARCH`, `EFURROW`, `EDIRTY`, `EALKALI`, `EBROKEN`, `EREPEAT`, `TOTERR`, `WIDTH`, `GRADEQC`, `QCDATE`, `BYNAME`, `WEIGHT`, `QTYLAY`, `MARK`, `REMARK1`, `REMARK2`, `REMARK3`, `REJECT`, `BYNAME1`, `REMARK4`, `WEIGHT1`, `MARK_TOTERR`, `REFMRNO`) " +
+                        String sqlin = "INSERT INTO wmqck (MRNO, ITEM, ROLL, PALET, ACTQTY, ETHREAD, EOIL, EKNOT, EJOINT, EARCH, EFURROW, EDIRTY, EALKALI, EBROKEN, EREPEAT, TOTERR, WIDTH, GRADEQC, QCDATE, BYNAME, WEIGHT, QTYLAY, MARK, REMARK1, REMARK2, REMARK3, REJECT, BYNAME1, REMARK4, WEIGHT1, MARK_TOTERR, REFMRNO) " +
                                 "VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 //                        out.print(rec.getString("MRNO"));
