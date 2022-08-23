@@ -15,8 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <style>
-        
+    <style>      
         body{
             height:5.5in;
             width:9in;                                 
@@ -141,12 +140,7 @@
             String num[] = (String[]) request.getAttribute("data");
 
             int cal = 0;
-            if (num.length >= 10) {
-                cal = (int) Math.ceil(num.length / 10);
-            } else {
-                cal = (int) Math.ceil(10 / num.length);
-            }
-
+            cal = (int) Math.ceil(num.length / 10);
             int x = 0;
             for (int row = 0; row < cal + 1; row++) {
 
@@ -183,15 +177,15 @@
         <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">ผู้เเจ้งเข้า : </label>
-                <label>.............................</label> 
+                <label>.........................</label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">ผู้รับเข้าตรวจสอบ : </label>
-                <label>.............................</label> 
+                <label>.........................</label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ตรวจเสร็จ : </label>
-                <label>.............................</label> 
+                <label>.........................</label> 
             </div> 
             
         </div>

@@ -105,7 +105,7 @@
                             var sumroll = x.sum;   
                             $("#totalrow").val(sumrow);
                             $("#totallong").val(sumroll);
-                            $("#today").val(x.datein);
+                          
                         }
                         
                     });                    
@@ -122,6 +122,7 @@
                     var today = y+"-"+m+"-"+d;
                     return today;
                 }
+                $("#today").val(today);
                 getdatawmqck("", "", "");
                 
              
