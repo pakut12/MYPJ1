@@ -117,7 +117,7 @@
                             <th>เบอร์สี</th>
                             <th>หน้า</th>
                             <th colspan="10">รายการ</th>
-                            <th colspan="2"></th>
+                            <th colspan="2">หน่วย</th>
                         </tr>
                         <tr>
                             <th></th>
@@ -138,43 +138,43 @@
                     </thead>
                     <tbody>
                         <%
-            String str[] = (String[]) request.getAttribute("data");
+            String num[] = (String[]) request.getAttribute("data");
 
-                        %>
+            int cal = 0;
+            if (num.length >= 10) {
+                cal = (int) Math.ceil(num.length / 10);
+            } else {
+                cal = (int) Math.ceil(10 / num.length);
+            }
+
+            int x = 0;
+            for (int row = 0; row < cal + 1; row++) {
+
+                        %>       
                         <tr>
                             <td></td>
                             <td></td>
                             <%
-            for (int i = 0; i < 10; i++) {
-                try {
-                    out.print("<td>" + str[i] + "</td>");
-                } catch (Exception ex) {
-                    out.print("<td></td>");
-                }
-                
-            }
+                            for (int col = 1; col <= 10; col++) {
+                                try {
+                                    out.print("<td>" + num[x] + "</td>");
+                                } catch (Exception e) {
+                                    out.print("<td></td>");
+                                }
+                                x++;
+                            }
+                            if (row == 0) {
                             %>
                             <td><%=request.getAttribute("roll")%></td>
                             <td><%=request.getAttribute("row")%></td> 
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>47</td>
-                            <td>47</td>
-                            <td>47</td>
-                            <td>44</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                        </tr>
-                        
+                        <%
+                } else {
+                    out.print("<td></td>");
+                    out.print("<td></td>");
+                }
+            }
+                        %>
                     </tbody>
                 </table>
             </div>
