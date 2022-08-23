@@ -64,7 +64,7 @@
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ผ้าเข้า : </label>
-                <label class="h3"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
+                <label class="h3" id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice No : </label>
@@ -214,8 +214,22 @@
                     var today = d+"/"+mo+"/"+y+" "+h+":"+i+":"+m;
                     return today;
                 }
+                function today1(){
+                    var date = new Date();
+                    var d =date.getDate()
+                    var mo = date.getMonth()+1;
+                    var y = date.getFullYear();
+                    var h = date.getHours();
+                    var i = date.getMinutes()
+                    var m = date.getSeconds();
+                    if(m <10){
+                        m = "0"+m;
+                    }
+                    var today = d+"/"+mo+"/"+y;
+                    return today;
+                }
                 $("#today").text(today());
-                
+                $("#today1").text(today1());
     
     
     
