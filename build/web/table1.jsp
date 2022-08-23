@@ -181,6 +181,8 @@
                             text: 'กรุณาเลือกข้อมูลให้ถูกต้อง'
                         })
                     }else{
+                        $("#btn-send").addClass("disabled");
+                        $("#btn-send").text("กำลังส่ง....");
                         $.each(select_row,function(k,v){
                             if(v !== txt1){
                                 arr.push(v);
@@ -195,19 +197,23 @@
                                 type: "POST",
                                 url: 'sendtoqc?item='+v,
                                 success: function(msg,status){
-                                  
                                     if(msg == "false"){ 
                                         Swal.fire({
                                             icon: 'error',
                                             title: 'ไม่สำเร็จ',
                                             text: 'บันทึกข้อมูลไม่สำเร็จ'
                                         })
+                                        $("#btn-send").removeClass("disabled");
+                                        $("#btn-send").addClass("disabled");
+                                        $("#btn-send").text("ส่งข้อมูลไป QC");
                                     }else if(msg == "true"){
                                         Swal.fire({
                                             icon: 'success',
                                             title: 'สำเร็จ',
                                             text: 'บันทึกข้อมูลสำเร็จ'
                                         })
+                                        $("#btn-send").removeClass("disabled");
+                                        $("#btn-send").text("ส่งข้อมูลไป QC");
                                     }                          
                                 }    
                             });

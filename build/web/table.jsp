@@ -130,13 +130,7 @@
                         responsive: true
                     });  
                 }
-                function savedatasap(po,docqc){
-                    $("#mytable").DataTable({
-                        bDestroy: true,
-                        ajax: 'sap?stasus=S&PO='+po+'&DOCQC='+docqc,
-                        responsive: true
-                    });  
-                }
+               
                 
                 getdatasap("", "");
                 $("#savedata_sap").addClass("disabled");
@@ -160,6 +154,8 @@
                 $("#savedata_sap").click(function(){
                     var getpo =  $("#PO").val();
                     var getdocqc = $("#DOCQC").val();
+                    $("#savedata_sap").text("กำลังบันทึก...");
+                    $("#savedata_sap").addClass("disabled");
                     $.ajax({
                         type: "POST",
                         url: 'sap?stasus=S&PO='+getpo+'&DOCQC='+getdocqc,
@@ -171,12 +167,17 @@
                                     title: 'ไม่สำเร็จ',
                                     text: 'บันทึกข้อมูลไม่สำเร็จ'
                                 })
+                                $("#savedata_sap").text("จัดเก็บข้อมูล");
+                                $("#savedata_sap").removeClass("disabled");
+                                $("#savedata_sap").addClass("disabled");
                             }else if(msg == "true"){
                                 Swal.fire({
                                     icon: 'success',
                                     title: 'สำเร็จ',
                                     text: 'บันทึกข้อมูลสำเร็จ'
                                 })
+                                $("#savedata_sap").text("จัดเก็บข้อมูล");
+                                $("#savedata_sap").removeClass("disabled");
                             }
                         },
                         error:function(msg){
@@ -185,6 +186,9 @@
                                 title: 'ไม่สำเร็จ',
                                 text: 'บันทึกข้อมูลไม่สำเร็จ'
                             })
+                            $("#savedata_sap").text("จัดเก็บข้อมูล");
+                            $("#savedata_sap").removeClass("disabled");
+                            $("#savedata_sap").addClass("disabled");
                         }
                         
                     });
