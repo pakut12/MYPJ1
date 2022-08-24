@@ -14,7 +14,6 @@
     </head>
     <body>
         
-        
         <%@include file="share/nav.jsp" %>
         
         <div class="container">
@@ -30,7 +29,7 @@
                                 
                                 <div class="row mb-3">
                                     
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <label>Purchase Order : </label>
                                         <input class="form-control form-control-sm" type="number" name="PO" id="PO" required></input>
                                         <div class="invalid-feedback mb-3 text-center">
@@ -44,10 +43,10 @@
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
                                     </div>
-                                    <div class="col-4">
-                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="getdata_sap" id="getdata_sap">ดึงข้อมูล</button>
-                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="savedata_sap" id="savedata_sap">จัดเก็บข้อมูล</button>
-                                        <button class="btn btn-danger mt-4 btn-sm" type="submit" name="claerdata_sap" id="claerdata_sap">เครียร์ข้อมูล</button>
+                                    <div class="col-5">
+                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="getdata_sap" id="getdata_sap"><i class="bi bi-download"></i> ดึงข้อมูล</button>
+                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="savedata_sap" id="savedata_sap"><i class="bi bi-hdd"></i> จัดเก็บข้อมูล</button>
+                                        <button class="btn btn-danger mt-4 btn-sm" type="submit" name="claerdata_sap" id="claerdata_sap"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button>
                                     </div>
                                 </div>
                                 
@@ -55,7 +54,7 @@
                                     <table class="table table-sm table-bordered text-center" id="mytable" >
                                         <thead>
                                             <tr> 
-                                                <th class="text-center"></th>
+                                       
                                                 <th class="text-center">ลำดับ </th>
                                                 <th class="text-center">MRNO </th>
                                                 <th class="text-center">ITEM </th>
@@ -127,7 +126,9 @@
                     $("#mytable").DataTable({
                         bDestroy: true,
                         ajax: 'sap?stasus=G&PO='+po+'&DOCQC='+docqc,
-                        responsive: true
+                        responsive: false,
+                        scrollY: 500,    
+                        scrollX: true
                     });  
                 }
                

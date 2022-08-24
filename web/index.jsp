@@ -48,8 +48,8 @@
                         </div>
                         <br>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-sm btn-success ">OK</button>
-                            <button class="btn btn-sm btn-danger" type="button" id="reset" name="reset">Reset</button>
+                            <button type="submit" class="btn btn-sm btn-success "><i class="bi bi-box-arrow-in-right"></i> OK</button>
+                            <button class="btn btn-sm btn-danger" type="button" id="reset" name="reset"><i class="bi bi-arrow-clockwise"></i> Reset</button>
                         </div>
                     </div>
                 </div>

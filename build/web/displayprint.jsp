@@ -59,7 +59,7 @@
         <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">Current Date : </label>
-                <label id="today">15/8/2022 11:33:55</label> 
+                <label id="today"></label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ผ้าเข้า : </label>
@@ -142,22 +142,22 @@
             int cal = 0;
             cal = (int) Math.ceil(num.length / 10);
             int x = 0;
-            for (int row = 0; row < cal + 1; row++) {
+            for (int row = 0; row < 4; row++) {
 
                         %>       
                         <tr>
                             <td></td>
                             <td></td>
                             <%
-                            for (int col = 1; col <= 10; col++) {
-                                try {
-                                    out.print("<td>" + num[x] + "</td>");
-                                } catch (Exception e) {
-                                    out.print("<td></td>");
-                                }
-                                x++;
-                            }
-                            if (row == 0) {
+                             for (int col = 1; col <= 10; col++) {
+                                 try {
+                                     out.print("<td>" + num[x] + "</td>");
+                                 } catch (Exception e) {
+                                     out.print("<td></td>");
+                                 }
+                                 x++;
+                             }
+                             if (row == 0) {
                             %>
                             <td><%=request.getAttribute("roll")%></td>
                             <td><%=request.getAttribute("row")%></td> 
@@ -204,6 +204,8 @@
                     var m = date.getSeconds();
                     if(m <10){
                         m = "0"+m;
+                    }else if(i<10){
+                        i = "0"+i;
                     }
                     var today = d+"/"+mo+"/"+y+" "+h+":"+i+":"+m;
                     return today;

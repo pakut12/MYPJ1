@@ -66,7 +66,7 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th></th>
+                                            
                                             <th class="text-center">MRNO </th>
                                             <th class="text-center">ITEM </th>
                                             <th class="text-center">ROLL </th>
@@ -137,10 +137,12 @@
                 function getdata(re){
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?mrno='+re,
-                        responsive: true,
+                        ajax: 'getdatawm?status=G1&mrno='+re,
+                        responsive: false,
+                        scrollX: true,
+                        scrollY: 500,
                         columnDefs: [{      
-                                target:1,
+                                target:0,
                                 checkboxes:{
                                     selectRow:true
                                 }
@@ -171,7 +173,7 @@
                 });
          
                 $("#btn-send").click(function(){
-                    var select_row = table.column(1).checkboxes.selected();
+                    var select_row = table.column(0).checkboxes.selected();
                     var arr = [];
                     var txt1 = null ;
                     if(select_row.length <= 0){

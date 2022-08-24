@@ -30,90 +30,136 @@ public class SVgetdatawm extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            String status = request.getParameter("status").trim();
+            if (status.equals("G1")) {
 
-            try {
-                String menr = request.getParameter("mrno").trim();
+                try {
+                    String menr = request.getParameter("mrno").trim();
 
-                ResultSet rec = null;
-                Connection conn = null;
-                PreparedStatement ps = null;
-                String page = "";
+                    ResultSet rec = null;
+                    Connection conn = null;
+                    PreparedStatement ps = null;
+                    String page = "";
 
-                String sql = "select * from wmbarcode where  wmbarcode.MRNO = ? ";
-                conn = DB.ConnDB.getConnDB();
-                ps = conn.prepareStatement(sql);
-                ps.setString(1, menr);
-                rec = ps.executeQuery();
+                    String sql = "select * from wmbarcode where  wmbarcode.MRNO = ? ";
+                    conn = DB.ConnDB.getConnDB();
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, menr);
+                    rec = ps.executeQuery();
 
-                JSONObject obj = new JSONObject();
-                ArrayList arrlist = new ArrayList();
-                int n = 0;
-                while ((rec.next()) && (rec != null)) {
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
 
-                    JSONArray arrjson = new JSONArray();
-                    arrjson.add("");
-                    arrjson.add(rec.getString("MRNO"));
-                    arrjson.add(rec.getString("MRNO"));
-                    arrjson.add(rec.getString("ITEM"));
-                    arrjson.add(rec.getString("ROLL"));
-                    arrjson.add(rec.getString("PALET"));
-                    arrjson.add(rec.getString("PLANT"));
-                    arrjson.add(rec.getString("DESC1"));
-                    arrjson.add(rec.getString("DESC2"));
-                    arrjson.add(rec.getString("DESC3"));
-                    arrjson.add(rec.getString("PO"));
-                    arrjson.add(rec.getString("POLN"));
-                    arrjson.add(rec.getString("INVOICEDATE"));
-                    arrjson.add(rec.getString("CREATEDATE"));
-                    arrjson.add(rec.getString("QUANTITY"));
-                    arrjson.add(rec.getString("UNIT"));
-                    arrjson.add(rec.getString("SUPNAME"));
-                    arrjson.add(rec.getString("INVOICE"));
-                    arrjson.add(rec.getString("GRADE"));
-                    arrjson.add(rec.getString("CODE"));
-                    arrjson.add(rec.getString("BATCH"));
-                    arrjson.add(rec.getString("CHANGEDATE"));
-                    arrjson.add(rec.getString("COLOR"));
-                    arrjson.add(rec.getString("SUPPLIER"));
-                    arrjson.add(rec.getString("DELIVERYNO"));
-                    arrjson.add(rec.getString("PUGROUP"));
-                    arrjson.add(rec.getString("PUNAME"));
-                    arrjson.add(rec.getString("TELEPHONE"));
-                    arrjson.add(rec.getString("PRICE"));
-                    arrjson.add(rec.getString("PRD"));
-                    arrjson.add(rec.getString("LOT"));
-                    arrjson.add(rec.getString("PER"));
-                    arrjson.add(rec.getString("CURR"));
-                    arrjson.add(rec.getString("TOQC"));
-                    arrjson.add(rec.getString("TOTEST"));
-                    arrjson.add(rec.getString("RESULTQC"));
-                    arrjson.add(rec.getString("RESULTTEST"));
-                    arrjson.add(rec.getString("PAGE"));
-                    arrjson.add(rec.getString("AFTERQTY"));
-                    arrjson.add(rec.getString("REMARKRM1"));
-                    arrjson.add(rec.getString("REMARKRM2"));
-                    arrjson.add(rec.getString("REMARKRM3"));
-                    arrjson.add(rec.getString("SAVEDATE"));
-                    arrjson.add(rec.getString("DMWEIGHT"));
-                    arrjson.add(rec.getString("MWEIGHT"));
-                    arrjson.add(rec.getString("RMWIDTH"));
-                    arrjson.add(rec.getString("REFMRNO"));
-                    arrjson.add(rec.getString("OLDINVOICE"));
-                    arrjson.add(rec.getString("REALQTY"));
-                    arrjson.add(rec.getString("WEIGHT"));
+                        JSONArray arrjson = new JSONArray();
 
-                    arrlist.add(arrjson);
-                    n++;
+                        arrjson.add(rec.getString("MRNO"));
+                        arrjson.add(rec.getString("MRNO"));
+                        arrjson.add(rec.getString("ITEM"));
+                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("PALET"));
+                        arrjson.add(rec.getString("PLANT"));
+                        arrjson.add(rec.getString("DESC1"));
+                        arrjson.add(rec.getString("DESC2"));
+                        arrjson.add(rec.getString("DESC3"));
+                        arrjson.add(rec.getString("PO"));
+                        arrjson.add(rec.getString("POLN"));
+                        arrjson.add(rec.getString("INVOICEDATE"));
+                        arrjson.add(rec.getString("CREATEDATE"));
+                        arrjson.add(rec.getString("QUANTITY"));
+                        arrjson.add(rec.getString("UNIT"));
+                        arrjson.add(rec.getString("SUPNAME"));
+                        arrjson.add(rec.getString("INVOICE"));
+                        arrjson.add(rec.getString("GRADE"));
+                        arrjson.add(rec.getString("CODE"));
+                        arrjson.add(rec.getString("BATCH"));
+                        arrjson.add(rec.getString("CHANGEDATE"));
+                        arrjson.add(rec.getString("COLOR"));
+                        arrjson.add(rec.getString("SUPPLIER"));
+                        arrjson.add(rec.getString("DELIVERYNO"));
+                        arrjson.add(rec.getString("PUGROUP"));
+                        arrjson.add(rec.getString("PUNAME"));
+                        arrjson.add(rec.getString("TELEPHONE"));
+                        arrjson.add(rec.getString("PRICE"));
+                        arrjson.add(rec.getString("PRD"));
+                        arrjson.add(rec.getString("LOT"));
+                        arrjson.add(rec.getString("PER"));
+                        arrjson.add(rec.getString("CURR"));
+                        arrjson.add(rec.getString("TOQC"));
+                        arrjson.add(rec.getString("TOTEST"));
+                        arrjson.add(rec.getString("RESULTQC"));
+                        arrjson.add(rec.getString("RESULTTEST"));
+                        arrjson.add(rec.getString("PAGE"));
+                        arrjson.add(rec.getString("AFTERQTY"));
+                        arrjson.add(rec.getString("REMARKRM1"));
+                        arrjson.add(rec.getString("REMARKRM2"));
+                        arrjson.add(rec.getString("REMARKRM3"));
+                        arrjson.add(rec.getString("SAVEDATE"));
+                        arrjson.add(rec.getString("DMWEIGHT"));
+                        arrjson.add(rec.getString("MWEIGHT"));
+                        arrjson.add(rec.getString("RMWIDTH"));
+                        arrjson.add(rec.getString("REFMRNO"));
+                        arrjson.add(rec.getString("OLDINVOICE"));
+                        arrjson.add(rec.getString("REALQTY"));
+                        arrjson.add(rec.getString("WEIGHT"));
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (status.equals("G2")) {
+                try {
+                    String menr = request.getParameter("mrno").trim();
+                    String item = request.getParameter("item").trim();
+
+                    ResultSet rec = null;
+                    Connection conn = null;
+                    PreparedStatement ps = null;
+                    String page = "";
+
+                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? ";
+                    conn = DB.ConnDB.getConnDB();
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, menr);
+                    ps.setString(2, item);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        JSONArray arrjson = new JSONArray();
+
+                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("PALET"));
+                        arrjson.add(rec.getString("QUANTITY"));
+                        arrjson.add(rec.getString("BATCH"));
+                        arrjson.add("<a href='displayedititem.jsp?roll=" + rec.getString("ROLL") + "&mrno=" + menr + "&item=" + item + "'><button class='btn btn-warning btn-sm'>เเก้ไข</button></a>");
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
-                obj.put("data", arrlist);
-                out.print(obj);
-
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+
 
 
 

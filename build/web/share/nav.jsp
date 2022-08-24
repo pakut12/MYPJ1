@@ -14,25 +14,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="home.jsp" id="page1">หน้าเเรก</a>
+                
+                <li class="nav-item"> 
+                    <a class="nav-link " aria-current="page" href="home.jsp" id="page1">
+                        <i class="bi bi-house-door-fill "></i>
+                    หน้าเเรก</a>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  id="page2">
-                        เมนู
+                        <i class="bi bi-list"></i> เมนู
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="table.jsp">ดึงข้อมูลจาก SAP</a></li>
-                        <li><a class="dropdown-item" href="table1.jsp">ส่งข้อมูลให้ทาง QC</a></li>
-                        <li><a class="dropdown-item" href="print.jsp">พิมพ์ใบเเจ้งเข้าวัตถุดิบ</a></li>
+                        <li><a class="dropdown-item" href="table.jsp"><i class="bi bi-arrow-bar-down"></i> ดึงข้อมูลจาก SAP ด้วยเลขที่ PO</a></li>
+                        <li><a class="dropdown-item" href="table2.jsp"><i class="bi bi-key"></i> คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ</a></li>
+                        <li><a class="dropdown-item" href="table1.jsp"><i class="bi bi-send"></i> ส่งข้อมูลให้ทาง QC</a></li>
+                        <li><a class="dropdown-item" href="print.jsp"><i class="bi bi-printer"></i> พิมพ์ใบเเจ้งเข้าวัตถุดิบ</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">Logout</a>
+                    <a class="nav-link" href="index.jsp"><i class="bi bi-box-arrow-left"></i> Logout</a>
                 </li>
             </ul>
             
         </div>
     </div>
 </nav>
+
 <br><br><br><br>
