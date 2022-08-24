@@ -140,11 +140,13 @@ public class SVgetdatawm extends HttpServlet {
 
                         JSONArray arrjson = new JSONArray();
 
-                        arrjson.add(rec.getString("ROLL"));
-                        arrjson.add(rec.getString("PALET"));
-                        arrjson.add(rec.getString("QUANTITY"));
-                        arrjson.add(rec.getString("BATCH"));
-                        arrjson.add("<a href='displayedititem.jsp?roll=" + rec.getString("ROLL") + "&mrno=" + menr + "&item=" + item + "'><button class='btn btn-warning btn-sm'>เเก้ไข</button></a>");
+                        
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ROLL") + "' name='txt0' id='txt0' readonly></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("PALET") + "' name='txt1' id='txt1'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("BATCH") + "' name='txt3' id='txt3'></input>");
+
+
                         arrlist.add(arrjson);
                         n++;
                     }

@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="col-3">
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
-                                            
+                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button">Test</button>
                                         </div>
                                     </div>
                                 </form> 
@@ -85,15 +85,13 @@
                                             <th class="text-center">Pallet</th>
                                             <th class="text-center">ความยาว(เมตร)</th>
                                             <th class="text-center">Batch No</th>
-                                            <th class="text-center">เเก้ไข</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
                                     </tbody>
-                                    <tbody>
-                                        
-                                    </tbody>
+                                    
                                 </table> 
                                 
                             </div>
@@ -120,14 +118,16 @@
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
                             $("#count").val(de.count);
-                            console.log(de.count);                            
+                                                     
                         }    
                     });                    
                 }
                 
+
+
                 $("#page2").addClass("active");
-                $("#btn-send").addClass("disabled");
-                getdata("","");
+                //$("#btn-send").addClass("disabled");
+                getdata("902208002776","90BKL0174-DG65");
                 
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == ""){
@@ -139,15 +139,25 @@
                        
                     }else{
                        
-                        $("#btn-send").removeClass("disabled");
-                        
+                        $("#btn-send").removeClass("disabled");                       
                         getdata($("#mrno").val(),$("#item").val());  
+                       
                     }
                              
                 });
          
                 $("#btn-send").click(function(){
-                  
+                    var mrno = $('#mrno').val();
+                    var item = $('#item').val();
+                    var ROLL = table.$('#txt0').serializeArray();
+                    var PALET = table.$('#txt1').serializeArray();
+                    var QUANTITY = table.$('#txt2').serializeArray();
+                    var BATCH = table.$('#txt3').serializeArray();
+                    $.each(ROLL,function(k,v){
+                        console.log("edititem?status=UP&mrno="+mrno+"&item="+item+"&ROLL="+ROLL[k].value+"&PALET="+PALET[k].value+"&QUANTITY="+QUANTITY[k].value+"&BATCH="+BATCH[k].value);
+                        
+                    });
+                    
                    
                                     
                     
