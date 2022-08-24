@@ -33,8 +33,8 @@ public class SVsendtoqc extends HttpServlet {
             PreparedStatement psin = null;
             try {
                 con = DB.ConnDB.getConnDB();
-                String id = request.getParameter("item");
-                String sql = "SELECT * FROM wmbarcode WHERE wmbarcode.ITEM = ?";
+                String id = request.getParameter("mrno");
+                String sql = "SELECT * FROM wmbarcode WHERE wmbarcode.MRNO = ?";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, id);
                 rec = ps.executeQuery();

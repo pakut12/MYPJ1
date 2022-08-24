@@ -52,7 +52,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     JSONArray arrjson = new JSONArray();
                     arrjson.add("");
-                    arrjson.add(rec.getString("ITEM"));
+                    arrjson.add(rec.getString("MRNO"));
                     arrjson.add(rec.getString("MRNO"));
                     arrjson.add(rec.getString("ITEM"));
                     arrjson.add(rec.getString("ROLL"));

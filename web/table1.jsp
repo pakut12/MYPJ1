@@ -195,7 +195,7 @@
                         $.each(arr,function(k,v){
                             $.ajax({
                                 type: "POST",
-                                url: 'sendtoqc?item='+v,
+                                url: 'sendtoqc?mrno='+v,
                                 success: function(msg,status){
                                     if(msg == "false"){ 
                                         Swal.fire({
