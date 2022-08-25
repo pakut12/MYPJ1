@@ -146,7 +146,14 @@
                                 checkboxes:{
                                     selectRow:true
                                 }
-                            } ],
+                            },
+                            { "width": "10rem", "targets": 1 },
+                            { "width": "10rem", "targets": 2 },
+                            { "width": "23rem", "targets": 6 },
+                            { "width": "23rem", "targets": 7 }, 
+                            { "width": "23rem", "targets": 8 },
+                            { "width": "23rem", "targets": 15 }, 
+                            { "width": "10rem", "targets": 19 },                        ],
                         'select': {
                             'style': 'multi'
                         }

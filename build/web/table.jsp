@@ -54,7 +54,7 @@
                                     <table class="table table-sm table-bordered text-center" id="mytable" >
                                         <thead>
                                             <tr> 
-                                       
+                                                
                                                 <th class="text-center">ลำดับ </th>
                                                 <th class="text-center">MRNO </th>
                                                 <th class="text-center">ITEM </th>
@@ -126,9 +126,20 @@
                     $("#mytable").DataTable({
                         bDestroy: true,
                         ajax: 'sap?stasus=G&PO='+po+'&DOCQC='+docqc,
-                        responsive: false,
+                        select: true,
                         scrollY: 500,    
-                        scrollX: true
+                        scrollX: true,
+                        select: true,
+                        columnDefs: [
+                            { "width": "10rem", "targets": 1 },
+                            { "width": "10rem", "targets": 2 },
+                            { "width": "23rem", "targets": 6 },
+                            { "width": "23rem", "targets": 7 }, 
+                            { "width": "23rem", "targets": 8 },
+                            { "width": "23rem", "targets": 15 }, 
+                            { "width": "10rem", "targets": 19 }, 
+                        ]
+                        
                     });  
                 }
                

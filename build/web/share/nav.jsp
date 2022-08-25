@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  id="page2">
-                        <i class="bi bi-list"></i> เมนู
+                        <i class="bi bi-list"></i> ผ้าถัก
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="table.jsp"><i class="bi bi-arrow-bar-down"></i> ดึงข้อมูลจาก SAP ด้วยเลขที่ PO</a></li>

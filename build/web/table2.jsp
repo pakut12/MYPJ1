@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="col-3">
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button">Test</button>
+                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button">บันทึก</button>
                                         </div>
                                     </div>
                                 </form> 
@@ -126,8 +126,8 @@
 
 
                 $("#page2").addClass("active");
-                //$("#btn-send").addClass("disabled");
-                getdata("902208002776","90BKL0174-DG65");
+                $("#btn-send").addClass("disabled");
+                getdata("","");
                 
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == ""){
@@ -147,6 +147,8 @@
                 });
          
                 $("#btn-send").click(function(){
+                    $("#btn-send").addClass("disabled");
+                    $("#btn-send").text("กำลังส่ง....");
                     var mrno = $('#mrno').val();
                     var item = $('#item').val();
                     var ROLL = table.$('#txt0').serializeArray();
@@ -154,10 +156,35 @@
                     var QUANTITY = table.$('#txt2').serializeArray();
                     var BATCH = table.$('#txt3').serializeArray();
                     $.each(ROLL,function(k,v){
-                        console.log("edititem?status=UP&mrno="+mrno+"&item="+item+"&ROLL="+ROLL[k].value+"&PALET="+PALET[k].value+"&QUANTITY="+QUANTITY[k].value+"&BATCH="+BATCH[k].value);
+                        $.ajax({
+                            type: "POST",
+                            url: "edititem?status=G1&mrno="+mrno+"&item="+item+"&ROLL="+ROLL[k].value+"&PALET="+PALET[k].value+"&QUANTITY="+QUANTITY[k].value+"&BATCH="+BATCH[k].value,
+                            success: function(msg,status){
+                                if(msg == "false"){ 
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'ไม่สำเร็จ',
+                                        text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                    })
+                                    $("#btn-send").removeClass("disabled");
+                                    $("#btn-send").addClass("disabled");
+                                    $("#btn-send").text("ส่งข้อมูลไป QC");
+                                }else if(msg == "true"){
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'สำเร็จ',
+                                        text: 'บันทึกข้อมูลสำเร็จ'
+                                    })
+                                    $("#btn-send").removeClass("disabled");
+                                    $("#btn-send").text("บันทึก");
+                                } 
+                                        
+                            }    
+                        });
+                           
                         
                     });
-                    
+                    getdata($("#mrno").val(),$("#item").val());   
                    
                                     
                     

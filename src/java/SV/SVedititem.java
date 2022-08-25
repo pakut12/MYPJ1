@@ -31,34 +31,36 @@ public class SVedititem extends HttpServlet {
 
 
             try {
-                if (status.equals("G1")) {
-                    Connection con = null;
-                    ResultSet rec = null;
-                    PreparedStatement ps = null;
+                Connection con = null;
+                ResultSet res = null;
+                PreparedStatement ps = null;
 
-                    String roll = request.getParameter("roll");
+                if (status.equals("G1")) {
                     String mrno = request.getParameter("mrno");
                     String item = request.getParameter("item");
+                    String ROLL = request.getParameter("ROLL");
+                    String PALET = request.getParameter("PALET");
+                    String QUANTITY = request.getParameter("QUANTITY");
+                    String BATCH = request.getParameter("BATCH");
 
-                    String sql = "select * from wmbarcode where wmbarcode.ROLL = ? and wmbarcode.MRNO = ? and wmbarcode.ITEM = ?";
+
+                    String sql = "UPDATE wmbarcode SET wmbarcode.PALET = ?,wmbarcode.QUANTITY=?,wmbarcode.BATCH =? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
                     con = DB.ConnDB.getConnDB();
                     ps = con.prepareStatement(sql);
-                    ps.setString(1, roll);
-                    ps.setString(2, mrno);
-                    ps.setString(3, item);
-                    rec = ps.executeQuery();
+                    ps.setString(1, PALET);
+                    ps.setString(2, QUANTITY);
+                    ps.setString(3, BATCH);
+                    ps.setString(4, mrno);
+                    ps.setString(5, item);
+                    ps.setString(6, ROLL);
 
-                    while ((rec.next()) && (rec != null)) {
-                        request.setAttribute("ROLL", roll);
-                        request.setAttribute("MRNO", mrno);
-                        request.setAttribute("ITEM", item);
-                        request.setAttribute("PALET", rec.getString("PALET"));
-                        request.setAttribute("QUANTITY", rec.getString("QUANTITY"));
-                        request.setAttribute("BATCH", rec.getString("BATCH"));
+                    if (ps.executeUpdate() > 0) {
+                     
+                        out.print("true");
+                    } else {
+                        
+                        out.print("false");
                     }
-
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/displayedititem.jsp");
-                    rd.forward(request, response);
 
                 }
 
