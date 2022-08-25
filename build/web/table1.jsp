@@ -26,27 +26,7 @@
                             <div class="card-header text-center">
                                 ส่งข้อมูลให้ทาง QC
                             </div>
-                            <div class="card-body">
-                                
-                                <%
-            /*
-            try {
-            String name[] = request.getParameterValues("chkItem");
-            if (name == null) {
-            out.print("");
-            } else {
-            for (String x : name) {
-            out.print(x);
-            }
-            }
-            
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-             */
-
-                                %>
-                                
+                            <div class="card-body">  
                                 <form action="" method="post" name="myform" class="needs-validation" novalidate>
                                     <div class="row mb-3">
                                         <div class="col-6">
@@ -140,7 +120,7 @@
                         ajax: 'getdatawm?status=G1&mrno='+re,
                         responsive: false,
                         scrollX: true,
-                        scrollY: 500,
+                        scrollY: true,
                         columnDefs: [{      
                                 target:0,
                                 checkboxes:{

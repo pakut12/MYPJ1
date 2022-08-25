@@ -127,7 +127,7 @@
                         bDestroy: true,
                         ajax: 'sap?stasus=G&PO='+po+'&DOCQC='+docqc,
                         select: true,
-                        scrollY: 500,    
+                        scrollY: true,    
                         scrollX: true,
                         select: true,
                         columnDefs: [

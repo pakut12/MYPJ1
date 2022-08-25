@@ -27,26 +27,7 @@
                                 คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ
                             </div>
                             <div class="card-body">
-                                
-                                <%
-            /*
-            try {
-            String name[] = request.getParameterValues("chkItem");
-            if (name == null) {
-            out.print("");
-            } else {
-            for (String x : name) {
-            out.print(x);
-            }
-            }
-            
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-             */
-
-                                %>
-                                
+                             
                                 <form action="" method="post" name="myform" class="needs-validation" novalidate>
                                     <div class="row mb-3">
                                         <div class="col-3">

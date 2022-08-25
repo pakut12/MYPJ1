@@ -55,12 +55,82 @@ public class SVedititem extends HttpServlet {
                     ps.setString(6, ROLL);
 
                     if (ps.executeUpdate() > 0) {
-                     
                         out.print("true");
                     } else {
-                        
                         out.print("false");
                     }
+
+                } else if (status.equals("G2")) {
+                    String ITEM = (String) request.getParameter("ITEM");
+                    String ROLL = (String) request.getParameter("ROLL");
+                    String QUANTITY = (String) request.getParameter("QUANTITY");
+                    String UNIT = (String) request.getParameter("UNIT");
+                    String COLOR = (String) request.getParameter("COLOR");
+                    String BATCH = (String) request.getParameter("BATCH");
+                    String DESC1 = (String) request.getParameter("DESC1");
+
+                    String INVOICE = (String) request.getParameter("INVOICE");
+                    String INVOICEDATE = (String) request.getParameter("INVOICEDATE");
+                    String LOT = (String) request.getParameter("LOT");
+                    String MRNO = (String) request.getParameter("MRNO");
+                    String ITEM1 = (String) request.getParameter("ITEM1");
+                    String ROLL1 = (String) request.getParameter("ROLL1");
+
+                    out.print(ITEM);
+                    out.print("<br>");
+                    out.print(ROLL);
+                    out.print("<br>");
+                    out.print(QUANTITY);
+                    out.print("<br>");
+                    out.print(UNIT);
+                    out.print("<br>");
+                    out.print(COLOR);
+                    out.print("<br>");
+                    out.print(BATCH);
+                    out.print("<br>");
+                    out.print(DESC1);
+                    out.print("<br>");
+
+                    out.print(INVOICE);
+                    out.print("<br>");
+                    out.print(INVOICEDATE);
+                    out.print("<br>");
+                    out.print(LOT);
+                    out.print("<br>");
+                    out.print(MRNO);
+                    out.print("<br>");
+                    out.print(ITEM1);
+                    out.print("<br>");
+                    out.print(ROLL1);
+                    out.print("<br>");
+
+
+//                    String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=?,wmbarcode.LOT=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
+//                    con = DB.ConnDB.getConnDB();
+//                    ps = con.prepareStatement(sql);
+//                    ps.setString(1, ITEM);
+//                    ps.setString(2, ROLL);
+//                    ps.setString(3, QUANTITY);
+//                    ps.setString(4, UNIT);
+//                    ps.setString(5, COLOR);
+//                    ps.setString(6, BATCH);
+//                    ps.setString(7, DESC1);
+//                    ps.setString(8, INVOICE);
+//                    ps.setString(9, INVOICEDATE);
+//                    ps.setString(10, LOT);
+//                    ps.setString(11, MRNO);
+//                    ps.setString(12, ITEM1);
+//                    ps.setString(13, ROLL1);
+//                    
+//                    if (ps.executeUpdate() > 0) {
+//                        out.print("true");
+//                    } else {
+//                        out.print("false");
+//                    }
+
+
+
+
 
                 }
 

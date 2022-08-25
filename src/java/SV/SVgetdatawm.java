@@ -140,7 +140,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         JSONArray arrjson = new JSONArray();
 
-                        
+
                         arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ROLL") + "' name='txt0' id='txt0' readonly></input>");
                         arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("PALET") + "' name='txt1' id='txt1'></input>");
                         arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
@@ -160,6 +160,77 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 }
 
+            } else if (status.equals("G3")) {
+                try {
+                    String menr = request.getParameter("mrno").trim();
+
+
+                    ResultSet rec = null;
+                    Connection conn = null;
+                    PreparedStatement ps = null;
+                    String page = "";
+
+                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ?";
+                    conn = DB.ConnDB.getConnDB();
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, menr);
+
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+
+                    String PLANT = null;
+                    String PO = null;
+                    String SUPNAME = null;
+                    String INVOICE = null;
+                    String INVOICEDATE = null;
+                    String DELIVERYNO = null;
+                    String LOT = null;
+
+                    while ((rec.next()) && (rec != null)) {
+
+                        PLANT = rec.getString("PLANT");
+                        PO = rec.getString("PO");
+                        SUPNAME = rec.getString("SUPNAME");
+                        INVOICE = rec.getString("INVOICE");
+                        INVOICEDATE = rec.getString("INVOICEDATE");
+                        DELIVERYNO = rec.getString("DELIVERYNO");
+                        LOT = rec.getString("LOT");
+
+
+                        JSONArray arrjson = new JSONArray();
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ITEM") + "' name='txt0' id='txt0' ></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ROLL") + "' name='txt1' id='txt1'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("UNIT") + "' name='txt3' id='txt3'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("COLOR") + "' name='txt4' id='txt4'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("DESC1") + "' name='txt6' id='txt6'></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ITEM") + "' name='txt7' id='txt7' type='hidden' readonly></input>");
+                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ROLL") + "' name='txt8' id='txt8' type='hidden' readonly></input>");
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    obj.put("PLANT", PLANT);
+                    obj.put("PO", PO);
+                    obj.put("SUPNAME", SUPNAME);
+                    obj.put("INVOICE", INVOICE);
+                    obj.put("INVOICEDATE", INVOICEDATE);
+                    obj.put("DELIVERYNO", DELIVERYNO);
+                    obj.put("LOT", LOT);
+
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
 
