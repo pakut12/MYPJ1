@@ -154,8 +154,8 @@
 
 
                 $("#page3").addClass("active");
-                //$("#btn-send").addClass("disabled");
-                getdata("902208002776");
+                $("#btn-send").addClass("disabled");
+                getdata("");
                 
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == ""){
@@ -190,8 +190,33 @@
                     var ROLL1 = table.$('#txt8').serializeArray();
                       
                     $.each(ITEM,function(k,v){
-                        var url = "edititem?status=G2&ITEM="+ITEM[k].value+"&ROLL="+ROLL[k].value+"&QUANTITY="+QUANTITY[k].value+"&UNIT="+UNIT[k].value+"&COLOR="+COLOR[k].value+"&BATCH="+BATCH[k].value+"&DESC1="+DESC1[k].value+"&INVOICE="+INVOICE+"&INVOICEDATE="+INVOICEDATE+"&LOT="+LOT+"&MRNO="+MRNO+"&ITEM1="+ITEM1[k].value+"&ROLL1="+ROLL1[k].value;
-                        console.log(url);  
+                        var url = "edititem?status=G2&ITEM="+ITEM[k].value+"&ROLL="+ROLL[k].value+"&QUANTITY="+QUANTITY[k].value+"&UNIT="+UNIT[k].value+"&COLOR="+COLOR[k].value+"&BATCH="+BATCH[k].value+"&DESC1="+DESC1[k].value.replace("#", "!")+"&INVOICE="+INVOICE+"&INVOICEDATE="+INVOICEDATE+"&LOT="+LOT+"&MRNO="+MRNO+"&ITEM1="+ITEM1[k].value+"&ROLL1="+ROLL1[k].value;
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            success: function(msg,status){ 
+                                if(msg == "false"){ 
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'ไม่สำเร็จ',
+                                        text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                    })
+                                    $("#btn-send").removeClass("disabled");
+                                    $("#btn-send").addClass("disabled");
+                                    $("#btn-send").text("กำลังบันทึก...");
+                                }else if(msg == "true"){
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'สำเร็จ',
+                                        text: 'บันทึกข้อมูลสำเร็จ'
+                                    })
+                                    $("#btn-send").removeClass("disabled");
+                                    $("#btn-send").text("บันทึก");
+                                }       
+                                getdata(); 
+                                console.log(url);
+                            }    
+                        });      
                               
                         
                     });
