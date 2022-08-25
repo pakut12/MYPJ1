@@ -173,8 +173,8 @@
                 });
          
                 $("#btn-send").click(function(){
-                    //$("#btn-send").addClass("disabled");
-                    //$("#btn-send").text("กำลังส่ง....");
+                    $("#btn-send").addClass("disabled");
+                    $("#btn-send").text("กำลังบันทึก....");
                     var ITEM = table.$('#txt0').serializeArray();
                     var ROLL = table.$('#txt1').serializeArray();
                     var QUANTITY = table.$('#txt2').serializeArray();
@@ -212,9 +212,11 @@
                                     })
                                     $("#btn-send").removeClass("disabled");
                                     $("#btn-send").text("บันทึก");
-                                }       
-                                getdata(); 
-                                console.log(url);
+                                }  
+                                getdata("");
+                                $("#btn-send").removeClass("disabled");
+                                $("#btn-send").addClass("disabled");
+                                
                             }    
                         });      
                               

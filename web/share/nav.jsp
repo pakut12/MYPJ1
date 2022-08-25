@@ -38,7 +38,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="table3.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์เเละเเก้ไขข้อมูลใบ Invoice</a></li>
-                        <li><a class="dropdown-item" href=""><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
+                        <li><a class="dropdown-item" href="table4.jsp"><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
                         <li><a class="dropdown-item" href=""><i class="bi bi-bar-chart"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่เอกสาร</a></li>
                         <li><a class="dropdown-item" href=""><i class="bi bi-printer"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่ใบสั้งซื้อ (PO)</a></li>
                         
