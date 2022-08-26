@@ -45,6 +45,7 @@ public class SVgetdatawmqck extends HttpServlet {
 
                 String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
                 con = DB.ConnDB.getConnDB();
+                //con = DB.ConnDB.getConnection();
                 ps = con.prepareStatement(sql);
                 ps.setString(1, mrno);
                 ps.setString(2, item);

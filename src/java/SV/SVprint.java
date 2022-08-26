@@ -42,6 +42,7 @@ public class SVprint extends HttpServlet {
 
             try {
                 String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
+                // con = DB.ConnDB.getConnection();
                 con = DB.ConnDB.getConnDB();
                 ps = con.prepareStatement(sql);
                 ps.setString(1, mrno);

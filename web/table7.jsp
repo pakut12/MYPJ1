@@ -153,11 +153,7 @@
                 $("#btn-send").click(function(){
                     //$("#btn-send").addClass("disabled");
                     //$("#btn-send").text("กำลังส่ง....");
-                   
-                    
-                   
-                    
-       
+                  
                 });
             });
         </script>
