@@ -411,8 +411,8 @@ public class SVgetdatawm extends HttpServlet {
                     String day2 = D1 + "/" + M1 + "/" + Y1;
 
 
-
-                    String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.INVOICEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
+                    String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.CREATEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
+//                    String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.INVOICEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
                     //conn = DB.ConnDB.getConnection();
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, item);
