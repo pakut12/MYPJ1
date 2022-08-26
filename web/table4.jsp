@@ -32,7 +32,7 @@
                                         <%
             String item = (String) request.getAttribute("item");
             String mrno = (String) request.getAttribute("mrno");
-            
+
             if (item != null && mrno != null) {
 
                                         %>
@@ -219,7 +219,7 @@
                 getdata1($("#mrno").val(),$("#item").val()); 
                 
                 $("#btn-getdata").click(function(){
-                    if($("#mrno").val() == ""){
+                    if($("#mrno").val() == "" ||$("#item").val() == "" ){
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

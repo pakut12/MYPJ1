@@ -132,11 +132,11 @@
 
                 $("#page3").addClass("active");
                 $("#btn-send").addClass("disabled");
-               // getdata("","","");  
+                // getdata("","","");  
                 
                 
                 $("#btn-getdata").click(function(){
-                    if($("#item").val() == ""){
+                    if($("#item").val() == "" ||$("#date1").val() == "" ||$("#date2").val() == ""  ){
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

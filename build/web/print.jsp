@@ -27,7 +27,7 @@
                                 พิมพ์ใบเเจ้งเข้าวัตถุดิบ
                             </div>
                             <div class="card-body">
-                                <form action="print" method="post" name="myform" class="needs-validation" novalidate>
+                                <form action="print" method="post" name="myform" class="needs-validation" novalidate target="_blank">
                                     <div class="row mb-3">
                                         <div class="col-3">
                                             <label>เลขที่เอกสาร : </label>
@@ -50,17 +50,19 @@
                                     </div>
                                     
                                     <div class="col-auto">
-                                        <table class="table table-sm table-bordered text-center" id="mytable" >
+                                        <table class="table table-sm table-bordered  text-center" id="mytable"  >
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">ม้วนที่</th>
                                                     <th class="text-center">ความยาว(เมตร)</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 
                                             </tbody>
-                                        </table>
+                                            
+                                        </table> 
                                     </div>
                                     <div class="row mt-3 text-center">
                                         <div class="col-3">
@@ -90,27 +92,28 @@
         <script>
             $(document).ready(function () {
                 $("#page2").addClass("active");
+           
+                var table;
                 function getdatawmqck(mrno,item,palet){
-                    $("#mytable").DataTable({
+                    table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawmqck?mrno='+mrno+'&item='+item+'&palet='+palet,
-                        responsive: true
+                        ajax: 'getdatawm?status=G9&mrno='+mrno+'&item='+item+'&palet='+palet,
+                        responsive: false,
+                        scrollY: true ,
+                        scrollX: false 
+                                        
                     }); 
                     $.ajax({
                         type: "POST",
-                        url: 'getdatawmqck?mrno='+mrno+'&item='+item+'&palet='+palet,
-                        success: function(msg){
-                            var x = $.parseJSON(msg);
-                            var sumrow =x.count;
-                            var sumroll = x.sum;   
-                            $("#totalrow").val(sumrow);
-                            $("#totallong").val(sumroll);
-                          
-                        }
-                        
+                        url: 'getdatawm?status=G9&mrno='+mrno+'&item='+item+'&palet='+palet,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            $("#totalrow").val(de.count);   
+                            $("#totallong").val(de.sum);   
+                            console.log(de.count);        
+                        }    
                     });                    
                 }
-                
                 function today(){
                     var date = new Date();
                     var d =date.getDate()

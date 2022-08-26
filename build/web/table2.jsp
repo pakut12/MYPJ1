@@ -27,7 +27,7 @@
                                 คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ
                             </div>
                             <div class="card-body">
-                             
+                                
                                 <form action="" method="post" name="myform" class="needs-validation" novalidate>
                                     <div class="row mb-3">
                                         <div class="col-3">
@@ -111,7 +111,7 @@
                 getdata("","");
                 
                 $("#btn-getdata").click(function(){
-                    if($("#mrno").val() == ""){
+                    if($("#mrno").val() == "" ||$("#item").val() == "" ){
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

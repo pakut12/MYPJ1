@@ -35,8 +35,8 @@ public class SVgetdatawm extends HttpServlet {
             ResultSet rec = null;
             Connection conn = null;
             PreparedStatement ps = null;
-            conn = DB.ConnDB.getConnDB();
-            //conn = DB.ConnDB.getConnection();
+//            conn = DB.ConnDB.getConnDB();
+            conn = DB.ConnDB.getConnection();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
@@ -445,6 +445,50 @@ public class SVgetdatawm extends HttpServlet {
                     out.print(obj);
 
 
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (status.equals("G9")) {
+
+                try {
+                    String mrno = request.getParameter("mrno");
+                    String item = request.getParameter("item");
+                    String palet = request.getParameter("palet");
+
+                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
+
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, item);
+                    ps.setString(3, palet);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    ArrayList<Float> sum = new ArrayList<Float>();
+                    while ((rec.next()) && (rec != null)) {
+                        sum.add(Float.parseFloat(rec.getString("QUANTITY")));
+                        JSONArray arrjson = new JSONArray();
+
+                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("QUANTITY"));
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    int z = 0;
+                    int x = 0;
+                    while (z < sum.size()) {
+                        x += sum.get(z);
+                        z++;
+                    }
+                    obj.put("sum", x);
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -133,7 +133,11 @@
                             { "width": "23rem", "targets": 7 }, 
                             { "width": "23rem", "targets": 8 },
                             { "width": "23rem", "targets": 15 }, 
-                            { "width": "10rem", "targets": 19 },                        ],
+                            { "width": "10rem", "targets": 19 },     
+                            { "width": "10rem", "targets": 25 },  
+                            { "width": "10rem", "targets": 11 },
+                            { "width": "10rem", "targets": 12 },
+                        ],
                         'select': {
                             'style': 'multi'
                         }
