@@ -37,7 +37,7 @@
         <servlet-name>SVedititem</servlet-name>
         <servlet-class>SV.SVedititem</servlet-class>
     </servlet>
-    <servlet-mapping>
+    <servlet><servlet-name>SVdel</servlet-name><servlet-class>SV.SVdel</servlet-class></servlet><servlet-mapping>
         <servlet-name>SVlogin</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
@@ -69,6 +69,10 @@
     <servlet-mapping>
         <servlet-name>SVedititem</servlet-name>
         <url-pattern>/edititem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SVdel</servlet-name>
+        <url-pattern>/del</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -9,6 +9,8 @@ import java.io.*;
 import java.net.*;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import org.json.simple.*;
@@ -25,24 +27,26 @@ public class SVgetdatawm extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            ResultSet rec = null;
+            Connection conn = null;
+            PreparedStatement ps = null;
+            conn = DB.ConnDB.getConnDB();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
                 try {
                     String menr = request.getParameter("mrno").trim();
 
-                    ResultSet rec = null;
-                    Connection conn = null;
-                    PreparedStatement ps = null;
+
                     String page = "";
 
                     String sql = "select * from wmbarcode where  wmbarcode.MRNO = ? ";
-                    conn = DB.ConnDB.getConnDB();
+
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
                     rec = ps.executeQuery();
@@ -121,13 +125,11 @@ public class SVgetdatawm extends HttpServlet {
                     String menr = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").trim();
 
-                    ResultSet rec = null;
-                    Connection conn = null;
-                    PreparedStatement ps = null;
+
                     String page = "";
 
                     String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? ";
-                    conn = DB.ConnDB.getConnDB();
+
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
                     ps.setString(2, item);
@@ -165,13 +167,11 @@ public class SVgetdatawm extends HttpServlet {
                     String menr = request.getParameter("mrno").trim();
 
 
-                    ResultSet rec = null;
-                    Connection conn = null;
-                    PreparedStatement ps = null;
+
                     String page = "";
 
                     String sql = "select * from wmbarcode where wmbarcode.MRNO = ?";
-                    conn = DB.ConnDB.getConnDB();
+
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
 
@@ -231,6 +231,223 @@ public class SVgetdatawm extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            } else if (status.equals("G4")) {
+                try {
+                    String menr = request.getParameter("mrno").trim();
+                    String item = request.getParameter("item").trim();
+
+
+                    String page = "";
+
+                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? ";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, menr);
+                    ps.setString(2, item);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        JSONArray arrjson = new JSONArray();
+
+                        arrjson.add(rec.getString("PO"));
+                        arrjson.add(rec.getString("PLANT"));
+                        arrjson.add(rec.getString("ITEM"));
+                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("QUANTITY"));
+                        arrjson.add(rec.getString("UNIT"));
+                        arrjson.add("<a href='del?status=D1&mrno=" + menr + "&item=" + rec.getString("ITEM") + "&roll=" + rec.getString("ROLL") + "'><button class='btn btn-danger btn-sm' id='btn-send' type='button'>ลบ</button></a>");
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (status.equals("G5")) {
+                try {
+                    String menr = request.getParameter("mrno").trim();
+                    String item = request.getParameter("item").trim();
+
+
+                    String page = "";
+
+                    String sql = "select * from wmqck where wmqck.MRNO = ? and wmqck.ITEM = ? ";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, menr);
+                    ps.setString(2, item);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        JSONArray arrjson = new JSONArray();
+
+
+                        arrjson.add(rec.getString("ITEM"));
+                        arrjson.add(rec.getString("ROLL"));
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (status.equals("G6")) {
+                try {
+                    String menr = request.getParameter("mrno").trim();
+
+
+                    String page = "";
+
+                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? ";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, menr);
+
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        JSONArray arrjson = new JSONArray();
+                        arrjson.add(rec.getString("ITEM"));
+                        arrjson.add(rec.getString("DESC1"));
+                        arrjson.add(rec.getString("QUANTITY"));
+                        arrjson.add(rec.getString("UNIT"));
+                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("INVOICE"));
+                        arrjson.add(rec.getString("COLOR"));
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (status.equals("G7")) {
+                try {
+                    String po = request.getParameter("po").trim();
+
+
+                    String page = "";
+
+                    String sql = "select * from wmbarcode where wmbarcode.PO = ? ";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, po);
+
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        JSONArray arrjson = new JSONArray();
+                        arrjson.add(rec.getString("ITEM"));
+                        arrjson.add(rec.getString("DESC1"));
+                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("QUANTITY"));
+                        arrjson.add(rec.getString("UNIT"));
+                        arrjson.add(rec.getString("COLOR"));
+                        arrjson.add(rec.getString("INVOICE"));
+                        arrjson.add(rec.getString("MRNO"));
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (status.equals("G8")) {
+                try {
+
+                    String item = request.getParameter("item");
+                    String date1 = request.getParameter("date1");
+                    String date2 = request.getParameter("date2");
+
+                    String Y = date1.substring(0, 4);
+                    String M = date1.substring(5, 7);
+                    String D = date1.substring(8, 10);
+                    String day1 = D + "/" + M + "/" + Y;
+
+                    String Y1 = date2.substring(0, 4);
+                    String M1 = date2.substring(5, 7);
+                    String D1 = date2.substring(8, 10);
+                    String day2 = D1 + "/" + M1 + "/" + Y1;
+
+
+
+                    String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.INVOICEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
+                    //conn = DB.ConnDB.getConnection();
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, item);
+                    ps.setString(2, day1);
+                    ps.setString(3, day2);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        JSONArray arrjson = new JSONArray();
+                        arrjson.add(rec.getString("ITEM"));
+                        arrjson.add(rec.getString("MRNO"));
+                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("PLANT"));
+                        arrjson.add(rec.getString("PO"));
+                        arrjson.add(rec.getString("CREATEDATE"));
+                        arrjson.add(rec.getString("INVOICE"));
+                        arrjson.add(rec.getString("INVOICEDATE"));
+                        arrjson.add(rec.getString("DELIVERYNO"));
+                        arrjson.add(rec.getString("PUNAME"));
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
 
@@ -251,7 +468,13 @@ public class SVgetdatawm extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVgetdatawm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVgetdatawm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 
@@ -261,7 +484,13 @@ public class SVgetdatawm extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVgetdatawm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVgetdatawm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 

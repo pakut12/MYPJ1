@@ -24,11 +24,34 @@
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
-                                โปรเเกรมคีย์เเละเเก้ไขข้อมูลใบ Invoice
+                                โปรเเกรมลบข้อมูลตามเลขที่เอกสาร
                             </div>
                             <div class="card-body">
                                 <form action="" method="post" name="myform" class="needs-validation" novalidate>
                                     <div class="row mb-3">
+                                        <%
+            String item = (String) request.getAttribute("item");
+            String mrno = (String) request.getAttribute("mrno");
+            
+            if (item != null && mrno != null) {
+
+                                        %>
+                                        <div class="col-4">
+                                            <label>เลขที่เอกสาร : </label>
+                                            <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" value="<%=mrno%>" required></input>
+                                            <div class="invalid-feedback mb-3 text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
+                                        </div>
+                                        <div class="col-4"> 
+                                            <label>รหัสวัตถุดิบ : </label>
+                                            <input class="form-control form-control-sm" type="text" name="item" id="item"  value="<%=item%>" required></input>
+                                            <div class="invalid-feedback mb-3 text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
+                                        </div>
+                                        <%            } else {
+                                        %>             
                                         <div class="col-4">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
@@ -39,36 +62,44 @@
                                         <div class="col-4">
                                             
                                             <label>รหัสวัตถุดิบ : </label>
-                                            <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
+                                            <input class="form-control form-control-sm" type="text" name="item" id="item" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                             
                                         </div>
+                                        
+                                        <%            }
+                                        %>
                                         <div class="col-4">
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button">บันทึก</button>
+                                            
                                         </div>
                                     </div>
                                     
                                 </form> 
                                 <div class="row mt-4">
-                                    <div class="col-12">
-                                        <div class="text-center">
-                                            <label class="h3">Table WMBARCODE</label> 
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label class="h6">Table WMBARCODE</label> 
+                                            </div>
+                                            <div class="col-6">
+                                                <label class="h6">จำนวนทั้งหมด : <label id="countwmbarcode"></label></label> 
+                                            </div>
                                         </div>
+                                        
                                         <table class="table table-sm table-bordered  text-center" id="mytable"  >
                                             <thead >
                                                 <tr>
-                                                    <th class="text-center">รหัสวัตดุดิบ</th>
-                                                    <th class="text-center">ม้วน</th>
+                                                    <th class="text-center">เลขที่ใบสั้งซื้อ</th>
+                                                    <th class="text-center">สาขา</th>
+                                                    <th class="text-center">รหัสวัตถุ</th>
+                                                    <th class="text-center">ม้วนที่</th>
                                                     <th class="text-center">จำนวน</th>
-                                                    <th class="text-center">หน่วยนับ</th>
-                                                    <th class="text-center">สี</th>
-                                                    <th class="text-center">หม้อย้อน</th>
-                                                    <th class="text-center">รายละเอียด</th>
-                                                    <th class="text-center"></th>
-                                                    <th class="text-center"></th>
+                                                    <th class="text-center">หน่วย</th>
+                                                    <th class="text-center">ลบ</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -77,25 +108,21 @@
                                             
                                         </table> 
                                     </div>
-                                    
-                                </div>
-                                <div class="row">
-                                    <div class="text-center">
-                                        <label class="h3">Table WMQCK</label> 
-                                    </div>
-                                    <div class="col-12">
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label class="h6">Table WMQCK</label> 
+                                            </div>
+                                            <div class="col-6">
+                                                <label class="h6">จำนวนทั้งหมด : <label id="countwmqck"></label></label> 
+                                            </div>
+                                        </div>
+                                        
                                         <table class="table table-sm table-bordered  text-center" id="mytable1"  >
-                                            <thead >
+                                            <thead>
                                                 <tr>
                                                     <th class="text-center">รหัสวัตดุดิบ</th>
-                                                    <th class="text-center">ม้วน</th>
-                                                    <th class="text-center">จำนวน</th>
-                                                    <th class="text-center">หน่วยนับ</th>
-                                                    <th class="text-center">สี</th>
-                                                    <th class="text-center">หม้อย้อน</th>
-                                                    <th class="text-center">รายละเอียด</th>
-                                                    <th class="text-center"></th>
-                                                    <th class="text-center"></th>
+                                                    <th class="text-center">ม้วนที่</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -103,8 +130,10 @@
                                             </tbody>
                                             
                                         </table> 
+                                        
                                     </div>
                                 </div>
+                                
                                 
                             </div>
                         </div>
@@ -117,77 +146,67 @@
             
             $(document).ready(function () {
                 var table;
-                function getdata(mrno){
+                function getdata(mrno,item){
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?status=G3&mrno='+mrno,
+                        ajax: 'getdatawm?status=G4&mrno='+mrno+'&item='+item,
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
+                        searching: false,
+                        select:true,
+                        info: false,
                         columnDefs: [
                             { "width": "10rem", "targets": 0 },
                             { "width": "5rem", "targets": 1 },
-                            { "width": "5rem", "targets": 2 },
+                            { "width": "10rem", "targets": 2 },
                             { "width": "5rem", "targets": 3 },
                             { "width": "5rem", "targets": 4 },
-                            { "width": "15rem", "targets": 5 },
-                            { "width": "25rem", "targets": 6 },
-                          
-                        ]   
-                                             
+                            { "width": "5rem", "targets": 5 }, 
+                            { "width": "5rem", "targets": 6 }, 
+                        ],
+                        fixedColumns:   {
+                            left: false,
+                            right: 1
+                        }
+                                            
                     }); 
                     $.ajax({
                         type: "POST",
-                        url: 'getdatawm?status=G3&mrno='+mrno,
+                        url: 'getdatawm?status=G4&mrno='+mrno+'&item='+item,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
-                            $("#count").val(de.count);   
-                            
-                            $("#PLANT").val(de.PLANT);           
-                            $("#PO").val(de.PO);      
-                            $("#SUPNAME").val(de.SUPNAME);           
-                            $("#INVOICE").val(de.INVOICE);
-                            $("#INVOICEDATE").val(de.INVOICEDATE);           
-                            $("#DELIVERYNO").val(de.DELIVERYNO);
-                            $("#LOT").val(de.LOT);           
-                                      
+                            $("#countwmbarcode").text(de.count);   
+                            console.log(de.count);
+                                  
                         }    
                     });                    
                 }
                 var table1;
-                function getdata1(mrno){
+                function getdata1(mrno,item){
                     table = $("#mytable1").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?status=G3&mrno='+mrno,
+                        ajax: 'getdatawm?status=G5&mrno='+mrno+'&item='+item,
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
+                        searching: false,
+                        select:true,
+                        info: false,
                         columnDefs: [
                             { "width": "10rem", "targets": 0 },
-                            { "width": "5rem", "targets": 1 },
-                            { "width": "5rem", "targets": 2 },
-                            { "width": "5rem", "targets": 3 },
-                            { "width": "5rem", "targets": 4 },
-                            { "width": "15rem", "targets": 5 },
-                            { "width": "25rem", "targets": 6 },
-                          
-                        ]   
-                                             
-                    }); 
+                            { "width": "10rem", "targets": 1 },
+                            
+                        ]
+                                            
+                    });
                     $.ajax({
                         type: "POST",
-                        url: 'getdatawm?status=G3&mrno='+mrno,
+                        url: 'getdatawm?status=G5&mrno='+mrno+'&item='+item,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
-                            $("#count").val(de.count);   
-                            
-                            $("#PLANT").val(de.PLANT);           
-                            $("#PO").val(de.PO);      
-                            $("#SUPNAME").val(de.SUPNAME);           
-                            $("#INVOICE").val(de.INVOICE);
-                            $("#INVOICEDATE").val(de.INVOICEDATE);           
-                            $("#DELIVERYNO").val(de.DELIVERYNO);
-                            $("#LOT").val(de.LOT);           
+                            $("#countwmqck").text(de.count);   
+                            console.log(de.count);
                                       
                         }    
                     });                    
@@ -196,8 +215,8 @@
 
                 $("#page3").addClass("active");
                 $("#btn-send").addClass("disabled");
-                getdata("");
-                getdata1("");
+                getdata($("#mrno").val(),$("#item").val());  
+                getdata1($("#mrno").val(),$("#item").val()); 
                 
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == ""){
@@ -210,7 +229,7 @@
                     }else{
                         $("#btn-send").removeClass("disabled");                       
                         getdata($("#mrno").val(),$("#item").val());  
-                       
+                        getdata1($("#mrno").val(),$("#item").val());  
                     }         
                 });
          
