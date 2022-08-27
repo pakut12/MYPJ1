@@ -20,14 +20,14 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-9">
+                <div class="col-sm-12 col-md-9">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
                                 โปรเเกรมเเสดงข้อมูลตามรหัสวัตถุดิบเเละวันที่สร้างรหัส
                             </div>
                             <div class="card-body">
-                                <form action="" method="post" name="myform" class="needs-validation" novalidate>
+                                <form id="myform" class="" >
                                     <div class="row mb-3">
                                         <div class="col-3">
                                             <label>รหัสวัตถุดิบ : </label>
@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                         <div class="col-3">
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
+                                            <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                         </div>
                                     </div>
                                     
@@ -130,13 +130,14 @@
                
 
 
-                $("#page3").addClass("active");
+                $("#page2").addClass("active");
                 $("#btn-send").addClass("disabled");
                 // getdata("","","");  
                 
                 
                 $("#btn-getdata").click(function(){
                     if($("#item").val() == "" ||$("#date1").val() == "" ||$("#date2").val() == ""  ){
+                        $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

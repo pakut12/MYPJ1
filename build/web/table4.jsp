@@ -20,14 +20,14 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-9">
+                <div class="col-sm-12 col-md-9">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
                                 โปรเเกรมลบข้อมูลตามเลขที่เอกสาร
                             </div>
                             <div class="card-body">
-                                <form action="" method="post" name="myform" class="needs-validation" novalidate>
+                                <form id="myform" class="" >
                                     <div class="row mb-3">
                                         <%
             String item = (String) request.getAttribute("item");
@@ -36,14 +36,14 @@
             if (item != null && mrno != null) {
 
                                         %>
-                                        <div class="col-4">
+                                        <div class="col-sm-12 col-md-4">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" value="<%=mrno%>" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-4"> 
+                                        <div class="col-sm-12 col-md-4"> 
                                             <label>รหัสวัตถุดิบ : </label>
                                             <input class="form-control form-control-sm" type="text" name="item" id="item"  value="<%=item%>" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
@@ -52,40 +52,38 @@
                                         </div>
                                         <%            } else {
                                         %>             
-                                        <div class="col-4">
+                                        <div class="col-sm-12 col-md-4">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                            
+                                        <div class="col-sm-12 col-md-4">
                                             <label>รหัสวัตถุดิบ : </label>
                                             <input class="form-control form-control-sm" type="text" name="item" id="item" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
-                                            </div>
-                                            
+                                            </div>  
                                         </div>
                                         
                                         <%            }
                                         %>
-                                        <div class="col-4">
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button">บันทึก</button>
+                                        <div class="col-sm-12 col-md-4">
+                                            <button class="btn btn-secondary mt-4 mx-1 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
+                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึก</button>
                                             
                                         </div>
                                     </div>
                                     
                                 </form> 
                                 <div class="row mt-4">
-                                    <div class="col-6">
+                                    <div class="col-sm-12 col-md-6">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-sm-12 col-md-6">
                                                 <label class="h6">Table WMBARCODE</label> 
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-sm-12 col-md-6">
                                                 <label class="h6">จำนวนทั้งหมด : <label id="countwmbarcode"></label></label> 
                                             </div>
                                         </div>
@@ -108,12 +106,12 @@
                                             
                                         </table> 
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-sm-12 col-md-6">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-sm-12 col-md-6">
                                                 <label class="h6">Table WMQCK</label> 
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-sm-12 col-md-6">
                                                 <label class="h6">จำนวนทั้งหมด : <label id="countwmqck"></label></label> 
                                             </div>
                                         </div>
@@ -213,13 +211,14 @@
                 }
 
 
-                $("#page3").addClass("active");
+                $("#page2").addClass("active");
                 $("#btn-send").addClass("disabled");
                 getdata($("#mrno").val(),$("#item").val());  
                 getdata1($("#mrno").val(),$("#item").val()); 
                 
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == "" ||$("#item").val() == "" ){
+                        $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

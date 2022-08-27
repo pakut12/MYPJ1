@@ -30,14 +30,14 @@
         %>
         <form action="login" method="post" class="needs-validation" novalidate>
             <div class="container mt-5">
-                <div class="text-center h3 mb-3">โปรเเกรมดึงข้อมูลจากระบบ SAP ด้วยเลขที่ PO</div>
+                <div class="text-center h3 mb-3">RM / QC RM</div>
                 <div class="card shadow-lg col-5 mx-auto ">
                     <div class="card-header">
                         Login
                     </div>
                     <div class="card-body ">
                         <label>USERID : </label>
-                        <input class="form-control form-control-sm " type="text" name="txt1" id="txt1" required> 
+                        <input class="form-control form-control-sm " type="number" name="txt1" id="txt1" required> 
                         <div class="invalid-feedback mb-3 text-center">
                             กรุณาใส่ข้อมูลให้ถูกต้อง
                         </div>

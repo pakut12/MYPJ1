@@ -6,7 +6,7 @@
 <%@page import="java.util.*" %>
 <%@page import="java.text.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<div class="col-3"> 
+<div class="col-sm-12 col-md-3"> 
     <div class="card shadow ">
         <div class="card-header">
             โปรไฟล์

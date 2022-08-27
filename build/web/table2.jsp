@@ -20,53 +20,50 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-9">
+                <div class="col-sm-12 col-md-9">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
                                 คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ
                             </div>
                             <div class="card-body">
-                                
-                                <form action="" method="post" name="myform" class="needs-validation" novalidate>
+                                <form id="myform" class="">
                                     <div class="row mb-3">
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>รหัสวัตถุดิบ : </label>
                                             <input class="form-control form-control-sm" type="text" name="item" id="item" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>จำนวนเเถวทั้งหมด : </label>
                                             <input class="form-control form-control-sm" type="number" name="count" id="count" readonly></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-3">
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button">บันทึก</button>
+                                        <div class="col-sm-12 col-md-3">
+                                            <button class="btn btn-secondary mt-4 mx-1 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
+                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึก</button>
                                         </div>
                                     </div>
                                 </form> 
                                 
                                 <table class="table table-sm table-bordered  text-center" id="mytable"  >
-                                    <thead >
+                                    <thead>
                                         <tr>
-                                            
                                             <th class="text-center">ลำดับ</th>
                                             <th class="text-center">Pallet</th>
                                             <th class="text-center">ความยาว(เมตร)</th>
                                             <th class="text-center">Batch No</th>
-                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -112,6 +109,7 @@
                 
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == "" ||$("#item").val() == "" ){
+                        $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

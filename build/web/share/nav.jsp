@@ -8,7 +8,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
-        <a class="navbar-brand" href="#">RM</a>
+        <a class="navbar-brand" href="#">RM / QC RM</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,25 +23,30 @@
                 
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  id="page2">
-                        <i class="bi bi-list"></i> ผ้าถัก
+                        <i class="bi bi-list"></i> RM
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="table.jsp"><i class="bi bi-arrow-bar-down"></i> ดึงข้อมูลจาก SAP ด้วยเลขที่ PO</a></li>
                         <li><a class="dropdown-item" href="table2.jsp"><i class="bi bi-key"></i> คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ</a></li>
                         <li><a class="dropdown-item" href="table1.jsp"><i class="bi bi-send"></i> ส่งข้อมูลให้ทาง QC</a></li>
-                        <li><a class="dropdown-item" href="print.jsp"><i class="bi bi-printer"></i> พิมพ์ใบเเจ้งเข้าวัตถุดิบ</a></li>
+                        <li><a class="dropdown-item" href="print.jsp"><i class="bi bi-printer"></i> พิมพ์ใบเเจ้งเข้าวัตถุดิบ</a></li> 
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="table3.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์เเละเเก้ไขข้อมูลใบ Invoice</a></li>
+                        <li><a class="dropdown-item" href="table4.jsp"><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
+                        <li><a class="dropdown-item" href="table5.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่เอกสาร</a></li>
+                        <li><a class="dropdown-item" href="table6.jsp"><i class="bi bi-book"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่ใบสั้งซื้อ (PO)</a></li>
+                        <li><a class="dropdown-item" href="table7.jsp"><i class="bi bi-box-seam"></i> โปรเเกรมเเสดงข้อมูลตามรหัสวัตถุดิบเเละวันที่สร้างรหัส</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  id="page3">
-                        <i class="bi bi-three-dots-vertical"></i> ควบคุม
+                        <i class="bi bi-list"></i> QC RM
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="table3.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์เเละเเก้ไขข้อมูลใบ Invoice</a></li>
-                        <li><a class="dropdown-item" href="table4.jsp"><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
-                        <li><a class="dropdown-item" href="table5.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่เอกสาร</a></li>
-                        <li><a class="dropdown-item" href="table6.jsp"><i class="bi bi-printer"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่ใบสั้งซื้อ (PO)</a></li>
-                        <li><a class="dropdown-item" href="table7.jsp"><i class="bi bi-printer"></i> โปรเเกรมเเสดงข้อมูลตามรหัสวัตถุดิบเเละวันที่สร้างรหัส</a></li>
+                        <li><a class="dropdown-item" href="table3.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์ข้อมูลการตรวจสอบผ้าถัก</a></li>
+                        <li><a class="dropdown-item" href="table4.jsp"><i class="bi bi-briefcase"></i> โปรเเกรมคีย์สรุปผลการตรวจสอบผ้าถัก</a></li>
+                        <li><a class="dropdown-item" href="table5.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมพิมพ์ใบตรวจสอบผ้าถัก</a></li>
+                        
                     </ul>
                 </li>
                 <li class="nav-item">

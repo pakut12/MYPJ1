@@ -20,42 +20,41 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-9">
+                <div class="col-sm-12 col-md-9">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header">
                                 พิมพ์ใบเเจ้งเข้าวัตถุดิบ
                             </div>
                             <div class="card-body">
-                                <form action="print" method="post" name="myform" class="needs-validation" novalidate target="_blank">
+                                <form action="print" method="post" name="myform" id="myform" class="needs-validation" novalidate target="_blank">
                                     <div class="row mb-3">
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
                                             
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>รหัสวัตถุดิบ : </label>
                                             <input class="form-control form-control-sm" type="text" name="item" id="item" required></input>
                                             
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>เลขที่พาเลท : </label>
                                             <input class="form-control form-control-sm" type="number" name="palet" id="palet" required></input>
                                             
                                         </div>
-                                        <div class="col-3">
-                                            <button class="btn btn-sm btn-success mt-4 w-75" type="button" name="getdata" id="getdata">ดึงข้อมูล</button>
+                                        <div class="col-sm-12 col-md-3 text-center">
+                                            <button class="btn btn-sm btn-secondary mt-4 w-75" type="button" name="getdata" id="getdata"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                         </div>
                                     </div>
                                     
-                                    <div class="col-auto">
+                                    <div class="col-sm-12 col-md-12">
                                         <table class="table table-sm table-bordered  text-center" id="mytable"  >
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">ม้วนที่</th>
                                                     <th class="text-center">ความยาว(เมตร)</th>
-                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -65,20 +64,20 @@
                                         </table> 
                                     </div>
                                     <div class="row mt-3 text-center">
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>วันที่ผ้าเข้า</label>
                                             <input class="form-control form-control-sm text-center" type="date" name="today" id="today" value="" readonly></input>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>เเถวทั้งหมด</label>
                                             <input class="form-control form-control-sm text-center" type="number" name="totalrow" id="totalrow" value="" readonly></input>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>ความยาวทั้งหมด</label>
                                             <input class="form-control form-control-sm text-center" type="number" name="totallong" id="totallong" value="" readonly></input>
                                         </div>
-                                        <div class="col-3">
-                                            <button class="btn btn-sm btn-success mt-4 w-75" type="submit">พิมพ์ใบเเจ้งเข้า</button>
+                                        <div class="col-sm-12 col-md-3">
+                                            <button class="btn btn-sm btn-success mt-4 w-75" type="submit" id="printout"><i class="bi bi-printer"></i> พิมพ์ใบเเจ้งเข้า</button>
                                         </div>
                                     </div>
                                 </form>
@@ -128,18 +127,20 @@
                 $("#today").val(today);
                 getdatawmqck("", "", "");
                 
-             
+                $("#printout").addClass("disabled");
                 $("#getdata").click(function(){
                     var mrno = $("#mrno").val();
                     var item = $("#item").val();
                     var palet = $("#palet").val();
                     if(mrno == "" ||item == "" || palet == ""){
+                        $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',
                             text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
                         })
                     }else{
+                        $("#printout").removeClass("disabled");
                         getdatawmqck(mrno, item, palet);
                         
                     }

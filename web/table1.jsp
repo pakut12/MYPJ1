@@ -20,29 +20,29 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-9">
+                <div class="col-sm-12 col-md-9">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
                                 ส่งข้อมูลให้ทาง QC
                             </div>
                             <div class="card-body">  
-                                <form action="" method="post" name="myform" class="needs-validation" novalidate>
+                                <form id="myform" class="">
                                     <div class="row mb-3">
-                                        <div class="col-6">
+                                        <div class="col-sm-12 col-md-6">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-6">
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
-                                            <button class="btn btn-success mt-4 btn-sm mx-1" id="btn-send" type="button">ส่งข้อมูลไป QC</button>
+                                        <div class="col-sm-12 col-md-6">
+                                            <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
+                                            <button class="btn btn-success mt-4 btn-sm mx-1" id="btn-send" type="button"><i class="bi bi-box-arrow-in-right"></i> ส่งข้อมูลไป QC</button>
                                         </div>
                                     </div>
                                 </form> 
-                                <table class="table table-sm table-bordered text-center" id="mytable" >
+                                <table class="table table-sm table-bordered text-center " id="mytable" >
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -149,7 +149,8 @@
                 getdata("");
                 
                 $("#btn-getdata").click(function(){
-                    if($("#mrno").val() == ""){
+                    if($("#mrno").val() == "" ){
+                        $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

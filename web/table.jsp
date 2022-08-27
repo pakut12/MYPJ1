@@ -19,37 +19,38 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-9">
+                <div class="col-sm-12 col-md-9">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
-                                ดึงข้อมูลจาก SAP
+                                ดึงข้อมูลจาก SAP ด้วยเลขที่ PO
                             </div>
                             <div class="card-body">
-                                
-                                <div class="row mb-3">
-                                    
-                                    <div class="col-3">
-                                        <label>Purchase Order : </label>
-                                        <input class="form-control form-control-sm" type="number" name="PO" id="PO" required></input>
-                                        <div class="invalid-feedback mb-3 text-center">
-                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                <form class="" id="myform">
+                                    <div class="row mb-3">
+                                        
+                                        <div class="col-sm-12 col-md-3">
+                                            <label>Purchase Order : </label>
+                                            <input class="form-control form-control-sm" type="number" name="PO" id="PO" required></input>
+                                            <div class="invalid-feedback  text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <label>เลขที่เอกสาร : </label>
-                                        <input class="form-control form-control-sm" type="number" name="DOCQC" id="DOCQC" required></input>
-                                        <div class="invalid-feedback mb-3 text-center">
-                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                        <div class="col-sm-12 col-md-4">
+                                            <label>เลขที่เอกสาร : </label>
+                                            <input class="form-control form-control-sm" type="number" name="DOCQC" id="DOCQC" required></input>
+                                            <div class="invalid-feedback text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
                                         </div>
+                                        <div class="col-sm-12 col-md-5 text-center">
+                                            <button class="btn btn-secondary mt-4 btn-sm mx-1" type="button" name="getdata_sap" id="getdata_sap"><i class="bi bi-download"></i> ดึงข้อมูล</button>
+                                            <button class="btn btn-success mt-4 btn-sm mx-1" type="button" name="savedata_sap" id="savedata_sap"><i class="bi bi-hdd"></i> จัดเก็บข้อมูล</button>
+                                            <button class="btn btn-danger mt-4 btn-sm mx-1" type="button" name="claerdata_sap" id="claerdata_sap"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button>
+                                        </div>  
+                                        
                                     </div>
-                                    <div class="col-5">
-                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="getdata_sap" id="getdata_sap"><i class="bi bi-download"></i> ดึงข้อมูล</button>
-                                        <button class="btn btn-success mt-4 btn-sm" type="submit" name="savedata_sap" id="savedata_sap"><i class="bi bi-hdd"></i> จัดเก็บข้อมูล</button>
-                                        <button class="btn btn-danger mt-4 btn-sm" type="submit" name="claerdata_sap" id="claerdata_sap"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button>
-                                    </div>
-                                </div>
-                                
+                                </form> 
                                 <div class="col-auto">
                                     <table class="table table-sm table-bordered text-center" id="mytable" >
                                         <thead>
@@ -153,6 +154,7 @@
                     var getdocqc = $("#DOCQC").val();
                     
                     if(getpo == "" || getdocqc == ""){
+                        $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',

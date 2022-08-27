@@ -20,16 +20,16 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-9">
+                <div class="col-sm-12 col-md-9">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
                                 โปรเเกรมเเสดงข้อมูลตามเลขที่ใบสั้งซื้อ (PO)
                             </div>
                             <div class="card-body">
-                                <form action="" method="post" name="myform" class="needs-validation" novalidate>
+                                <form id="myform" class="" >
                                     <div class="row mb-3">
-                                        <div class="col-4">
+                                        <div class="col-sm-12 col-md-4">
                                             <label>เลขที่ PO : </label>
                                             <input class="form-control form-control-sm" type="number" name="po" id="po" value="" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
@@ -37,11 +37,11 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-4">
-                                            <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button">ดึงข้อมูล</button>
+                                        <div class="col-sm-12 col-md-4">
+                                            <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                             
                                         </div>
-                                        <div class="col-4 mt-3">
+                                        <div class="col-sm-12 col-md-4 mt-3">
                                             <label class="h4">จำนวนทั้งหมด : <label id="countwmbarcode"></label> </label>
                                             
                                         </div>
@@ -49,7 +49,7 @@
                                     
                                 </form> 
                                 <div class="row mt-4">
-                                    <div class="col-12">
+                                    <div class="col-sm-12 col-md-12">
                                         
                                         
                                         <table class="table table-sm table-bordered  text-center" id="mytable"  >
@@ -71,9 +71,8 @@
                                             
                                         </table> 
                                     </div>
-                                    
+                                   
                                 </div>
-                                
                                 
                             </div>
                         </div>
@@ -121,13 +120,14 @@
                
 
 
-                $("#page3").addClass("active");
+                $("#page2").addClass("active");
                 $("#btn-send").addClass("disabled");
                 getdata("");  
                 
                 
                 $("#btn-getdata").click(function(){
                     if($("#po").val() == ""){
+                        $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',
@@ -153,23 +153,23 @@
             });
         </script>
         <script>
-            (function () {
-                'use strict'
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation')
+                (function () {
+                    'use strict'
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.querySelectorAll('.needs-validation')
 
-                // Loop over them and prevent submission
-                Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-            })()
+                    // Loop over them and prevent submission
+                    Array.prototype.slice.call(forms)
+                    .forEach(function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+                    })()
         </script>
         <br><br><br><br><br>
         <%@ include file="share/footer.jsp" %>
