@@ -27,7 +27,7 @@
                                 พิมพ์ใบเเจ้งเข้าวัตถุดิบ
                             </div>
                             <div class="card-body">
-                                <form action="print" method="post" name="myform" id="myform" class="needs-validation" novalidate target="_blank">
+                                <form action="getdatawm?status=G10" method="post" name="myform" id="myform" class="needs-validation" novalidate target="_blank">
                                     <div class="row mb-3">
                                         <div class="col-sm-12 col-md-3">
                                             <label>เลขที่เอกสาร : </label>

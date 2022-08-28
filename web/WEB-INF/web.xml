@@ -26,10 +26,6 @@
         <servlet-class>SV.SVsendtoqc</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SVprint</servlet-name>
-        <servlet-class>SV.SVprint</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>SVedititem</servlet-name>
         <servlet-class>SV.SVedititem</servlet-class>
     </servlet>
@@ -56,10 +52,6 @@
     <servlet-mapping>
         <servlet-name>SVsendtoqc</servlet-name>
         <url-pattern>/sendtoqc</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SVprint</servlet-name>
-        <url-pattern>/print</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SVedititem</servlet-name>

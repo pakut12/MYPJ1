@@ -49,7 +49,7 @@ public class ConnDB {
             Class.forName("com.mysql.jdbc.Driver");
             String portwork = "4306";
             String porthome = "3306";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:" + portwork + "/test?characterEncoding=UTF-8" +
+            con = DriverManager.getConnection("jdbc:mysql://localhost:" + porthome + "/test1?characterEncoding=UTF-8" +
                     "&user=root&password=");
         } catch (Exception e) {
             e.printStackTrace();
