@@ -43,9 +43,9 @@
                         <i class="bi bi-list"></i> QC RM
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="table3.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์ข้อมูลการตรวจสอบผ้าถัก</a></li>
-                        <li><a class="dropdown-item" href="table4.jsp"><i class="bi bi-briefcase"></i> โปรเเกรมคีย์สรุปผลการตรวจสอบผ้าถัก</a></li>
-                        <li><a class="dropdown-item" href="table5.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมพิมพ์ใบตรวจสอบผ้าถัก</a></li>
+                        <li><a class="dropdown-item" href="table8.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์ข้อมูลการตรวจสอบผ้าถัก</a></li>
+                        <li><a class="dropdown-item" href="table9.jsp"><i class="bi bi-briefcase"></i> โปรเเกรมคีย์สรุปผลการตรวจสอบผ้าถัก</a></li>
+                        <li><a class="dropdown-item" href="table10.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมพิมพ์ใบตรวจสอบผ้าถัก</a></li>
                         
                     </ul>
                 </li>

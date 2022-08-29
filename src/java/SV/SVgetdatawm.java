@@ -35,9 +35,9 @@ public class SVgetdatawm extends HttpServlet {
             ResultSet rec = null;
             Connection conn = null;
             PreparedStatement ps = null;
-            
-            conn = DB.ConnDB.getConnDB();
-//            conn = DB.ConnDB.getConnection();
+
+//            conn = DB.ConnDB.getConnDB();
+            conn = DB.ConnDB.getConnection();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
@@ -504,8 +504,8 @@ public class SVgetdatawm extends HttpServlet {
 
                 try {
                     String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
-                  
-                   
+
+
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
                     ps.setString(2, item);
@@ -576,6 +576,27 @@ public class SVgetdatawm extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            } else if (status.equals("G11")) {
+                String barcode = request.getParameter("barcode");
+                
+                String sql = "select * from (wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE) inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmmaster.ROLL  where wmmaster.BARCODE = ?";
+
+                ps = conn.prepareStatement(sql);
+                ps.setString(1, barcode);
+                rec = ps.executeQuery();
+
+                JSONObject obj = new JSONObject();
+                ArrayList arrlist = new ArrayList();
+                while ((rec != null) && (rec.next())) {
+
+                    obj.put("mrno", rec.getString("mrno"));
+                    obj.put("item", rec.getString("item"));
+                    obj.put("roll", rec.getString("roll"));
+                    obj.put("pallet", rec.getString("palet"));
+                    
+                }
+                
+                out.print(obj);
             }
 
 

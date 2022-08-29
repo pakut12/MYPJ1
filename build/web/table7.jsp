@@ -29,7 +29,7 @@
                             <div class="card-body">
                                 <form id="myform" class="" >
                                     <div class="row mb-3">
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>รหัสวัตถุดิบ : </label>
                                             <input class="form-control form-control-sm" type="text" name="item" id="item" value="" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
@@ -37,21 +37,21 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>ตั้งเเต่วันที่ : </label>
                                             <input class="form-control form-control-sm" type="date" name="date1" id="date1" value="" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>ถึงวันที่ : </label>
                                             <input class="form-control form-control-sm" type="date" name="date2" id="date2" value="" required></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col-sm-12 col-md-3">
                                             <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                         </div>
                                     </div>
