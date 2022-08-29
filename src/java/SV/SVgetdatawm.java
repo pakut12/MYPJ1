@@ -8,6 +8,7 @@ import java.sql.*;
 import java.io.*;
 import java.net.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -578,7 +579,7 @@ public class SVgetdatawm extends HttpServlet {
                 }
             } else if (status.equals("G11")) {
                 String barcode = request.getParameter("barcode");
-                
+
                 String sql = "select * from (wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE) inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmmaster.ROLL  where wmmaster.BARCODE = ?";
 
                 ps = conn.prepareStatement(sql);
@@ -593,9 +594,70 @@ public class SVgetdatawm extends HttpServlet {
                     obj.put("item", rec.getString("item"));
                     obj.put("roll", rec.getString("roll"));
                     obj.put("pallet", rec.getString("palet"));
-                    
+
+                    String ethread = rec.getString("ethread");
+                    String ealkali = rec.getString("ealkali");
+                    String edirty = rec.getString("edirty");
+                    String eoil = rec.getString("eoil");
+                    String ebroken = rec.getString("ebroken");
+                    String eknot = rec.getString("eknot");
+                    String ejoint = rec.getString("ejoint");
+                    String efurrow = rec.getString("efurrow");
+
+                    if (ethread.equals("")) {
+                        ethread = "0";
+                    } else if (ealkali.equals("")) {
+                        ealkali = "0";
+                    } else if (edirty.equals("")) {
+                        edirty = "0";
+                    } else if (eoil.equals("")) {
+                        eoil = "0";
+                    } else if (ebroken.equals("")) {
+                        ebroken = "0";
+                    } else if (eknot.equals("")) {
+                        eknot = "0";
+                    } else if (ejoint.equals("")) {
+                        ejoint = "0";
+                    } else if (efurrow.equals("")) {
+                        efurrow = "0";
+                    }
+
+                    int sum = Integer.parseInt(ethread) +
+                            Integer.parseInt(ealkali) +
+                            Integer.parseInt(edirty) +
+                            Integer.parseInt(eoil) +
+                            Integer.parseInt(ebroken) +
+                            Integer.parseInt(eknot) +
+                            Integer.parseInt(ejoint) +
+                            Integer.parseInt(efurrow);
+
+                    arrlist.add(rec.getString("quantity"));
+                    arrlist.add(rec.getString("actqty"));
+                    arrlist.add(rec.getString("width"));
+                    arrlist.add(ethread);
+                    arrlist.add(ealkali);
+                    arrlist.add(edirty);
+                    arrlist.add(eoil);
+                    arrlist.add(ebroken);
+                    arrlist.add(eknot);
+                    arrlist.add(ejoint);
+                    arrlist.add(efurrow);
+                    arrlist.add(sum);
+                    arrlist.add(rec.getString("erepeat"));
+                    arrlist.add(rec.getString("color"));
+                    arrlist.add(rec.getString("batch"));
+                    arrlist.add(DB.ConnDB.coverdate(rec.getString("qcdate")));
+                    arrlist.add(rec.getString("grade"));
+                    arrlist.add(rec.getString("gradeqc"));
+                    arrlist.add(rec.getString("weight"));
+                    arrlist.add(rec.getString("qtylay"));
+                    arrlist.add(rec.getString("byname"));
+                    arrlist.add(rec.getString("mark"));
+
+                    obj.put("data", arrlist);
+
                 }
-                
+
                 out.print(obj);
             }
 

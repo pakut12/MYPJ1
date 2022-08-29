@@ -8,6 +8,7 @@ import com.sap.mw.jco.IFunctionTemplate;
 import com.sap.mw.jco.JCO;
 import java.nio.charset.Charset;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ConnDB {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection con = null;
         try {
-          
+
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@10.0.62.18:1521:stock", "comp", "pmoc4");
         } catch (Exception e) {
@@ -57,6 +58,14 @@ public class ConnDB {
         }
 
         return con;
+    }
+
+    public static String coverdate(String date) {
+        return date.substring(0, 10);
+    }
+
+    public static String datetoStr(String date) {
+        return date + " 00:00:00.0";
     }
 
     public static ArrayList getsqldata(String sql, String data) throws SQLException {
