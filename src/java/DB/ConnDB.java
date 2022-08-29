@@ -50,7 +50,7 @@ public class ConnDB {
             Class.forName("com.mysql.jdbc.Driver");
             String portwork = "4306";
             String porthome = "3306";
-            con = DriverManager.getConnection("jdbc:mysql://localhost:" + portwork + "/test?characterEncoding=UTF-8" +
+            con = DriverManager.getConnection("jdbc:mysql://localhost:" + porthome + "/test1?characterEncoding=UTF-8" +
                     "&user=root&password=");
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,11 +61,22 @@ public class ConnDB {
     }
 
     public static String coverdate(String date) {
-        return date.substring(0, 10);
+        if (date == null) {
+            date = null;
+        } else {
+            date = date.substring(0, 10);
+        }
+        return date;
     }
 
     public static String datetoStr(String date) {
-        return date + " 00:00:00.0";
+        if (date == null) {
+            date = null;
+        } else {
+            date = date + " 00:00:00.0";
+        }
+        return date;
+
     }
 
     public static ArrayList getsqldata(String sql, String data) throws SQLException {
@@ -80,7 +91,6 @@ public class ConnDB {
             while (rec.next()) {
                 arr.add(rec.getString(data));
             }
-
         } catch (Exception e) {
             arr.add(e.toString());
             e.printStackTrace();

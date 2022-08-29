@@ -31,7 +31,7 @@
                                 <div class="row mb-3">
                                     <div class="col-sm-12 col-md-6">
                                         <label>รหัสบาร์โค๊ด : </label>
-                                        <input class="form-control form-control-sm" type="text" name="barcode" id="barcode" value="" ></input>
+                                        <input class="form-control form-control-sm" type="number" name="barcode" id="barcode" value="" required></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
@@ -70,11 +70,11 @@
                                     </div> 
                                     <div class="col-sm-12 col-md-5">
                                         <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
-                                        <button class="btn btn-danger mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button>
-                                        <button class="btn btn-success mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-arrow-clockwise"></i> บันทึกข้อมูล</button>
+                                        <button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button>
+                                        <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึกข้อมูล</button>
                                     </div>
                                 </div>
-                                <div class="card  mt-3">
+                                <div class="card  mt-3" >
                                     <div class="card-header">
                                         เเก้ไขข้อมูล
                                     </div>
@@ -105,21 +105,22 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-ด้านเเทรก : </label>
-                                                <input class="form-control form-control-sm" type="text" name="ethread" id="ethread" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="ethread" id="ethread" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-ด่าง : </label>
-                                                <input class="form-control form-control-sm" type="text" name="ealkali" id="ealkali" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="ealkali" id="ealkali" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-สกปรก : </label>
-                                                <input class="form-control form-control-sm" type="text" name="edirty" id="edirty" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="edirty" id="edirty" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -128,21 +129,21 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-น้ำมัน จุดสี : </label>
-                                                <input class="form-control form-control-sm" type="text" name="eoil" id="eoil" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="eoil" id="eoil" value=""  onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-ขาด : </label>
-                                                <input class="form-control form-control-sm" type="text" name="ebroken" id="ebroken" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="ebroken" id="ebroken" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-ปุ่มปม : </label>
-                                                <input class="form-control form-control-sm" type="text" name="eknot" id="eknot" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="eknot" id="eknot" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -151,21 +152,21 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-ตัวหนอน : </label>
-                                                <input class="form-control form-control-sm" type="text" name="ejoint" id="ejoint" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="ejoint" id="ejoint" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิ-ลายขวาง : </label>
-                                                <input class="form-control form-control-sm" type="text" name="efurrow" id="efurrow" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="efurrow" id="efurrow" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ตำหนิรวม : </label>
-                                                <input class="form-control form-control-sm" type="text" name="sum" id="sum" value="" readonly></input>
+                                                <input class="form-control form-control-sm" type="number" name="sum" id="sum" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -281,6 +282,20 @@
         
         
         <script>
+            function sum(){
+                var e1 = parseInt($("#ethread").val());
+                var e2 = parseInt($("#ealkali").val());
+                var e3 = parseInt($("#edirty").val());
+                var e4 = parseInt($("#eoil").val());
+                var e5 = parseInt($("#ebroken").val());
+                var e6 = parseInt($("#eknot").val());
+                var e7 = parseInt($("#ejoint").val());
+                var e8 = parseInt($("#efurrow").val());
+                
+                var sum = e1+e2+e3+e4+e5+e6+e7+e8 ;
+                
+                $("#sum").val(sum);
+            }
             
             $(document).ready(function () {
                 var table;
@@ -290,6 +305,7 @@
                         url: 'getdatawm?status=G11&barcode='+barcode,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
+                            
                             $("#doc").val(de.mrno);  
                             $("#item").val(de.item);   
                             $("#roll").val(de.roll);   
@@ -299,6 +315,38 @@
                             $("#actqty").val(de.data[1]); 
                             $("#width").val(de.data[2]); 
 
+                            if(de.data[3] == null){
+                                de.data[3] = 0 ;
+                            }
+                            if(de.data[4] == null){
+                                de.data[4] = 0 ;
+                            }
+                            if(de.data[5] == null){
+                                de.data[5] = 0 ;
+                            }
+                            if(de.data[6] == null){
+                                de.data[6] = 0 ;
+                            }
+                            if(de.data[7] == null){
+                                de.data[7] = 0 ;
+                            }
+                            if(de.data[8] == null){
+                                de.data[8] = 0 ;
+                            }
+                            if(de.data[8] == null){
+                                de.data[8] = 0 ;
+                            }
+                            if(de.data[9] == null){
+                                de.data[9] = 0 ;
+                            }
+                            if(de.data[10] == null){
+                                de.data[10] = 0 ;
+                            }
+                            if(de.data[11] == null){
+                                de.data[11] = 0 ;
+                            }
+        
+        
                             $("#ethread").val(de.data[3]);  
                             $("#ealkali").val(de.data[4]);  
                             $("#edirty").val(de.data[5]);  
@@ -308,6 +356,8 @@
                             $("#ejoint").val(de.data[9]);  
                             $("#efurrow").val(de.data[10]);  
                             $("#sum").val(de.data[11]);  
+                            
+        
                             $("#erepeat").val(de.data[12]);  
                             $("#color").val(de.data[13]);  
                             $("#batch").val(de.data[14]);  
@@ -318,8 +368,13 @@
                             $("#qtylay").val(de.data[19]);
                             $("#byname").val(de.data[20]);  
                             $("#mark").val(de.data[21]);
-                            console.log(de.data[21]);
-                            $("#mark1").prop('checked', true);   
+                            
+                            if($("#mark").val(de.data[21]) == null){
+                                $("#mark1").prop('checked', true);
+                            }else{
+                                $("#mark2").prop('checked', true);
+                            }
+                            sum();
                         }    
                     });                    
                 }
