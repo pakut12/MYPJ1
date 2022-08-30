@@ -29,11 +29,11 @@ public class SVedititem extends HttpServlet {
         try {
             String status = request.getParameter("status").trim();
 
-
             try {
                 Connection con = null;
                 ResultSet res = null;
                 PreparedStatement ps = null;
+                con = DB.ConnDB.getConnDB();
 
                 if (status.equals("G1")) {
                     String mrno = request.getParameter("mrno");
@@ -43,9 +43,8 @@ public class SVedititem extends HttpServlet {
                     String QUANTITY = request.getParameter("QUANTITY");
                     String BATCH = request.getParameter("BATCH");
 
-
                     String sql = "UPDATE wmbarcode SET wmbarcode.PALET = ?,wmbarcode.QUANTITY=?,wmbarcode.BATCH =? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
-                    con = DB.ConnDB.getConnDB();
+
                     ps = con.prepareStatement(sql);
                     ps.setString(1, PALET);
                     ps.setString(2, QUANTITY);
@@ -77,7 +76,7 @@ public class SVedititem extends HttpServlet {
                     String ROLL1 = (String) request.getParameter("ROLL1");
 
                     String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=?,wmbarcode.LOT=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
-                    con = DB.ConnDB.getConnDB();
+
                     ps = con.prepareStatement(sql);
                     ps.setString(1, ITEM);
                     ps.setString(2, ROLL);
@@ -92,14 +91,98 @@ public class SVedititem extends HttpServlet {
                     ps.setString(11, MRNO);
                     ps.setString(12, ITEM1);
                     ps.setString(13, ROLL1);
+
+                    if (ps.executeUpdate() > 0) {
+                        out.print("true");
+                    } else {
+                        out.print("false");
+                    }
+                } else if (status.equals("G3")) {
+                    String actqty = request.getParameter("actqty");
+                    String ethread = request.getParameter("ethread");
+                    String eoil = request.getParameter("eoil");
+                    String eknot = request.getParameter("eknot");
+                    String ejoint = request.getParameter("ejoint");
+                    String efurrow = request.getParameter("efurrow");
+                    String edirty = request.getParameter("edirty");
+                    String ealkali = request.getParameter("ealkali");
+                    String ebroken = request.getParameter("ebroken");
+                    String erepeat = request.getParameter("erepeat");
+                    String sum = request.getParameter("sum");
+                    String width = request.getParameter("width");
+                    String gradeqc = request.getParameter("gradeqc");
+                    String byname = request.getParameter("byname");
+                    String weight = request.getParameter("weight");
+                    String qtylay = request.getParameter("qtylay");
+                    String mark_toterr = request.getParameter("mark_toterr");
+                    String qcdate = request.getParameter("qcdate");
+                    String point = request.getParameter("point");
+                    String mrno = request.getParameter("mrno");
+                    String item = request.getParameter("item");
+                    String roll = request.getParameter("roll");
+                    String pallet = request.getParameter("pallet");
+
+                    String arr[] = {
+                        actqty,
+                        ethread,
+                        eoil,
+                        eknot,
+                        ejoint,
+                        efurrow,
+                        edirty,
+                        ealkali,
+                        ebroken,
+                        erepeat,
+                        sum,
+                        width,
+                        gradeqc,
+                        byname,
+                        weight,
+                        qtylay,
+                        mark_toterr,
+                        qcdate,
+                        point,
+                        mrno,
+                        item,
+                        roll,
+                        pallet
+                    };
+
+                    String sql = "UPDATE wmqck SET wmqck.ACTQTY = ?," +
+                            "wmqck.ETHREAD = ?," +
+                            "wmqck.EOIL = ?," +
+                            "wmqck.EKNOT = ?," +
+                            "wmqck.EJOINT= ?," +
+                            "wmqck.EFURROW=?," +
+                            "wmqck.EDIRTY=?," +
+                            "wmqck.EALKALI=?," +
+                            "wmqck.EBROKEN=?," +
+                            "wmqck.EREPEAT=?," +
+                            "wmqck.TOTERR=?," +
+                            "wmqck.WIDTH=?," +
+                            "wmqck.GRADEQC=?," +
+                            "wmqck.BYNAME=?," +
+                            "wmqck.WEIGHT=?," +
+                            "wmqck.QTYLAY=?," +
+                            "wmqck.MARK_TOTERR=?," +
+                            "wmqck.QCDATE=?, " +
+                            "wmqck.point=? " +
+                            "WHERE wmqck.MRNO=? and wmqck.ITEM=? AND wmqck.ROLL=? and wmqck.PALET = ?";
+
+                    ps = con.prepareStatement(sql);
+
+                    for (int n = 0; n < arr.length; n++) {
+                        if (arr[n].equals("")) {
+                            arr[n] = null;
+                        }
+                        ps.setString(n+1, arr[n]);
+                    }
                     
                     if (ps.executeUpdate() > 0) {
                         out.print("true");
                     } else {
                         out.print("false");
                     }
-
-
 
 
 

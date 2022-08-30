@@ -37,7 +37,7 @@ public class SVgetdatawm extends HttpServlet {
             Connection conn = null;
             PreparedStatement ps = null;
 
-//            conn = DB.ConnDB.getConnDB();
+//            conn = DB.ConnDB.getConnection();
             conn = DB.ConnDB.getConnDB();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
@@ -168,8 +168,6 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G3")) {
                 try {
                     String menr = request.getParameter("mrno").trim();
-
-
 
                     String page = "";
 
@@ -578,8 +576,6 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 }
             } else if (status.equals("G11")) {
-
-
                 try {
                     String barcode = request.getParameter("barcode");
 
@@ -629,7 +625,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrlist.add(rec.getString("weight"));
                         arrlist.add(rec.getString("qtylay"));
                         arrlist.add(rec.getString("byname"));
-                        arrlist.add(rec.getString("mark"));
+                        arrlist.add(rec.getString("mark_toterr"));
 
                         obj.put("data", arrlist);
 

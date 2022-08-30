@@ -63,7 +63,7 @@
                                         </div>
                                         <div class="col-sm-12 col-md-4">
                                             <label>Invoice date : </label>
-                                            <input class="form-control form-control-sm text-center" type="datetime-local" name="INVOICEDATE" id="INVOICEDATE" value="" required></input>
+                                            <input class="form-control form-control-sm text-center" type="date" name="INVOICEDATE" id="INVOICEDATE" value="" required></input>
                                         </div>
                                         <div class="col-sm-12 col-md-4">
                                             <label>Delivery No : </label>

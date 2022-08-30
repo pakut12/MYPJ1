@@ -20,7 +20,9 @@
         <div class="container">
             <div class="row">
                 <%@ include file="share/profile.jsp" %>
-                <div class="col-sm-12 col-md-9">
+                
+                    
+                <div class="col-sm-12 col-md-9" >
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
@@ -70,10 +72,11 @@
                                     </div> 
                                     <div class="col-sm-12 col-md-5">
                                         <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
-                                        <button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button>
+                                        <a href="table8.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button></a>
                                         <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึกข้อมูล</button>
                                     </div>
                                 </div>
+                                
                                 <div class="card  mt-3" >
                                     <div class="card-header">
                                         เเก้ไขข้อมูล
@@ -104,46 +107,22 @@
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-ด้านเเทรก : </label>
-                                                <input class="form-control form-control-sm" type="number" name="ethread" id="ethread" value="" onClick="this.select();" onkeyup="sum();" required></input>
-                                                
-                                                <div class="invalid-feedback mb-3 text-center">
-                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-ด่าง : </label>
-                                                <input class="form-control form-control-sm" type="number" name="ealkali" id="ealkali" value="" onClick="this.select();" onkeyup="sum();" required></input>
-                                                <div class="invalid-feedback mb-3 text-center">
-                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-สกปรก : </label>
-                                                <input class="form-control form-control-sm" type="number" name="edirty" id="edirty" value="" onClick="this.select();" onkeyup="sum();" required></input>
-                                                <div class="invalid-feedback mb-3 text-center">
-                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-น้ำมัน จุดสี : </label>
+                                                <label>จุดสี-น้ำมัน-สกปรก : </label>
                                                 <input class="form-control form-control-sm" type="number" name="eoil" id="eoil" value=""  onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-ขาด : </label>
-                                                <input class="form-control form-control-sm" type="number" name="ebroken" id="ebroken" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                <label>ลายขวาง : </label>
+                                                <input class="form-control form-control-sm" type="number" name="efurrow" id="efurrow" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-ปุ่มปม : </label>
-                                                <input class="form-control form-control-sm" type="number" name="eknot" id="eknot" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                <label>ความกว้างไม่ได้มาตรฐาน : </label>
+                                                <input class="form-control form-control-sm" type="number" name="ethread" id="ethread" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -151,15 +130,38 @@
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-ตัวหนอน : </label>
-                                                <input class="form-control form-control-sm" type="number" name="ejoint" id="ejoint" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                <label>ปุ่มปม : </label>
+                                                <input class="form-control form-control-sm" type="number" name="eknot" id="eknot" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
-                                                <label>ตำหนิ-ลายขวาง : </label>
-                                                <input class="form-control form-control-sm" type="number" name="efurrow" id="efurrow" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                <label>เส้นด้ายขาด : </label>
+                                                <input class="form-control form-control-sm" type="number" name="ebroken" id="ebroken" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                <div class="invalid-feedback mb-3 text-center">
+                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <label>รอยด่าง : </label>
+                                                <input class="form-control form-control-sm" type="number" name="ealkali" id="ealkali" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                <div class="invalid-feedback mb-3 text-center">
+                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-12 col-md-4">
+                                                <label>รอยเข็ม : </label>
+                                                <input class="form-control form-control-sm" type="number" name="edirty" id="edirty" value="" onClick="this.select();" onkeyup="sum();" required></input>
+                                                <div class="invalid-feedback mb-3 text-center">
+                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-4">
+                                                <label>รอยเข็มเข้าลึก : </label>
+                                                <input class="form-control form-control-sm" type="number" name="ejoint" id="ejoint" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -234,28 +236,12 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-4">
-                                                <label>การนำไปคำนวน : </label>
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-md-6">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="mark" id="mark1" value="*">
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                คำนวน
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="mark" id="mark2"  value="" >
-                                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                                ไม่คำนวน
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <label>คะเเนน : </label>
+                                                <input class="form-control form-control-sm" type="text" name="point" id="point" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="row">
@@ -266,16 +252,18 @@
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            
+                                            <input class="form-control form-control-sm" type="hidden" name="mark_toterr" id="mark_toterr" value="" required></input>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                             
                         </div>
                         
                     </div>
                 </div>
+                
             </div>
         </div>
         
@@ -295,10 +283,32 @@
                 var sum = e1+e2+e3+e4+e5+e6+e7+e8 ;
                 
                 $("#sum").val(sum);
+                
+                var sum1 = ((sum / 100)* $("#actqty").val());
+               
+                $("#point").val(sum1.toFixed(2));
+                if(sum > 8){
+                    $("#mark_toterr").val("*");  
+                }else{
+                    $("#mark_toterr").val("");  
+                }
+                
             }
-            
+            function today(){
+                var date = new Date();
+                var d =date.getDate()
+                var m = date.getMonth();
+                var y = date.getFullYear();
+                if(m <10){
+                    m = "0"+m;
+                }
+                var today = y+"-"+m+"-"+d;
+                return today;
+            }
+    
+    
             $(document).ready(function () {
-                var table;
+               
                 function getdata(barcode){ 
                     $.ajax({
                         type: "POST",
@@ -361,21 +371,16 @@
                             $("#erepeat").val(de.data[12]);  
                             $("#color").val(de.data[13]);  
                             $("#batch").val(de.data[14]);  
-                            $("#qcdate").val(de.data[15]);  
+                            $("#qcdate").val(today());  
                             $("#grade").val(de.data[16]);  
                             $("#gradeqc").val(de.data[17]);  
                             $("#weight").val(de.data[18]);  
                             $("#qtylay").val(de.data[19]);
                             $("#byname").val(de.data[20]);  
-                            $("#mark").val(de.data[21]);
+                            $("#mark_toterr").val(de.data[21]);  
                             
-                            if($("#mark").val(de.data[21]) == null){
-                                $("#mark1").prop('checked', true);
-                            }else{
-                                $("#mark2").prop('checked', true);
-                            }
                             sum();
-                        }    
+                        }
                     });                    
                 }
                
@@ -384,7 +389,7 @@
                
                 $("#btn-getdata").click(function(){
                     if($("#barcode").val() == ""){
-                        $("#myform").addClass("was-validated");
+                        
                         Swal.fire({
                             icon: 'error',
                             title: 'ข้อมูลไม่ถูกต้อง',
@@ -398,8 +403,54 @@
                 });
          
                 $("#btn-send").click(function(){
-                    //$("#btn-send").addClass("disabled");
-                    //$("#btn-send").text("กำลังส่ง....");
+                    
+                    
+                    var actqty = $("#actqty").val();
+                    var ethread = $("#ethread").val();
+                    var eoil = $("#eoil").val();
+                    var eknot = $("#eknot").val();
+                    var ejoint = $("#ejoint").val();
+                    var efurrow = $("#efurrow").val();
+                    var edirty = $("#edirty").val();
+                    var ealkali = $("#ealkali").val();
+                    var ebroken = $("#ebroken").val();
+                    var erepeat = $("#erepeat").val();
+                    var sum = $("#sum").val();
+                    var width = $("#width").val();
+                    var gradeqc = $("#gradeqc").val();
+                    var byname = $("#byname").val();
+                    var weight = $("#weight").val();
+                    var qtylay = $("#qtylay").val();
+                    var mark_toterr = $("#mark_toterr").val();
+                    var qcdate = $("#qcdate").val();
+                    var point = $("#point").val();
+                    
+                    var mrno = $("#doc").val();
+                    var item = $("#item").val();
+                    var roll = $("#roll").val();
+                    var pallet = $("#pallet").val();
+        
+                    var url = "edititem?status=G3&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&gradeqc="+gradeqc+"&byname="+byname+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet+"";
+            
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        success: function(msg,status){          
+                            if(msg == "true"){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'บันทึกข้อมูลสำเร็จ',
+                                    text: 'บันทึกข้อมูลสำเร็จ'
+                                });
+                            }else if(msg == "false"){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                });
+                            }
+                        }    
+                    });  
                   
                 });
             });
