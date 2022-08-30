@@ -38,7 +38,7 @@ public class SVgetdatawm extends HttpServlet {
             PreparedStatement ps = null;
 
 //            conn = DB.ConnDB.getConnection();
-            conn = DB.ConnDB.getConnection();
+            conn = DB.ConnDB.getConnDB();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
