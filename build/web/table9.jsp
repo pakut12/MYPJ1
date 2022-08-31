@@ -54,7 +54,7 @@
                                 
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
-                                        <label>รายงานละเอีย : </label>
+                                        <label>รายงานละเอียดวัตถุดิบ : </label>
                                         <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" readonly></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -89,10 +89,7 @@
                                                     <th class="text-center">ตำหนิรวม </th>
                                                     <th class="text-center">คะเเนน</th>
                                                     <th class="text-center">บาร์โค๊ดร้านค้า</th>
-                                                    <th class="text-center"></th>
-                                                    <th class="text-center"></th>
-                                                    <th class="text-center"></th>
-                                                   
+                                                    <th class="text-center">Mark</th>
                                                     
                                                 </tr>
                                             </thead>
@@ -101,10 +98,79 @@
                                             </tbody>
                                             
                                         </table> 
+                                        
                                     </div>
                                     
                                 </div>
                                 
+                                <div class="row mt-3">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                คีย์สรุปผลการตรวจสอบ
+                                            </div>
+                                            <div class="card-body">
+                                                <label> Remack1 : </label>
+                                                <input class="form-control form-control-sm mb-2" type="text" name="des1" id="des1" value="" ></input>
+                                                <label> Remack2  : </label>
+                                                <input class="form-control form-control-sm mb-2" type="text" name="des1" id="des1" value="" ></input>
+                                                <label> Remack3 : </label>
+                                                <input class="form-control form-control-sm mb-2" type="text" name="des1" id="des1" value="" ></input>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                ระบุข้อมูลเพื่อคำนวน % การสูญเสีย
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <label>จำนวนที่มารวม : </label>
+                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <div class="invalid-feedback mb-3 text-center">
+                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <label>จำนวนที่รวมได้ : </label>
+                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <div class="invalid-feedback mb-3 text-center">
+                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <label>จำนวนม้วนที่ * : </label>
+                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <div class="invalid-feedback mb-3 text-center">
+                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <label>จำนวนรวม * : </label>
+                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <div class="invalid-feedback mb-3 text-center">
+                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <label> การสูญเสีย : </label>
+                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <div class="invalid-feedback mb-3 text-center">
+                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

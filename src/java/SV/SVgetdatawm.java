@@ -655,7 +655,7 @@ public class SVgetdatawm extends HttpServlet {
                     while ((rec.next()) && (rec != null)) {
 
                         JSONArray arrjson = new JSONArray();
-                        arrjson.add(n + 1);
+                        arrjson.add(n+1);
                         arrjson.add(rec.getString("WIDTH"));
                         arrjson.add(rec.getString("QUANTITY"));
                         arrjson.add(rec.getString("ACTQTY"));
@@ -671,9 +671,6 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("TOTERR"));
                         arrjson.add(rec.getString("EREPEAT"));
                         arrjson.add(rec.getString("MARK_TOTERR"));
-                        arrjson.add("");
-                        arrjson.add("");
-                        arrjson.add("");
 
 
                         arrlist.add(arrjson);
