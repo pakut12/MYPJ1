@@ -31,7 +31,9 @@ public class SVgetdatawm extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+
         PrintWriter out = response.getWriter();
+
         try {
             ResultSet rec = null;
             Connection conn = null;
@@ -603,7 +605,7 @@ public class SVgetdatawm extends HttpServlet {
                         String ejoint = rec.getString("ejoint");
                         String efurrow = rec.getString("efurrow");
 
-                       
+
                         arrlist.add(rec.getString("quantity"));
                         arrlist.add(rec.getString("actqty"));
                         arrlist.add(rec.getString("width"));
@@ -621,12 +623,12 @@ public class SVgetdatawm extends HttpServlet {
                         arrlist.add(rec.getString("batch"));
                         arrlist.add(DB.ConnDB.coverdate(rec.getString("qcdate")));
                         arrlist.add(rec.getString("grade"));
-                        arrlist.add(rec.getString("gradeqc"));
+                        arrlist.add(rec.getString("scolor"));
                         arrlist.add(rec.getString("weight"));
                         arrlist.add(rec.getString("qtylay"));
                         arrlist.add(rec.getString("byname"));
                         arrlist.add(rec.getString("mark_toterr"));
-
+                        
                         obj.put("data", arrlist);
 
                     }

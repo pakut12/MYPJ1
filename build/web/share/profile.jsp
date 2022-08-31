@@ -17,8 +17,11 @@
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(new Date());
             %>
-            <p>User : <%= session.getAttribute("user")%></p>
             <p>Date : <%=date%></p>
+            
+            <p>Userid : <%= session.getAttribute("user")%></p>
+            <p>Name : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p>
+            
         </div>
     </div>
 </div>

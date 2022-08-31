@@ -132,7 +132,7 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ปุ่มปม : </label>
-                                                <input class="form-control form-control-sm" type="number" name="eoil" id="eoil" value=""  onClick="this.select();" onkeyup="sum();" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="eoil" id="eoil" value=""  onClick="this.select();" onkeyup="sum();" required ></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -192,7 +192,7 @@
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>มาตรฐานสี : </label>
-                                                <input class="form-control form-control-sm" type="text" name="gradeqc" id="gradeqc" value="" ></input>
+                                                <input class="form-control form-control-sm" type="text" name="scolor" id="scolor" value="" ></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -247,9 +247,16 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-8">
+                                            <div class="col-sm-12 col-md-6">
                                                 <label>ชื่อผู้ตรวจสอบ : </label>
-                                                <input class="form-control form-control-sm" type="text" name="byname" id="byname" value="" required></input>
+                                                <input class="form-control form-control-sm" type="text" name="byname1" id="byname1" value="<%=session.getAttribute("name")%>" required></input>
+                                                <div class="invalid-feedback mb-3 text-center">
+                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <label>ชื่อผู้ตรวจสอบล่าสุด : </label>
+                                                <input class="form-control form-control-sm" type="text" name="byname" id="byname" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -375,7 +382,7 @@
                             $("#batch").val(de.data[14]);  
                             $("#qcdate").val(today());  
                             $("#grade").val(de.data[16]);  
-                            $("#gradeqc").val(de.data[17]);  
+                            $("#scolor").val(de.data[17]);  
                             $("#weight").val(de.data[18]);  
                             $("#qtylay").val(de.data[19]);
                             $("#byname").val(de.data[20]);  
@@ -419,8 +426,8 @@
                     var erepeat = $("#erepeat").val();
                     var sum = $("#sum").val();
                     var width = $("#width").val();
-                    var gradeqc = $("#gradeqc").val();
-                    var byname = $("#byname").val();
+                    var scolor = $("#scolor").val();
+                    var byname1 = $("#byname1").val();
                     var weight = $("#weight").val();
                     var qtylay = $("#qtylay").val();
                     var mark_toterr = $("#mark_toterr").val();
@@ -432,7 +439,7 @@
                     var roll = $("#roll").val();
                     var pallet = $("#pallet").val();
         
-                    var url = "edititem?status=G3&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&gradeqc="+gradeqc+"&byname="+byname+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet+"";
+                    var url = "edititem?status=G3&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&scolor="+scolor+"&byname1="+byname1+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet+"";
             
                     $.ajax({
                         type: "POST",

@@ -39,7 +39,7 @@ public class SVlogin extends HttpServlet {
             ResultSet rec = null;
             Connection conn = null;
             PreparedStatement ps = null;
-            
+
             try {
                 MessageDigest md;
                 md = MessageDigest.getInstance("MD5");
@@ -47,7 +47,7 @@ public class SVlogin extends HttpServlet {
                 md.update(pass.getBytes());
                 String digestpass = new BigInteger(1, md.digest()).toString(16).toUpperCase();
 
-                String sql = "select * from pgusertab where userid = ? and passwd = ? and statwork <> 'Y'";
+                String sql = "select * from pgusertab inner join v_pwemployee on pgusertab.USERID = v_pwemployee.PWEMPLOYEE where pgusertab.USERID = ? and pgusertab.PASSWD = ? ";
                 conn = DB.ConnDB.getConnection();
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, user);
@@ -57,6 +57,8 @@ public class SVlogin extends HttpServlet {
                 if ((rec != null) && (rec.next())) {
                     page = "/home.jsp";
                     request.getSession().setAttribute("user", user);
+                    request.getSession().setAttribute("name", rec.getString("PWFNAME").replace(" ", ""));
+                    request.getSession().setAttribute("surname", rec.getString("PWLNAME"));
                 } else {
                     page = "/index.jsp";
                     request.setAttribute("status", "error");

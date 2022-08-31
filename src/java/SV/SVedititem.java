@@ -25,6 +25,9 @@ public class SVedititem extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+
         PrintWriter out = response.getWriter();
         try {
             String status = request.getParameter("status").trim();
@@ -110,8 +113,8 @@ public class SVedititem extends HttpServlet {
                     String erepeat = request.getParameter("erepeat");
                     String sum = request.getParameter("sum");
                     String width = request.getParameter("width");
-                    String gradeqc = request.getParameter("gradeqc");
-                    String byname = request.getParameter("byname");
+                    String scolor = request.getParameter("scolor");
+                    String byname1 = request.getParameter("byname1");
                     String weight = request.getParameter("weight");
                     String qtylay = request.getParameter("qtylay");
                     String mark_toterr = request.getParameter("mark_toterr");
@@ -135,8 +138,8 @@ public class SVedititem extends HttpServlet {
                         erepeat,
                         sum,
                         width,
-                        gradeqc,
-                        byname,
+                        scolor,
+                        byname1,
                         weight,
                         qtylay,
                         mark_toterr,
@@ -160,7 +163,7 @@ public class SVedititem extends HttpServlet {
                             "wmqck.EREPEAT=?," +
                             "wmqck.TOTERR=?," +
                             "wmqck.WIDTH=?," +
-                            "wmqck.GRADEQC=?," +
+                            "wmqck.scolor=?," +
                             "wmqck.BYNAME=?," +
                             "wmqck.WEIGHT=?," +
                             "wmqck.QTYLAY=?," +
@@ -175,9 +178,9 @@ public class SVedititem extends HttpServlet {
                         if (arr[n].equals("")) {
                             arr[n] = null;
                         }
-                        ps.setString(n+1, arr[n]);
+                        ps.setString(n + 1, arr[n]);
                     }
-                    
+
                     if (ps.executeUpdate() > 0) {
                         out.print("true");
                     } else {
