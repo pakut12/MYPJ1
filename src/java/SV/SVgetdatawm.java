@@ -40,7 +40,7 @@ public class SVgetdatawm extends HttpServlet {
             PreparedStatement ps = null;
 
 //            conn = DB.ConnDB.getConnection();
-            conn = DB.ConnDB.getConnDB();
+            conn = DB.ConnDB.getConnection();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
@@ -628,10 +628,59 @@ public class SVgetdatawm extends HttpServlet {
                         arrlist.add(rec.getString("qtylay"));
                         arrlist.add(rec.getString("byname"));
                         arrlist.add(rec.getString("mark_toterr"));
-                        
+
                         obj.put("data", arrlist);
 
                     }
+                    out.print(obj);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            } else if (status.equals("G12")) {
+                try {
+                    String mrno = request.getParameter("mrno");
+
+                    String sql = "select wmqck.WIDTH,wmbarcode.QUANTITY,wmqck.ACTQTY,wmqck.ETHREAD,wmqck.EALKALI,wmqck.EDIRTY,wmqck.EOIL,wmqck.EBROKEN,wmqck.EKNOT,wmqck.EJOINT,wmqck.EFURROW,wmqck.TOTERR,wmqck.TOTERR,wmqck.EREPEAT,wmqck.MARK_TOTERR from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL where wmbarcode.MRNO = ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        JSONArray arrjson = new JSONArray();
+                        arrjson.add(n + 1);
+                        arrjson.add(rec.getString("WIDTH"));
+                        arrjson.add(rec.getString("QUANTITY"));
+                        arrjson.add(rec.getString("ACTQTY"));
+                        arrjson.add(rec.getString("ETHREAD"));
+                        arrjson.add(rec.getString("EALKALI"));
+                        arrjson.add(rec.getString("EDIRTY"));
+                        arrjson.add(rec.getString("EOIL"));
+                        arrjson.add(rec.getString("EBROKEN"));
+                        arrjson.add(rec.getString("EKNOT"));
+                        arrjson.add(rec.getString("EJOINT"));
+                        arrjson.add(rec.getString("EFURROW"));
+                        arrjson.add(rec.getString("TOTERR"));
+                        arrjson.add(rec.getString("TOTERR"));
+                        arrjson.add(rec.getString("EREPEAT"));
+                        arrjson.add(rec.getString("MARK_TOTERR"));
+                        arrjson.add("");
+                        arrjson.add("");
+                        arrjson.add("");
+
+
+                        arrlist.add(arrjson);
+                        n++;
+                    }
+
+                    obj.put("data", arrlist);
                     out.print(obj);
 
                 } catch (Exception e) {
