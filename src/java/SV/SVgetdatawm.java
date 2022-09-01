@@ -40,7 +40,7 @@ public class SVgetdatawm extends HttpServlet {
             PreparedStatement ps = null;
 
 //            conn = DB.ConnDB.getConnection();
-            conn = DB.ConnDB.getConnection();
+            conn = DB.ConnDB.getConnDB();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
@@ -643,7 +643,7 @@ public class SVgetdatawm extends HttpServlet {
                 try {
                     String mrno = request.getParameter("mrno");
 
-                    String sql = "select wmqck.WIDTH,wmbarcode.QUANTITY,wmqck.ACTQTY,wmqck.ETHREAD,wmqck.EALKALI,wmqck.EDIRTY,wmqck.EOIL,wmqck.EBROKEN,wmqck.EKNOT,wmqck.EJOINT,wmqck.EFURROW,wmqck.TOTERR,wmqck.TOTERR,wmqck.EREPEAT,wmqck.MARK_TOTERR from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL where wmbarcode.MRNO = ?";
+                    String sql = "select*  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL where wmbarcode.MRNO =?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
@@ -652,10 +652,15 @@ public class SVgetdatawm extends HttpServlet {
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
+                    int sumq = 0;
+                    float suma = 0;
+                    int countstar = 0;
+                    float sumstar = 0;
+                    float gradeqc = 0;
                     while ((rec.next()) && (rec != null)) {
 
                         JSONArray arrjson = new JSONArray();
-                        arrjson.add(n+1);
+                        arrjson.add(rec.getString("roll"));
                         arrjson.add(rec.getString("WIDTH"));
                         arrjson.add(rec.getString("QUANTITY"));
                         arrjson.add(rec.getString("ACTQTY"));
@@ -668,15 +673,40 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("EJOINT"));
                         arrjson.add(rec.getString("EFURROW"));
                         arrjson.add(rec.getString("TOTERR"));
-                        arrjson.add(rec.getString("TOTERR"));
+                        //arrjson.add(rec.getString("point"));
+                        arrjson.add("");
                         arrjson.add(rec.getString("EREPEAT"));
                         arrjson.add(rec.getString("MARK_TOTERR"));
 
+                        if (rec.getString("MARK_TOTERR") != null) {
+                            countstar++;
+                            sumstar += rec.getInt("TOTERR");
+                        }
 
+
+                       
+                        obj.put("item", rec.getString("item"));
+                        obj.put("desc1", rec.getString("desc1"));
                         arrlist.add(arrjson);
+                        sumq += rec.getInt("QUANTITY");
+                        suma += rec.getInt("ACTQTY");
                         n++;
                     }
+                    obj.put("sumq", sumq);
+                    obj.put("suma", suma);
+                    obj.put("countstar", countstar);
+                    obj.put("sumstar", sumstar);
 
+
+
+                    gradeqc = (sumstar / suma) * 100;
+//                    gradeqc = (171 / 4144);
+
+
+
+                    obj.put("gradeqc", gradeqc);
+
+                    obj.put("count", n);
                     obj.put("data", arrlist);
                     out.print(obj);
 
@@ -684,6 +714,36 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 }
 
+
+            } else if (status.equals("G13")) {
+                try {
+                    String mrno = request.getParameter("mrno");
+                    String item = request.getParameter("item");
+                    String roll = request.getParameter("roll");
+
+                    String sql = "select * from wmqck where wmqck.MRNO = ? and wmqck.ITEM = ? and wmqck.ROLL = ? ";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, item);
+                    ps.setString(3, roll);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                  
+                    while ((rec.next()) && (rec != null)) {
+
+                        obj.put("remark1", rec.getString("remark1"));
+                        obj.put("remark2", rec.getString("remark2"));
+                        obj.put("remark3", rec.getString("remark3"));
+                        
+                    }
+
+                    out.print(obj);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
 

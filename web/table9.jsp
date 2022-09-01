@@ -55,7 +55,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <label>รายงานละเอียดวัตถุดิบ : </label>
-                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" readonly></input>
+                                        <input class="form-control form-control-sm" type="text" name="desc1" id="desc1" value="" readonly></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
@@ -111,11 +111,11 @@
                                             </div>
                                             <div class="card-body">
                                                 <label> Remack1 : </label>
-                                                <input class="form-control form-control-sm mb-2" type="text" name="des1" id="des1" value="" ></input>
+                                                <input class="form-control form-control-sm mb-2" type="text" name="remark1" id="remark1" value="" ></input>
                                                 <label> Remack2  : </label>
-                                                <input class="form-control form-control-sm mb-2" type="text" name="des1" id="des1" value="" ></input>
+                                                <input class="form-control form-control-sm mb-2" type="text" name="remark2" id="remark2" value="" ></input>
                                                 <label> Remack3 : </label>
-                                                <input class="form-control form-control-sm mb-2" type="text" name="des1" id="des1" value="" ></input>
+                                                <input class="form-control form-control-sm mb-2" type="text" name="remark3" id="remark3" value="" ></input>
                                             </div>
                                         </div> 
                                     </div>
@@ -128,14 +128,14 @@
                                                 <div class="row">
                                                     <div class="col-sm-12 col-md-6">
                                                         <label>จำนวนที่มารวม : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <input class="form-control form-control-sm" type="text" name="sumq" id="sumq" value="" readonly></input>
                                                         <div class="invalid-feedback mb-3 text-center">
                                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12 col-md-6">
                                                         <label>จำนวนที่รวมได้ : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <input class="form-control form-control-sm" type="text" name="suma" id="suma" value="" readonly></input>
                                                         <div class="invalid-feedback mb-3 text-center">
                                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                                         </div>
@@ -144,14 +144,14 @@
                                                 <div class="row">
                                                     <div class="col-sm-12 col-md-6">
                                                         <label>จำนวนม้วนที่ * : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <input class="form-control form-control-sm" type="text" name="countstar" id="countstar" value="" readonly></input>
                                                         <div class="invalid-feedback mb-3 text-center">
                                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12 col-md-6">
                                                         <label>จำนวนรวม * : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <input class="form-control form-control-sm" type="text" name="sumstar" id="sumstar" value="" readonly></input>
                                                         <div class="invalid-feedback mb-3 text-center">
                                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                                         </div>
@@ -159,8 +159,8 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-12 col-md-6">
-                                                        <label> การสูญเสีย : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="des1" id="des1" value="" ></input>
+                                                        <label> % การสูญเสีย : </label>
+                                                        <input class="form-control form-control-sm" type="text" name="gradeqc" id="gradeqc" value="" readonly></input>
                                                         <div class="invalid-feedback mb-3 text-center">
                                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                                         </div>
@@ -182,10 +182,16 @@
             
             $(document).ready(function () {
                 var table;
-                function getdata(po){
+                function getdata(mrno){
+                    $("#suma").val(0);
+                    $("#countstar").val(0);          
+                    $("#sumq").val(0);
+                    $("#gradeqc").val(0);
+                    $("#sumstar").val(0);
+                    
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?status=G12&mrno='+po,
+                        ajax: 'getdatawm?status=G12&mrno='+mrno,
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
@@ -208,28 +214,31 @@
                             { "width": "10rem", "targets": 14 },
                             { "width": "5rem", "targets": 15 },
                         ],
-                        select:true
-                        
-                       
-                                            
+                        select:"single"
+                                             
                     }); 
                     $.ajax({
                         type: "POST",
-                        url: 'getdatawm?status=G7&po='+po,
+                        url: 'getdatawm?status=G12&mrno='+mrno,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
-                            $("#countwmbarcode").text(de.count);   
-                            console.log(de.count);
-                                  
+                            
+                            $("#count").val(de.count);   
+                            $("#item").val(de.item); 
+                            $("#desc1").val(de.desc1); 
+                            $("#suma").val(de.suma);
+                            $("#countstar").val(de.countstar);          
+                            $("#sumq").val(de.sumq);
+                            $("#gradeqc").val(de.gradeqc.toFixed(2));
+                            $("#sumstar").val(de.sumstar);
+                            
                         }    
                     });                    
                 }
                
-
-
-                $("#page2").addClass("active");
+                $("#page3").addClass("active");
                 $("#btn-send").addClass("disabled");
-                getdata("902207002597");  
+                getdata("");  
                 
                 
                 $("#btn-getdata").click(function(){
@@ -240,18 +249,62 @@
                             title: 'ข้อมูลไม่ถูกต้อง',
                             text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
                         })
-                       
                     }else{
                         $("#btn-send").removeClass("disabled");                       
                         getdata($("#mrno").val());  
                        
                     }         
                 });
-         
+                $('body').on('click','td', function() {
+                    var table = $("#mytable").DataTable();
+                    var data = table.rows('.selected').data();
+                    var url = 'getdatawm?status=G13&mrno='+$("#mrno").val()+'&item='+$("#item").val()+'&roll='+data[0][0];
+                 
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            $("#remark1").val(de.remark1);
+                            $("#remark2").val(de.remark2);
+                            $("#remark3").val(de.remark3);
+                        }    
+                    });       
+                });
                 $("#btn-send").click(function(){
-                    //$("#btn-send").addClass("disabled");
-                    //$("#btn-send").text("กำลังส่ง....");
+                    var table = $("#mytable").DataTable();
+                    var data = table.rows('.selected').data();
+                    var remark1 = $("#remark1").val();
+                    var remark2 = $("#remark2").val();
+                    var remark3 = $("#remark3").val();
+                    var gradeqc = $("#gradeqc").val();
+                    var mrno = $("#mrno").val();
+                    var item = $("#item").val();
+                    var roll = data[0][0];
                    
+        
+                    var url = 'edititem?status=G4&remark1='+remark1+'&remark2='+remark2+'&remark3='+remark3+'&mrno='+mrno+'&item='+item+'&roll='+roll+'&gradeqc='+gradeqc;
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        success: function(msg,status){
+                            if(msg == 'true'){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'บันทึกข้อมูลสำเร็จ',
+                                    text: 'บันทึกข้อมูลสำเร็จ'
+                                })
+                            }else{
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                })
+                            }
+                        }    
+                    });     
+                     
                     
                    
                     

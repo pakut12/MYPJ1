@@ -189,6 +189,31 @@ public class SVedititem extends HttpServlet {
 
 
 
+                } else if (status.equals("G4")) {
+                    String remark1 = (String) request.getParameter("remark1");
+                    String remark2 = (String) request.getParameter("remark2");
+                    String remark3 = (String) request.getParameter("remark3");
+                    String mrno = (String) request.getParameter("mrno");
+                    String item = (String) request.getParameter("item");
+                    String roll = (String) request.getParameter("roll");
+                    String gradeqc = (String) request.getParameter("gradeqc");
+                    
+                    String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?;";
+
+                    ps = con.prepareStatement(sql);
+                    ps.setString(1, remark1);
+                    ps.setString(2, remark2);
+                    ps.setString(3, remark3);
+                    ps.setString(4, gradeqc);
+                    ps.setString(5, mrno);
+                    ps.setString(6, item);
+                    ps.setString(7, roll);
+
+                    if (ps.executeUpdate() > 0) {
+                        out.print("true");
+                    } else {
+                        out.print("false");
+                    }
                 }
 
             } catch (Exception e) {

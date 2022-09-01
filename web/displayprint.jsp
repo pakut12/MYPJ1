@@ -149,15 +149,15 @@
                             <td></td>
                             <td></td>
                             <%
-                             for (int col = 1; col <= 10; col++) {
-                                 try {
-                                     out.print("<td>" + num[x] + "</td>");
-                                 } catch (Exception e) {
-                                     out.print("<td></td>");
-                                 }
-                                 x++;
-                             }
-                             if (row == 0) {
+                            for (int col = 1; col <= 10; col++) {
+                                try {
+                                    out.print("<td>" + num[x] + "</td>");
+                                } catch (Exception e) {
+                                    out.print("<td></td>");
+                                }
+                                x++;
+                            }
+                            if (row == 0) {
                             %>
                             <td><%=request.getAttribute("roll")%></td>
                             <td><%=request.getAttribute("row")%></td> 
@@ -197,31 +197,40 @@
                 function today(){
                     var date = new Date();
                     var d =date.getDate()
-                    var mo = date.getMonth()+1;
+                    var m = date.getMonth()+1;
                     var y = date.getFullYear();
                     var h = date.getHours();
                     var i = date.getMinutes()
-                    var m = date.getSeconds();
+                    var s = date.getSeconds();
                     if(m <10){
                         m = "0"+m;
-                    }else if(i<10){
+                    }
+                    if(i<10){
                         i = "0"+i;
                     }
-                    var today = d+"/"+mo+"/"+y+" "+h+":"+i+":"+m;
+
+                    if(d<10){
+                        d = "0"+d;
+                    }
+                    var today = d+"/"+m+"/"+y+" "+h+":"+i+":"+s;
                     return today;
                 }
                 function today1(){
                     var date = new Date();
                     var d =date.getDate()
-                    var mo = date.getMonth()+1;
+                    var m = date.getMonth()+1;
                     var y = date.getFullYear();
                     var h = date.getHours();
                     var i = date.getMinutes()
-                    var m = date.getSeconds();
+                    var s = date.getSeconds();
                     if(m <10){
                         m = "0"+m;
                     }
-                    var today = d+"/"+mo+"/"+y;
+                    
+                    if(d <10){
+                        d = "0"+d;
+                    }
+                    var today = d+"/"+m+"/"+y;
                     return today;
                 }
                 $("#today").text(today());

@@ -311,6 +311,9 @@
                 if(m <10){
                     m = "0"+m;
                 }
+                if(d <10){
+                    d = "0"+d;
+                }
                 var today = y+"-"+m+"-"+d;
                 return today;
             }
