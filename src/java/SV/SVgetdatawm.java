@@ -642,11 +642,13 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G12")) {
                 try {
                     String mrno = request.getParameter("mrno");
-
-                    String sql = "select*  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL where wmbarcode.MRNO =?";
+                    String pallet = request.getParameter("pallet");
+                    
+                    String sql = "select*  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
+                    ps.setString(2, pallet);
                     rec = ps.executeQuery();
 
                     JSONObject obj = new JSONObject();
@@ -684,7 +686,7 @@ public class SVgetdatawm extends HttpServlet {
                         }
 
 
-                       
+
                         obj.put("item", rec.getString("item"));
                         obj.put("desc1", rec.getString("desc1"));
                         arrlist.add(arrjson);
@@ -730,13 +732,13 @@ public class SVgetdatawm extends HttpServlet {
                     rec = ps.executeQuery();
 
                     JSONObject obj = new JSONObject();
-                  
+
                     while ((rec.next()) && (rec != null)) {
 
                         obj.put("remark1", rec.getString("remark1"));
                         obj.put("remark2", rec.getString("remark2"));
                         obj.put("remark3", rec.getString("remark3"));
-                        
+
                     }
 
                     out.print(obj);

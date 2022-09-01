@@ -46,7 +46,7 @@
                                         <div class="col-sm-12 col-md-5 text-center">
                                             <button class="btn btn-secondary mt-4 btn-sm mx-1" type="button" name="getdata_sap" id="getdata_sap"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                             <button class="btn btn-success mt-4 btn-sm mx-1" type="button" name="savedata_sap" id="savedata_sap"><i class="bi bi-hdd"></i> จัดเก็บข้อมูล</button>
-                                            <button class="btn btn-danger mt-4 btn-sm mx-1" type="button" name="claerdata_sap" id="claerdata_sap"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button>
+                                            <button class="btn btn-danger mt-4 btn-sm mx-1" type="button" name="claerdata_sap" id="claerdata_sap"><i class="bi bi-arrow-clockwise"></i> เคลียร์ข้อมูล</button>
                                         </div>  
                                         
                                     </div>

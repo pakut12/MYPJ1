@@ -28,28 +28,35 @@
                             </div>
                             <div class="card-body">
                                 <div class="row mb-3">
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-3">
                                         <label>เลขที่เอกสาร : </label>
                                         <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" value="" required></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-3">
+                                        <label>พาเลท : </label>
+                                        <input class="form-control form-control-sm" type="text" name="pallet" id="pallet" value="" ></input>
+                                        <div class="invalid-feedback mb-3 text-center">
+                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
                                         <label>รหัสวัตถุดิบ : </label>
                                         <input class="form-control form-control-sm" type="text" name="item" id="item" value="" readonly></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-3">
                                         <label>จำนวนม้วนผ้า : </label>
                                         <input class="form-control form-control-sm" type="text" name="count" id="count" value="" readonly></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 
                                 <div class="row">
@@ -182,7 +189,7 @@
             
             $(document).ready(function () {
                 var table;
-                function getdata(mrno){
+                function getdata(mrno,pallet){
                     $("#suma").val(0);
                     $("#countstar").val(0);          
                     $("#sumq").val(0);
@@ -191,7 +198,7 @@
                     
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?status=G12&mrno='+mrno,
+                        ajax: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
@@ -219,7 +226,7 @@
                     }); 
                     $.ajax({
                         type: "POST",
-                        url: 'getdatawm?status=G12&mrno='+mrno,
+                        url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
                             
@@ -242,7 +249,7 @@
                 
                 
                 $("#btn-getdata").click(function(){
-                    if($("#po").val() == ""){
+                    if($("#mrno").val() == null){
                         $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
@@ -251,7 +258,7 @@
                         })
                     }else{
                         $("#btn-send").removeClass("disabled");                       
-                        getdata($("#mrno").val());  
+                        getdata($("#mrno").val(),$("#pallet").val());  
                        
                     }         
                 });
@@ -259,7 +266,7 @@
                     var table = $("#mytable").DataTable();
                     var data = table.rows('.selected').data();
                     var url = 'getdatawm?status=G13&mrno='+$("#mrno").val()+'&item='+$("#item").val()+'&roll='+data[0][0];
-                 
+                    console.log(url);
                     $.ajax({
                         type: "POST",
                         url: url,
