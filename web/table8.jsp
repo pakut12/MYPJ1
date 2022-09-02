@@ -98,7 +98,7 @@
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>หน้าผ้าที่วัดได้ : </label>
-                                                <input class="form-control form-control-sm" type="text" name="width" id="width" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="width" id="width" value="" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -177,7 +177,7 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>บาร์โค๊ดร้านค้า : </label>
-                                                <input class="form-control form-control-sm" type="text" name="erepeat" id="erepeat" value="" required></input>
+                                                <input class="form-control form-control-sm" type="number" name="erepeat" id="erepeat" value="" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
@@ -191,7 +191,7 @@
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>มาตรฐานสี : </label>
-                                                <input class="form-control form-control-sm" type="text" name="scolor" id="scolor" value="" ></input>
+                                                <input class="form-control form-control-sm" type="number" name="scolor" id="scolor" value="" ></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
