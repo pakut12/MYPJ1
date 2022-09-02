@@ -19,8 +19,8 @@
         
         <div class="container">
             <div class="row">
-                <%@ include file="share/profile.jsp" %>
-                <div class="col-sm-12 col-md-9">
+                
+                <div class="col-sm-12 col-md-12">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="col-sm-12 col-md-3">
                                         <label>พาเลท : </label>
-                                        <input class="form-control form-control-sm" type="text" name="pallet" id="pallet" value="" ></input>
+                                        <input class="form-control form-control-sm" type="number" name="pallet" id="pallet" value="" ></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
@@ -81,7 +81,7 @@
                                         <table class="table table-sm table-bordered  text-center" id="mytable"  >
                                             <thead >
                                                 <tr>
-                                                    <th class="text-center">ลำดับ</th>
+                                                    <th class="text-center">ม้วนที่</th>
                                                     <th class="text-center">หน้าผ้าที่วัดได้</th>
                                                     <th class="text-center">จำนวนที่มา</th>
                                                     <th class="text-center">จำนวนที่ได้</th>
@@ -203,25 +203,8 @@
                         scrollY: true ,
                         scrollX: true ,
                        
-                        columnDefs: [
-                            { "width": "1rem", "targets": 0 },
-                            { "width": "7rem", "targets": 1 },
-                            { "width": "5rem", "targets": 2 },
-                            { "width": "10rem", "targets": 3 },
-                            { "width": "10rem", "targets": 4 },
-                            { "width": "7rem", "targets": 5 },
-                            { "width": "10rem", "targets": 6 },
-                            { "width": "7rem", "targets": 7 },
-                            { "width": "7rem", "targets": 8 },
-                            { "width": "7rem", "targets": 9 },
-                            { "width": "5rem", "targets": 10 },
-                            { "width": "10rem", "targets": 11},  
-                            { "width": "5rem", "targets": 12 },
-                            { "width": "5rem", "targets": 13 },  
-                            { "width": "10rem", "targets": 14 },
-                            { "width": "5rem", "targets": 15 },
-                        ],
-                        select:"single"
+                        
+                        select: true
                                              
                     }); 
                     $.ajax({
@@ -240,16 +223,28 @@
                             $("#sumstar").val(de.sumstar);
                             
                         }    
+                    });  
+                    $.ajax({
+                        type: "POST",
+                        url: 'getdatawm?status=G14&mrno='+mrno+'&pallet='+pallet,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            console.log(de);
+                            $("#remark1").val(de.remark1);
+                            $("#remark2").val(de.remark2);
+                            $("#remark3").val(de.remark3);
+                            
+                        }    
                     });                    
                 }
                
                 $("#page3").addClass("active");
                 $("#btn-send").addClass("disabled");
-                getdata("");  
+                getdata("","");  
                 
                 
                 $("#btn-getdata").click(function(){
-                    if($("#mrno").val() == null){
+                    if($("#mrno").val() == "" || $("#pallet").val() == ""){
                         $("#myform").addClass("was-validated");
                         Swal.fire({
                             icon: 'error',
@@ -266,7 +261,7 @@
                     var table = $("#mytable").DataTable();
                     var data = table.rows('.selected').data();
                     var url = 'getdatawm?status=G13&mrno='+$("#mrno").val()+'&item='+$("#item").val()+'&roll='+data[0][0];
-                    console.log(url);
+                
                     $.ajax({
                         type: "POST",
                         url: url,
@@ -279,39 +274,64 @@
                     });       
                 });
                 $("#btn-send").click(function(){
-                    var table = $("#mytable").DataTable();
-                    var data = table.rows('.selected').data();
+                    var mrno = $("#mrno").val();
+                    var pallet = $("#pallet").val();
+                   
                     var remark1 = $("#remark1").val();
                     var remark2 = $("#remark2").val();
                     var remark3 = $("#remark3").val();
                     var gradeqc = $("#gradeqc").val();
                     var mrno = $("#mrno").val();
                     var item = $("#item").val();
-                    var roll = data[0][0];
-                   
-        
-                    var url = 'edititem?status=G4&remark1='+remark1+'&remark2='+remark2+'&remark3='+remark3+'&mrno='+mrno+'&item='+item+'&roll='+roll+'&gradeqc='+gradeqc;
-                   
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        success: function(msg,status){
-                            if(msg == 'true'){
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'บันทึกข้อมูลสำเร็จ',
-                                    text: 'บันทึกข้อมูลสำเร็จ'
-                                })
-                            }else{
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
-                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                })
+                    
+                    if(mrno == "" || pallet == ""){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ข้อมูลไม่ถูกต้อง',
+                            text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
+                        })
+                    }else{
+                          
+                        $.ajax({
+                            type: "POST",
+                            url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
+                            success: function(msg,status){
+                                var de = $.parseJSON(msg);
+                                $.each(de.arrroll,function(k,v){
+                                    var url = 'edititem?status=G4&remark1='+remark1+'&remark2='+remark2+'&remark3='+remark3+'&mrno='+mrno+'&item='+item+'&roll='+v+'&gradeqc='+gradeqc;
+                                    $.ajax({
+                                        type: "POST",
+                                        url: url,
+                                        success: function(msg,status){
+                                            if(msg == 'true'){
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'บันทึกข้อมูลสำเร็จ',
+                                                    text: 'บันทึกข้อมูลสำเร็จ'
+                                                })
+                                                
+                                            }else{
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                                })
+                                            }
+                                        }    
+                                    });   
+                                });
+                                getdata($("#mrno").val(),$("#pallet").val());  
                             }
-                        }    
-                    });     
-                     
+                        });   
+                    }
+                  
+               
+             
+         
+                    
+                    
+                   
+                  
                     
                    
                     

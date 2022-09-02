@@ -643,7 +643,7 @@ public class SVgetdatawm extends HttpServlet {
                 try {
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
-                    
+
                     String sql = "select*  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
 
                     ps = conn.prepareStatement(sql);
@@ -659,8 +659,9 @@ public class SVgetdatawm extends HttpServlet {
                     int countstar = 0;
                     float sumstar = 0;
                     float gradeqc = 0;
+                    JSONArray arrroll = new JSONArray();
                     while ((rec.next()) && (rec != null)) {
-
+                        arrroll.add(rec.getString("roll"));
                         JSONArray arrjson = new JSONArray();
                         arrjson.add(rec.getString("roll"));
                         arrjson.add(rec.getString("WIDTH"));
@@ -675,8 +676,8 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("EJOINT"));
                         arrjson.add(rec.getString("EFURROW"));
                         arrjson.add(rec.getString("TOTERR"));
-                        //arrjson.add(rec.getString("point"));
-                        arrjson.add("");
+                        arrjson.add(rec.getString("point")); // คะเเนน ถ้า con จำลองใส่ point เเต่ถ้าจริงใส่ "" เพราะยังไม่ได้สร้างฟิวpoint ใหม่ในดาต้าจริง 2/9/2565
+
                         arrjson.add(rec.getString("EREPEAT"));
                         arrjson.add(rec.getString("MARK_TOTERR"));
 
@@ -686,7 +687,7 @@ public class SVgetdatawm extends HttpServlet {
                         }
 
 
-
+                        obj.put("arrroll", arrroll);
                         obj.put("item", rec.getString("item"));
                         obj.put("desc1", rec.getString("desc1"));
                         arrlist.add(arrjson);
@@ -746,6 +747,39 @@ public class SVgetdatawm extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+            } else if (status.equals("G14")) {
+                try {
+                    String mrno = request.getParameter("mrno");
+                    String pallet = request.getParameter("pallet");
+
+                    String sql = "select wmqck.REMARK1,wmqck.REMARK2,wmqck.REMARK3  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, pallet);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+                        obj.put("remark1", rec.getString("REMARK1"));
+                        obj.put("remark2", rec.getString("REMARK2"));
+                        obj.put("remark3", rec.getString("REMARK3"));
+
+                        n++;
+                    }
+
+
+                    obj.put("count", n);
+
+                    out.print(obj);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
             }
 

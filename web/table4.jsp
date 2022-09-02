@@ -19,8 +19,8 @@
         
         <div class="container">
             <div class="row">
-                <%@ include file="share/profile.jsp" %>
-                <div class="col-sm-12 col-md-9">
+               
+                <div class="col-sm-12 col-md-12">
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
@@ -83,8 +83,8 @@
                                             <div class="col-sm-12 col-md-6">
                                                 <label class="h6">Table WMBARCODE</label> 
                                             </div>
-                                            <div class="col-sm-12 col-md-6">
-                                                <label class="h6">จำนวนทั้งหมด : <label id="countwmbarcode"></label></label> 
+                                            <div class="col-sm-12 col-md-6 text-end">
+                                                <label class="h5 ">จำนวนทั้งหมด : <label id="countwmbarcode"></label></label> 
                                             </div>
                                         </div>
                                         
@@ -111,8 +111,8 @@
                                             <div class="col-sm-12 col-md-6">
                                                 <label class="h6">Table WMQCK</label> 
                                             </div>
-                                            <div class="col-sm-12 col-md-6">
-                                                <label class="h6">จำนวนทั้งหมด : <label id="countwmqck"></label></label> 
+                                            <div class="col-sm-12 col-md-6 text-end">
+                                                <label class="h5">จำนวนทั้งหมด : <label id="countwmqck"></label></label> 
                                             </div>
                                         </div>
                                         
@@ -192,8 +192,8 @@
                         select:true,
                         info: false,
                         columnDefs: [
-                            { "width": "10rem", "targets": 0 },
-                            { "width": "10rem", "targets": 1 },
+                            { "width": "18rem", "targets": 0 },
+                            { "width": "18rem", "targets": 1 },
                             
                         ]
                                             

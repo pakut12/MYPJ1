@@ -19,10 +19,9 @@
         
         <div class="container">
             <div class="row">
-                <%@ include file="share/profile.jsp" %>
                 
-                    
-                <div class="col-sm-12 col-md-9" >
+                
+                <div class="col-sm-12 col-md-12" >
                     <div id="pageview">
                         <div class="card shadow ">
                             <div class="card-header text-center">
@@ -454,6 +453,7 @@
                                     title: 'บันทึกข้อมูลสำเร็จ',
                                     text: 'บันทึกข้อมูลสำเร็จ'
                                 });
+                                getdata($("#barcode").val()); 
                             }else if(msg == "false"){
                                 Swal.fire({
                                     icon: 'error',
