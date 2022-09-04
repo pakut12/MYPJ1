@@ -811,8 +811,8 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("remark3"));
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add(rec.getString("mark_toterr"));
-                        
-                        
+
+
                         arrlist.add(arrjson);
                         n++;
                     }
@@ -827,6 +827,51 @@ public class SVgetdatawm extends HttpServlet {
                 }
 
 
+            } else if (status.equals("G16")) {
+                try {
+
+//                    String mrno = request.getParameter("mrno");
+//                    String pallet = request.getParameter("pallet");
+//
+//                    String sql = "select wmqck.* from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+//
+//                    ps = conn.prepareStatement(sql);
+//                    ps.setString(1, mrno);
+//                    ps.setString(2, pallet);
+//                    rec = ps.executeQuery();
+//
+//                    JSONObject obj = new JSONObject();
+//                    ArrayList arrlist = new ArrayList();
+//                    int n = 0;
+//                    while ((rec.next()) && (rec != null)) {
+//                        JSONArray arrjson = new JSONArray();
+//                        arrjson.add(rec.getString("roll"));
+//                        arrjson.add(rec.getString("item"));
+//                        arrjson.add(rec.getString("palet"));
+//                        arrjson.add(rec.getString("actqty"));
+//                        arrjson.add(rec.getString("gradeqc"));
+//                        arrjson.add(rec.getString("byname"));
+//                        arrjson.add(rec.getString("remark1"));
+//                        arrjson.add(rec.getString("remark2"));
+//                        arrjson.add(rec.getString("remark3"));
+//                        arrjson.add(rec.getString("toterr"));
+//                        arrjson.add(rec.getString("mark_toterr"));
+//
+//
+//                        arrlist.add(arrjson);
+//                        n++;
+//                    }
+//
+//
+//                    obj.put("count", n);
+//                    obj.put("data", arrlist);
+//                    out.print(obj);
+
+                    
+                    getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
 
