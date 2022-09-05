@@ -27,6 +27,7 @@
                    */
                    
                }
+               
         
         
     </style>
@@ -101,6 +102,7 @@
                             <th>ลำ<br>ดับ<br>ที่</th>
                             <th>หน้าผ้า<br>ที่วัดได้</th>
                             <th>สี</th>
+                            <th>มาตร<br>ฐานสี</th>
                             <th>จำนวน<br>ที่มา</th>
                             <th>จำนวน<br>ที่ได้</th>
                             <th>ด้าย<br>เเทรก</th>
@@ -113,11 +115,11 @@
                             <th>ลาย<br>ขวาง</th>
                             <th>บาร์โค๊ด<br>ลูกค้า</th>
                             <th>Batch</th>
-                            <th>ตำหนิรวม</th>
+                            <th>ตำหนิ<br>รวม</th>
+                            <th>คะ<br>เเนน</th>
                             <th>Mark</th>
-                            <th>Mark</th>
-                            <th>Mark</th>
-                            <th></th>
+                            
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -126,6 +128,7 @@
                             <td><%=n + 1%></td>
                             <td>170</td>
                             <td>4.5</td>
+                            <td>*</td>
                             <td>44</td>
                             <td>44</td>
                             <td>0</td>
@@ -140,9 +143,9 @@
                             <td>KH-602/25</td>
                             <td>1</td>
                             <td>*</td>
+                            
                             <td>*</td>
-                            <td>*</td>
-                            <td></td>
+                            
                         </tr>
                         <%}%>
                     </tbody>
@@ -242,29 +245,9 @@
                 $('#mytable').DataTable({
                     searching: false,
                     paging: false,
-                    info: false,
-                    "columnDefs": [
-                        { "width": "1rem", "targets": 0 },
-                        { "width": "1rem", "targets": 1 },
-                        { "width": "1rem", "targets": 2 },
-                        { "width": "1rem", "targets": 3 },
-                        { "width": "1rem", "targets": 4 },
-                        { "width": "1rem", "targets": 5 },
-                        { "width": "1rem", "targets": 6 },
-                        { "width": "1rem", "targets": 7 },
-                        { "width": "1rem", "targets": 8 },
-                        { "width": "1rem", "targets": 9 },
-                        { "width": "1rem", "targets": 10 },
-                        { "width": "1rem", "targets": 11},
-                        { "width": "1rem", "targets": 12},
-                        { "width": "1rem", "targets": 13},
-                        { "width": "7rem", "targets": 14},
-                        { "width": "1rem", "targets": 15},
-                        { "width": "1rem", "targets": 16},
-                        { "width": "1rem", "targets": 17},
-                        { "width": "1rem", "targets": 18},
-                      
-                    ]
+                    info: false
+                   
+                   
                   
                      
                 });

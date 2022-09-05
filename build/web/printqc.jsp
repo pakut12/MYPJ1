@@ -78,7 +78,7 @@
                                                     <div class="col-sm-12 col-md-9">
                                                         <label>รายชื่อ QI Approve ล่าสุด : </label>
                                                         <input class="form-control form-control-sm" type="text" name="rebyname1" id="rebyname1" value="" readonly></input>
-                                                        <label>รายชื่อ : </label>
+                                                        <label>Approve by  : </label>
                                                         <select class="form-select form-select-sm " id="byname1" name="byname1">
                                                             <option value="คณิศา">คณิศา  ดิลกกาญจนาคม</option>
                                                             <option value="รัชนก">รัชนก  กุณต๊ะคำ</option>
