@@ -197,7 +197,7 @@ public class SVedititem extends HttpServlet {
                     String item = (String) request.getParameter("item");
                     String roll = (String) request.getParameter("roll");
                     String gradeqc = (String) request.getParameter("gradeqc");
-                    
+
                     String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?;";
 
                     ps = con.prepareStatement(sql);
@@ -209,6 +209,40 @@ public class SVedititem extends HttpServlet {
                     ps.setString(6, item);
                     ps.setString(7, roll);
 
+                    if (ps.executeUpdate() > 0) {
+                        out.print("true");
+                    } else {
+                        out.print("false");
+                    }
+                } else if (status.equals("G5")) {
+                    String byname1 = request.getParameter("byname1");
+                    String mrno = request.getParameter("mrno");
+                    String pallet = request.getParameter("pallet");
+
+                    String sql = "update wmqck set byname1=? where mrno=? and palet=? ";
+
+                    ps = con.prepareStatement(sql);
+                    ps.setString(1, byname1);
+                    ps.setString(2, mrno);
+                    ps.setString(3, pallet);
+                    
+                    if (ps.executeUpdate() > 0) {
+                        out.print("true");
+                    } else {
+                        out.print("false");
+                    }
+                }else if (status.equals("G6")) {
+                    String qicheck = request.getParameter("qicheck");
+                    String mrno = request.getParameter("mrno");
+                    String pallet = request.getParameter("pallet");
+
+                    String sql = "Update wmbarcode set resultqc=? where mrno=? and palet=?  ";
+
+                    ps = con.prepareStatement(sql);
+                    ps.setString(1, qicheck);
+                    ps.setString(2, mrno);
+                    ps.setString(3, pallet);
+                    
                     if (ps.executeUpdate() > 0) {
                         out.print("true");
                     } else {

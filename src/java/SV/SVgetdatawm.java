@@ -867,11 +867,44 @@ public class SVgetdatawm extends HttpServlet {
 //                    obj.put("data", arrlist);
 //                    out.print(obj);
 
-                    
+
                     getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            } else if (status.equals("G17")) {
+                try {
+                    String mrno = request.getParameter("mrno");
+                    String pallet = request.getParameter("pallet");
+
+                    String sql = "select wmbarcode.RESULTQC,wmqck.BYNAME1  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, pallet);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+
+                        obj.put("RESULTQC", rec.getString("RESULTQC"));
+                        obj.put("BYNAME1", rec.getString("BYNAME1"));
+
+
+                        n++;
+                    }
+
+
+                
+                    out.print(obj);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
             }
 
 
