@@ -27,7 +27,7 @@
                    */
                    
                }
-               
+        
         
         
     </style>
@@ -38,7 +38,7 @@
         <div class="container" id="main">
             <div class="row mb-3">
                 <div class="col-3">
-                    <div class="text-start"><b>สาขา :</b> 9000</div>
+                    <div class="text-start"><b>สาขา :</b> <label id="PLANT"></label></div>
                 </div>
                 <div class="col-6 ">
                     <div class="text-center h5" id="officename"><b>บริษัท ไทยสปอร์การ์เมนต์ จำกัด<br>ใบตรวจสอบ</b></div>
@@ -49,46 +49,46 @@
             </div>
             <div class="row mb-3">
                 <div class="col-3">
-                    <div class="text-start"><b>รหัส :</b> 90BKL0174-DG65</div>
+                    <div class="text-start"><b>รหัส :</b> <label id="ITEM"></label></div>
                 </div>
                 <div class="col-3 ">
-                    <div class="text-start"><b>เลขที่ใบสั่งซื้อ :</b> 4592200652</div>
+                    <div class="text-start"><b>เลขที่ใบสั่งซื้อ :</b> <label id="PO"></label></div>
                 </div>
                 <div class="col-3 ">
-                    <div class="text-end"><b>เลขที่บิล :</b> 193139</div>
+                    <div class="text-end"><b>เลขที่บิล :</b> <label id="INVOICE"></label></div>
                 </div>
                 <div class="col-3 ">
-                    <div class="text-end"><b>วันที่บิล :</b> 23/7/2022</div>
+                    <div class="text-end"><b>วันที่บิล :</b> <label id="INVOICEDATE"></label></div>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-10">
-                    <div class="text-start"><b>Description1/หน้าผ้าที่สั่งซื้อ :</b> 20174EA POLY KNIT WD.66 C#92/DKCHARCOAL</div>
+                    <div class="text-start"><b>Description1/หน้าผ้าที่สั่งซื้อ :</b> <label id="DESC1"></label></div>
                 </div>
                 <div class="col-2">
-                    <div class="text-end"><b>พาเลต :</b> 125</div>
+                    <div class="text-end"><b>พาเลต :</b> <label id="PALET"></label></div>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-6">
-                    <div class="text-start"><b>Description2 :</b>  100% POLYESTER DOUBLE KNIT FABRIC KN M/</div>
+                    <div class="text-start"><b>Description2 :</b>  <label id="DESC2"></label></div>
                 </div>
                 <div class="col-6">
-                    <div class="text-end"><b>Description3 :</b> C 22GG/34IN  YARN #100-36/150-48 WEIGHT</div>
+                    <div class="text-end"><b>Description3 :</b> <label id="DESC3"></label></div>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-5">
-                    <div class="text-start"><b>ร้านค้า :</b> บริษัท โทเร เท็กซ์ไทล์ (ประเทศไทย)</div>
+                    <div class="text-start"><b>ร้านค้า :</b> <label id="SUPNAME"></label></div>
                 </div>
                 <div class="col-3 ">
-                    <div class="text-start"><b>เลขที่เอกสาร :</b> 902208002776</div>
+                    <div class="text-start"><b>เลขที่เอกสาร :</b> <label id="MRNO"></label></div>
                 </div>
                 <div class="col-2 ">
-                    <div class="text-end"><b>หน่วยนับ :</b> YD</div>
+                    <div class="text-end"><b>หน่วยนับ :</b> <label id="UNIT"></label></div>
                 </div>
                 <div class="col-2 ">
-                    <div class="text-end"><b>วันที่ :</b> 26/8/2022</div>
+                    <div class="text-end"><b>วันที่ :</b> <label id="QCDATE"></label></div>
                 </div>
             </div>
         </div>
@@ -115,39 +115,15 @@
                             <th>ลาย<br>ขวาง</th>
                             <th>บาร์โค๊ด<br>ลูกค้า</th>
                             <th>Batch</th>
-                            <th>ตำหนิ<br>รวม</th>
+                            <th>ตำหนิรวม</th>
                             <th>คะ<br>เเนน</th>
                             <th>Mark</th>
                             
-                           
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%for (int n = 0; n < 40; n++) {%>
-                        <tr>
-                            <td><%=n + 1%></td>
-                            <td>170</td>
-                            <td>4.5</td>
-                            <td>*</td>
-                            <td>44</td>
-                            <td>44</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>603104421</td>
-                            <td>KH-602/25</td>
-                            <td>1</td>
-                            <td>*</td>
-                            
-                            <td>*</td>
-                            
-                        </tr>
-                        <%}%>
+                        
                     </tbody>
                 </table>
             </div>
@@ -161,8 +137,8 @@
                         <div class="col-6 text-center">
                             <label>จำนวนที่มารวม/จำนวนที่ได้รวม</label>
                             <hr>
-                            <label>จำนวนที่มารวม : 12 YD</label>
-                            <label>จำนวนที่ได้รวม : 12 YD</label>
+                            <label>จำนวนที่มารวม : 12 </label>
+                            <label>จำนวนที่ได้รวม : 12 </label>
                             
                         </div>
                         <div class="col-6 text-center"> 
@@ -184,16 +160,14 @@
                 </div>
                 <div class="col-3 text-start ">
                     <label>ชื่อผู้ตรวจ : </label>
-                    <hr>
+                 
                     <div class="text-start">
                         <label>ผู้รับผิดชอบ</label>
-                        <br>
-                        <label>จัดซื้อ : </label>
-                        <label>.......................................................</label>
-                        <label>สต็อกวัตถุดิบ : </label>
-                        <label>.......................................................</label>
-                        <label>เเผนกตัด :  </label>
-                        <label>.......................................................</label>
+                      
+                        <p>จัดซื้อ : .......................................................</p>
+                        <p>สต็อกวัตถุดิบ : .......................................................</p>
+                        <p>เเผนกตัด : .......................................................</p>
+                       
                     </div>
                 </div>
             </div>
@@ -241,19 +215,66 @@
                 }
                 $("#today").text(today());
                 $("#today1").text(today1());
-    
+                
+                
                 $('#mytable').DataTable({
                     searching: false,
                     paging: false,
-                    info: false
-                   
-                   
-                  
-                     
+                    info: false,
+                    ajax: 'getdatawm?status=G16&mrno=902207002597&pallet=125',
+                    columnDefs: [
+                        { "width": "1rem", "targets": 0 },
+                        { "width": "1rem", "targets": 1 },
+                        { "width": "1rem", "targets": 2 },
+                        { "width": "1rem", "targets": 3 },
+                        { "width": "1rem", "targets": 4 },
+                        { "width": "1rem", "targets": 5 },
+                        { "width": "1rem", "targets": 6 },
+                        { "width": "1rem", "targets": 7 },
+                        { "width": "1rem", "targets": 8 },
+                        { "width": "1rem", "targets": 9 },
+                        { "width": "1rem", "targets": 10 },
+                        { "width": "1rem", "targets": 11},
+                        { "width": "1rem", "targets": 12},
+                        { "width": "1rem", "targets": 13},
+                        { "width": "1rem", "targets": 14},
+                        { "width": "7rem", "targets": 15},
+                        { "width": "1rem", "targets": 16},
+                        { "width": "1rem", "targets": 17},
+                        { "width": "1rem", "targets": 18},
+                      
+                    ] 
                 });
     
-                window.print();
                 
+                $.ajax({
+                    type: "POST",
+                    url: 'getdatawm?status=G16&mrno=902207002597&pallet=125',
+                    success: function(msg,status){
+                        var de = $.parseJSON(msg);
+                        $("#PLANT").text(de.PLANT);
+                        $("#ITEM").text(de.ITEM);
+                        $("#PO").text(de.PO);
+                        $("#DESC1").text(de.DESC1);
+                        $("#DESC2").text(de.DESC2);
+                        $("#DESC3").text(de.DESC3);
+                        $("#INVOICEDATE").text(de.INVOICEDATE);
+                        $("#MRNO").text(de.MRNO);
+                        $("#UNIT").text(de.UNIT);
+                        $("#QCDATE").text(de.QCDATE);
+                        $("#REMARKRM1").text(de.REMARKRM1);
+                        $("#REMARKRM2").text(de.REMARKRM2);
+                        $("#REMARKRM3").text(de.REMARKRM3);
+                        $("#SUPNAME").text(de.SUPNAME);
+                        $("#INVOICE").text(de.INVOICE);
+                        $("#PALET").text(de.PALET);
+                        
+                        console.log(de);
+                                  
+                    }    
+                });  
+                
+//  window.print();
             });
         </script>
         

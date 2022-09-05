@@ -40,7 +40,7 @@ public class SVgetdatawm extends HttpServlet {
             PreparedStatement ps = null;
 
 //            conn = DB.ConnDB.getConnection();
-            conn = DB.ConnDB.getConnDB();
+            conn = DB.ConnDB.getConnection();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
@@ -830,45 +830,72 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G16")) {
                 try {
 
-//                    String mrno = request.getParameter("mrno");
-//                    String pallet = request.getParameter("pallet");
-//
-//                    String sql = "select wmqck.* from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
-//
-//                    ps = conn.prepareStatement(sql);
-//                    ps.setString(1, mrno);
-//                    ps.setString(2, pallet);
-//                    rec = ps.executeQuery();
-//
-//                    JSONObject obj = new JSONObject();
-//                    ArrayList arrlist = new ArrayList();
-//                    int n = 0;
-//                    while ((rec.next()) && (rec != null)) {
-//                        JSONArray arrjson = new JSONArray();
-//                        arrjson.add(rec.getString("roll"));
-//                        arrjson.add(rec.getString("item"));
-//                        arrjson.add(rec.getString("palet"));
-//                        arrjson.add(rec.getString("actqty"));
-//                        arrjson.add(rec.getString("gradeqc"));
-//                        arrjson.add(rec.getString("byname"));
-//                        arrjson.add(rec.getString("remark1"));
-//                        arrjson.add(rec.getString("remark2"));
-//                        arrjson.add(rec.getString("remark3"));
-//                        arrjson.add(rec.getString("toterr"));
-//                        arrjson.add(rec.getString("mark_toterr"));
-//
-//
-//                        arrlist.add(arrjson);
-//                        n++;
-//                    }
-//
-//
-//                    obj.put("count", n);
-//                    obj.put("data", arrlist);
-//                    out.print(obj);
+                    String mrno = request.getParameter("mrno");
+                    String pallet = request.getParameter("pallet");
+
+                    String sql = "select * from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, pallet);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    while ((rec.next()) && (rec != null)) {
+                        JSONArray arrjson = new JSONArray();
+                        arrjson.add(rec.getString("roll"));
+                        arrjson.add(rec.getString("width"));
+                        arrjson.add(rec.getString("color"));
+                        arrjson.add("");//rec.getString("scolor")
+                        arrjson.add(rec.getString("quantity"));
+                        arrjson.add(rec.getString("actqty"));
+                        arrjson.add(rec.getString("ethread"));
+                        arrjson.add(rec.getString("ealkali"));
+                        arrjson.add(rec.getString("edirty"));
+                        arrjson.add(rec.getString("eoil"));
+                        arrjson.add(rec.getString("ebroken"));
+                        arrjson.add(rec.getString("eknot"));
+                        arrjson.add(rec.getString("ejoint"));
+                        arrjson.add(rec.getString("efurrow"));
+                        arrjson.add(rec.getString("erepeat"));
+                        arrjson.add(rec.getString("batch"));
+                        arrjson.add(rec.getString("toterr"));
+                        arrjson.add("");//rec.getString("point")
+                        arrjson.add(rec.getString("mark_toterr"));
+                        arrjson.add("");
+                        arrlist.add(arrjson);
+
+                        obj.put("PLANT", rec.getString("PLANT"));
+                        obj.put("ITEM", rec.getString("ITEM"));
+                        obj.put("PO", rec.getString("PO"));
+                        obj.put("DESC1", rec.getString("DESC1"));
+                        obj.put("DESC2", rec.getString("DESC2"));
+                        obj.put("DESC3", rec.getString("DESC3"));
+                        obj.put("INVOICEDATE", rec.getString("INVOICEDATE"));
+                        obj.put("MRNO", rec.getString("MRNO"));
+                        obj.put("UNIT", rec.getString("UNIT"));
+                        obj.put("QCDATE", rec.getString("QCDATE"));
+                        obj.put("REMARKRM1", rec.getString("REMARKRM1"));
+                        obj.put("REMARKRM2", rec.getString("REMARKRM2"));
+                        obj.put("REMARKRM3", rec.getString("REMARKRM3"));
+                        obj.put("SUPNAME", rec.getString("SUPNAME"));
+                        obj.put("INVOICE", rec.getString("INVOICE"));
+                        obj.put("PALET", rec.getString("PALET"));
+                        
+                        
+                       
+                        n++;
+                    }
 
 
-                    getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+                //  getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -897,7 +924,7 @@ public class SVgetdatawm extends HttpServlet {
                     }
 
 
-                
+
                     out.print(obj);
 
                 } catch (Exception e) {
