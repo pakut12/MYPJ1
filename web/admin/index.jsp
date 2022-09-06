@@ -30,7 +30,7 @@
         %>
         <form action="login" method="post" class="needs-validation" novalidate>
             <div class="container mt-5">
-                <div class="text-center h3 mb-3">RM / QC RM</div>
+                <div class="text-center h3 mb-3">Admin</div>
                 <div class="card shadow-lg col-sm-12 col-md-5 mx-auto ">
                     <div class="card-header">
                         Login
@@ -50,7 +50,7 @@
                         <div class="text-center">
                             <button type="submit" class="btn btn-sm btn-success "><i class="bi bi-box-arrow-in-right"></i> OK</button>
                             <button class="btn btn-sm btn-danger" type="button" id="reset" name="reset"><i class="bi bi-arrow-clockwise"></i> Reset</button>
-                            <a href="admin/index.jsp"><button class="btn btn-sm btn-primary" type="button" id="admin" name="admin"><i class="bi bi-person-workspace"></i> Admin</button></a>
+                            <a href="../index.jsp"><button class="btn btn-sm btn-primary" type="button" id="" name=""><i class="bi bi-back"></i> กลับหน้าหลัก</button></a>
                         </div>
                     </div>
                 </div>

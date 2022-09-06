@@ -29,6 +29,10 @@ public class SVdel extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            ResultSet rec = null;
+            Connection conn = null;
+            PreparedStatement ps = null;
+            conn = DB.ConnDB.getConnDB();
             String status = request.getParameter("status");
             if (status.equals("D1")) {
                 try {
@@ -36,13 +40,11 @@ public class SVdel extends HttpServlet {
                     String item = request.getParameter("item").trim();
                     String roll = request.getParameter("roll").trim();
 
-                    ResultSet rec = null;
-                    Connection conn = null;
-                    PreparedStatement ps = null;
+
 
 
                     String sql = "DELETE FROM wmbarcode WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
-                    conn = DB.ConnDB.getConnDB();
+
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
                     ps.setString(2, item);
@@ -62,7 +64,7 @@ public class SVdel extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
+            } 
 
         } finally {
             out.close();
