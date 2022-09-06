@@ -895,7 +895,7 @@ public class SVgetdatawm extends HttpServlet {
                     out.print(obj);
 
 
-                //  getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
+                //getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

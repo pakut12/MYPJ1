@@ -3,7 +3,6 @@
     Created on : 20 ส.ค. 2565, 17:23:49
     Author     : Gus
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -221,7 +220,7 @@
                     searching: false,
                     paging: false,
                     info: false,
-                    ajax: 'getdatawm?status=G16&mrno=902207002597&pallet=125',
+                    ajax: 'getdatawm?status=G16&mrno=902208002776&pallet=39',
                     columnDefs: [
                         { "width": "1rem", "targets": 0 },
                         { "width": "1rem", "targets": 1 },
@@ -249,7 +248,7 @@
                 
                 $.ajax({
                     type: "POST",
-                    url: 'getdatawm?status=G16&mrno=902207002597&pallet=125',
+                    url: 'getdatawm?status=G16&mrno=902208002776&pallet=39',
                     success: function(msg,status){
                         var de = $.parseJSON(msg);
                         $("#PLANT").text(de.PLANT);
