@@ -80,9 +80,7 @@
                                                         <input class="form-control form-control-sm" type="text" name="rebyname1" id="rebyname1" value="" readonly></input>
                                                         <label>Approve by  : </label>
                                                         <select class="form-select form-select-sm " id="byname1" name="byname1">
-                                                            <option value="คณิศา">คณิศา  ดิลกกาญจนาคม</option>
-                                                            <option value="รัชนก">รัชนก  กุณต๊ะคำ</option>
-                                                            <option value="ธวัชชัย">ธวัชชัย  พรหมเวียง</option>
+                                                            
                                                         </select>
                                                         <div class="invalid-feedback mb-3 text-center">
                                                             กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -142,6 +140,19 @@
         <script>
             
             $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    url: 'user?status1=G3',
+                    success: function(msg,status){
+                        var de = $.parseJSON(msg);
+                        $.each(de.key,function(k,v){
+                          $('#byname1').append("<option value='"+de.value[k]+"'>"+v+"</option>");
+                        });
+                      
+                            
+                            
+                    }    
+                });
                 var table;
                 function getdata(mrno,pallet){
                     $("#qitrue").prop("checked",false);

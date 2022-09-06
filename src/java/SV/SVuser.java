@@ -261,6 +261,27 @@ public class SVuser extends HttpServlet {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                } else if (status1.equals("G3")) {
+                    try {
+                        String sql = "SELECT * FROM wmuser WHERE wmuser.statusqi = 'Y';";
+                        ps = con.prepareStatement(sql);
+                        rec = ps.executeQuery();
+                        JSONObject obj = new JSONObject();
+                        ArrayList arrlist = new ArrayList();
+                        ArrayList arrlist1 = new ArrayList();
+                        while ((rec.next()) && (rec != null)) {
+                            arrlist.add(rec.getString("firstname"));
+                            arrlist1.add(rec.getString("firstname") + " " + rec.getString("lastname"));
+
+                        }
+                        obj.put("key", arrlist1);
+                        obj.put("value", arrlist);
+                        out.print(obj);
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
