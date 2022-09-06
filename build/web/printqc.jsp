@@ -148,9 +148,7 @@
                         $.each(de.key,function(k,v){
                           $('#byname1').append("<option value='"+de.value[k]+"'>"+v+"</option>");
                         });
-                      
-                            
-                            
+                          
                     }    
                 });
                 var table;
@@ -338,7 +336,7 @@
                 $("#btn-send").click(function(){
                     var mrno = $("#mrno").val();
                     var pallet = $("#pallet").val();
-                    var url = "getdatawm?status=G16&mrno="+mrno+"&pallet="+pallet;
+                    var url = "displayprint1.jsp?mrno="+mrno+"&pallet="+pallet;
                  
                     window.open(url, '_blank');
                

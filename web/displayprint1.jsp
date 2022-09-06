@@ -159,20 +159,25 @@
                 </div>
                 <div class="col-3 text-start ">
                     <label>ชื่อผู้ตรวจ : </label>
-                 
+                    
                     <div class="text-start">
                         <label>ผู้รับผิดชอบ</label>
-                      
+                        
                         <p>จัดซื้อ : .......................................................</p>
                         <p>สต็อกวัตถุดิบ : .......................................................</p>
                         <p>เเผนกตัด : .......................................................</p>
-                       
+                        
                     </div>
                 </div>
             </div>
         </div>
         <script>
             $(document).ready(function(){
+                const queryString = window.location.search;
+                console.log(queryString);
+                const urlParams = new URLSearchParams(queryString);
+                const mrno = urlParams.get('mrno')
+                const pallet = urlParams.get('pallet')
                 function today(){
                     var date = new Date();
                     var d =date.getDate()
@@ -220,7 +225,7 @@
                     searching: false,
                     paging: false,
                     info: false,
-                    ajax: 'getdatawm?status=G16&mrno=902208002776&pallet=39',
+                    ajax: 'getdatawm?status=G16&mrno='+mrno+'&pallet='+pallet+'',
                     columnDefs: [
                         { "width": "1rem", "targets": 0 },
                         { "width": "1rem", "targets": 1 },
@@ -248,7 +253,7 @@
                 
                 $.ajax({
                     type: "POST",
-                    url: 'getdatawm?status=G16&mrno=902208002776&pallet=39',
+                    url: 'getdatawm?status=G16&mrno='+mrno+'&pallet='+pallet+'',
                     success: function(msg,status){
                         var de = $.parseJSON(msg);
                         $("#PLANT").text(de.PLANT);
@@ -273,7 +278,7 @@
                     }    
                 });  
                 
-//  window.print();
+                //  window.print();
             });
         </script>
         
