@@ -143,7 +143,7 @@
                         
                         
                        
-                        var url = "../user?status1=U1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
+                        var url = "user?status1=U1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
                         
                        
             

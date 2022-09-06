@@ -118,14 +118,12 @@
             var table;
             function getdata(){
                 table =  $("#mytable").DataTable({
-                    ajax:"../user?status1=G2",
+                    ajax:"user?status1=G2",
                     bDestroy: true
                 });
             }  
             $(document).ready(function () {
                       
-                
-    
                 getdata();
             
                 $("#page2").addClass("active"); 
@@ -137,7 +135,7 @@
         
                 $("#btn-getdata").click(function(){
                     var userid = $("#userid").val();
-                    var url = "../user?status1=G1&userid="+ userid ;
+                    var url = "user?status1=G1&userid="+ userid ;
                     $.ajax({
                         type:"POST",
                         url:url,
@@ -200,9 +198,9 @@
                         var url = null;
                         
                         if(data == "มีข้อมูล"){
-                            url = "../user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
+                            url = "user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
                         }else if(data == "ไม่มีข้อมูล"){
-                            url = "../user?status1=S2&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
+                            url = "user?status1=S2&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
                         }
                        
                         // var url = "../user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi

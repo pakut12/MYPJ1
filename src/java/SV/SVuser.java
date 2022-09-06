@@ -127,8 +127,8 @@ public class SVuser extends HttpServlet {
                         arrjson.add(rec.getString("lastname"));
                         arrjson.add(status);
                         arrjson.add(statusqi);
-                        arrjson.add("<a href='../user?status1=E1&userid=" + rec.getString("userid") + "'><button class='btn btn-warning btn-sm' type='button'>เเก้ไข</button></a>");
-                        arrjson.add("<a href='../user?status1=D2&userid=+" + rec.getString("userid") + "'><button class='btn btn-danger btn-sm' type='button'>ลบ</button></a>");
+                        arrjson.add("<a href='user?status1=E1&userid=" + rec.getString("userid") + "'><button class='btn btn-warning btn-sm' type='button'>เเก้ไข</button></a>");
+                        arrjson.add("<a href='user?status1=D2&userid=+" + rec.getString("userid") + "'><button class='btn btn-danger btn-sm' type='button'>ลบ</button></a>");
                         arrlist.add(arrjson);
 
 
@@ -185,7 +185,7 @@ public class SVuser extends HttpServlet {
                         } else {
                             out.print("false");
                         }
-                        out.print("<script langquage='javascript'>window.location='admin/displayuser.jsp';</script>");
+                        out.print("<script langquage='javascript'>window.location='displayuser.jsp';</script>");
 
 
 
@@ -208,7 +208,7 @@ public class SVuser extends HttpServlet {
                         while ((rec.next()) && (rec != null)) {
 
 
-                            url = "admin/displayedituser.jsp?userid=" + rec.getString("userid") + "&password=" + rec.getString("password") +
+                            url = "displayedituser.jsp?userid=" + rec.getString("userid") + "&password=" + rec.getString("password") +
                                     "&firstname=" + rec.getString("firstname") + "&lastname=" + rec.getString("lastname") + "&status=" + rec.getString("status") + "&statusqi=" + rec.getString("statusqi");
 
 
@@ -245,7 +245,7 @@ public class SVuser extends HttpServlet {
                         ps.setString(5, statusqi);
                         ps.setString(6, userid);
 
-                        String url = "admin/home.jsp";
+                        String url = "home.jsp";
 
                         if (ps.executeUpdate() > 0) {
                             out.print("true");

@@ -47,25 +47,27 @@ public class SVlogin extends HttpServlet {
                 md.update(pass.getBytes());
                 String digestpass = new BigInteger(1, md.digest()).toString(16).toUpperCase();
 
-                String sql = "select * from pgusertab inner join v_pwemployee on pgusertab.USERID = v_pwemployee.PWEMPLOYEE where pgusertab.USERID = ? and pgusertab.PASSWD = ? ";
-                conn = DB.ConnDB.getConnection();
+                String sql = "SELECT * FROM wmuser WHERE wmuser.userid = ? AND wmuser.password = ?";
+                conn = DB.ConnDB.getConnDB();
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, user);
                 ps.setString(2, digestpass);
                 rec = ps.executeQuery();
 
                 if ((rec != null) && (rec.next())) {
-                    page = "/home.jsp";
+
+                    page = "home.jsp";
+
+                    request.getSession().setAttribute("status", rec.getString("status"));
                     request.getSession().setAttribute("user", user);
-                    request.getSession().setAttribute("name", rec.getString("PWFNAME").replace(" ", ""));
-                    request.getSession().setAttribute("surname", rec.getString("PWLNAME"));
+                    request.getSession().setAttribute("name", rec.getString("firstname").replace(" ", ""));
+                    request.getSession().setAttribute("surname", rec.getString("lastname"));
                 } else {
-                    page = "/index.jsp";
+                    page = "index.jsp";
                     request.setAttribute("status", "error");
                 }
 
-                RequestDispatcher rd = getServletContext().getRequestDispatcher(page);
-                rd.forward(request, response);
+                out.print("<script langquage='javascript'>window.location='" + page + "';</script>");
 
             } catch (Exception e) {
                 e.printStackTrace();
