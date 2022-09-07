@@ -50,7 +50,7 @@
                                                         <option value="02">RM</option>
                                                         <option value="03">QC RM</option>
                                                     </select>
-                                                    <label>Statusqi : </label>
+                                                    <label>Approve : </label>
                                                     <select class="form-select form-select-sm" id="statusqi" required>
                                                         <option value="" >โปรดเลือก....</option>
                                                         <option value="Y">Y</option>
@@ -82,7 +82,7 @@
                                                     <th>Firstname</th>
                                                     <th>Lastname</th>
                                                     <th>Status</th>
-                                                    <th>Statusqi</th>
+                                                    <th>Approve</th>
                                                     <th>เเก้ไข</th>
                                                     <th>ลบ</th>
                                                 </tr>

@@ -46,22 +46,43 @@ public class SVdel extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, item);
                     ps.setString(3, roll);
+                    int t = 0;
 
                     if (ps.executeUpdate() > 0) {
+                        t++;
+                    }
+
+                    ResultSet rec1 = null;
+                    Connection conn1 = null;
+                    PreparedStatement ps1 = null;
+                    
+                    String sql1 = "DELETE FROM wmqck WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
+                    ps1 = conn.prepareStatement(sql1);
+                    ps1.setString(1, mrno);
+                    ps1.setString(2, item);
+                    ps1.setString(3, roll);
+
+                    if (ps1.executeUpdate() > 0) {
+                        t++;
+                    }
+
+
+                    if (t == 2) {
                         out.print("true");
                     } else {
                         out.print("false");
                     }
+
                     request.setAttribute("mrno", mrno);
                     request.setAttribute("item", item);
 
-                    getServletContext().getRequestDispatcher("/table4.jsp").forward(request, response);
+                    getServletContext().getRequestDispatcher("/deldoc.jsp").forward(request, response);
 
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } 
+            }
 
         } finally {
             out.close();

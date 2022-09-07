@@ -248,7 +248,7 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-6">
                                                 <label>ชื่อผู้ตรวจสอบ : </label>
-                                                <input class="form-control form-control-sm" type="text" name="byname1" id="byname1" value="<%=session.getAttribute("name")%>" required></input>
+                                                <input class="form-control form-control-sm" type="text" name="byname1" id="byname1" value="<%=session.getAttribute("name")%>" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>

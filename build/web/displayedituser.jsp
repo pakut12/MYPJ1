@@ -90,7 +90,7 @@
                                                         <option value="02">RM</option>
                                                         <option value="03">QC RM</option>
                                                     </select>
-                                                    <label>Statusqi : </label>
+                                                    <label>Approve  : </label>
                                                     <select class="form-select form-select-sm" id="statusqi" required>
                                                         <option value="<%=msgstatusqi%>" ><%=msgstatusqi%></option>
                                                         <option value="Y">Y</option>

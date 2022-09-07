@@ -16,9 +16,9 @@
 %>
 <%
             String x = null;
-            
+
             if (status0.equals("01")) {
-                x = "Admin"; 
+                x = "Admin";
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -46,8 +46,8 @@
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">เมนูผ้าถัก</h6></li>
                         <li><a class="dropdown-item" href="getdatafromsap.jsp"><i class="bi bi-arrow-bar-down"></i> ดึงข้อมูลจาก SAP ด้วยเลขที่ PO</a></li>
-                        <li><a class="dropdown-item" href="keyitem.jsp"><i class="bi bi-key"></i> คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ</a></li>
                         <li><a class="dropdown-item" href="sendtoqc.jsp"><i class="bi bi-send"></i> ส่งข้อมูลให้ทาง QC</a></li>
+                        <li><a class="dropdown-item" href="keyitem.jsp"><i class="bi bi-key"></i> คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ</a></li>
                         <li><a class="dropdown-item" href="printitemrm.jsp"><i class="bi bi-printer"></i> พิมพ์ใบเเจ้งเข้าวัตถุดิบ</a></li> 
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">เมนูควบคุม</h6></li>
@@ -96,8 +96,8 @@
 
 <br><br><br><br>
 <%
-            } else if (status0.equals("02")) {
-                  x = "RM"; 
+} else if (status0.equals("02")) {
+    x = "RM";
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -121,8 +121,8 @@
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">เมนูผ้าถัก</h6></li>
                         <li><a class="dropdown-item" href="getdatafromsap.jsp"><i class="bi bi-arrow-bar-down"></i> ดึงข้อมูลจาก SAP ด้วยเลขที่ PO</a></li>
-                        <li><a class="dropdown-item" href="keyitem.jsp"><i class="bi bi-key"></i> คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ</a></li>
                         <li><a class="dropdown-item" href="sendtoqc.jsp"><i class="bi bi-send"></i> ส่งข้อมูลให้ทาง QC</a></li>
+                        <li><a class="dropdown-item" href="keyitem.jsp"><i class="bi bi-key"></i> คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ</a></li>
                         <li><a class="dropdown-item" href="printitemrm.jsp"><i class="bi bi-printer"></i> พิมพ์ใบเเจ้งเข้าวัตถุดิบ</a></li> 
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">เมนูควบคุม</h6></li>
@@ -160,8 +160,8 @@
 
 <br><br><br><br>
 <%
-            } else if (status0.equals("03")) {
-                 x = "QC RM"; 
+} else if (status0.equals("03")) {
+    x = "QC RM";
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -216,5 +216,5 @@
 
 <br><br><br><br>
 <%
-            }
+}
 %>
