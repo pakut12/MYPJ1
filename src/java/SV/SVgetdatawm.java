@@ -40,7 +40,7 @@ public class SVgetdatawm extends HttpServlet {
             PreparedStatement ps = null;
 
 //            conn = DB.ConnDB.getConnection();
-            conn = DB.ConnDB.getConnection();
+            conn = DB.ConnDB.getConnDB();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
@@ -834,7 +834,7 @@ public class SVgetdatawm extends HttpServlet {
                     String pallet = request.getParameter("pallet");
 
                     String sql = "select * from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
-
+                    conn = DB.ConnDB.getConnection();
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
                     ps.setString(2, pallet);
@@ -867,11 +867,23 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add("");//rec.getString("point")
 
+                        int toterr = Integer.valueOf(rec.getString("toterr"));
+                        String mark = "";
+                        if (toterr > 8) {
+                            mark = "*";
+                        } else {
+                            mark = "";
+
+                        }
+                        String wm = rec.getString("WEIGHT");
+                        if (wm == null) {
+                            wm = "0";
+                        }
                         sumqt += Integer.valueOf(rec.getString("quantity"));
                         sumaqt += Integer.valueOf(rec.getString("actqty"));
-                        sumweight += Integer.valueOf(rec.getString("WEIGHT"));
+                        sumweight += Integer.valueOf(wm);
 
-                        arrjson.add(rec.getString("mark_toterr"));
+                        arrjson.add(mark);
                         arrjson.add("");
                         arrlist.add(arrjson);
 
@@ -897,7 +909,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         n++;
                     }
-                    
+
                     obj.put("sumweight", sumweight);
                     obj.put("sumqt", sumqt);
                     obj.put("sumaqt", sumaqt);
