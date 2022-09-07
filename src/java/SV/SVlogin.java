@@ -62,12 +62,12 @@ public class SVlogin extends HttpServlet {
                     request.getSession().setAttribute("user", user);
                     request.getSession().setAttribute("name", rec.getString("firstname").replace(" ", ""));
                     request.getSession().setAttribute("surname", rec.getString("lastname"));
+                    out.print("<script langquage='javascript'>window.location='" + page + "';</script>");
                 } else {
-                    page = "index.jsp";
+                    page = "/index.jsp";
                     request.setAttribute("status", "error");
+                    getServletContext().getRequestDispatcher(page).forward(request, response);
                 }
-
-                out.print("<script langquage='javascript'>window.location='" + page + "';</script>");
 
             } catch (Exception e) {
                 e.printStackTrace();

@@ -223,6 +223,7 @@ public class SVuser extends HttpServlet {
                     }
                 } else if (status1.equals("U1")) {
                     try {
+                        String sql = null;
                         String userid = (String) request.getParameter("userid");
                         String password = (String) request.getParameter("password");
                         String firstname = (String) request.getParameter("firstname");
@@ -234,29 +235,31 @@ public class SVuser extends HttpServlet {
                         md.reset();
                         md.update(password.getBytes());
                         String digestpass = new BigInteger(1, md.digest()).toString(16).toUpperCase();
+                        if (password == null) {
+                            sql = "UPDATE wmuser SET  wmuser.firstname=?,wmuser.lastname=?,wmuser.status=?,wmuser.statusqi=? WHERE wmuser.userid = ?";
+                            ps = con.prepareStatement(sql);
+                            ps.setString(1, firstname);
+                            ps.setString(2, lastname);
+                            ps.setString(3, status);
+                            ps.setString(4, statusqi);
+                            ps.setString(5, userid);
+                        } else {
+                            sql = "UPDATE wmuser SET wmuser.password = ? , wmuser.firstname=?,wmuser.lastname=?,wmuser.status=?,wmuser.statusqi=? WHERE wmuser.userid = ?";
+                            ps = con.prepareStatement(sql);
+                            ps.setString(1, digestpass);
+                            ps.setString(2, firstname);
+                            ps.setString(3, lastname);
+                            ps.setString(4, status);
+                            ps.setString(5, statusqi);
+                            ps.setString(6, userid);
+                        }
 
-                        String sql = "UPDATE wmuser SET wmuser.password = ? , wmuser.firstname=?,wmuser.lastname=?,wmuser.status=?,wmuser.statusqi=? WHERE wmuser.userid = ?";
-
-                        ps = con.prepareStatement(sql);
-                        ps.setString(1, digestpass);
-                        ps.setString(2, firstname);
-                        ps.setString(3, lastname);
-                        ps.setString(4, status);
-                        ps.setString(5, statusqi);
-                        ps.setString(6, userid);
-
-                        String url = "home.jsp";
 
                         if (ps.executeUpdate() > 0) {
                             out.print("true");
                         } else {
                             out.print("false");
                         }
-
-
-
-
-
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -277,6 +280,32 @@ public class SVuser extends HttpServlet {
                         obj.put("key", arrlist1);
                         obj.put("value", arrlist);
                         out.print(obj);
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else if (status1.equals("RE1")) {
+                    try {
+                        String userid = (String) request.getParameter("userid");
+                        String password = (String) request.getParameter("password");
+                        MessageDigest md;
+                        md = MessageDigest.getInstance("MD5");
+                        md.reset();
+                        md.update(password.getBytes());
+                        String digestpass = new BigInteger(1, md.digest()).toString(16).toUpperCase();
+
+                        String sql = "UPDATE wmuser SET wmuser.password = ? WHERE wmuser.userid = ?";
+                        ps = con.prepareStatement(sql);
+                        ps.setString(1, digestpass);
+                        ps.setString(2, userid);
+                       
+                        if (ps.executeUpdate() > 0) {
+                            out.print("true");
+                        } else {
+                            out.print("false");
+                        }
+
 
 
                     } catch (Exception e) {

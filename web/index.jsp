@@ -49,8 +49,7 @@
                         <br>
                         <div class="text-center">
                             <button type="submit" class="btn btn-sm btn-success "><i class="bi bi-box-arrow-in-right"></i> OK</button>
-                            <button class="btn btn-sm btn-danger" type="button" id="reset" name="reset"><i class="bi bi-arrow-clockwise"></i> Reset</button>
-                           
+                            <a href="repassword.jsp"><button class="btn btn-sm btn-primary" type="button" id="repassword" name="repassword"><i class="bi bi-arrow-clockwise"></i> Forgot password</button></a>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@
         <%@include file="share/nav.jsp" %>
         <%
             String userid = (String) request.getParameter("userid");
-            String password = (String) request.getParameter("password");
+            String password = "";
             String firstname = (String) request.getParameter("firstname");
             String lastname = (String) request.getParameter("lastname");
             String status = (String) request.getParameter("status");
@@ -78,7 +78,7 @@
                                                     <label>Userid : </label>
                                                     <input class="form-control form-control-sm" type="number" id="userid" value="<%=userid%>" readonly ></input>
                                                     <label>Password : </label>
-                                                    <input class="form-control form-control-sm" type="password" id="password" value="" required></input>
+                                                    <input class="form-control form-control-sm" type="password" id="password" value="<%=password%>" ></input>
                                                     <label>Firstname : </label>
                                                     <input class="form-control form-control-sm" type="text" id="firstname" value="<%=firstname%>" required></input>
                                                     <label>Lastname : </label>
