@@ -41,17 +41,12 @@ public class SVlogin extends HttpServlet {
             PreparedStatement ps = null;
 
             try {
-                MessageDigest md;
-                md = MessageDigest.getInstance("MD5");
-                md.reset();
-                md.update(pass.getBytes());
-                String digestpass = new BigInteger(1, md.digest()).toString(16).toUpperCase();
-
+              
                 String sql = "SELECT * FROM wmuser WHERE wmuser.userid = ? AND wmuser.password = ?";
                 conn = DB.ConnDB.getConnDB();
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, user);
-                ps.setString(2, digestpass);
+                ps.setString(2, pass);
                 rec = ps.executeQuery();
 
                 if ((rec != null) && (rec.next())) {

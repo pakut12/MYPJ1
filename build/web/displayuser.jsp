@@ -34,18 +34,6 @@
                                             </div>
                                             <div class="card-body">
                                                 <form class="" id="myform">
-                                                    <div class="row">
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <div class="text-end">
-                                                                สถานะข้อมูล :
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <div class="text-start" id="data">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     
                                                     <label>Userid : </label>
                                                     <input class="form-control form-control-sm" type="number" id="userid" required ></input>
@@ -69,10 +57,8 @@
                                                         <option value="N">N</option>
                                                     </select>
                                                     <div class="row mt-3">
-                                                        <div class="col-sm-12 col-md-6">
-                                                            <button class="btn btn-secondary btn-sm  w-100" type="button" id="btn-getdata" name="btn-getdata"><i class="bi bi-download"></i> ดึงข้อมูล</button>
-                                                        </div>
-                                                        <div class="col-sm-12 col-md-6">
+                                                        
+                                                        <div class="col-sm-12 col-md-12">
                                                             <button class="btn btn-success btn-sm  w-100" type="button" id="btn-save" name="btn-save"><i class="bi bi-hdd"></i> บันทึก</button>
                                                             
                                                         </div>
@@ -128,12 +114,8 @@
                 getdata();
             
                 $("#page2").addClass("active"); 
-                $("#password").attr("readonly",true);
-                $("#firstname").attr("readonly",true);
-                $("#lastname").attr("readonly",true);
-                $("#btn-save").addClass("disabled");
                 
-        
+                
                 $("#btn-getdata").click(function(){
                     var userid = $("#userid").val();
                     var url = "user?status1=G1&userid="+ userid ;
@@ -198,11 +180,7 @@
                         var data = $("#data").text();
                         var url = null;
                         
-                        if(data == "มีข้อมูล"){
-                            url = "user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
-                        }else if(data == "ไม่มีข้อมูล"){
-                            url = "user?status1=S2&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
-                        }
+                        url = "user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
                        
                         // var url = "../user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
 

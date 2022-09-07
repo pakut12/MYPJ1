@@ -40,9 +40,6 @@ public class SVdel extends HttpServlet {
                     String item = request.getParameter("item").trim();
                     String roll = request.getParameter("roll").trim();
 
-
-
-
                     String sql = "DELETE FROM wmbarcode WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
 
                     ps = conn.prepareStatement(sql);

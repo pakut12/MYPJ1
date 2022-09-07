@@ -230,29 +230,15 @@ public class SVuser extends HttpServlet {
                         String lastname = (String) request.getParameter("lastname");
                         String status = (String) request.getParameter("status");
                         String statusqi = (String) request.getParameter("statusqi");
-                        MessageDigest md;
-                        md = MessageDigest.getInstance("MD5");
-                        md.reset();
-                        md.update(password.getBytes());
-                        String digestpass = new BigInteger(1, md.digest()).toString(16).toUpperCase();
-                        if (password == null) {
-                            sql = "UPDATE wmuser SET  wmuser.firstname=?,wmuser.lastname=?,wmuser.status=?,wmuser.statusqi=? WHERE wmuser.userid = ?";
-                            ps = con.prepareStatement(sql);
-                            ps.setString(1, firstname);
-                            ps.setString(2, lastname);
-                            ps.setString(3, status);
-                            ps.setString(4, statusqi);
-                            ps.setString(5, userid);
-                        } else {
-                            sql = "UPDATE wmuser SET wmuser.password = ? , wmuser.firstname=?,wmuser.lastname=?,wmuser.status=?,wmuser.statusqi=? WHERE wmuser.userid = ?";
-                            ps = con.prepareStatement(sql);
-                            ps.setString(1, digestpass);
-                            ps.setString(2, firstname);
-                            ps.setString(3, lastname);
-                            ps.setString(4, status);
-                            ps.setString(5, statusqi);
-                            ps.setString(6, userid);
-                        }
+
+                        sql = "UPDATE wmuser SET wmuser.password = ? , wmuser.firstname=?,wmuser.lastname=?,wmuser.status=?,wmuser.statusqi=? WHERE wmuser.userid = ?";
+                        ps = con.prepareStatement(sql);
+                        ps.setString(1, password);
+                        ps.setString(2, firstname);
+                        ps.setString(3, lastname);
+                        ps.setString(4, status);
+                        ps.setString(5, statusqi);
+                        ps.setString(6, userid);
 
 
                         if (ps.executeUpdate() > 0) {
@@ -299,7 +285,7 @@ public class SVuser extends HttpServlet {
                         ps = con.prepareStatement(sql);
                         ps.setString(1, digestpass);
                         ps.setString(2, userid);
-                       
+
                         if (ps.executeUpdate() > 0) {
                             out.print("true");
                         } else {

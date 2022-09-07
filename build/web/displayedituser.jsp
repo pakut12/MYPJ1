@@ -17,7 +17,7 @@
         <%@include file="share/nav.jsp" %>
         <%
             String userid = (String) request.getParameter("userid");
-            String password = "";
+            String password = (String) request.getParameter("password");
             String firstname = (String) request.getParameter("firstname");
             String lastname = (String) request.getParameter("lastname");
             String status = (String) request.getParameter("status");
@@ -140,13 +140,9 @@
                         })
                         
                     }else {
-                        
-                        
-                       
+               
                         var url = "user?status1=U1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
-                        
-                       
-            
+   
                         $.ajax({
                             type:"POST",
                             url:url,

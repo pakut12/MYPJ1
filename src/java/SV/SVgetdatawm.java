@@ -873,7 +873,6 @@ public class SVgetdatawm extends HttpServlet {
                             mark = "*";
                         } else {
                             mark = "";
-
                         }
                         String wm = rec.getString("WEIGHT");
                         if (wm == null) {
