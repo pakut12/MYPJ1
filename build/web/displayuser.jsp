@@ -120,6 +120,7 @@
                 table =  $("#mytable").DataTable({
                     ajax:"user?status1=G2",
                     bDestroy: true
+                   
                 });
             }  
             $(document).ready(function () {

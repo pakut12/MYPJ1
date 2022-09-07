@@ -15,7 +15,10 @@
 
 %>
 <%
+            String x = null;
+            
             if (status0.equals("01")) {
+                x = "Admin"; 
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -77,6 +80,7 @@
                     <ul class="dropdown-menu" style="width: 15rem;">
                         <li><h6 class="dropdown-header">เมนูผู้ใช้</h6></li>
                         <li><p class="mx-4">วันที่ : <%=date%></p></li>
+                        <li> <p class="mx-4">สถานะ : <%= x%></p></li>
                         <li> <p class="mx-4">ไอดี : <%= session.getAttribute("user")%></p></li>
                         <li> <p class="mx-4">ชื่อ : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p></li>
                         <li><hr class="dropdown-divider"></li>
@@ -92,7 +96,8 @@
 
 <br><br><br><br>
 <%
-} else if (status0.equals("02")) {
+            } else if (status0.equals("02")) {
+                  x = "RM"; 
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -128,7 +133,7 @@
                         <li><a class="dropdown-item" href="displayshowitamfinddate.jsp"><i class="bi bi-box-seam"></i> โปรเเกรมเเสดงข้อมูลตามรหัสวัตถุดิบเเละวันที่สร้างรหัส</a></li>
                     </ul>
                 </li>
-               
+                
                 
             </ul>
             <ul class="navbar-nav ">
@@ -139,6 +144,7 @@
                     <ul class="dropdown-menu" style="width: 15rem;">
                         <li><h6 class="dropdown-header">เมนูผู้ใช้</h6></li>
                         <li><p class="mx-4">วันที่ : <%=date%></p></li>
+                        <li> <p class="mx-4">สถานะ : <%= x%></p></li>
                         <li> <p class="mx-4">ไอดี : <%= session.getAttribute("user")%></p></li>
                         <li> <p class="mx-4">ชื่อ : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p></li>
                         <li><hr class="dropdown-divider"></li>
@@ -154,7 +160,8 @@
 
 <br><br><br><br>
 <%
-} else if (status0.equals("03")) {
+            } else if (status0.equals("03")) {
+                 x = "QC RM"; 
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -170,7 +177,7 @@
                         <i class="bi bi-house-door-fill "></i>
                     หน้าเเรก</a>
                 </li>
-               
+                
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  id="page3">
                         <i class="bi bi-list"></i> QC RM
@@ -193,6 +200,7 @@
                     <ul class="dropdown-menu" style="width: 15rem;">
                         <li><h6 class="dropdown-header">เมนูผู้ใช้</h6></li>
                         <li><p class="mx-4">วันที่ : <%=date%></p></li>
+                        <li> <p class="mx-4">สถานะ : <%= x%></p></li>
                         <li> <p class="mx-4">ไอดี : <%= session.getAttribute("user")%></p></li>
                         <li> <p class="mx-4">ชื่อ : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p></li>
                         <li><hr class="dropdown-divider"></li>
@@ -208,5 +216,5 @@
 
 <br><br><br><br>
 <%
-}
+            }
 %>

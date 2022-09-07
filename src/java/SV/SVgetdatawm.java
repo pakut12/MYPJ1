@@ -40,7 +40,7 @@ public class SVgetdatawm extends HttpServlet {
             PreparedStatement ps = null;
 
 //            conn = DB.ConnDB.getConnection();
-            conn = DB.ConnDB.getConnDB();
+            conn = DB.ConnDB.getConnection();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
@@ -839,7 +839,9 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, pallet);
                     rec = ps.executeQuery();
-
+                    int sumqt = 0;
+                    int sumaqt = 0;
+                    int sumweight = 0;
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
@@ -849,6 +851,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("width"));
                         arrjson.add(rec.getString("color"));
                         arrjson.add("");//rec.getString("scolor")
+
                         arrjson.add(rec.getString("quantity"));
                         arrjson.add(rec.getString("actqty"));
                         arrjson.add(rec.getString("ethread"));
@@ -863,9 +866,15 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("batch"));
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add("");//rec.getString("point")
+
+                        sumqt += Integer.valueOf(rec.getString("quantity"));
+                        sumaqt += Integer.valueOf(rec.getString("actqty"));
+                        sumweight += Integer.valueOf(rec.getString("WEIGHT"));
+
                         arrjson.add(rec.getString("mark_toterr"));
                         arrjson.add("");
                         arrlist.add(arrjson);
+
 
                         obj.put("PLANT", rec.getString("PLANT"));
                         obj.put("ITEM", rec.getString("ITEM"));
@@ -877,19 +886,21 @@ public class SVgetdatawm extends HttpServlet {
                         obj.put("MRNO", rec.getString("MRNO"));
                         obj.put("UNIT", rec.getString("UNIT"));
                         obj.put("QCDATE", rec.getString("QCDATE"));
-                        obj.put("REMARKRM1", rec.getString("REMARKRM1"));
-                        obj.put("REMARKRM2", rec.getString("REMARKRM2"));
-                        obj.put("REMARKRM3", rec.getString("REMARKRM3"));
+                        obj.put("REMARKRM1", rec.getString("REMARK1"));
+                        obj.put("REMARKRM2", rec.getString("REMARK2"));
+                        obj.put("REMARKRM3", rec.getString("REMARK3"));
                         obj.put("SUPNAME", rec.getString("SUPNAME"));
                         obj.put("INVOICE", rec.getString("INVOICE"));
                         obj.put("PALET", rec.getString("PALET"));
-                        
-                        
-                       
+
+
+
                         n++;
                     }
-
-
+                    
+                    obj.put("sumweight", sumweight);
+                    obj.put("sumqt", sumqt);
+                    obj.put("sumaqt", sumaqt);
                     obj.put("count", n);
                     obj.put("data", arrlist);
                     out.print(obj);

@@ -30,7 +30,10 @@
         
         
     </style>
-    
+    <%
+            String user = (String) session.getAttribute("name");
+
+    %>
     
     <body>
         
@@ -136,18 +139,18 @@
                         <div class="col-6 text-center">
                             <label>จำนวนที่มารวม/จำนวนที่ได้รวม</label>
                             <hr>
-                            <label>จำนวนที่มารวม : 12 </label>
-                            <label>จำนวนที่ได้รวม : 12 </label>
+                            <label>จำนวนที่มารวม :  <label id="sumqt"></label> <label id="UNIT1"></label></label>
+                            <label>จำนวนที่ได้รวม :  <label id="sumaqt"></label> <label id="UNIT2"></label></label>
                             
                         </div>
                         <div class="col-6 text-center"> 
                             <label>สรุปผล</label>
                             <hr>
-                            <label>re1</label>
+                            <label id="REMARKRM1"></label>
                             <br>
-                            <label>re2</label>
+                            <label id="REMARKRM2"></label>
                             <br>
-                            <label>re3</label>
+                            <label id="REMARKRM3"></label>
                         </div>
                     </div>
                     
@@ -155,17 +158,16 @@
                 <div class="col-3 text-center">
                     <label>น้ำหนัก KG/M</label>
                     <hr>
-                    <label>0</label>
+                    <label><label id="sumweight"></label></label>
                 </div>
                 <div class="col-3 text-start ">
-                    <label>ชื่อผู้ตรวจ : </label>
+                    <label>ชื่อผู้ตรวจ : <%=user%></label>
                     
                     <div class="text-start">
                         <label>ผู้รับผิดชอบ</label>
-                        
-                        <p>จัดซื้อ : .......................................................</p>
-                        <p>สต็อกวัตถุดิบ : .......................................................</p>
-                        <p>เเผนกตัด : .......................................................</p>
+                        <p>จัดซื้อ : ........................</p>
+                        <p>สต็อกวัตถุดิบ : ........................</p>
+                        <p>เเผนกตัด : ........................</p>
                         
                     </div>
                 </div>
@@ -217,6 +219,18 @@
                     var today = d+"/"+m+"/"+y;
                     return today;
                 }
+                
+                function covertoday(date){
+                    var coverdate =null;
+                    var y = date.substring(0, 4);
+                    var m = date.substring(5, 7);
+                    var d = date.substring(8, 10);
+                    coverdate = d+"/"+m+"/"+y;
+                      
+                    return coverdate;
+                }
+                
+              
                 $("#today").text(today());
                 $("#today1").text(today1());
                 
@@ -262,23 +276,27 @@
                         $("#DESC1").text(de.DESC1);
                         $("#DESC2").text(de.DESC2);
                         $("#DESC3").text(de.DESC3);
-                        $("#INVOICEDATE").text(de.INVOICEDATE);
+                        $("#INVOICEDATE").text(covertoday(de.INVOICEDATE));
                         $("#MRNO").text(de.MRNO);
                         $("#UNIT").text(de.UNIT);
-                        $("#QCDATE").text(de.QCDATE);
+                        $("#UNIT1").text(de.UNIT);
+                        $("#UNIT2").text(de.UNIT);
+                        $("#QCDATE").text(covertoday(de.QCDATE));
                         $("#REMARKRM1").text(de.REMARKRM1);
                         $("#REMARKRM2").text(de.REMARKRM2);
                         $("#REMARKRM3").text(de.REMARKRM3);
                         $("#SUPNAME").text(de.SUPNAME);
                         $("#INVOICE").text(de.INVOICE);
                         $("#PALET").text(de.PALET);
-                        
+                        $("#sumqt").text(de.sumqt);
+                        $("#sumaqt").text(de.sumaqt);
+                        $("#sumweight").text(de.sumweight);
                         console.log(de);
                                   
                     }    
                 });  
                 
-                window.print();
+                // window.print();
             });
         </script>
         
