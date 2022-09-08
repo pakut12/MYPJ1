@@ -41,9 +41,9 @@ public class SVlogin extends HttpServlet {
             PreparedStatement ps = null;
 
             try {
-              
+
                 String sql = "SELECT * FROM wmuser WHERE wmuser.userid = ? AND wmuser.password = ?";
-                conn = DB.ConnDB.getConnDB();
+                conn = DB.ConnDB.getConnection();
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, user);
                 ps.setString(2, pass);

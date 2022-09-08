@@ -10,6 +10,8 @@ import java.net.*;
 import java.security.MessageDigest;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import org.json.simple.JSONArray;
@@ -27,14 +29,14 @@ public class SVuser extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
             Connection con = null;
             ResultSet rec = null;
             PreparedStatement ps = null;
-            con = DB.ConnDB.getConnDB();
+            con = DB.ConnDB.getConnection();
             String status1 = request.getParameter("status1");
             try {
                 if (status1.equals("S1")) {
@@ -46,7 +48,7 @@ public class SVuser extends HttpServlet {
                         String status = request.getParameter("status");
                         String statusqi = request.getParameter("statusqi");
 
-                        String sql = "INSERT INTO wmuser (userid, password, firstname, lastname, status, statusqi) VALUES (?, ?, ?,?, ?, ?);";
+                        String sql = "INSERT INTO wmuser (userid, password, firstname, lastname, status, statusqi) VALUES (?, ?, ?,?, ?, ?)";
 
                         ps = con.prepareStatement(sql);
                         ps.setString(1, userid);
@@ -55,13 +57,15 @@ public class SVuser extends HttpServlet {
                         ps.setString(4, lastname);
                         ps.setString(5, status);
                         ps.setString(6, statusqi);
-
+                        
+                      
                         if (ps.executeUpdate() > 0) {
                             out.print("true");
                         } else {
                             out.print("false");
                         }
                     } catch (Exception e) {
+                        e.printStackTrace();
                         out.print("false");
                     }
 
@@ -116,9 +120,9 @@ public class SVuser extends HttpServlet {
                         }
 
                         if (statusqi.equals("Y")) {
-                            statusqi = "มีสิทธิ์";
+                            statusqi = "มีสิทธิ";
                         } else if (statusqi.equals("N")) {
-                            statusqi = "ไม่สิทธิ์";
+                            statusqi = "ไม่มีมีสิทธิ";
                         }
 
                         arrjson.add(rec.getString("userid"));
@@ -150,7 +154,7 @@ public class SVuser extends HttpServlet {
                         md.update(password.getBytes());
                         String digestpass = new BigInteger(1, md.digest()).toString(16).toUpperCase();
 
-                        String sql = "INSERT INTO wmuser (userid, password, firstname, lastname, status, statusqi) VALUES (?, ?, ?,?, ?, ?);";
+                        String sql = "INSERT INTO wmuser (userid, password, firstname, lastname, status, statusqi) VALUES (?, ?, ?,?, ?, ?)";
 
                         ps = con.prepareStatement(sql);
                         ps.setString(1, userid);
@@ -252,7 +256,7 @@ public class SVuser extends HttpServlet {
                     }
                 } else if (status1.equals("G3")) {
                     try {
-                        String sql = "SELECT * FROM wmuser WHERE wmuser.statusqi = 'Y';";
+                        String sql = "SELECT * FROM wmuser WHERE wmuser.statusqi = 'Y'";
                         ps = con.prepareStatement(sql);
                         rec = ps.executeQuery();
                         JSONObject obj = new JSONObject();
@@ -314,7 +318,13 @@ public class SVuser extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVuser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVuser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 
@@ -324,7 +334,13 @@ public class SVuser extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVuser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVuser.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 

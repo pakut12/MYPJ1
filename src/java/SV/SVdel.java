@@ -9,6 +9,8 @@ import java.io.*;
 import java.net.*;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import org.json.simple.*;
@@ -25,14 +27,14 @@ public class SVdel extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
             ResultSet rec = null;
             Connection conn = null;
             PreparedStatement ps = null;
-            conn = DB.ConnDB.getConnDB();
+            conn = DB.ConnDB.getConnection();
             String status = request.getParameter("status");
             if (status.equals("D1")) {
                 try {
@@ -55,7 +57,7 @@ public class SVdel extends HttpServlet {
                     ResultSet rec1 = null;
                     Connection conn1 = null;
                     PreparedStatement ps1 = null;
-                    
+
                     String sql1 = "DELETE FROM wmqck WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
                     ps1 = conn.prepareStatement(sql1);
                     ps1.setString(1, mrno);
@@ -97,7 +99,13 @@ public class SVdel extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVdel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVdel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 
@@ -107,7 +115,13 @@ public class SVdel extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVdel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVdel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 

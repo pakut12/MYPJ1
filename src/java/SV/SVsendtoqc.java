@@ -32,7 +32,7 @@ public class SVsendtoqc extends HttpServlet {
             PreparedStatement ps = null;
             PreparedStatement psin = null;
             try {
-                con = DB.ConnDB.getConnDB();
+                con = DB.ConnDB.getConnection();
                 String id = request.getParameter("mrno");
                 String sql = "SELECT * FROM wmbarcode WHERE wmbarcode.MRNO = ?";
                 ps = con.prepareStatement(sql);

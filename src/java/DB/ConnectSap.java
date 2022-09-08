@@ -27,7 +27,7 @@ public class ConnectSap {
         if (pool == null) {
             // Add a connection pool to the specified system
             JCO.addClientPool(SID, // Alias for this pool
-                    10, // Max. number of connections
+                    9999, // Max. number of connections
                     "500", // SAP client
                     "ZCPIC", // userid
                     "PGCPIC12", // password
@@ -39,8 +39,6 @@ public class ConnectSap {
         JCO.Client client = JCO.getClient(SID);
         return client;
     }
-
-    
 
     public static IRepository createRepository(String nameRep) {
         // Create a new repository

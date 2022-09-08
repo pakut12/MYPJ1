@@ -114,8 +114,7 @@
                 getdata();
             
                 $("#page5").addClass("active"); 
-                
-                
+               
                 $("#btn-getdata").click(function(){
                     var userid = $("#userid").val();
                     var url = "user?status1=G1&userid="+ userid ;
@@ -188,6 +187,7 @@
                             type:"POST",
                             url:url,
                             success:function(msg,status){
+                                console.log(msg);
                                 if(msg == 'true'){
                                     Swal.fire({
                                         icon: 'success',

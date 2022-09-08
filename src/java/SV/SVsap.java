@@ -110,11 +110,16 @@ public class SVsap extends HttpServlet {
 
 
 
-                    String sqlwmbarcode = "INSERT INTO wmbarcode (MRNO, ITEM, ROLL, PALET, PLANT, DESC1, DESC2, DESC3, PO, POLN, INVOICEDATE, CREATEDATE, QUANTITY, UNIT, SUPNAME, INVOICE, GRADE, CODE, BATCH, CHANGEDATE, COLOR, SUPPLIER, DELIVERYNO, PUGROUP, PUNAME, TELEPHONE, PRICE, PRD, LOT, PER, CURR, TOQC, TOTEST, RESULTQC, RESULTTEST, PAGE, AFTERQTY, REMARKRM1, REMARKRM2, REMARKRM3, SAVEDATE, DMWEIGHT, MWEIGHT, RMWIDTH, REFMRNO, OLDINVOICE, REALQTY, WEIGHT) " +
-                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+
+                    String sqlwmbarcode = "INSERT INTO wmbarcode (MRNO, ITEM, ROLL, PALET, PLANT, DESC1, DESC2, DESC3, " +
+                            "PO, POLN, INVOICEDATE, CREATEDATE, QUANTITY, UNIT, SUPNAME, INVOICE, GRADE, CODE, BATCH, " +
+                            "CHANGEDATE, COLOR, SUPPLIER, DELIVERYNO, PUGROUP, PUNAME, TELEPHONE, PRICE, PRD, LOT, PER, CURR, " +
+                            "TOQC, TOTEST) VALUES (?,?,?,?,?,?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),TO_DATE(?, 'yyyy/mm/dd'),?,?," +
+                            "?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
                     String sqlwmmaster = "INSERT INTO wmmaster (BARCODE, MRNO, ITEM, ROLL) VALUES (?,?,?,?)";
-                    con = DB.ConnDB.getConnDB();
+                    con = DB.ConnDB.getConnection();
 
                     pr = con.prepareStatement(sqlwmbarcode);
                     pr1 = con.prepareStatement(sqlwmmaster);
@@ -122,94 +127,62 @@ public class SVsap extends HttpServlet {
 
                     for (int z = 0; z < output.getNumRows(); z++) {
                         output.setRow(z);
-                        for (int a = 1; a <= 48; a++) {
-                            try {
-                                if (a == 3 || a == 4 || a == 10) {
-                                    pr.setInt(a, output.getInt(a - 1));
-                                } else {
-                                    pr.setString(a, output.getString(a - 1));
-                                }
-                            } catch (Exception e) {
-                                pr.setString(a, null);
-                            //e.printStackTrace();
-                            }
-                        }
+
 
                         pr1.setString(1, output.getString(17));
                         pr1.setString(2, output.getString(0));
                         pr1.setString(3, output.getString(1));
                         pr1.setString(4, output.getString(2));
 
+
+                        pr.setString(1, output.getString(0));
+                        pr.setString(2, output.getString(1));
+                        pr.setString(3, output.getString(2));
+                        pr.setString(4, output.getString(3));
+                        pr.setString(5, output.getString(4));
+                        pr.setString(6, output.getString(5));
+                        pr.setString(7, output.getString(6));
+                        pr.setString(8, output.getString(7));
+                        pr.setString(9, output.getString(8));
+                        pr.setString(10, output.getString(9));
+                        pr.setString(11, output.getString(10));
+                        pr.setString(12, output.getString(11));
+                        pr.setString(13, output.getString(12));
+                        pr.setString(14, output.getString(13));
+                        pr.setString(15, output.getString(14));
+                        pr.setString(16, output.getString(15));
+                        pr.setString(17, output.getString(16));
+                        pr.setString(18, output.getString(17));
+                        pr.setString(19, output.getString(18));
+                        pr.setString(20, output.getString(19));
+                        pr.setString(21, output.getString(20));
+                        pr.setString(22, output.getString(21));
+                        pr.setString(23, output.getString(22));
+                        pr.setString(24, output.getString(23));
+                        pr.setString(25, output.getString(24));
+                        pr.setString(26, output.getString(25));
+                        pr.setString(27, output.getString(26));
+                        pr.setString(28, output.getString(27));
+                        pr.setString(29, output.getString(28));
+                        pr.setString(30, output.getString(29));
+                        pr.setString(31, output.getString(30));
+                        pr.setString(32, output.getString(31));
+                        pr.setString(33, output.getString(32));
+
                         try {
-                            pr1.executeUpdate();
                             pr.executeUpdate();
-                            chack++;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        //out.print("false");
+                            pr1.executeUpdate();
+                        } catch (Exception ex) {
+                            
                         }
 
-
-
-
-//                        pr.setString(1, output.getString(0));
-//                        pr.setString(2, output.getString(1));
-//                        pr.setString(3, output.getString(2));
-//                        pr.setString(4, output.getString(3));
-//                        pr.setString(5, output.getString(4));
-//                        pr.setString(6, output.getString(5));
-//                        pr.setString(7, output.getString(6));
-//                        pr.setString(8, output.getString(7));
-//                        pr.setString(9, output.getString(8));
-//                        pr.setString(10, output.getString(9));
-//                        pr.setString(11, output.getString(10));
-//                        pr.setString(12, output.getString(11));
-//                        pr.setString(13, output.getString(12));
-//                        pr.setString(14, output.getString(13));
-//                        pr.setString(15, output.getString(14));
-//                        pr.setString(16, output.getString(15));
-//                        pr.setString(17, output.getString(16));
-//                        pr.setString(18, output.getString(17));
-//                        pr.setString(19, output.getString(18));
-//                        pr.setString(20, output.getString(19));
-//                        pr.setString(21, output.getString(20));
-//                        pr.setString(22, output.getString(21));
-//                        pr.setString(23, output.getString(22));
-//                        pr.setString(24, output.getString(23));
-//                        pr.setString(25, output.getString(24));
-//                        pr.setString(26, output.getString(25));
-//                        pr.setString(27, output.getString(26));
-//                        pr.setString(28, output.getString(27));
-//                        pr.setString(29, output.getString(28));
-//                        pr.setString(30, output.getString(29));
-//                        pr.setString(31, output.getString(30));
-//                        pr.setString(32, output.getString(31));
-//                        pr.setString(33, output.getString(32));
-//                        pr.setString(34, "");
-//                        pr.setString(35, "");
-//                        pr.setString(36, "");
-//                        pr.setString(37, "");
-//                        pr.setString(38, "");
-//                        pr.setString(39, "");
-//                        pr.setString(40, "");
-//                        pr.setString(41, "");
-//                        pr.setString(42, "");
-//                        pr.setString(43, "");
-//                        pr.setString(44, "");
-//                        pr.setString(45, "");
-//                        pr.setString(46, "");
-//                        pr.setString(47, "");
-//                        pr.setString(48, "");
-
-//                        pr.executeUpdate();
-
                     }
-
                     if (chack > 0) {
                         out.print("true");
                     } else {
                         out.print("false");
                     }
+
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();

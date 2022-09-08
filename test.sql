@@ -230,6 +230,7 @@ CREATE TABLE `wmuser` (
   `statusqi` varchar(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 --
 -- Dumping data for table `wmuser`
 --
