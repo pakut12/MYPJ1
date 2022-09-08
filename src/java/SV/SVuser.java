@@ -116,9 +116,9 @@ public class SVuser extends HttpServlet {
                         }
 
                         if (statusqi.equals("Y")) {
-                            statusqi = "เเสดง";
+                            statusqi = "มีสิทธิ์";
                         } else if (statusqi.equals("N")) {
-                            statusqi = "ไม่เเสดง";
+                            statusqi = "ไม่สิทธิ์";
                         }
 
                         arrjson.add(rec.getString("userid"));
