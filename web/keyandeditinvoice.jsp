@@ -59,7 +59,7 @@
                                     <div class="row mb-3">
                                         <div class="col-sm-12 col-md-4">
                                             <label>Invoice : </label>
-                                            <input class="form-control form-control-sm text-center" type="number" name="INVOICE" id="INVOICE" value="" required></input>
+                                            <input class="form-control form-control-sm text-center" type="text" name="INVOICE" id="INVOICE" value="" required></input>
                                         </div>
                                         <div class="col-sm-12 col-md-4">
                                             <label>Invoice date : </label>

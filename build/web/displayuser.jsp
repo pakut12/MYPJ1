@@ -113,7 +113,7 @@
                       
                 getdata();
             
-                $("#page2").addClass("active"); 
+                $("#page5").addClass("active"); 
                 
                 
                 $("#btn-getdata").click(function(){
