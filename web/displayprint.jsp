@@ -153,7 +153,7 @@
                                 try {
                                     out.print("<td>" + num[x] + "</td>");
                                 } catch (Exception e) {
-                                    out.print("<td></td>");
+                                    out.print("<td height='30'> </td>");
                                 }
                                 x++;
                             }

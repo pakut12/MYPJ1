@@ -146,7 +146,7 @@
                     success: function(msg,status){
                         var de = $.parseJSON(msg);
                         $.each(de.key,function(k,v){
-                          $('#byname1').append("<option value='"+de.value[k]+"'>"+v+"</option>");
+                            $('#byname1').append("<option value='"+de.value[k]+"'>"+v+"</option>");
                         });
                           
                     }    
@@ -177,6 +177,30 @@
                         
                         select: true
                                              
+                    }); 
+                    $.ajax({
+                        type: "POST",
+                        url: 'getdatawm?status=G15&mrno='+mrno+'&pallet='+pallet,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            if(mrno != "" && pallet != ""){
+                                if(de.count > 0){
+                                    Swal.fire({
+                                        icon:"success",
+                                        title:"ดึงข้อมูลสำเร็จ",
+                                        text:"ดึงข้อมูลสำเร็จ"
+                                    });
+                                }else if(de.count <= 0){
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"ไม่พบข้อมูล",
+                                        text:"ไม่พบข้อมูล"
+                                    });
+                                }
+                            }
+                            
+                            
+                        }    
                     }); 
                     $.ajax({
                         type: "POST",

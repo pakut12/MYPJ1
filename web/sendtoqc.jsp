@@ -19,7 +19,7 @@
         
         <div class="container">
             <div class="row">
-               
+                
                 <div class="col-sm-12 col-md-12">
                     <div id="pageview">
                         <div class="card shadow ">
@@ -115,9 +115,10 @@
             $(document).ready(function () {
                 var table;
                 function getdata(re){
+                    var url = 'getdatawm?status=G1&mrno='+re;
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?status=G1&mrno='+re,
+                        ajax: url,
                         responsive: false,
                         scrollX: true,
                         scrollY: true,
@@ -142,6 +143,30 @@
                             'style': 'multi'
                         }
                     });  
+                    
+                    $.ajax({
+                        type:"post",
+                        url:url,
+                        success:function(msg,status){
+                            if(re != ""){
+                                var de = $.parseJSON(msg);
+                                if(de.status == "true"){
+                                    Swal.fire({
+                                        icon:"success",
+                                        title:"ดึงข้อมูลสำเร็จ",
+                                        text:"ดึงข้อมูลสำเร็จ"
+                                    });
+                                }else if(de.status == "false"){
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"ไม่พบข้อมูล",
+                                        text:"ไม่พบข้อมูล"
+                                    });
+                                }
+                            }
+                            
+                        }
+                    });
                 }
                 
                 $("#page2").addClass("active");

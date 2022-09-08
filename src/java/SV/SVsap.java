@@ -67,7 +67,7 @@ public class SVsap extends HttpServlet {
                     for (int z = 0; z < output.getNumRows(); z++) {
                         output.setRow(z);
                         JSONArray arrjson = new JSONArray();
-                        
+
                         arrjson.add(n + 1);
                         for (int a = 0; a <= 48; a++) {
                             try {
@@ -79,6 +79,13 @@ public class SVsap extends HttpServlet {
                         }
                         arrlist.add(arrjson);
                         n++;
+                    }
+                    if (!PO.equals("") && !DOCQC.equals("")) {
+                        if (output.getNumRows() > 0) {
+                            obj.put("status", "true");
+                        } else {
+                            obj.put("status", "false");
+                        }
                     }
 
                     obj.put("data", arrlist);

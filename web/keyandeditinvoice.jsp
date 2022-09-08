@@ -147,7 +147,21 @@
                             $("#DELIVERYNO").val(de.DELIVERYNO);
                             $("#LOT").val(de.LOT);           
                             console.log(de);       
-        
+                            if(mrno != ""){
+                                if(de.count > 0){
+                                    Swal.fire({
+                                        icon:"success",
+                                        title:"ดึงข้อมูลสำเร็จ",
+                                        text:"ดึงข้อมูลสำเร็จ"
+                                    });
+                                }else if(de.count <= 0){
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"ไม่พบข้อมูล",
+                                        text:"ไม่พบข้อมูล"
+                                    });
+                                }
+                            }
                         }    
                     });                    
                 }
@@ -166,7 +180,6 @@
                             title: 'ข้อมูลไม่ถูกต้อง',
                             text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
                         })
-                       
                     }else{
                         $("#mrno").removeClass("is-invalid");
                         $("#btn-send").removeClass("disabled");                       

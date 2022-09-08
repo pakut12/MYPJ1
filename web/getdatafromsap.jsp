@@ -18,7 +18,7 @@
         
         <div class="container">
             <div class="row">
-           
+                
                 <div class="col-sm-12 col-md-12">
                     <div id="pageview">
                         <div class="card shadow ">
@@ -124,9 +124,10 @@
                 $("#page2").addClass("active");
                
                 function getdatasap(po,docqc){
+                    var url = 'sap?stasus=G&PO='+po+'&DOCQC='+docqc;
                     $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'sap?stasus=G&PO='+po+'&DOCQC='+docqc,
+                        ajax: url,
                         select: true,
                         scrollY: true,    
                         scrollX: true,
@@ -141,7 +142,28 @@
                             { "width": "10rem", "targets": 19 }, 
                         ]
                         
-                    });  
+                    }); 
+                    $.ajax({
+                        type:"post",
+                        url:url,
+                        success:function(msg,status){
+                            var de = $.parseJSON(msg);
+                            console.log(de.status);
+                            if(de.status == "true"){
+                                Swal.fire({
+                                    icon:"success",
+                                    title:"ดึงข้อมูลสำเร็จ",
+                                    text:"ดึงข้อมูลสำเร็จ"
+                                });  
+                            }else if(de.status == "false"){
+                                Swal.fire({
+                                    icon:"error",
+                                    title:"ไม่พบข้อมูล",
+                                    text:"ไม่พบข้อมูล"
+                                }); 
+                            }
+                        }
+                    });
                 }
                
                 

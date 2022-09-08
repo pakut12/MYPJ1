@@ -18,14 +18,10 @@
     </head>
     <style>    
         
-               html,body{
-                   
-                   /*
-                   border: solid black;
-                   border-width: thin;
-                   */
-                   
-               }
+             body{
+                 height:11in;
+                 width:9in;                                 
+             }
         
         
         

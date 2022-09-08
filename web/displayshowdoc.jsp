@@ -112,7 +112,22 @@
                             var de = $.parseJSON(msg);
                             $("#countwmbarcode").text(de.count);   
                             console.log(de.count);
-                                  
+                            if(mrno != "" && item != ""){
+                                if(de.count > 0){
+                                    Swal.fire({
+                                        icon:"success",
+                                        title:"ดึงข้อมูลสำเร็จ",
+                                        text:"ดึงข้อมูลสำเร็จ"
+                                    });
+                                }else if(de.count <= 0){
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"ไม่พบข้อมูล",
+                                        text:"ไม่พบข้อมูล"
+                                    });
+                                }
+                                
+                            }
                         }    
                     });                    
                 }

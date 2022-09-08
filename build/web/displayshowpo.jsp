@@ -19,7 +19,7 @@
         
         <div class="container">
             <div class="row">
-               
+                
                 <div class="col-sm-12 col-md-12">
                     <div id="pageview">
                         <div class="card shadow ">
@@ -71,7 +71,7 @@
                                             
                                         </table> 
                                     </div>
-                                   
+                                    
                                 </div>
                                 
                             </div>
@@ -113,6 +113,22 @@
                             var de = $.parseJSON(msg);
                             $("#countwmbarcode").text(de.count);   
                             console.log(de.count);
+                            if(po != ""){
+                                if(de.count > 0){
+                                    Swal.fire({
+                                        icon:"success",
+                                        title:"ดึงข้อมูลสำเร็จ",
+                                        text:"ดึงข้อมูลสำเร็จ"
+                                    });
+                                }else if(de.count <= 0){
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"ไม่พบข้อมูล",
+                                        text:"ไม่พบข้อมูล"
+                                    });
+                                }
+                                
+                            }
                                   
                         }    
                     });                    
@@ -153,23 +169,23 @@
             });
         </script>
         <script>
-                (function () {
-                    'use strict'
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.querySelectorAll('.needs-validation')
+            (function () {
+                'use strict'
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation')
 
-                    // Loop over them and prevent submission
-                    Array.prototype.slice.call(forms)
-                    .forEach(function (form) {
-                        form.addEventListener('submit', function (event) {
-                            if (!form.checkValidity()) {
-                                event.preventDefault()
-                                event.stopPropagation()
-                            }
-                            form.classList.add('was-validated')
-                        }, false)
-                    })
-                    })()
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()
         </script>
         <br><br><br><br><br>
         <%@ include file="share/footer.jsp" %>

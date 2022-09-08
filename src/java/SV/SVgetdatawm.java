@@ -116,6 +116,12 @@ public class SVgetdatawm extends HttpServlet {
                         arrlist.add(arrjson);
                         n++;
                     }
+                    if (n > 0) {
+                        obj.put("status", "true");
+                    } else if (n <= 0) {
+                        obj.put("status", "false");
+                    }
+
 
                     obj.put("data", arrlist);
                     out.print(obj);
@@ -589,6 +595,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
+                    int n = 0;
                     while ((rec != null) && (rec.next())) {
 
                         obj.put("mrno", rec.getString("mrno"));
@@ -630,8 +637,10 @@ public class SVgetdatawm extends HttpServlet {
                         arrlist.add(rec.getString("mark_toterr"));
 
                         obj.put("data", arrlist);
+                        n++;
 
                     }
+
                     out.print(obj);
 
                 } catch (Exception e) {
@@ -834,7 +843,7 @@ public class SVgetdatawm extends HttpServlet {
                     String pallet = request.getParameter("pallet");
 
                     String sql = "select * from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
-                    conn = DB.ConnDB.getConnection();
+                    // conn = DB.ConnDB.getConnection();
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
                     ps.setString(2, pallet);
@@ -867,9 +876,12 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add("");//rec.getString("point")
 
-                        int toterr = Integer.valueOf(rec.getString("toterr"));
+                        String toterr = rec.getString("toterr");
+                        if (toterr == null) {
+                            toterr = "0";
+                        }
                         String mark = "";
-                        if (toterr > 8) {
+                        if (Integer.valueOf(toterr) > 8) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -941,10 +953,11 @@ public class SVgetdatawm extends HttpServlet {
                         obj.put("RESULTQC", rec.getString("RESULTQC"));
                         obj.put("BYNAME1", rec.getString("BYNAME1"));
 
-
+                       
                         n++;
-                    }
 
+                    }
+                
 
 
                     out.print(obj);

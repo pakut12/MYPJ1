@@ -325,72 +325,114 @@
                         type: "POST",
                         url: 'getdatawm?status=G11&barcode='+barcode,
                         success: function(msg,status){
-                            var de = $.parseJSON(msg);
+                            try{
+                                var de = $.parseJSON(msg);
                             
-                            $("#doc").val(de.mrno);  
-                            $("#item").val(de.item);   
-                            $("#roll").val(de.roll);   
-                            $("#pallet").val(de.pallet);   
+                                $("#doc").val(de.mrno);  
+                                $("#item").val(de.item);   
+                                $("#roll").val(de.roll);   
+                                $("#pallet").val(de.pallet);   
                             
-                            $("#quantity").val(de.data[0]); 
-                            $("#actqty").val(de.data[1]); 
-                            $("#width").val(de.data[2]); 
+                                $("#quantity").val(de.data[0]); 
+                                $("#actqty").val(de.data[1]); 
+                                $("#width").val(de.data[2]); 
 
-                            if(de.data[3] == null){
-                                de.data[3] = 0 ;
-                            }
-                            if(de.data[4] == null){
-                                de.data[4] = 0 ;
-                            }
-                            if(de.data[5] == null){
-                                de.data[5] = 0 ;
-                            }
-                            if(de.data[6] == null){
-                                de.data[6] = 0 ;
-                            }
-                            if(de.data[7] == null){
-                                de.data[7] = 0 ;
-                            }
-                            if(de.data[8] == null){
-                                de.data[8] = 0 ;
-                            }
-                            if(de.data[8] == null){
-                                de.data[8] = 0 ;
-                            }
-                            if(de.data[9] == null){
-                                de.data[9] = 0 ;
-                            }
-                            if(de.data[10] == null){
-                                de.data[10] = 0 ;
-                            }
-                            if(de.data[11] == null){
-                                de.data[11] = 0 ;
-                            }
+                                if(de.data[3] == null){
+                                    de.data[3] = 0 ;
+                                }
+                                if(de.data[4] == null){
+                                    de.data[4] = 0 ;
+                                }
+                                if(de.data[5] == null){
+                                    de.data[5] = 0 ;
+                                }
+                                if(de.data[6] == null){
+                                    de.data[6] = 0 ;
+                                }
+                                if(de.data[7] == null){
+                                    de.data[7] = 0 ;
+                                }
+                                if(de.data[8] == null){
+                                    de.data[8] = 0 ;
+                                }
+                                if(de.data[8] == null){
+                                    de.data[8] = 0 ;
+                                }
+                                if(de.data[9] == null){
+                                    de.data[9] = 0 ;
+                                }
+                                if(de.data[10] == null){
+                                    de.data[10] = 0 ;
+                                }
+                                if(de.data[11] == null){
+                                    de.data[11] = 0 ;
+                                }
         
         
-                            $("#ethread").val(de.data[3]);  
-                            $("#ealkali").val(de.data[4]);  
-                            $("#edirty").val(de.data[5]);  
-                            $("#eoil").val(de.data[6]);  
-                            $("#ebroken").val(de.data[7]);  
-                            $("#eknot").val(de.data[8]);  
-                            $("#ejoint").val(de.data[9]);  
-                            $("#efurrow").val(de.data[10]);  
-                            $("#sum").val(de.data[11]);  
+                                $("#ethread").val(de.data[3]);  
+                                $("#ealkali").val(de.data[4]);  
+                                $("#edirty").val(de.data[5]);  
+                                $("#eoil").val(de.data[6]);  
+                                $("#ebroken").val(de.data[7]);  
+                                $("#eknot").val(de.data[8]);  
+                                $("#ejoint").val(de.data[9]);  
+                                $("#efurrow").val(de.data[10]);  
+                                $("#sum").val(de.data[11]);  
                             
         
-                            $("#erepeat").val(de.data[12]);  
-                            $("#color").val(de.data[13]);  
-                            $("#batch").val(de.data[14]);  
-                            $("#qcdate").val(today());  
-                            $("#grade").val(de.data[16]);  
-                            $("#scolor").val(de.data[17]);  
-                            $("#weight").val(de.data[18]);  
-                            $("#qtylay").val(de.data[19]);
-                            $("#byname").val(de.data[20]);  
-                            $("#mark_toterr").val(de.data[21]);  
+                                $("#erepeat").val(de.data[12]);  
+                                $("#color").val(de.data[13]);  
+                                $("#batch").val(de.data[14]);  
+                                $("#qcdate").val(today());  
+                                $("#grade").val(de.data[16]);  
+                                $("#scolor").val(de.data[17]);  
+                                $("#weight").val(de.data[18]);  
+                                $("#qtylay").val(de.data[19]);
+                                $("#byname").val(de.data[20]);  
+                                $("#mark_toterr").val(de.data[21]);  
                             
-                            sum();
+                                sum();
+                                Swal.fire({
+                                    icon:"success",
+                                    title:"ดึงข้อมูลสำเร็จ",
+                                    text:"ดึงข้อมูลสำเร็จ"
+                                });
+                            }catch(err){
+                                Swal.fire({
+                                    icon:"error",
+                                    title:"ไม่พบข้อมูล",
+                                    text:"ไม่พบข้อมูล"
+                                });
+                                $("#doc").val("");  
+                                $("#item").val("");   
+                                $("#roll").val("");   
+                                $("#pallet").val("");   
+                            
+                                $("#quantity").val(""); 
+                                $("#actqty").val(""); 
+                                $("#width").val(""); 
+                                $("#ethread").val("");  
+                                $("#ealkali").val("");  
+                                $("#edirty").val("");  
+                                $("#eoil").val("");  
+                                $("#ebroken").val("");  
+                                $("#eknot").val("");  
+                                $("#ejoint").val("");  
+                                $("#efurrow").val("");  
+                                $("#sum").val("");  
+                            
+                                $("#erepeat").val("");
+                                $("#color").val("");
+                                $("#batch").val("");
+                                $("#qcdate").val("");
+                                $("#grade").val("");
+                                $("#scolor").val(""); 
+                                $("#weight").val("");  
+                                $("#qtylay").val("");
+                                $("#byname").val("");
+                                $("#mark_toterr").val("");
+                                $("#point").val("");
+                            }
                         }
                     });                    
                 }

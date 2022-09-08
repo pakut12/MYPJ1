@@ -212,7 +212,21 @@
                         url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
-                            
+                            if(mrno != "" &&  pallet != ""){
+                                if(de.count > 0){
+                                    Swal.fire({
+                                        icon:"success",
+                                        title:"ดึงข้อมูลสำเร็จ",
+                                        text:"ดึงข้อมูลสำเร็จ"
+                                    });
+                                }else if(de.count <= 0){
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"ไม่พบข้อมูล",
+                                        text:"ไม่พบข้อมูล"
+                                    });
+                                }
+                            }
                             $("#count").val(de.count);   
                             $("#item").val(de.item); 
                             $("#desc1").val(de.desc1); 

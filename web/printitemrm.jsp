@@ -94,9 +94,10 @@
            
                 var table;
                 function getdatawmqck(mrno,item,palet){
+                    var url = 'getdatawm?status=G9&mrno='+mrno+'&item='+item+'&palet='+palet;
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?status=G9&mrno='+mrno+'&item='+item+'&palet='+palet,
+                        ajax: url,
                         responsive: false,
                         scrollY: true ,
                         scrollX: false 
@@ -104,12 +105,29 @@
                     }); 
                     $.ajax({
                         type: "POST",
-                        url: 'getdatawm?status=G9&mrno='+mrno+'&item='+item+'&palet='+palet,
+                        url: url,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
                             $("#totalrow").val(de.count);   
-                            $("#totallong").val(de.sum);   
-                            console.log(de.count);        
+                            $("#totallong").val(de.sum);  
+                            
+                            if(mrno != "" && item != "" && palet != ""){
+                                if(de.count > 0){
+                                    Swal.fire({
+                                        icon:"success",
+                                        title:"ดึงข้อมูลสำเร็จ",
+                                        text:"ดึงข้อมูลสำเร็จ"
+                                    });
+                                }else if(de.count <= 0){
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"ไม่พบข้อมูล",
+                                        text:"ไม่พบข้อมูล"
+                                    });
+                                }
+                            }
+                           
+                                  
                         }    
                     });                    
                 }
