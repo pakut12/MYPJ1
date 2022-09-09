@@ -42,7 +42,7 @@ public class SVsendtoqc extends HttpServlet {
                 while (rec.next()) {
                     try {
                         String sqlin = "INSERT INTO wmqck (MRNO, ITEM, ROLL, PALET, ACTQTY, ETHREAD, EOIL, EKNOT, EJOINT, EARCH, EFURROW, EDIRTY, EALKALI, EBROKEN, EREPEAT, TOTERR, WIDTH, GRADEQC, QCDATE, BYNAME, WEIGHT, QTYLAY, MARK, REMARK1, REMARK2, REMARK3, REJECT, BYNAME1, REMARK4, WEIGHT1, MARK_TOTERR, REFMRNO) " +
-                                "VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                                "VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 //                        out.print(rec.getString("MRNO"));
 //                        out.print(rec.getString("ITEM"));

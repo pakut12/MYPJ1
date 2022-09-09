@@ -204,7 +204,7 @@ public class SVgetdatawm extends HttpServlet {
                         PO = rec.getString("PO");
                         SUPNAME = rec.getString("SUPNAME");
                         INVOICE = rec.getString("INVOICE");
-                        INVOICEDATE = rec.getString("INVOICEDATE");
+                        INVOICEDATE = DB.ConnDB.coverdate(rec.getString("INVOICEDATE"));
                         DELIVERYNO = rec.getString("DELIVERYNO");
                         LOT = rec.getString("LOT");
 
@@ -859,7 +859,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("roll"));
                         arrjson.add(rec.getString("width"));
                         arrjson.add(rec.getString("color"));
-                        arrjson.add("");//rec.getString("scolor")
+                        arrjson.add(rec.getString("scolor"));//rec.getString("scolor")
 
                         arrjson.add(rec.getString("quantity"));
                         arrjson.add(rec.getString("actqty"));
@@ -874,7 +874,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("erepeat"));
                         arrjson.add(rec.getString("batch"));
                         arrjson.add(rec.getString("toterr"));
-                        arrjson.add("");//rec.getString("point")
+                        arrjson.add(rec.getString("point"));//rec.getString("point")
 
                         String toterr = rec.getString("toterr");
                         if (toterr == null) {

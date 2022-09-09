@@ -18,11 +18,11 @@
     </head>
     <style>    
         
-             body{
+            /* body{
                  height:11in;
                  width:9in;                                 
              }
-        
+        */
         
         
     </style>
@@ -171,11 +171,12 @@
         </div>
         <script>
             $(document).ready(function(){
-                const queryString = window.location.search;
-                console.log(queryString);
-                const urlParams = new URLSearchParams(queryString);
-                const mrno = urlParams.get('mrno')
-                const pallet = urlParams.get('pallet')
+              
+                var queryString = window.location.search;
+               
+                var urlParams = new URLSearchParams(queryString);
+                var mrno = urlParams.get('mrno');
+                var pallet = urlParams.get('pallet');
                 function today(){
                     var date = new Date();
                     var d =date.getDate()
@@ -218,6 +219,7 @@
                 
                 function covertoday(date){
                     var coverdate =null;
+                    
                     var y = date.substring(0, 4);
                     var m = date.substring(5, 7);
                     var d = date.substring(8, 10);
@@ -266,6 +268,9 @@
                     url: 'getdatawm?status=G16&mrno='+mrno+'&pallet='+pallet+'',
                     success: function(msg,status){
                         var de = $.parseJSON(msg);
+                        console.log(de);
+                        
+                        
                         $("#PLANT").text(de.PLANT);
                         $("#ITEM").text(de.ITEM);
                         $("#PO").text(de.PO);
@@ -287,7 +292,7 @@
                         $("#sumqt").text(de.sumqt);
                         $("#sumaqt").text(de.sumaqt);
                         $("#sumweight").text(de.sumweight);
-                        console.log(de);
+                       
                                   
                     }    
                 });  

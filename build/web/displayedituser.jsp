@@ -92,9 +92,9 @@
                                                     </select>
                                                     <label>Approve  : </label>
                                                     <select class="form-select form-select-sm" id="statusqi" required>
-                                                        <option value="<%=msgstatusqi%>" ><%=msgstatusqi%></option>
-                                                        <option value="Y">Y</option>
-                                                        <option value="N">N</option>
+                                                        <option value="<%=msgstatusqi%>" ><%if(msgstatusqi.equals("Y")){out.print("มีสิทธิ์");}else{out.print("ไม่มีสิทธิ์");}%></option>
+                                                        <option value="Y">มีสิทธิ์</option>
+                                                        <option value="N">ไม่มีสิทธิ์</option>
                                                     </select>
                                                     <div class="row mt-3">
                                                         

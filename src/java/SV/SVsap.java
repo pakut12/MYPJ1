@@ -126,55 +126,56 @@ public class SVsap extends HttpServlet {
                     int chack = 0;
 
                     for (int z = 0; z < output.getNumRows(); z++) {
-                        output.setRow(z);
-
-
-                        pr1.setString(1, output.getString(17));
-                        pr1.setString(2, output.getString(0));
-                        pr1.setString(3, output.getString(1));
-                        pr1.setString(4, output.getString(2));
-
-
-                        pr.setString(1, output.getString(0));
-                        pr.setString(2, output.getString(1));
-                        pr.setString(3, output.getString(2));
-                        pr.setString(4, output.getString(3));
-                        pr.setString(5, output.getString(4));
-                        pr.setString(6, output.getString(5));
-                        pr.setString(7, output.getString(6));
-                        pr.setString(8, output.getString(7));
-                        pr.setString(9, output.getString(8));
-                        pr.setString(10, output.getString(9));
-                        pr.setString(11, output.getString(10));
-                        pr.setString(12, output.getString(11));
-                        pr.setString(13, output.getString(12));
-                        pr.setString(14, output.getString(13));
-                        pr.setString(15, output.getString(14));
-                        pr.setString(16, output.getString(15));
-                        pr.setString(17, output.getString(16));
-                        pr.setString(18, output.getString(17));
-                        pr.setString(19, output.getString(18));
-                        pr.setString(20, output.getString(19));
-                        pr.setString(21, output.getString(20));
-                        pr.setString(22, output.getString(21));
-                        pr.setString(23, output.getString(22));
-                        pr.setString(24, output.getString(23));
-                        pr.setString(25, output.getString(24));
-                        pr.setString(26, output.getString(25));
-                        pr.setString(27, output.getString(26));
-                        pr.setString(28, output.getString(27));
-                        pr.setString(29, output.getString(28));
-                        pr.setString(30, output.getString(29));
-                        pr.setString(31, output.getString(30));
-                        pr.setString(32, output.getString(31));
-                        pr.setString(33, output.getString(32));
-
                         try {
-                            pr.executeUpdate();
-                            pr1.executeUpdate();
-                        } catch (Exception ex) {
-                            
+                            output.setRow(z);
+
+                            pr1.setString(1, output.getString(17));
+                            pr1.setString(2, output.getString(0));
+                            pr1.setString(3, output.getString(1));
+                            pr1.setString(4, output.getString(2));
+
+                            pr.setString(1, output.getString(0));
+                            pr.setString(2, output.getString(1));
+                            pr.setString(3, output.getString(2));
+                            pr.setString(4, output.getString(3));
+                            pr.setString(5, output.getString(4));
+                            pr.setString(6, output.getString(5));
+                            pr.setString(7, output.getString(6));
+                            pr.setString(8, output.getString(7));
+                            pr.setString(9, output.getString(8));
+                            pr.setString(10, output.getString(9));
+                            pr.setString(11, output.getString(10));
+                            pr.setString(12, output.getString(11));
+                            pr.setString(13, output.getString(12));
+                            pr.setString(14, output.getString(13));
+                            pr.setString(15, output.getString(14));
+                            pr.setString(16, output.getString(15));
+                            pr.setString(17, output.getString(16));
+                            pr.setString(18, output.getString(17));
+                            pr.setString(19, output.getString(18));
+                            pr.setString(20, output.getString(19));
+                            pr.setString(21, output.getString(20));
+                            pr.setString(22, output.getString(21));
+                            pr.setString(23, output.getString(22));
+                            pr.setString(24, output.getString(23));
+                            pr.setString(25, output.getString(24));
+                            pr.setString(26, output.getString(25));
+                            pr.setString(27, output.getString(26));
+                            pr.setString(28, output.getString(27));
+                            pr.setString(29, output.getString(28));
+                            pr.setString(30, output.getString(29));
+                            pr.setString(31, output.getString(30));
+                            pr.setString(32, output.getString(31));
+                            pr.setString(33, output.getString(32));
+
+                            if (pr.executeUpdate() > 0 && pr1.executeUpdate() > 0) {
+                                chack++;
+                            } 
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
+
+
 
                     }
                     if (chack > 0) {

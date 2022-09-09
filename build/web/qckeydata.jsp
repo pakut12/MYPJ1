@@ -477,7 +477,7 @@
                     var mark_toterr = $("#mark_toterr").val();
                     var qcdate = $("#qcdate").val();
                     var point = $("#point").val();
-                    
+                   
                     var mrno = $("#doc").val();
                     var item = $("#item").val();
                     var roll = $("#roll").val();
@@ -485,6 +485,7 @@
         
                     var url = "edititem?status=G3&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&scolor="+scolor+"&byname1="+byname1+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet+"";
             
+                    console.log(url);
                     $.ajax({
                         type: "POST",
                         url: url,

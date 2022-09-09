@@ -78,7 +78,7 @@ public class SVedititem extends HttpServlet {
                     String ITEM1 = (String) request.getParameter("ITEM1");
                     String ROLL1 = (String) request.getParameter("ROLL1");
 
-                    String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=?,wmbarcode.LOT=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
+                    String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
 
                     ps = con.prepareStatement(sql);
                     ps.setString(1, ITEM);
@@ -168,7 +168,7 @@ public class SVedititem extends HttpServlet {
                             "wmqck.WEIGHT=?," +
                             "wmqck.QTYLAY=?," +
                             "wmqck.MARK_TOTERR=?," +
-                            "wmqck.QCDATE=?, " +
+                            "wmqck.QCDATE=TO_DATE(?, 'yyyy/mm/dd'), " +
                             "wmqck.point=? " +
                             "WHERE wmqck.MRNO=? and wmqck.ITEM=? AND wmqck.ROLL=? and wmqck.PALET = ?";
 
@@ -198,7 +198,7 @@ public class SVedititem extends HttpServlet {
                     String roll = (String) request.getParameter("roll");
                     String gradeqc = (String) request.getParameter("gradeqc");
 
-                    String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?;";
+                    String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
 
                     ps = con.prepareStatement(sql);
                     ps.setString(1, remark1);

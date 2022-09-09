@@ -179,7 +179,7 @@
                            
                         
                     });
-                    getdata($("#mrno").val(),$("#item").val());   
+                    //getdata($("#mrno").val(),$("#item").val());   
                    
                                     
                     
