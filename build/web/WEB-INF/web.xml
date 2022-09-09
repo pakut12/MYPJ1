@@ -1,5 +1,13 @@
-<?xml version="1.0" encoding="TIS-620"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <filter>
+        <filter-name>UTF8Filter</filter-name>
+        <filter-class>SV.filter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UTF8Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>SVlogin</servlet-name>
         <servlet-class>SV.SVlogin</servlet-class>
@@ -29,10 +37,17 @@
         <servlet-name>SVedititem</servlet-name>
         <servlet-class>SV.SVedititem</servlet-class>
     </servlet>
-    <servlet><servlet-name>SVdel</servlet-name><servlet-class>SV.SVdel</servlet-class></servlet>
+    <servlet>
+        <servlet-name>SVdel</servlet-name>
+        <servlet-class>SV.SVdel</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>SVuser</servlet-name>
         <servlet-class>SV.SVuser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>filter</servlet-name>
+        <servlet-class>SV.filter</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SVlogin</servlet-name>
@@ -70,12 +85,14 @@
         <servlet-name>SVuser</servlet-name>
         <url-pattern>/user</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>filter</servlet-name>
+        <url-pattern>/filter</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        </welcome-file-list>
-    </web-app>
+    </welcome-file-list>
+</web-app>

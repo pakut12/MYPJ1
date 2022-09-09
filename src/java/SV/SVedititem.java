@@ -190,6 +190,7 @@ public class SVedititem extends HttpServlet {
 
 
                 } else if (status.equals("G4")) {
+                    request.setCharacterEncoding("UTF-8");
                     String remark1 = (String) request.getParameter("remark1");
                     String remark2 = (String) request.getParameter("remark2");
                     String remark3 = (String) request.getParameter("remark3");
@@ -267,6 +268,7 @@ public class SVedititem extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         processRequest(request, response);
     }
 

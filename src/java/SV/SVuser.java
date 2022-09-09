@@ -31,6 +31,7 @@ public class SVuser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+
         PrintWriter out = response.getWriter();
         try {
             Connection con = null;
@@ -40,13 +41,17 @@ public class SVuser extends HttpServlet {
             String status1 = request.getParameter("status1");
             try {
                 if (status1.equals("S1")) {
+
                     try {
+                        request.setCharacterEncoding("UTF-8");
                         String userid = request.getParameter("userid");
                         String password = request.getParameter("password");
                         String firstname = request.getParameter("firstname");
                         String lastname = request.getParameter("lastname");
                         String status = request.getParameter("status");
                         String statusqi = request.getParameter("statusqi");
+
+                        
 
                         String sql = "INSERT INTO wmuser (userid, password, firstname, lastname, status, statusqi) VALUES (?, ?, ?,?, ?, ?)";
 
@@ -57,13 +62,15 @@ public class SVuser extends HttpServlet {
                         ps.setString(4, lastname);
                         ps.setString(5, status);
                         ps.setString(6, statusqi);
-                        
-                      
+
+
                         if (ps.executeUpdate() > 0) {
                             out.print("true");
                         } else {
                             out.print("false");
                         }
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                         out.print("false");

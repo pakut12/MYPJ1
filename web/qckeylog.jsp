@@ -16,163 +16,164 @@
         
         
         <%@include file="share/nav.jsp" %>
-        
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-sm-12 col-md-12">
-                    <div id="pageview">
-                        <div class="card shadow ">
-                            <div class="card-header text-center">
-                                โปรเเกรมคีย์สรุปผลการตรวจสอบผ้าถัก
-                            </div>
-                            <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col-sm-12 col-md-3">
-                                        <label>เลขที่เอกสาร : </label>
-                                        <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" value="" required></input>
-                                        <div class="invalid-feedback mb-3 text-center">
-                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+        <form id="myform" >
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-sm-12 col-md-12">
+                        <div id="pageview">
+                            <div class="card shadow ">
+                                <div class="card-header text-center">
+                                    โปรเเกรมคีย์สรุปผลการตรวจสอบผ้าถัก
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-12 col-md-3">
+                                            <label>เลขที่เอกสาร : </label>
+                                            <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" value="" required></input>
+                                            <div class="invalid-feedback mb-3 text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-3">
-                                        <label>พาเลท : </label>
-                                        <input class="form-control form-control-sm" type="number" name="pallet" id="pallet" value="" ></input>
-                                        <div class="invalid-feedback mb-3 text-center">
-                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                        <div class="col-sm-12 col-md-3">
+                                            <label>พาเลท : </label>
+                                            <input class="form-control form-control-sm" type="number" name="pallet" id="pallet" value="" ></input>
+                                            <div class="invalid-feedback mb-3 text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-3">
-                                        <label>รหัสวัตถุดิบ : </label>
-                                        <input class="form-control form-control-sm" type="text" name="item" id="item" value="" readonly></input>
-                                        <div class="invalid-feedback mb-3 text-center">
-                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                        <div class="col-sm-12 col-md-3">
+                                            <label>รหัสวัตถุดิบ : </label>
+                                            <input class="form-control form-control-sm" type="text" name="item" id="item" value="" readonly></input>
+                                            <div class="invalid-feedback mb-3 text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-3">
-                                        <label>จำนวนม้วนผ้า : </label>
-                                        <input class="form-control form-control-sm" type="text" name="count" id="count" value="" readonly></input>
-                                        <div class="invalid-feedback mb-3 text-center">
-                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                        <div class="col-sm-12 col-md-3">
+                                            <label>จำนวนม้วนผ้า : </label>
+                                            <input class="form-control form-control-sm" type="text" name="count" id="count" value="" readonly></input>
+                                            <div class="invalid-feedback mb-3 text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                     
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-6">
-                                        <label>รายงานละเอียดวัตถุดิบ : </label>
-                                        <input class="form-control form-control-sm" type="text" name="desc1" id="desc1" value="" readonly></input>
-                                        <div class="invalid-feedback mb-3 text-center">
-                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                            <label>รายงานละเอียดวัตถุดิบ : </label>
+                                            <input class="form-control form-control-sm" type="text" name="desc1" id="desc1" value="" readonly></input>
+                                            <div class="invalid-feedback mb-3 text-center">
+                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-sm-12 col-md-6">
+                                            <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
+                                            <a href="qckeylog.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button></a>
+                                            <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึกข้อมูล</button>
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-sm-12 col-md-6">
-                                        <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
-                                        <a href="qckeylog.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button></a>
-                                        <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึกข้อมูล</button>
-                                    </div>
-                                </div>
-                                <div class="row mt-4">
-                                    <div class="col-sm-12 col-md-12">
-                                        
-                                        
-                                        <table class="table table-sm table-bordered  text-center" id="mytable"  >
-                                            <thead >
-                                                <tr>
-                                                    <th class="text-center">ม้วนที่</th>
-                                                    <th class="text-center">หน้าผ้าที่วัดได้</th>
-                                                    <th class="text-center">จำนวนที่มา</th>
-                                                    <th class="text-center">จำนวนที่ได้</th>
-                                                    <th class="text-center">จุดสี-น้ำมัน-สกปรก</th>
-                                                    <th class="text-center">ลายขวาง</th>
-                                                    <th class="text-center">ความกว้างไม่ได้มาตรฐาน</th>
-                                                    <th class="text-center">ปุ่มปม</th>
-                                                    <th class="text-center">เส้นด้ายขาด</th>
-                                                    <th class="text-center">รอยต่าง</th>
-                                                    <th class="text-center">รอยเข็ม</th>
-                                                    <th class="text-center">รอยเข็มเข้าลึก</th>
-                                                    <th class="text-center">ตำหนิรวม </th>
-                                                    <th class="text-center">คะเเนน</th>
-                                                    <th class="text-center">บาร์โค๊ดร้านค้า</th>
-                                                    <th class="text-center">Mark</th>
-                                                    
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                
-                                            </tbody>
+                                    <div class="row mt-4">
+                                        <div class="col-sm-12 col-md-12">
                                             
-                                        </table> 
+                                            
+                                            <table class="table table-sm table-bordered  text-center" id="mytable"  >
+                                                <thead >
+                                                    <tr>
+                                                        <th class="text-center">ม้วนที่</th>
+                                                        <th class="text-center">หน้าผ้าที่วัดได้</th>
+                                                        <th class="text-center">จำนวนที่มา</th>
+                                                        <th class="text-center">จำนวนที่ได้</th>
+                                                        <th class="text-center">จุดสี-น้ำมัน-สกปรก</th>
+                                                        <th class="text-center">ลายขวาง</th>
+                                                        <th class="text-center">ความกว้างไม่ได้มาตรฐาน</th>
+                                                        <th class="text-center">ปุ่มปม</th>
+                                                        <th class="text-center">เส้นด้ายขาด</th>
+                                                        <th class="text-center">รอยต่าง</th>
+                                                        <th class="text-center">รอยเข็ม</th>
+                                                        <th class="text-center">รอยเข็มเข้าลึก</th>
+                                                        <th class="text-center">ตำหนิรวม </th>
+                                                        <th class="text-center">คะเเนน</th>
+                                                        <th class="text-center">บาร์โค๊ดร้านค้า</th>
+                                                        <th class="text-center">Mark</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                                
+                                            </table> 
+                                            
+                                        </div>
                                         
                                     </div>
                                     
-                                </div>
-                                
-                                <div class="row mt-3">
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                คีย์สรุปผลการตรวจสอบ
-                                            </div>
-                                            <div class="card-body">
-                                                <label> Remack1 : </label>
-                                                <input class="form-control form-control-sm mb-2" type="text" name="remark1" id="remark1" value="" ></input>
-                                                <label> Remack2  : </label>
-                                                <input class="form-control form-control-sm mb-2" type="text" name="remark2" id="remark2" value="" ></input>
-                                                <label> Remack3 : </label>
-                                                <input class="form-control form-control-sm mb-2" type="text" name="remark3" id="remark3" value="" ></input>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                ระบุข้อมูลเพื่อคำนวน % การสูญเสีย
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <label>จำนวนที่มารวม : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="sumq" id="sumq" value="" readonly></input>
-                                                        <div class="invalid-feedback mb-3 text-center">
-                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <label>จำนวนที่รวมได้ : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="suma" id="suma" value="" readonly></input>
-                                                        <div class="invalid-feedback mb-3 text-center">
-                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                        </div>
-                                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    คีย์สรุปผลการตรวจสอบ
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <label>จำนวนม้วนที่ * : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="countstar" id="countstar" value="" readonly></input>
-                                                        <div class="invalid-feedback mb-3 text-center">
-                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <label>จำนวนรวม * : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="sumstar" id="sumstar" value="" readonly></input>
-                                                        <div class="invalid-feedback mb-3 text-center">
-                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                        </div>
-                                                    </div>
+                                                <div class="card-body">
+                                                    <label> Remack1 : </label>
+                                                    <input class="form-control form-control-sm mb-2" type="text" name="remark1" id="remark1" value="" ></input>
+                                                    <label> Remack2  : </label>
+                                                    <input class="form-control form-control-sm mb-2" type="text" name="remark2" id="remark2" value="" ></input>
+                                                    <label> Remack3 : </label>
+                                                    <input class="form-control form-control-sm mb-2" type="text" name="remark3" id="remark3" value="" ></input>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <label> % การสูญเสีย : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="gradeqc" id="gradeqc" value="" readonly></input>
-                                                        <div class="invalid-feedback mb-3 text-center">
-                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
+                                            </div> 
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    ระบุข้อมูลเพื่อคำนวน % การสูญเสีย
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <label>จำนวนที่มารวม : </label>
+                                                            <input class="form-control form-control-sm" type="text" name="sumq" id="sumq" value="" readonly></input>
+                                                            <div class="invalid-feedback mb-3 text-center">
+                                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <label>จำนวนที่รวมได้ : </label>
+                                                            <input class="form-control form-control-sm" type="text" name="suma" id="suma" value="" readonly></input>
+                                                            <div class="invalid-feedback mb-3 text-center">
+                                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <label>จำนวนม้วนที่ * : </label>
+                                                            <input class="form-control form-control-sm" type="text" name="countstar" id="countstar" value="" readonly></input>
+                                                            <div class="invalid-feedback mb-3 text-center">
+                                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <label>จำนวนรวม * : </label>
+                                                            <input class="form-control form-control-sm" type="text" name="sumstar" id="sumstar" value="" readonly></input>
+                                                            <div class="invalid-feedback mb-3 text-center">
+                                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-6">
+                                                            <label> % การสูญเสีย : </label>
+                                                            <input class="form-control form-control-sm" type="text" name="gradeqc" id="gradeqc" value="" readonly></input>
+                                                            <div class="invalid-feedback mb-3 text-center">
+                                                                กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -183,8 +184,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </form>
         <script>
             
             $(document).ready(function () {
@@ -305,17 +305,21 @@
                             text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
                         })
                     }else{
-                          
+                       
+                       
                         $.ajax({
                             type: "POST",
                             url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                             success: function(msg,status){
                                 var de = $.parseJSON(msg);
                                 $.each(de.arrroll,function(k,v){
-                                    var url = 'edititem?status=G4&remark1='+remark1+'&remark2='+remark2+'&remark3='+remark3+'&mrno='+mrno+'&item='+item+'&roll='+v+'&gradeqc='+gradeqc;
+                                    
+                                  
+                                    var url = 'edititem?status=G4';
                                     $.ajax({
                                         type: "POST",
                                         url: url,
+                                        data:'&remark1='+remark1+'&remark2='+remark2+'&remark3='+remark3+'&mrno='+mrno+'&item='+item+'&roll='+v+'&gradeqc='+gradeqc,
                                         success: function(msg,status){
                                             if(msg == 'true'){
                                                 Swal.fire({
@@ -335,6 +339,7 @@
                                     });   
                                 });
                                 getdata($("#mrno").val(),$("#pallet").val());  
+                         
                             }
                         });   
                     }

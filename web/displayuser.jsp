@@ -33,25 +33,25 @@
                                                 เพิ่มสมาชิก
                                             </div>
                                             <div class="card-body">
-                                                <form class="" id="myform">
+                                                <form class="" id="myform" action="user?status1=S1" method="post" >
                                                     
                                                     <label>Userid : </label>
-                                                    <input class="form-control form-control-sm" type="number" id="userid" required ></input>
+                                                    <input class="form-control form-control-sm" type="number" id="userid" name="userid" required ></input>
                                                     <label>Password : </label>
-                                                    <input class="form-control form-control-sm" type="password" id="password" required></input>
+                                                    <input class="form-control form-control-sm" type="password" id="password" name="password" required></input>
                                                     <label>Firstname : </label>
-                                                    <input class="form-control form-control-sm" type="text" id="firstname" required></input>
+                                                    <input class="form-control form-control-sm" type="text" id="firstname" name="firstname" required></input>
                                                     <label>Lastname : </label>
-                                                    <input class="form-control form-control-sm" type="text" id="lastname" required></input>
+                                                    <input class="form-control form-control-sm" type="text" id="lastname" name="lastname" required></input>
                                                     <label>Status : </label>
-                                                    <select class="form-select form-select-sm" id="status" required>
+                                                    <select class="form-select form-select-sm" id="status" name="status" required>
                                                         <option value="">โปรดเลือก....</option>
                                                         <option value="01">Admin</option>
                                                         <option value="02">RM</option>
                                                         <option value="03">QC RM</option>
                                                     </select>
                                                     <label>Approve : </label>
-                                                    <select class="form-select form-select-sm" id="statusqi" required>
+                                                    <select class="form-select form-select-sm" id="statusqi" name="statusqi" required>
                                                         <option value="" >โปรดเลือก....</option>
                                                         <option value="Y">มีสิทธิ์</option>
                                                         <option value="N">ไม่มีสิทธิ์</option>
@@ -118,6 +118,7 @@
                 $("#btn-getdata").click(function(){
                     var userid = $("#userid").val();
                     var url = "user?status1=G1&userid="+ userid ;
+                    
                     $.ajax({
                         type:"POST",
                         url:url,
@@ -168,6 +169,8 @@
                     var lastname = $("#lastname").val();
                     var status = $("#status").val();
                     var statusqi = $("#statusqi").val();
+                    var form = $("#myform").serialize();
+                   
                     if(status == "" || statusqi == ""){
                         Swal.fire({
                             icon: 'error',
@@ -179,13 +182,14 @@
                         var data = $("#data").text();
                         var url = null;
                         
-                        url = "user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
+                        url = "user?status1=S1"
                        
                         // var url = "../user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
 
                         $.ajax({
                             type:"POST",
                             url:url,
+                            data:form, 
                             success:function(msg,status){
                                 console.log(msg);
                                 if(msg == 'true'){
