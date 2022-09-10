@@ -18,7 +18,8 @@
     <style>      
         body{
             height:5.5in;
-            width:9in;                                 
+            width:9in;
+            font-size:11;
         }
     </style>
     <%!
