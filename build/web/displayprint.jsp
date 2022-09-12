@@ -15,11 +15,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <style>      
+    <style>
         body{
-            height:5.5in;
-            width:9in;
-            font-size:1px;
+            font-size:12px;
         }
     </style>
     <%!
@@ -32,8 +30,8 @@
     }
     %>
     
-    <body>
-        <div class="container">
+    <body >
+   
             <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
             
             <div class="row">
@@ -107,12 +105,11 @@
                     <label class="h3"><%=request.getAttribute("roll")%></label> 
                     <label><%=request.getAttribute("UNIT")%></label> 
                 </div> 
-                
             </div>
             
             <div class="row mt-2">
                 <div  class="col-12 ">
-                    <table class="table table-bordered border-dark text-center w-75">
+                    <table class="table table-bordered border-dark text-center w-100">
                         <thead>
                             <tr>
                                 <th>เบอร์สี</th>
@@ -191,8 +188,7 @@
                 </div> 
                 
             </div>
-        </div>
-        
+            
         
         <script>
             $(document).ready(function(){
