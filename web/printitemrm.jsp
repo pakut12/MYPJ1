@@ -111,9 +111,23 @@
                         data:data,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
-                            $.each(de.palet,function(k,v){
-                                $("#palet").append( "<option value='"+v+"'>"+v+"</option>" ); 
-                            });
+                            if(de.status == "true"){
+                                Swal.fire({
+                                    icon:"success",                    
+                                    title:"ดึงเลขที่พาเลตสำเร็จ",
+                                    text:"ดึงเลขที่พาเลตสำเร็จ" 
+                                });
+                                $.each(de.palet,function(k,v){
+                                    $("#palet").append( "<option value='"+v+"'>"+v+"</option>" ); 
+                                });
+                            }else if(de.status == "false"){
+                                Swal.fire({
+                                    icon:"error",                    
+                                    title:"ดึงเลขที่พาเลตไม่สำเร็จ",
+                                    text:"ดึงเลขที่พาเลตไม่สำเร็จ" 
+                                });
+                            }
+                            
                                   
                         }    
                     });

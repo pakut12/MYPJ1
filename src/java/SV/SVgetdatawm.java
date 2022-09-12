@@ -962,7 +962,11 @@ public class SVgetdatawm extends HttpServlet {
                         n++;
                     }
                     obj.put("palet", arrlist);
-
+                    if (n > 0) {
+                        obj.put("status", "true");
+                    } else {
+                        obj.put("status", "false");
+                    }
                     out.print(obj);
 
                 } catch (Exception e) {
@@ -973,7 +977,7 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G19")) {
                 try {
                     String mrno = request.getParameter("mrno").trim();
-                   
+
 
                     String sql = "select * from wmbarcode where wmbarcode.MRNO = ?";
 
@@ -991,6 +995,11 @@ public class SVgetdatawm extends HttpServlet {
                         }
                         palet = rec.getString("PALET");
                         n++;
+                    }
+                    if (n > 0) {
+                        obj.put("status", "true");
+                    } else {
+                        obj.put("status", "false");
                     }
                     obj.put("palet", arrlist);
 
