@@ -31,111 +31,111 @@
     %>
     
     <body >
-   
-            <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
-            
-            <div class="row">
-                <div  class="col-8 ">
-                    <label class="fw-bold">Name of Vendor : </label>
-                    <label><%=request.getAttribute("SUPNAME")%></label> 
-                </div>
-                
-                <div  class="col-4">
-                    <label class="fw-bold">Documaent No. :</label>
-                    <label><%=request.getAttribute("MRNO")%></label> 
-                </div>
-            </div>
-            <div class="row">
-                <div  class="col-8 ">
-                    <label class="fw-bold">Po No. : </label>
-                    <label><%=request.getAttribute("PO")%>  /<%=request.getAttribute("POLN")%></label> 
-                </div>
-                
-                <div  class="col-4 ">
-                    <label class="fw-bold">Pallet : </label>
-                    <label><%=request.getAttribute("PALET")%></label> 
-                </div> 
-            </div>
-            <div class="row">
-                <div  class="col-4 ">
-                    <label class="fw-bold">Current Date : </label>
-                    <label id="today"></label> 
-                </div>
-                <div  class="col-4 ">
-                    <label class="fw-bold">วันที่ผ้าเข้า : </label>
-                    <label class="h3" id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
-                </div>
-                <div  class="col-4 ">
-                    <label class="fw-bold">Invoice No : </label>
-                    <label><%=request.getAttribute("INVOICE")%></label> 
-                </div> 
-            </div>
-            <div class="row">
-                <div  class="col-8 ">
-                    <label class="fw-bold">Plant : </label>
-                    <label><%=request.getAttribute("PLANT")%></label> 
-                </div>
-                
-                <div  class="col-4 ">
-                    <label class="fw-bold">Invoice date : </label>
-                    <label><%=ctoD(request.getAttribute("INVOICEDATE").toString())%></label> 
-                </div> 
-                
-                
-            </div>
-            <div class="row">
-                <div  class="col-8 ">
-                    <label class="fw-bold ">Materal : </label>
-                    <label class="h3"><%=request.getAttribute("ITEM")%></label> 
-                </div>
-                
-                <div  class="col-4 ">
-                    <label><%=request.getAttribute("DESC1")%></label> 
-                </div> 
-                
-            </div>
-            <div class="row">
-                <div  class="col-8 ">
-                    <label class="fw-bold">Lot : </label>
-                    <label><%=request.getAttribute("LOT")%></label> 
-                </div>
-                
-                <div  class="col-4 ">
-                    <label class="fw-bold">Quantity : </label>
-                    <label class="h3"><%=request.getAttribute("roll")%></label> 
-                    <label><%=request.getAttribute("UNIT")%></label> 
-                </div> 
+        
+        <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
+        
+        <div class="row">
+            <div  class="col-8 ">
+                <label class="fw-bold">Name of Vendor : </label>
+                <label><%=request.getAttribute("SUPNAME")%></label> 
             </div>
             
-            <div class="row mt-2">
-                <div  class="col-12 ">
-                    <table class="table table-bordered border-dark text-center w-100">
-                        <thead>
-                            <tr>
-                                <th>เบอร์สี</th>
-                                <th>หน้า</th>
-                                <th colspan="10">รายการ</th>
-                                <th colspan="2">หน่วย</th>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <th>กว้าง</th>
-                                <th>1</th>
-                                <th>2</th>
-                                <th>3</th>
-                                <th>4</th>
-                                <th>5</th>
-                                <th>6</th>
-                                <th>7</th>
-                                <th>8</th>
-                                <th>9</th>
-                                <th>10</th>
-                                <th><%=request.getAttribute("UNIT")%></th>
-                                <th>ม้วน</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
+            <div  class="col-4">
+                <label class="fw-bold">Documaent No. :</label>
+                <label><%=request.getAttribute("MRNO")%></label> 
+            </div>
+        </div>
+        <div class="row">
+            <div  class="col-8 ">
+                <label class="fw-bold">Po No. : </label>
+                <label><%=request.getAttribute("PO")%>  /<%=request.getAttribute("POLN")%></label> 
+            </div>
+            
+            <div  class="col-4 ">
+                <label class="fw-bold">Pallet : </label>
+                <label><%=request.getAttribute("PALET")%></label> 
+            </div> 
+        </div>
+        <div class="row">
+            <div  class="col-4 ">
+                <label class="fw-bold">Current Date : </label>
+                <label id="today"></label> 
+            </div>
+            <div  class="col-4 ">
+                <label class="fw-bold">วันที่ผ้าเข้า : </label>
+                <label class="h3" id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
+            </div>
+            <div  class="col-4 ">
+                <label class="fw-bold">Invoice No : </label>
+                <label><%=request.getAttribute("INVOICE")%></label> 
+            </div> 
+        </div>
+        <div class="row">
+            <div  class="col-8 ">
+                <label class="fw-bold">Plant : </label>
+                <label><%=request.getAttribute("PLANT")%></label> 
+            </div>
+            
+            <div  class="col-4 ">
+                <label class="fw-bold">Invoice date : </label>
+                <label><%=ctoD(request.getAttribute("INVOICEDATE").toString())%></label> 
+            </div> 
+            
+            
+        </div>
+        <div class="row">
+            <div  class="col-8 ">
+                <label class="fw-bold ">Materal : </label>
+                <label class="h3"><%=request.getAttribute("ITEM")%></label> 
+            </div>
+            
+            <div  class="col-4 ">
+                <label><%=request.getAttribute("DESC1")%></label> 
+            </div> 
+            
+        </div>
+        <div class="row">
+            <div  class="col-8 ">
+                <label class="fw-bold">Lot : </label>
+                <label><%=request.getAttribute("LOT")%></label> 
+            </div>
+            
+            <div  class="col-4 ">
+                <label class="fw-bold">Quantity : </label>
+                <label class="h3"><%=request.getAttribute("roll")%></label> 
+                <label><%=request.getAttribute("UNIT")%></label> 
+            </div> 
+        </div>
+        
+        <div class="row mt-2">
+            <div  class="col-12 ">
+                <table class="table table-bordered border-dark text-center w-100">
+                    <thead>
+                        <tr>
+                            <th>เบอร์สี</th>
+                            <th>หน้า</th>
+                            <th colspan="10">รายการ</th>
+                            <th colspan="2">หน่วย</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>กว้าง</th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th>
+                            <th><%=request.getAttribute("UNIT")%></th>
+                            <th>ม้วน</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
             String num[] = (String[]) request.getAttribute("data");
 
             int cal = 0;
@@ -143,52 +143,52 @@
             int x = 0;
             for (int row = 0; row < 4; row++) {
 
-                            %>       
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <%
-                                for (int col = 1; col <= 10; col++) {
-                                    try {
-                                        out.print("<td>" + num[x] + "</td>");
-                                    } catch (Exception e) {
-                                        out.print("<td height='30'> </td>");
-                                    }
-                                    x++;
-                                }
-                                if (row == 0) {
-                                %>
-                                <td><%=request.getAttribute("roll")%></td>
-                                <td><%=request.getAttribute("row")%></td> 
-                            </tr>
+                        %>       
+                        <tr>
+                            <td></td>
+                            <td></td>
                             <%
+                            for (int col = 1; col <= 10; col++) {
+                                try {
+                                    out.print("<td>" + num[x] + "</td>");
+                                } catch (Exception e) {
+                                    out.print("<td height='30'> </td>");
+                                }
+                                x++;
+                            }
+                            if (row == 0) {
+                            %>
+                            <td><%=request.getAttribute("roll")%></td>
+                            <td><%=request.getAttribute("row")%></td> 
+                        </tr>
+                        <%
                 } else {
                     out.print("<td></td>");
                     out.print("<td></td>");
                 }
             }
-                            %>
-                        </tbody>
-                    </table>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div  class="col-4 ">
-                    <label class="fw-bold">ผู้เเจ้งเข้า : </label>
-                    <label>.........................</label> 
-                </div>
-                <div  class="col-4 ">
-                    <label class="fw-bold">ผู้รับเข้าตรวจสอบ : </label>
-                    <label>.........................</label> 
-                </div>
-                <div  class="col-4 ">
-                    <label class="fw-bold">วันที่ตรวจเสร็จ : </label>
-                    <label>.........................</label> 
-                </div> 
-                
+                        %>
+                    </tbody>
+                </table>
             </div>
             
+        </div>
+        <div class="row">
+            <div  class="col-4 ">
+                <label class="fw-bold">ผู้เเจ้งเข้า : </label>
+                <label>.........................</label> 
+            </div>
+            <div  class="col-4 ">
+                <label class="fw-bold">ผู้รับเข้าตรวจสอบ : </label>
+                <label>.........................</label> 
+            </div>
+            <div  class="col-4 ">
+                <label class="fw-bold">วันที่ตรวจเสร็จ : </label>
+                <label>.........................</label> 
+            </div> 
+            
+        </div>
+        
         
         <script>
             $(document).ready(function(){
@@ -206,7 +206,9 @@
                     if(i<10){
                         i = "0"+i;
                     }
-
+                    if(s<10){
+                        s = "0"+s;
+                    }
                     if(d<10){
                         d = "0"+d;
                     }

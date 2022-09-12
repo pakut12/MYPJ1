@@ -125,7 +125,7 @@
             
             $(document).ready(function () {
                      
-                $("#page2").addClass("active"); 
+                $("#page5").addClass("active"); 
                 
                 
                 $("#btn-save").click(function(){
