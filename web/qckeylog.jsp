@@ -12,12 +12,18 @@
     <head>
         <%@include file="share/head.jsp"%> 
     </head>
+    <style>
+        table{
+            font-size:10px;
+        }
+    </style>
     <body>
+        
         
         
         <%@include file="share/nav.jsp" %>
         <form id="myform" >
-            <div class="container">
+            <div class="container ">
                 <div class="row">
                     
                     <div class="col-sm-12 col-md-12">
@@ -27,7 +33,7 @@
                                     โปรเเกรมคีย์สรุปผลการตรวจสอบผ้าถัก
                                 </div>
                                 <div class="card-body">
-                                    <div class="row mb-3">
+                                    <div class="row ">
                                         <div class="col-sm-12 col-md-3">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" value="" required></input>
@@ -70,7 +76,7 @@
                                         
                                         <div class="col-sm-12 col-md-6">
                                             <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
-                                            <a href="qckeylog.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เครียร์ข้อมูล</button></a>
+                                            <a href="qckeylog.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เคลียร์ข้อมูล</button></a>
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึกข้อมูล</button>
                                         </div>
                                     </div>
@@ -118,11 +124,11 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <label> Remack1 : </label>
-                                                    <input class="form-control form-control-sm mb-2" type="text" name="remark1" id="remark1" value="" ></input>
+                                                    <input class="form-control form-control-sm " type="text" name="remark1" id="remark1" value="" ></input>
                                                     <label> Remack2  : </label>
-                                                    <input class="form-control form-control-sm mb-2" type="text" name="remark2" id="remark2" value="" ></input>
+                                                    <input class="form-control form-control-sm " type="text" name="remark2" id="remark2" value="" ></input>
                                                     <label> Remack3 : </label>
-                                                    <input class="form-control form-control-sm mb-2" type="text" name="remark3" id="remark3" value="" ></input>
+                                                    <input class="form-control form-control-sm " type="text" name="remark3" id="remark3" value="" ></input>
                                                 </div>
                                             </div> 
                                         </div>
@@ -202,8 +208,7 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                       
-                        
+                      
                         select: true
                                              
                     }); 
@@ -314,7 +319,6 @@
                                 var de = $.parseJSON(msg);
                                 $.each(de.arrroll,function(k,v){
                                     
-                                  
                                     var url = 'edititem?status=G4';
                                     $.ajax({
                                         type: "POST",
@@ -344,16 +348,6 @@
                         });   
                     }
                   
-               
-             
-         
-                    
-                    
-                   
-                  
-                    
-                   
-                    
        
                 });
             });

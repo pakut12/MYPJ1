@@ -16,12 +16,12 @@
         
         <%@include file="share/nav.jsp" %>
         <%
-            String userid = (String) request.getParameter("userid");
-            String password = (String) request.getParameter("password");
-            String firstname = (String) request.getParameter("firstname");
-            String lastname = (String) request.getParameter("lastname");
-            String status = (String) request.getParameter("status");
-            String statusqi = (String) request.getParameter("statusqi");
+        String userid = (String) request.getAttribute("userid");
+            String password = (String) request.getAttribute("password");
+            String firstname = (String) request.getAttribute("firstname");
+            String lastname = (String) request.getAttribute("lastname");
+            String status = (String) request.getAttribute("status");
+            String statusqi = (String) request.getAttribute("statusqi");
 
             String msgstatus = null;
             String msgstatusqi = null;
@@ -92,7 +92,11 @@
                                                     </select>
                                                     <label>Approve  : </label>
                                                     <select class="form-select form-select-sm" id="statusqi" required>
-                                                        <option value="<%=msgstatusqi%>" ><%if(msgstatusqi.equals("Y")){out.print("มีสิทธิ์");}else{out.print("ไม่มีสิทธิ์");}%></option>
+                                                        <option value="<%=msgstatusqi%>" ><%if (msgstatusqi.equals("Y")) {
+                out.print("มีสิทธิ์");
+            } else {
+                out.print("ไม่มีสิทธิ์");
+            }%></option>
                                                         <option value="Y">มีสิทธิ์</option>
                                                         <option value="N">ไม่มีสิทธิ์</option>
                                                     </select>
@@ -141,11 +145,12 @@
                         
                     }else {
                
-                        var url = "user?status1=U1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
-   
+                        var url = "user?status1=U1"
+                        var data = "&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
                         $.ajax({
                             type:"POST",
                             url:url,
+                            data:data,
                             success:function(msg,status){
                                 if(msg == 'true'){
                                     Swal.fire({

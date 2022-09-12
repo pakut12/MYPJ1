@@ -50,51 +50,21 @@
                                             <th class="text-center">MRNO </th>
                                             <th class="text-center">ITEM </th>
                                             <th class="text-center">ROLL </th>
+                                            <th class="text-center">QTY </th>
+                                            <th class="text-center">UNIT </th>
                                             <th class="text-center">PALET </th>
                                             <th class="text-center">PLANT </th>
-                                            <th class="text-center">DESC1 </th>
-                                            <th class="text-center">DESC2</th>
-                                            <th class="text-center">DESC3 </th>
                                             <th class="text-center">PO</th>
                                             <th class="text-center">POLN </th>
-                                            <th class="text-center">INVOICEDATE </th>
-                                            <th class="text-center">CREATEDATE </th>
-                                            <th class="text-center">QUANTITY </th>
-                                            <th class="text-center">UNIT </th>
-                                            <th class="text-center">SUPNAME </th>
-                                            <th class="text-center">INVOICE </th>
-                                            <th class="text-center">GRADE </th>
-                                            <th class="text-center">CODE </th>
+                                            <th class="text-center">INV </th>
+                                            <th class="text-center">INV.DATE </th>
+                                            <th class="text-center">DESC1 </th>
+                                            <th class="text-center">DESC2 </th>
+                                            <th class="text-center">DESC3 </th>
+                                            <th class="text-center">BARCODE </th>
                                             <th class="text-center">BATCH </th>
-                                            <th class="text-center">CHANGEDATE </th>
                                             <th class="text-center">COLOR </th>
-                                            <th class="text-center">SUPPLIER </th>
-                                            <th class="text-center">DELIVERYNO </th>
-                                            <th class="text-center">PUGROUP </th>
-                                            <th class="text-center">PUNAME </th>
-                                            <th class="text-center">TELEPHONE </th>
-                                            <th class="text-center">PRICE </th>
-                                            <th class="text-center">PRD</th>
-                                            <th class="text-center">LOT</th>
-                                            <th class="text-center">PER</th>
-                                            <th class="text-center">CURR </th>
-                                            <th class="text-center">TOQC </th>
-                                            <th class="text-center">TOTEST </th>
-                                            <th class="text-center">RESULTQC </th>
-                                            <th class="text-center">RESULTTEST </th>
-                                            <th class="text-center">PAGE </th>
-                                            <th class="text-center">AFTERQTY </th>
-                                            <th class="text-center">REMARKRM1 </th>
-                                            <th class="text-center">REMARKRM2 </th>
-                                            <th class="text-center">REMARKRM3 </th>
-                                            <th class="text-center">SAVEDATE </th>
-                                            <th class="text-center">DMWEIGHT </th>
-                                            <th class="text-center">MWEIGHT </th>
-                                            <th class="text-center">RMWIDTH </th>
-                                            <th class="text-center">REFMRNO </th>
-                                            <th class="text-center">OLDINVOICE </th>
-                                            <th class="text-center">REALQTY </th>
-                                            <th class="text-center">WEIGHT </th>
+                                            <th class="text-center">GRADE </th>
                                             
                                         </tr>
                                     </thead>
@@ -128,16 +98,12 @@
                                     selectRow:true
                                 }
                             },
-                            { "width": "10rem", "targets": 1 },
-                            { "width": "10rem", "targets": 2 },
-                            { "width": "23rem", "targets": 6 },
-                            { "width": "23rem", "targets": 7 }, 
-                            { "width": "23rem", "targets": 8 },
-                            { "width": "23rem", "targets": 15 }, 
-                            { "width": "10rem", "targets": 19 },     
-                            { "width": "10rem", "targets": 25 },  
+                            { "width": "10rem", "targets":2 },
                             { "width": "10rem", "targets": 11 },
-                            { "width": "10rem", "targets": 12 },
+                            { "width": "23rem", "targets": 12 },
+                            { "width": "23rem", "targets": 13 },
+                            { "width": "23rem", "targets": 14 },
+                            { "width": "10rem", "targets": 16 },
                         ],
                         'select': {
                             'style': 'multi'

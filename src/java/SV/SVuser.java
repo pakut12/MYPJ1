@@ -51,7 +51,7 @@ public class SVuser extends HttpServlet {
                         String status = request.getParameter("status");
                         String statusqi = request.getParameter("statusqi");
 
-                        
+
 
                         String sql = "INSERT INTO wmuser (userid, password, firstname, lastname, status, statusqi) VALUES (?, ?, ?,?, ?, ?)";
 
@@ -127,9 +127,9 @@ public class SVuser extends HttpServlet {
                         }
 
                         if (statusqi.equals("Y")) {
-                            statusqi = "มีสิทธิ";
+                            statusqi = "มีสิทธิ์";
                         } else if (statusqi.equals("N")) {
-                            statusqi = "ไม่มีสิทธิ";
+                            statusqi = "ไม่มีสิทธิ์";
                         }
 
                         arrjson.add(rec.getString("userid"));
@@ -215,17 +215,19 @@ public class SVuser extends HttpServlet {
                         ps.setString(1, userid);
 
                         rec = ps.executeQuery();
-                        String url = null;
+                        String url = "/displayedituser.jsp";
                         while ((rec.next()) && (rec != null)) {
-
-
-                            url = "displayedituser.jsp?userid=" + rec.getString("userid") + "&password=" + rec.getString("password") +
-                                    "&firstname=" + rec.getString("firstname") + "&lastname=" + rec.getString("lastname") + "&status=" + rec.getString("status") + "&statusqi=" + rec.getString("statusqi");
-
+               
+                            request.setAttribute("userid", rec.getString("userid"));
+                            request.setAttribute("password", rec.getString("password"));
+                            request.setAttribute("firstname", rec.getString("firstname"));
+                            request.setAttribute("lastname", rec.getString("lastname"));
+                            request.setAttribute("status", rec.getString("status"));
+                            request.setAttribute("statusqi", rec.getString("statusqi"));
 
                         }
-                        out.print("<script langquage='javascript'>window.location='" + url + "';</script>");
-
+                      
+                        getServletContext().getRequestDispatcher(url).forward(request, response);
 
 
 

@@ -39,12 +39,17 @@
                                             <input class="form-control form-control-sm" type="text" name="item" id="item" required></input>
                                             
                                         </div>
-                                        <div class="col-sm-12 col-md-3">
+                                        <div class="col-sm-12 col-md-2 ">
+                                            <button class="btn btn-sm btn-secondary mt-4 w-75" type="button" name="getpalet" id="getpalet"><i class="bi bi-download"></i> ดึงเลขที่พาเลท</button>
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
                                             <label>เลขที่พาเลท : </label>
-                                            <input class="form-control form-control-sm" type="number" name="palet" id="palet" required></input>
+                                            <select class="form-select form-select-sm" id="palet" name="palet">
+                                                
+                                            </select>
                                             
                                         </div>
-                                        <div class="col-sm-12 col-md-3 text-center">
+                                        <div class="col-sm-12 col-md-2 ">
                                             <button class="btn btn-sm btn-secondary mt-4 w-75" type="button" name="getdata" id="getdata"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                         </div>
                                     </div>
@@ -91,7 +96,29 @@
         <script>
             $(document).ready(function () {
                 $("#page2").addClass("active");
-           
+                $("#palet").addClass("disabled");
+                $("#getdata").addClass("disabled");
+        
+                function getpalet(mrno,item){
+                    $("#palet").empty();
+                    $("#getdata").removeClass("disabled");
+                    
+                    var url = "getdatawm?status=G18";
+                    var data = '&mrno='+mrno+'&item='+item;
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data:data,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            $.each(de.palet,function(k,v){
+                                $("#palet").append( "<option value='"+v+"'>"+v+"</option>" ); 
+                            });
+                                  
+                        }    
+                    });
+                     
+                }
                 var table;
                 function getdatawmqck(mrno,item,palet){
                     var url = 'getdatawm?status=G9&mrno='+mrno+'&item='+item+'&palet='+palet;
@@ -166,8 +193,13 @@
                         
                     }
                     
-                    
                 });
+                $("#getpalet").click(function(){
+                    var mrno = $("#mrno").val();
+                    var item = $("#item").val();
+                    getpalet(mrno, item);
+                })
+    
             });
         </script>
         <script>

@@ -56,13 +56,14 @@
                                             <thead >
                                                 <tr>
                                                     <th class="text-center">รหัสวัตถุดิบ</th>
-                                                    <th class="text-center">รายละเอียด</th>
+                                                    
                                                     <th class="text-center">ม้วนที่</th>
                                                     <th class="text-center">จำนวนเข้า</th>
                                                     <th class="text-center">หน่วยนับ</th>
                                                     <th class="text-center">สี</th>
                                                     <th class="text-center">เลขที่ Invoice</th>
                                                     <th class="text-center">เลขที่เอกสาร</th>
+                                                    <th class="text-center">รายละเอียด</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -94,14 +95,8 @@
                         scrollX: true ,
                        
                         columnDefs: [
-                            { "width": "10rem", "targets": 0 },
-                            { "width": "20rem", "targets": 1 },
-                            { "width": "5rem", "targets": 2 },
-                            { "width": "5rem", "targets": 3 },
-                            { "width": "5rem", "targets": 4 },
-                            { "width": "10rem", "targets": 5 }, 
-                            { "width": "10rem", "targets": 6 }, 
-                            { "width": "10rem", "targets": 7 }, 
+                            { "width": "10rem", "targets": 0}, 
+                            { "width": "20rem", "targets": 7 }, 
                         ]
                        
                                             

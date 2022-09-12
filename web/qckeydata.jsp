@@ -17,10 +17,9 @@
         
         <%@include file="share/nav.jsp" %>
         
-        <div class="container">
+        <div class="container h-50 ">
             <div class="row">
-                
-                
+      
                 <div class="col-sm-12 col-md-12" >
                     <div id="pageview">
                         <div class="card shadow ">
@@ -29,7 +28,7 @@
                             </div>
                             
                             <div class="card-body">
-                                <div class="row mb-3">
+                                <div class="row ">
                                     <div class="col-sm-12 col-md-6">
                                         <label>รหัสบาร์โค๊ด : </label>
                                         <input class="form-control form-control-sm" type="number" name="barcode" id="barcode" value="" required></input>
@@ -81,7 +80,7 @@
                                         เเก้ไขข้อมูล
                                     </div>
                                     <div class="card-body">
-                                        <div class="row mb-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>จำนวนที่มา : </label>
                                                 <input class="form-control form-control-sm" type="text" name="quantity" id="quantity" value="" readonly></input>
@@ -104,7 +103,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>จุดสี-น้ำมัน-สกปรก : </label>
                                                 <input class="form-control form-control-sm" type="number" name="ethread" id="ethread" value="" onClick="this.select();" onkeyup="sum();" required></input>
@@ -128,7 +127,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ปุ่มปม : </label>
                                                 <input class="form-control form-control-sm" type="number" name="eoil" id="eoil" value=""  onClick="this.select();" onkeyup="sum();" required ></input>
@@ -151,7 +150,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>รอยเข็ม : </label>
                                                 <input class="form-control form-control-sm" type="number" name="ejoint" id="ejoint" value="" onClick="this.select();" onkeyup="sum();" required></input>
@@ -174,7 +173,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="row">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>บาร์โค๊ดร้านค้า : </label>
                                                 <input class="form-control form-control-sm" type="number" name="erepeat" id="erepeat" value="" required></input>
@@ -197,7 +196,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>วันที่ตรวจสอบ : </label>
                                                 <input class="form-control form-control-sm" type="date" name="qcdate" id="qcdate" value="" readonly></input>
@@ -221,7 +220,7 @@
                                             </div>
                                             
                                         </div>
-                                        <div class="row mb-3">
+                                        <div class="row ">
                                             <div class="col-sm-12 col-md-4">
                                                 <label>น้ำหนักผ้า : </label>
                                                 <input class="form-control form-control-sm" type="text" name="weight" id="weight" value="" readonly></input>

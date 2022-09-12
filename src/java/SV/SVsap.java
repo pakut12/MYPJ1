@@ -13,6 +13,7 @@ import java.net.*;
 
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -68,15 +69,28 @@ public class SVsap extends HttpServlet {
                         output.setRow(z);
                         JSONArray arrjson = new JSONArray();
 
+
+
                         arrjson.add(n + 1);
-                        for (int a = 0; a <= 48; a++) {
-                            try {
-                                arrjson.add(output.getString(a));
-                            } catch (Exception e) {
-                                arrjson.add("");
-                            }
-//arrjson.add(output.getString(a));
-                        }
+                        arrjson.add(output.getString("MRNO"));
+                        arrjson.add(output.getString("ITEM"));
+                        arrjson.add(output.getString("ROLL"));
+                        arrjson.add(output.getString("QUANTITY").replace(".000", ""));
+                        arrjson.add(output.getString("UNIT"));
+                        arrjson.add(output.getString("PALET"));
+                        arrjson.add(output.getString("PLANT"));
+                        arrjson.add(output.getString("PO"));
+                        arrjson.add(output.getString("POLN"));
+                        arrjson.add(output.getString("INVOICE"));
+                        arrjson.add(output.getString("INVOICEDATE"));
+                        arrjson.add(output.getString("DESC1"));
+                        arrjson.add(output.getString("DESC2"));
+                        arrjson.add(output.getString("DESC3"));
+                        arrjson.add(output.getString("CODE"));
+                        arrjson.add(output.getString("BATCH"));
+                        arrjson.add(output.getString("COLOR"));
+                        arrjson.add(output.getString("GRADE"));
+
                         arrlist.add(arrjson);
                         n++;
                     }
@@ -170,7 +184,7 @@ public class SVsap extends HttpServlet {
 
                             if (pr.executeUpdate() > 0 && pr1.executeUpdate() > 0) {
                                 chack++;
-                            } 
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

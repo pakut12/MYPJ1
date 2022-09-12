@@ -102,7 +102,7 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                       
+                        select:true,
                         columnDefs: [
                             { "width": "10rem", "targets": 0 },
                             { "width": "10rem", "targets": 1 },
@@ -113,8 +113,7 @@
                             { "width": "10rem", "targets": 6 }, 
                             { "width": "10rem", "targets": 7 }, 
                         ]
-                       
-                                            
+                                       
                     }); 
                     $.ajax({
                         type: "POST",
@@ -122,7 +121,7 @@
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
                             $("#countwmbarcode").text(de.count);   
-                            console.log(de.count);
+                            
                             if(item != "" && date1 != "" && date2 != ""){
                                 if(de.count > 0){
                                     Swal.fire({

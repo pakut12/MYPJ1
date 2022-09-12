@@ -64,54 +64,26 @@ public class SVgetdatawm extends HttpServlet {
                         JSONArray arrjson = new JSONArray();
 
                         arrjson.add(rec.getString("MRNO"));
+
                         arrjson.add(rec.getString("MRNO"));
                         arrjson.add(rec.getString("ITEM"));
                         arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("QUANTITY"));
+                        arrjson.add(rec.getString("UNIT"));
                         arrjson.add(rec.getString("PALET"));
                         arrjson.add(rec.getString("PLANT"));
+                        arrjson.add(rec.getString("PO"));
+                        arrjson.add(rec.getString("POLN"));
+                        arrjson.add(rec.getString("INVOICE"));
+                        arrjson.add(rec.getString("INVOICEDATE").replace(" 00:00:00.0", ""));
                         arrjson.add(rec.getString("DESC1"));
                         arrjson.add(rec.getString("DESC2"));
                         arrjson.add(rec.getString("DESC3"));
-                        arrjson.add(rec.getString("PO"));
-                        arrjson.add(rec.getString("POLN"));
-                        arrjson.add(rec.getString("INVOICEDATE"));
-                        arrjson.add(rec.getString("CREATEDATE"));
-                        arrjson.add(rec.getString("QUANTITY"));
-                        arrjson.add(rec.getString("UNIT"));
-                        arrjson.add(rec.getString("SUPNAME"));
-                        arrjson.add(rec.getString("INVOICE"));
-                        arrjson.add(rec.getString("GRADE"));
                         arrjson.add(rec.getString("CODE"));
                         arrjson.add(rec.getString("BATCH"));
-                        arrjson.add(rec.getString("CHANGEDATE"));
                         arrjson.add(rec.getString("COLOR"));
-                        arrjson.add(rec.getString("SUPPLIER"));
-                        arrjson.add(rec.getString("DELIVERYNO"));
-                        arrjson.add(rec.getString("PUGROUP"));
-                        arrjson.add(rec.getString("PUNAME"));
-                        arrjson.add(rec.getString("TELEPHONE"));
-                        arrjson.add(rec.getString("PRICE"));
-                        arrjson.add(rec.getString("PRD"));
-                        arrjson.add(rec.getString("LOT"));
-                        arrjson.add(rec.getString("PER"));
-                        arrjson.add(rec.getString("CURR"));
-                        arrjson.add(rec.getString("TOQC"));
-                        arrjson.add(rec.getString("TOTEST"));
-                        arrjson.add(rec.getString("RESULTQC"));
-                        arrjson.add(rec.getString("RESULTTEST"));
-                        arrjson.add(rec.getString("PAGE"));
-                        arrjson.add(rec.getString("AFTERQTY"));
-                        arrjson.add(rec.getString("REMARKRM1"));
-                        arrjson.add(rec.getString("REMARKRM2"));
-                        arrjson.add(rec.getString("REMARKRM3"));
-                        arrjson.add(rec.getString("SAVEDATE"));
-                        arrjson.add(rec.getString("DMWEIGHT"));
-                        arrjson.add(rec.getString("MWEIGHT"));
-                        arrjson.add(rec.getString("RMWIDTH"));
-                        arrjson.add(rec.getString("REFMRNO"));
-                        arrjson.add(rec.getString("OLDINVOICE"));
-                        arrjson.add(rec.getString("REALQTY"));
-                        arrjson.add(rec.getString("WEIGHT"));
+                        arrjson.add(rec.getString("GRADE"));
+
 
                         arrlist.add(arrjson);
                         n++;
@@ -134,7 +106,7 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G2")) {
                 try {
                     String menr = request.getParameter("mrno").trim();
-                    String item = request.getParameter("item").trim();
+                    String item = request.getParameter("item").trim().toUpperCase();
 
 
                     String page = "";
@@ -243,7 +215,7 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G4")) {
                 try {
                     String menr = request.getParameter("mrno").trim();
-                    String item = request.getParameter("item").trim();
+                    String item = request.getParameter("item").trim().toUpperCase();
 
 
                     String page = "";
@@ -285,7 +257,7 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G5")) {
                 try {
                     String menr = request.getParameter("mrno").trim();
-                    String item = request.getParameter("item").trim();
+                    String item = request.getParameter("item").trim().toUpperCase();
 
 
                     String page = "";
@@ -381,13 +353,14 @@ public class SVgetdatawm extends HttpServlet {
 
                         JSONArray arrjson = new JSONArray();
                         arrjson.add(rec.getString("ITEM"));
-                        arrjson.add(rec.getString("DESC1"));
+
                         arrjson.add(rec.getString("ROLL"));
                         arrjson.add(rec.getString("QUANTITY"));
                         arrjson.add(rec.getString("UNIT"));
                         arrjson.add(rec.getString("COLOR"));
                         arrjson.add(rec.getString("INVOICE"));
                         arrjson.add(rec.getString("MRNO"));
+                        arrjson.add(rec.getString("DESC1"));
 
                         arrlist.add(arrjson);
                         n++;
@@ -404,9 +377,9 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G8")) {
                 try {
 
-                    String item = request.getParameter("item");
-                    String date1 = request.getParameter("date1");
-                    String date2 = request.getParameter("date2");
+                    String item = request.getParameter("item").trim().toUpperCase();
+                    String date1 = request.getParameter("date1").trim();
+                    String date2 = request.getParameter("date2").trim();
 
                     String Y = date1.substring(0, 4);
                     String M = date1.substring(5, 7);
@@ -419,7 +392,7 @@ public class SVgetdatawm extends HttpServlet {
                     String day2 = D1 + "/" + M1 + "/" + Y1;
 
 
-                    String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.CREATEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
+                    String sql = "select wmbarcode.MRNO,max(wmbarcode.ROLL) as MAX,wmbarcode.ITEM,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.INVOICEDATE,wmbarcode.INVOICE,wmbarcode.PUNAME from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.CREATEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY') GROUP BY wmbarcode.MRNO,wmbarcode.ITEM,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.INVOICEDATE,wmbarcode.INVOICE,wmbarcode.PUNAME";
 //                    String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.INVOICEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
                     //conn = DB.ConnDB.getConnection();
                     ps = conn.prepareStatement(sql);
@@ -436,13 +409,14 @@ public class SVgetdatawm extends HttpServlet {
                         JSONArray arrjson = new JSONArray();
                         arrjson.add(rec.getString("ITEM"));
                         arrjson.add(rec.getString("MRNO"));
-                        arrjson.add(rec.getString("ROLL"));
+                        arrjson.add(rec.getString("MAX"));
                         arrjson.add(rec.getString("PLANT"));
                         arrjson.add(rec.getString("PO"));
-                        arrjson.add(rec.getString("CREATEDATE"));
+                        arrjson.add(rec.getString("INVOICEDATE").replace(" 00:00:00.0", ""));
+                        //arrjson.add(rec.getString("CREATEDATE").replace(" 00:00:00.0", ""));
                         arrjson.add(rec.getString("INVOICE"));
-                        arrjson.add(rec.getString("INVOICEDATE"));
-                        arrjson.add(rec.getString("DELIVERYNO"));
+
+                        // arrjson.add(rec.getString("DELIVERYNO"));
                         arrjson.add(rec.getString("PUNAME"));
 
                         arrlist.add(arrjson);
@@ -460,9 +434,9 @@ public class SVgetdatawm extends HttpServlet {
             } else if (status.equals("G9")) {
 
                 try {
-                    String mrno = request.getParameter("mrno");
-                    String item = request.getParameter("item");
-                    String palet = request.getParameter("palet");
+                    String mrno = request.getParameter("mrno").trim();
+                    String item = request.getParameter("item").trim().toUpperCase();
+                    String palet = request.getParameter("palet").trim();
 
                     String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
 
@@ -502,12 +476,12 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 }
             } else if (status.equals("G10")) {
-                String mrno = request.getParameter("mrno");
-                String item = request.getParameter("item");
-                String palet = request.getParameter("palet");
-                String date = request.getParameter("today");
-                String row = request.getParameter("totalrow");
-                String roll = request.getParameter("totallong");
+                String mrno = request.getParameter("mrno").trim();
+                String item = request.getParameter("item").toUpperCase().trim();
+                String palet = request.getParameter("palet").trim();
+                String date = request.getParameter("today").trim();
+                String row = request.getParameter("totalrow").trim();
+                String roll = request.getParameter("totallong").trim();
 
                 try {
                     String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
@@ -692,7 +666,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         if (rec.getString("MARK_TOTERR") != null) {
                             countstar++;
-                            sumstar += rec.getInt("TOTERR");
+                            sumstar += rec.getInt("ACTQTY");
                         }
 
 
@@ -729,9 +703,9 @@ public class SVgetdatawm extends HttpServlet {
 
             } else if (status.equals("G13")) {
                 try {
-                    String mrno = request.getParameter("mrno");
-                    String item = request.getParameter("item");
-                    String roll = request.getParameter("roll");
+                    String mrno = request.getParameter("mrno").trim();
+                    String item = request.getParameter("item").toUpperCase().trim();
+                    String roll = request.getParameter("roll").trim();
 
                     String sql = "select * from wmqck where wmqck.MRNO = ? and wmqck.ITEM = ? and wmqck.ROLL = ? ";
 
@@ -935,8 +909,8 @@ public class SVgetdatawm extends HttpServlet {
                 }
             } else if (status.equals("G17")) {
                 try {
-                    String mrno = request.getParameter("mrno");
-                    String pallet = request.getParameter("pallet");
+                    String mrno = request.getParameter("mrno").trim();
+                    String pallet = request.getParameter("pallet").trim();
 
                     String sql = "select wmbarcode.RESULTQC,wmqck.BYNAME1  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
 
@@ -953,12 +927,72 @@ public class SVgetdatawm extends HttpServlet {
                         obj.put("RESULTQC", rec.getString("RESULTQC"));
                         obj.put("BYNAME1", rec.getString("BYNAME1"));
 
-                       
                         n++;
 
                     }
-                
 
+                    out.print(obj);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            } else if (status.equals("G18")) {
+                try {
+                    String mrno = request.getParameter("mrno").trim();
+                    String item = request.getParameter("item").trim().toUpperCase();
+
+                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, item);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    String palet = null;
+                    while ((rec.next()) && (rec != null)) {
+                        if (!rec.getString("PALET").equals(palet)) {
+                            arrlist.add(rec.getString("PALET"));
+                        }
+                        palet = rec.getString("PALET");
+                        n++;
+                    }
+                    obj.put("palet", arrlist);
+
+                    out.print(obj);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            } else if (status.equals("G19")) {
+                try {
+                    String mrno = request.getParameter("mrno").trim();
+                   
+
+                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ?";
+
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    rec = ps.executeQuery();
+
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    String palet = null;
+                    while ((rec.next()) && (rec != null)) {
+                        if (!rec.getString("PALET").equals(palet)) {
+                            arrlist.add(rec.getString("PALET"));
+                        }
+                        palet = rec.getString("PALET");
+                        n++;
+                    }
+                    obj.put("palet", arrlist);
 
                     out.print(obj);
 
