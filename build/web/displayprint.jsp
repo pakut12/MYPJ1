@@ -212,6 +212,9 @@
                     if(d<10){
                         d = "0"+d;
                     }
+                    if(h<10){
+                        h = "0"+h;
+                    }
                     var today = d+"/"+m+"/"+y+" "+h+":"+i+":"+s;
                     return today;
                 }

@@ -24,14 +24,12 @@
             try {
                 Connection connect = null;
                 // Create Connection
-                Class.forName("com.mysql.jdbc.Driver");
-                connect = DriverManager.getConnection("jdbc:mysql://localhost/test" +
-                        "?user=root&password=");
+                connect = DB.ConnDB.getConnection();
                 Map param = new HashMap();
-                param.put("iduser","35");
+                //param.put("iduser","35");
                 ServletContext context = getServletContext();
                 File reportFile = new File(context.getRealPath("report/report1.jasper"));
-                byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), param, connect);
+                byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), null, connect);
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/Pdf");
                 response.setContentLength(bytes.length);
