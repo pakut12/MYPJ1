@@ -399,8 +399,8 @@
                 })
                 $("#btn-send").click(function(){
                     var mrno = $("#mrno").val();
-                    var pallet = $("#pallet").val();
-                    var url = "displayprint1.jsp?mrno="+mrno+"&pallet="+pallet;
+                    var palet = $("#pallet").val();
+                    var url = "report/qcreport.jsp?mrno="+mrno+"&palet="+palet;
                  
                     window.open(url, '_blank');
                

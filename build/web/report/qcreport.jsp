@@ -22,14 +22,18 @@
         <h2>Hello World!</h2>
         <%
             try {
+                String mrno = request.getParameter("mrno");
+                String palet = request.getParameter("palet");
                 Connection connect = null;
                 // Create Connection
                 connect = DB.ConnDB.getConnection();
                 Map param = new HashMap();
-                //param.put("iduser","35");
+                param.put("mrno", mrno);
+                param.put("palet", palet);
+                param.put("Name", session.getAttribute("name"));
                 ServletContext context = getServletContext();
                 File reportFile = new File(context.getRealPath("report/report1.jasper"));
-                byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), null, connect);
+                byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), param, connect);
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/Pdf");
                 response.setContentLength(bytes.length);
