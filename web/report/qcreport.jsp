@@ -15,7 +15,7 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="application/Pdf">
         <title>JSP Page</title>
     </head>
     <body>
@@ -30,7 +30,7 @@
                 Map param = new HashMap();
                 param.put("mrno", mrno);
                 param.put("palet", palet);
-                param.put("Name", session.getAttribute("name"));
+
                 ServletContext context = getServletContext();
                 File reportFile = new File(context.getRealPath("report/report1.jasper"));
                 byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), param, connect);
@@ -44,6 +44,12 @@
 
             } catch (Exception e) {
                 e.printStackTrace();
+                out.print(e.fillInStackTrace());
+                
+                StackTraceElement[] trace = e.getStackTrace();
+                for (StackTraceElement a : trace) {
+                    out.print(a + "<br>");
+                }
             }
         %>
     </body>
