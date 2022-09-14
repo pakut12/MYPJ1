@@ -3,12 +3,16 @@
 	<property name="ireport.zoom" value="1.9487171000000107"/>
 	<property name="ireport.x" value="223"/>
 	<property name="ireport.y" value="100"/>
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
 	<parameter name="mrno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="palet" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	
 	<queryString>
 		<![CDATA[select * from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = $P{mrno}  and wmbarcode.PALET= $P{palet}]]>
 	</queryString>

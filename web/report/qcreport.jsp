@@ -15,42 +15,37 @@
 
 <html>
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js" integrity="sha512-rDbVu5s98lzXZsmJoMa0DjHNE+RwPJACogUCLyq3Xxm2kJO6qsQwjbE5NDk2DqmlKcxDirCnU1wAzVLe12IM3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.js" integrity="sha512-iKv9YWIwhexI0fRGos8mMuFFHhUCbpHTHFPrdByZc6C3QqMRuFN+3fdIbq6EDClHh+hYSAOf10T9VrBDPF92jA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.js" integrity="sha512-cktKDgjEiIkPVHYbn8bh/FEyYxmt4JDJJjOCu5/FQAkW4bc911XtKYValiyzBiJigjVEvrIAyQFEbRJZyDA1wQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.min.js" integrity="sha512-BDZ+kFMtxV2ljEa7OWUu0wuay/PAsJ2yeRsBegaSgdUhqIno33xmD9v3m+a2M3Bdn5xbtJtsJ9sSULmNBjCgYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
         <meta http-equiv="Content-Type" content="application/Pdf">
         <title>JSP Page</title>
     </head>
     <body>
         <h2>Hello World!</h2>
-        <%
-            try {
-                String mrno = request.getParameter("mrno");
-                String palet = request.getParameter("palet");
-                Connection connect = null;
-                // Create Connection
-                connect = DB.ConnDB.getConnection();
-                Map param = new HashMap();
-                param.put("mrno", mrno);
-                param.put("palet", palet);
+        <script>
+            var docDefinition = {
+                content: [
+                    // if you don't need styles, you can use a simple string to define a paragraph
+                    'asd>',
 
-                ServletContext context = getServletContext();
-                File reportFile = new File(context.getRealPath("report/report1.jasper"));
-                byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), param, connect);
-                response.setCharacterEncoding("UTF-8");
-                response.setContentType("application/Pdf");
-                response.setContentLength(bytes.length);
-                ServletOutputStream output = response.getOutputStream();
-                output.write(bytes, 0, bytes.length);
-                output.flush();
-                output.close();
+                    // using a { text: '...' } object lets you set styling properties
+                    { text: 'This paragraph will have a bigger font', fontSize: 15 },
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                out.print(e.fillInStackTrace());
-                
-                StackTraceElement[] trace = e.getStackTrace();
-                for (StackTraceElement a : trace) {
-                    out.print(a + "<br>");
-                }
-            }
-        %>
+                    // if you set the value of text to an array instead of a string, you'll be able
+                    // to style any part individually
+                    {
+                        text: [
+                            'This paragraph is defined as an array of elements to make it possible to ',
+                            { text: 'restyle part of it and make it bigger ', fontSize: 15 },
+                            'than the rest.'
+                        ]
+                    }
+                ]
+            };
+            pdfMake.createPdf(docDefinition).open({}, window);
+        </script>
     </body>
 </html>
