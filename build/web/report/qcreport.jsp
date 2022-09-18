@@ -22,6 +22,10 @@
     </head>
     <body>
         <h2>Hello World!</h2>
+        <%
+            String x = "asd";
+            
+        %>
         <script>
             pdfMake.fonts = {
                 THSarabunNew: {
@@ -38,165 +42,159 @@
                 }
             }
             var docDefinition = {
-                pageSize: {
-                    width: 595.28,
-                    height: 'auto'
-                },
-                
-               
+                pageSize: 'A5',
                 content: [{
                         columns: [
                             {
                                 width: '*',
-                                text: 'สาขา : ',
-                                fontSize: 12,
-                                alignment: 'left'
+                                text: 'สาขา : <%=x%>',
+                                        fontSize: 12,
+                                        alignment: 'left'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'บริษัท ไทยสปอร์ตการ์เมนต์ จำกัด \n ใบตรวจสอบผ้าถัก',
+                                        fontSize: 15,
+                                        alignment: 'center',
+                                        bold:true
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'หน้า : ',
+                                        fontSize: 12,
+                                        alignment: 'right'
+                                    }
+                            
+                                ]
                             },
                             {
-                                width: '*',
-                                text: 'บริษัท ไทยสปอร์ตการ์เมนต์ จำกัด \n ใบตรวจสอบผ้าถัก',
-                                fontSize: 15,
-                                alignment: 'center',
-                                bold:true
+                                columns: [{
+                                        width: '*',
+                                        text: 'รหัส : ',
+                                        fontSize: 12,
+                                        alignment: 'left'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'เลขที่ใบสั้งซื้อ : ',
+                                        fontSize: 12,
+                                        alignment: 'center'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'เลขที่บิล : ',
+                                        fontSize: 12,
+                                        alignment: 'center'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'วันที่บิล : ',
+                                        fontSize: 12,
+                                        alignment: 'right'
+                                    }]
                             },
                             {
-                                width: '*',
-                                text: 'หน้า : ',
-                                fontSize: 12,
-                                alignment: 'right'
+                                columns: [{
+                                        width: '*',
+                                        text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ',
+                                        fontSize: 12,
+                                        alignment: 'left'
+                                    },
+                            
+                                    {
+                                        width: '*',
+                                        text: 'พาเลต : ',
+                                        fontSize: 12,
+                                        alignment: 'right'
+                                    }]
                             }
+                            ,{
+                                columns: [
+                                    {
+                                        width: '*',
+                                        text: 'Description 2 : ',
+                                        fontSize: 12,
+                                        alignment: 'left'
+                                    }, 
+                                    {
+                                        width: '*',
+                                        text: 'Description 3 : ',
+                                        fontSize: 12,
+                                        alignment: 'right'
+                                    }
                             
-                        ]
-                    },
-                    {
-                        columns: [{
-                                width: '*',
-                                text: 'รหัส : ',
-                                fontSize: 12,
-                                alignment: 'left'
+                                ]
                             },
                             {
-                                width: '*',
-                                text: 'เลขที่ใบสั้งซื้อ : ',
-                                fontSize: 12,
-                                alignment: 'center'
+                                columns: [{
+                                        width: '*',
+                                        text: 'ร้านค้า : ',
+                                        fontSize: 12,
+                                        alignment: 'left'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'เลขที่เอกสาร : ',
+                                        fontSize: 12,
+                                        alignment: 'center'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'หน่วยนับ : ',
+                                        fontSize: 12,
+                                        alignment: 'center'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'วันที่ : ',
+                                        fontSize: 12,
+                                        alignment: 'right'
+                                    }]
                             },
                             {
-                                width: '*',
-                                text: 'เลขที่บิล : ',
-                                fontSize: 12,
-                                alignment: 'center'
-                            },
-                            {
-                                width: '*',
-                                text: 'วันที่บิล : ',
-                                fontSize: 12,
-                                alignment: 'right'
-                            }]
-                    },
-                    {
-                        columns: [{
-                                width: '*',
-                                text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ',
-                                fontSize: 12,
-                                alignment: 'left'
-                            },
-                            
-                            {
-                                width: '*',
-                                text: 'พาเลต : ',
-                                fontSize: 12,
-                                alignment: 'right'
-                            }]
-                    }
-                    ,{
-                        columns: [
-                            {
-                                width: '*',
-                                text: 'Description 2 : ',
-                                fontSize: 12,
-                                alignment: 'left'
-                            }, 
-                            {
-                                width: '*',
-                                text: 'Description 3 : ',
-                                fontSize: 12,
-                                alignment: 'right'
-                            }
-                            
-                        ]
-                    },
-                    {
-                        columns: [{
-                                width: '*',
-                                text: 'ร้านค้า : ',
-                                fontSize: 12,
-                                alignment: 'left'
-                            },
-                            {
-                                width: '*',
-                                text: 'เลขที่เอกสาร : ',
-                                fontSize: 12,
-                                alignment: 'center'
-                            },
-                            {
-                                width: '*',
-                                text: 'หน่วยนับ : ',
-                                fontSize: 12,
-                                alignment: 'center'
-                            },
-                            {
-                                width: '*',
-                                text: 'วันที่ : ',
-                                fontSize: 12,
-                                alignment: 'right'
-                            }]
-                    },
-                    {
-                        style: 'tableExample',
-                        table: {
-                           
-                            widths: ['auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto', 
-                                'auto'],
-                            body: [
-                                ['ม้วนที่', 
-                                    'หน้าผ้า\nที่วัดได้', 
-                                    'สี', 
-                                    'มาตรฐาน\nสี', 
-                                    'จำนวน\nที่มา', 
-                                    'จำนวน\nที่ได้', 
-                                    'จุดสี-น้ำมัน-สกปรก', 
-                                    'ลาย\nขวาง', 
-                                    'ความกว้าง\nไม่ได้\nมาตรฐาน', 
-                                    'ปุ่ม\nปม', 
-                                    'เส้นด้าย\nขาด', 
-                                    'รอย\nด่าง', 
-                                    'รอย\nเข็ม', 
-                                    'รอยเข็ม\nเข้าลึก', 
-                                    'บาร์โค็ด\nร้านค้า', 
-                                    'หม้อ\nย้อม', 
-                                    'ตำหนิ\nรวม', 
-                                    'คะเเนน', 
-                                    'MARK'],
+                                style: 'tableExample',
+                                table: {
+                                    widths: ['auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto', 
+                                        'auto'],
+                                    body: [
+                                        ['ม้วนที่', 
+                                            'หน้าผ้า\nที่วัดได้', 
+                                            'สี', 
+                                            'มาตรฐาน\nสี', 
+                                            'จำนวน\nที่มา', 
+                                            'จำนวน\nที่ได้', 
+                                            'จุดสี-น้ำมัน-สกปรก', 
+                                            'ลาย\nขวาง', 
+                                            'ความกว้าง\nไม่ได้\nมาตรฐาน', 
+                                            'ปุ่ม\nปม', 
+                                            'เส้นด้าย\nขาด', 
+                                            'รอย\nด่าง', 
+                                            'รอย\nเข็ม', 
+                                            'รอยเข็ม\nเข้าลึก', 
+                                            'บาร์โค็ด\nร้านค้า', 
+                                            'หม้อ\nย้อม', 
+                                            'ตำหนิ\nรวม', 
+                                            'คะเเนน', 
+                                            'MARK'],
                                 <%
-            for (int a = 0; a < 25; a++) {
+            for (int a = 0; a < 40; a++) {
                                 %>
                                
                                                         [49, 
