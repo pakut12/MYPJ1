@@ -15,37 +15,263 @@
 
 <html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js" integrity="sha512-rDbVu5s98lzXZsmJoMa0DjHNE+RwPJACogUCLyq3Xxm2kJO6qsQwjbE5NDk2DqmlKcxDirCnU1wAzVLe12IM3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.js" integrity="sha512-iKv9YWIwhexI0fRGos8mMuFFHhUCbpHTHFPrdByZc6C3QqMRuFN+3fdIbq6EDClHh+hYSAOf10T9VrBDPF92jA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.js" integrity="sha512-cktKDgjEiIkPVHYbn8bh/FEyYxmt4JDJJjOCu5/FQAkW4bc911XtKYValiyzBiJigjVEvrIAyQFEbRJZyDA1wQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.min.js" integrity="sha512-BDZ+kFMtxV2ljEa7OWUu0wuay/PAsJ2yeRsBegaSgdUhqIno33xmD9v3m+a2M3Bdn5xbtJtsJ9sSULmNBjCgYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../js/pdfmake.min.js"></script>
+        <script src="../js/vfs_fonts.js"></script>
         
-        <meta http-equiv="Content-Type" content="application/Pdf">
         <title>JSP Page</title>
     </head>
     <body>
         <h2>Hello World!</h2>
         <script>
+            pdfMake.fonts = {
+                THSarabunNew: {
+                    normal: 'THSarabunNew.ttf',
+                    bold: 'THSarabunNew-Bold.ttf',
+                    italics: 'THSarabunNew-Italic.ttf',
+                    bolditalics: 'THSarabunNew-BoldItalic.ttf'
+                },
+                Roboto: {
+                    normal: 'Roboto-Regular.ttf',
+                    bold: 'Roboto-Medium.ttf',
+                    italics: 'Roboto-Italic.ttf',
+                    bolditalics: 'Roboto-MediumItalic.ttf'
+                }
+            }
             var docDefinition = {
-                content: [
-                    // if you don't need styles, you can use a simple string to define a paragraph
-                    'asd>',
-
-                    // using a { text: '...' } object lets you set styling properties
-                    { text: 'This paragraph will have a bigger font', fontSize: 15 },
-
-                    // if you set the value of text to an array instead of a string, you'll be able
-                    // to style any part individually
-                    {
-                        text: [
-                            'This paragraph is defined as an array of elements to make it possible to ',
-                            { text: 'restyle part of it and make it bigger ', fontSize: 15 },
-                            'than the rest.'
+                pageSize: {
+                    width: 595.28,
+                    height: 'auto'
+                },
+                
+               
+                content: [{
+                        columns: [
+                            {
+                                width: '*',
+                                text: 'สาขา : ',
+                                fontSize: 12,
+                                alignment: 'left'
+                            },
+                            {
+                                width: '*',
+                                text: 'บริษัท ไทยสปอร์ตการ์เมนต์ จำกัด \n ใบตรวจสอบผ้าถัก',
+                                fontSize: 15,
+                                alignment: 'center',
+                                bold:true
+                            },
+                            {
+                                width: '*',
+                                text: 'หน้า : ',
+                                fontSize: 12,
+                                alignment: 'right'
+                            }
+                            
                         ]
+                    },
+                    {
+                        columns: [{
+                                width: '*',
+                                text: 'รหัส : ',
+                                fontSize: 12,
+                                alignment: 'left'
+                            },
+                            {
+                                width: '*',
+                                text: 'เลขที่ใบสั้งซื้อ : ',
+                                fontSize: 12,
+                                alignment: 'center'
+                            },
+                            {
+                                width: '*',
+                                text: 'เลขที่บิล : ',
+                                fontSize: 12,
+                                alignment: 'center'
+                            },
+                            {
+                                width: '*',
+                                text: 'วันที่บิล : ',
+                                fontSize: 12,
+                                alignment: 'right'
+                            }]
+                    },
+                    {
+                        columns: [{
+                                width: '*',
+                                text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ',
+                                fontSize: 12,
+                                alignment: 'left'
+                            },
+                            
+                            {
+                                width: '*',
+                                text: 'พาเลต : ',
+                                fontSize: 12,
+                                alignment: 'right'
+                            }]
                     }
-                ]
-            };
-            pdfMake.createPdf(docDefinition).open({}, window);
+                    ,{
+                        columns: [
+                            {
+                                width: '*',
+                                text: 'Description 2 : ',
+                                fontSize: 12,
+                                alignment: 'left'
+                            }, 
+                            {
+                                width: '*',
+                                text: 'Description 3 : ',
+                                fontSize: 12,
+                                alignment: 'right'
+                            }
+                            
+                        ]
+                    },
+                    {
+                        columns: [{
+                                width: '*',
+                                text: 'ร้านค้า : ',
+                                fontSize: 12,
+                                alignment: 'left'
+                            },
+                            {
+                                width: '*',
+                                text: 'เลขที่เอกสาร : ',
+                                fontSize: 12,
+                                alignment: 'center'
+                            },
+                            {
+                                width: '*',
+                                text: 'หน่วยนับ : ',
+                                fontSize: 12,
+                                alignment: 'center'
+                            },
+                            {
+                                width: '*',
+                                text: 'วันที่ : ',
+                                fontSize: 12,
+                                alignment: 'right'
+                            }]
+                    },
+                    {
+                        style: 'tableExample',
+                        table: {
+                           
+                            widths: ['auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto', 
+                                'auto'],
+                            body: [
+                                ['ม้วนที่', 
+                                    'หน้าผ้า\nที่วัดได้', 
+                                    'สี', 
+                                    'มาตรฐาน\nสี', 
+                                    'จำนวน\nที่มา', 
+                                    'จำนวน\nที่ได้', 
+                                    'จุดสี-น้ำมัน-สกปรก', 
+                                    'ลาย\nขวาง', 
+                                    'ความกว้าง\nไม่ได้\nมาตรฐาน', 
+                                    'ปุ่ม\nปม', 
+                                    'เส้นด้าย\nขาด', 
+                                    'รอย\nด่าง', 
+                                    'รอย\nเข็ม', 
+                                    'รอยเข็ม\nเข้าลึก', 
+                                    'บาร์โค็ด\nร้านค้า', 
+                                    'หม้อ\nย้อม', 
+                                    'ตำหนิ\nรวม', 
+                                    'คะเเนน', 
+                                    'MARK'],
+                                <%
+            for (int a = 0; a < 25; a++) {
+                                %>
+                               
+                                                        [49, 
+                                                            170, 
+                                                            4.5, 
+                                                            2.3, 
+                                                            44, 
+                                                            44, 
+                                                            0, 
+                                                            0, 
+                                                            1, 
+                                                            0, 
+                                                            0, 
+                                                            0, 
+                                                            0, 
+                                                            0, 
+                                                            0, 
+                                                            603104421, 
+                                                            'KH-602/25', 
+                                                            1, 
+                                                            '*'],
+                                <%            }
+                               %>
+                                                   ]
+                                               }
+                                           },
+                                           {
+                                               columns: [
+                                                   {
+                                                       width: '*',
+                                                       text: 'จำนวนที่มา : 10 \n จำนวนที่ได้ : 10',
+                                                       fontSize: 12,
+                                                       alignment: 'left'
+                                                   },
+                                                   {
+                                                       width: '*',
+                                                       text: 'สรุปผล \n re1\n re1\n re1',
+                                                       fontSize: 12,
+                                                       alignment: 'center'
+                               
+                                                   },
+                                                   {
+                                                       width: '*',
+                                                       text: 'น้ำหนัก KG/M: \n 0',
+                                                       fontSize: 12,
+                                                       alignment: 'center'
+                               
+                                                   },
+                                                   {
+                                                       width: '*',
+                                                       text: 'ชื่อผู้ตรวจสอบ.................................\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',
+                                                       fontSize: 12,
+                                                       alignment: 'right'
+                                                   }
+                            
+                                               ]
+                                           }
+                    
+                                       ],
+                                       styles: {
+                                           footer:{
+                                               margin: [0, 5, 0, 15]
+                                           },
+                                           tableExample: {
+                                               margin: [0, 5, 0, 15],
+                                               fontSize: 10,
+                                               alignment: 'center'
+                                           }
+                    
+                                       },
+                                       defaultStyle: {
+                                           font: 'THSarabunNew'
+                                       }
+                                   };
+                                   pdfMake.createPdf(docDefinition).open({}, window);
         </script>
     </body>
 </html>
