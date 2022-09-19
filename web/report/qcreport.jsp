@@ -17,37 +17,112 @@
     <head>
         <script src="../js/pdfmake.min.js"></script>
         <script src="../js/vfs_fonts.js"></script>
-        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Hello World!</h2>
+        
         <%
-            String x = "asd";
-            
+            String mrno = request.getParameter("mrno");
+            String palet = request.getParameter("palet");
         %>
         <script>
-            pdfMake.fonts = {
-                THSarabunNew: {
-                    normal: 'THSarabunNew.ttf',
-                    bold: 'THSarabunNew-Bold.ttf',
-                    italics: 'THSarabunNew-Italic.ttf',
-                    bolditalics: 'THSarabunNew-BoldItalic.ttf'
-                },
-                Roboto: {
-                    normal: 'Roboto-Regular.ttf',
-                    bold: 'Roboto-Medium.ttf',
-                    italics: 'Roboto-Italic.ttf',
-                    bolditalics: 'Roboto-MediumItalic.ttf'
+            function covertoday(date){
+                var coverdate =null;
+                if(date == null){
+                    coverdate = ''
+                }else{
+                    var y = date.substring(0, 4);
+                    var m = date.substring(5, 7);
+                    var d = date.substring(8, 10);
+                    coverdate = d+"/"+m+"/"+y;
                 }
+                   
+                return coverdate;
             }
-            var docDefinition = {
-                pageSize: 'A5',
-                content: [{
-                        columns: [
-                            {
-                                width: '*',
-                                text: 'สาขา : <%=x%>',
+            var a = <%=mrno%>
+            var b = <%=palet%>
+            console.log('../getdatawm?status=G20&mrno='+a+'&pallet='+b);
+            $.ajax({
+                type: "POST",
+                url: '../getdatawm?status=G20&mrno='+a+'&pallet='+b,
+                success: function(msg,status){
+                    var de = $.parseJSON(msg);
+                    var arr1 = [];
+                    arr1[0] = [
+                        'ม้วนที่', 
+                        'หน้าผ้า\nที่วัดได้', 
+                        'สี', 
+                        'มาตรฐาน\nสี', 
+                        'จำนวน\nที่มา', 
+                        'จำนวน\nที่ได้', 
+                        'จุดสี-น้ำมัน-สกปรก', 
+                        'ลาย\nขวาง', 
+                        'ความกว้าง\nไม่ได้\nมาตรฐาน', 
+                        'ปุ่ม\nปม', 
+                        'เส้นด้าย\nขาด', 
+                        'รอย\nด่าง', 
+                        'รอย\nเข็ม', 
+                        'รอยเข็ม\nเข้าลึก', 
+                        'บาร์โค็ด\nร้านค้า', 
+                        'หม้อ\nย้อม', 
+                        'ตำหนิ\nรวม', 
+                        'คะเเนน', 
+                        'MARK'
+                    ]
+                   
+                    for(var x =0; x<de.data.length; x++){
+                        var arr = [
+                            de.data[x][0], 
+                            de.data[x][1], 
+                            de.data[x][2], 
+                            de.data[x][3], 
+                            de.data[x][4], 
+                            de.data[x][5], 
+                            de.data[x][6], 
+                            de.data[x][7], 
+                            de.data[x][8], 
+                            de.data[x][9], 
+                            de.data[x][10], 
+                            de.data[x][11], 
+                            de.data[x][12], 
+                            de.data[x][13], 
+                            de.data[x][14], 
+                            de.data[x][15], 
+                            de.data[x][16], 
+                            de.data[x][17], 
+                            de.data[x][18],
+                                            
+                        ];
+                        arr1[x+1] = arr ;
+                        
+                    }
+                   
+        
+                    
+                                        
+        
+                    pdfMake.fonts = {
+                        THSarabunNew: {
+                            normal: 'THSarabunNew.ttf',
+                            bold: 'THSarabunNew-Bold.ttf',
+                            italics: 'THSarabunNew-Italic.ttf',
+                            bolditalics: 'THSarabunNew-BoldItalic.ttf'
+                        },
+                        Roboto: {
+                            normal: 'Roboto-Regular.ttf',
+                            bold: 'Roboto-Medium.ttf',
+                            italics: 'Roboto-Italic.ttf',
+                            bolditalics: 'Roboto-MediumItalic.ttf'
+                        }
+                    }
+                    var docDefinition = {
+                        pageSize: 'A4',
+                        content: [{
+                                columns: [
+                                    {
+                                        width: '*',
+                                        text: 'สาขา : '+ de.PLANT,
                                         fontSize: 12,
                                         alignment: 'left'
                                     },
@@ -70,25 +145,25 @@
                             {
                                 columns: [{
                                         width: '*',
-                                        text: 'รหัส : ',
+                                        text: 'รหัส : ' + de.ITEM,
                                         fontSize: 12,
                                         alignment: 'left'
                                     },
                                     {
                                         width: '*',
-                                        text: 'เลขที่ใบสั้งซื้อ : ',
+                                        text: 'เลขที่ใบสั้งซื้อ : ' + de.PO,
                                         fontSize: 12,
                                         alignment: 'center'
                                     },
                                     {
                                         width: '*',
-                                        text: 'เลขที่บิล : ',
+                                        text: 'เลขที่บิล : ' + de.INVOICE,
                                         fontSize: 12,
                                         alignment: 'center'
                                     },
                                     {
                                         width: '*',
-                                        text: 'วันที่บิล : ',
+                                        text: 'วันที่บิล : ' + covertoday(de.INVOICEDATE),
                                         fontSize: 12,
                                         alignment: 'right'
                                     }]
@@ -96,14 +171,14 @@
                             {
                                 columns: [{
                                         width: '*',
-                                        text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ',
+                                        text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ' + de.DESC1,
                                         fontSize: 12,
                                         alignment: 'left'
                                     },
                             
                                     {
                                         width: '*',
-                                        text: 'พาเลต : ',
+                                        text: 'พาเลต : ' + de.PALET,
                                         fontSize: 12,
                                         alignment: 'right'
                                     }]
@@ -112,13 +187,13 @@
                                 columns: [
                                     {
                                         width: '*',
-                                        text: 'Description 2 : ',
+                                        text: 'Description 2 : ' + de.DESC2,
                                         fontSize: 12,
                                         alignment: 'left'
                                     }, 
                                     {
                                         width: '*',
-                                        text: 'Description 3 : ',
+                                        text: 'Description 3 : ' + de.DESC3,
                                         fontSize: 12,
                                         alignment: 'right'
                                     }
@@ -127,26 +202,26 @@
                             },
                             {
                                 columns: [{
-                                        width: '*',
-                                        text: 'ร้านค้า : ',
+                                        width: 200,
+                                        text: 'ร้านค้า : ' + de.SUPNAME,
                                         fontSize: 12,
                                         alignment: 'left'
                                     },
                                     {
                                         width: '*',
-                                        text: 'เลขที่เอกสาร : ',
+                                        text: 'เลขที่เอกสาร : ' + de.MRNO,
                                         fontSize: 12,
                                         alignment: 'center'
                                     },
                                     {
                                         width: '*',
-                                        text: 'หน่วยนับ : ',
+                                        text: 'หน่วยนับ : ' + de.UNIT,
                                         fontSize: 12,
                                         alignment: 'center'
                                     },
                                     {
                                         width: '*',
-                                        text: 'วันที่ : ',
+                                        text: 'วันที่ : ' + covertoday(de.QCDATE),
                                         fontSize: 12,
                                         alignment: 'right'
                                     }]
@@ -173,103 +248,68 @@
                                         'auto', 
                                         'auto', 
                                         'auto'],
-                                    body: [
-                                        ['ม้วนที่', 
-                                            'หน้าผ้า\nที่วัดได้', 
-                                            'สี', 
-                                            'มาตรฐาน\nสี', 
-                                            'จำนวน\nที่มา', 
-                                            'จำนวน\nที่ได้', 
-                                            'จุดสี-น้ำมัน-สกปรก', 
-                                            'ลาย\nขวาง', 
-                                            'ความกว้าง\nไม่ได้\nมาตรฐาน', 
-                                            'ปุ่ม\nปม', 
-                                            'เส้นด้าย\nขาด', 
-                                            'รอย\nด่าง', 
-                                            'รอย\nเข็ม', 
-                                            'รอยเข็ม\nเข้าลึก', 
-                                            'บาร์โค็ด\nร้านค้า', 
-                                            'หม้อ\nย้อม', 
-                                            'ตำหนิ\nรวม', 
-                                            'คะเเนน', 
-                                            'MARK'],
-                                <%
-            for (int a = 0; a < 40; a++) {
-                                %>
+                                    body: arr1
+                                        
+                                        
                                
-                                                        [49, 
-                                                            170, 
-                                                            4.5, 
-                                                            2.3, 
-                                                            44, 
-                                                            44, 
-                                                            0, 
-                                                            0, 
-                                                            1, 
-                                                            0, 
-                                                            0, 
-                                                            0, 
-                                                            0, 
-                                                            0, 
-                                                            0, 
-                                                            603104421, 
-                                                            'KH-602/25', 
-                                                            1, 
-                                                            '*'],
-                                <%            }
-                               %>
-                                                   ]
-                                               }
-                                           },
-                                           {
-                                               columns: [
-                                                   {
-                                                       width: '*',
-                                                       text: 'จำนวนที่มา : 10 \n จำนวนที่ได้ : 10',
-                                                       fontSize: 12,
-                                                       alignment: 'left'
-                                                   },
-                                                   {
-                                                       width: '*',
-                                                       text: 'สรุปผล \n re1\n re1\n re1',
-                                                       fontSize: 12,
-                                                       alignment: 'center'
                                
-                                                   },
-                                                   {
-                                                       width: '*',
-                                                       text: 'น้ำหนัก KG/M: \n 0',
-                                                       fontSize: 12,
-                                                       alignment: 'center'
+                                       
                                
-                                                   },
-                                                   {
-                                                       width: '*',
-                                                       text: 'ชื่อผู้ตรวจสอบ.................................\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',
-                                                       fontSize: 12,
-                                                       alignment: 'right'
-                                                   }
+                                    
+                                }
+                            },
+                            {
+                                columns: [
+                                    {
+                                        width: '*',
+                                        text: 'จำนวนที่มา : '+de.sumqt+' '+de.UNIT+' \n จำนวนที่ได้ : '+de.sumaqt+' '+ de.UNIT,
+                                        fontSize: 12,
+                                        alignment: 'left'
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'สรุปผล \n REMARKRM1 : '+de.REMARKRM1+'\n REMARKRM2 : '+de.REMARKRM2+'\n REMARKRM3 : '+de.REMARKRM3+'',
+                                        fontSize: 12,
+                                        alignment: 'center'
+                               
+                                    },
+                                    {
+                                        width: '*',
+                                        text: 'น้ำหนัก KG/M: \n '+de.sumweight,
+                                        fontSize: 12,
+                                        alignment: 'center'
+                               
+                                    },
+                                    {
+                                        width: 'auto',
+                                        text: 'ชื่อผู้ตรวจสอบ : '+de.BYNAME+'\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',
+                                        fontSize: 12,
+                                        alignment: 'right'
+                                    }
                             
-                                               ]
-                                           }
+                                ]
+                            }
                     
-                                       ],
-                                       styles: {
-                                           footer:{
-                                               margin: [0, 5, 0, 15]
-                                           },
-                                           tableExample: {
-                                               margin: [0, 5, 0, 15],
-                                               fontSize: 10,
-                                               alignment: 'center'
-                                           }
+                        ],
+                        styles: {
+                            footer:{
+                                margin: [0, 5, 0, 15]
+                            },
+                            tableExample: {
+                                margin: [0, 5, 0, 15],
+                                fontSize: 10,
+                                alignment: 'center'
+                            }
                     
-                                       },
-                                       defaultStyle: {
-                                           font: 'THSarabunNew'
-                                       }
-                                   };
-                                   pdfMake.createPdf(docDefinition).open({}, window);
+                        },
+                        defaultStyle: {
+                            font: 'THSarabunNew'
+                        }
+                    };
+                    pdfMake.createPdf(docDefinition).open({}, window); 
+                }
+            });
+            
         </script>
     </body>
 </html>

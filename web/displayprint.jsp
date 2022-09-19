@@ -17,7 +17,9 @@
     </head>
     <style>
         body{
-            font-size:12px;
+            font-size:11px;
+            margin-right: 50px;
+            margin-left: 50px;
         }
     </style>
     <%!
@@ -32,7 +34,7 @@
     
     <body >
         
-        <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
+        <div class="h5 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
         
         <div class="row">
             <div  class="col-8 ">
@@ -48,7 +50,7 @@
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Po No. : </label>
-                <label><%=request.getAttribute("PO")%>  /<%=request.getAttribute("POLN")%></label> 
+                <label><%=request.getAttribute("PO")%>  / <%=request.getAttribute("POLN")%></label> 
             </div>
             
             <div  class="col-4 ">

@@ -1010,6 +1010,142 @@ public class SVgetdatawm extends HttpServlet {
                 }
 
 
+            } else if (status.equals("G20")) {
+                try {
+
+                    String mrno = request.getParameter("mrno");
+                    String pallet = request.getParameter("pallet");
+
+                    String sql = "select * from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+                    // conn = DB.ConnDB.getConnection();
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, pallet);
+                    rec = ps.executeQuery();
+                    int sumqt = 0;
+                    int sumaqt = 0;
+                    int sumweight = 0;
+                    JSONObject obj = new JSONObject();
+                    ArrayList arrlist = new ArrayList();
+                    int n = 0;
+                    String PLANT = null;
+                    String ITEM = null;
+                    String PO = null;
+                    String DESC1 = null;
+                    String DESC2 = null;
+                    String DESC3 = null;
+                    String INVOICEDATE = null;
+                    String MRNO = null;
+                    String UNIT = null;
+                    String QCDATE = null;
+                    String REMARK1 = null;
+                    String REMARK2 = null;
+                    String REMARK3 = null;
+                    String SUPNAME = null;
+                    String INVOICE = null;
+                    String PALET = null;
+                    String BYNAME = null;
+                    while ((rec.next()) && (rec != null)) {
+                        JSONArray arrjson = new JSONArray();
+                        arrjson.add(rec.getString("roll"));
+                        arrjson.add(rec.getString("width"));
+                        arrjson.add(rec.getString("color"));
+                        arrjson.add(rec.getString("scolor"));//rec.getString("scolor")
+
+                        arrjson.add(rec.getString("quantity"));
+                        arrjson.add(rec.getString("actqty"));
+                        arrjson.add(rec.getString("ethread"));
+                        arrjson.add(rec.getString("ealkali"));
+                        arrjson.add(rec.getString("edirty"));
+                        arrjson.add(rec.getString("eoil"));
+                        arrjson.add(rec.getString("ebroken"));
+                        arrjson.add(rec.getString("eknot"));
+                        arrjson.add(rec.getString("ejoint"));
+                        arrjson.add(rec.getString("efurrow"));
+                        arrjson.add(rec.getString("erepeat"));
+                        arrjson.add(rec.getString("batch"));
+                        arrjson.add(rec.getString("toterr"));
+                        arrjson.add(rec.getString("point"));//rec.getString("point")
+
+                        String toterr = rec.getString("toterr");
+                        if (toterr == null) {
+                            toterr = "0";
+                        }
+                        String mark = "";
+                        if (Integer.valueOf(toterr) > 8) {
+                            mark = "*";
+                        } else {
+                            mark = "";
+                        }
+                        String wm = rec.getString("WEIGHT");
+                        if (wm == null) {
+                            wm = "0";
+                        }
+                        sumqt += Integer.valueOf(rec.getString("quantity"));
+                        sumaqt += Integer.valueOf(rec.getString("actqty"));
+                        sumweight += Integer.valueOf(wm);
+
+                        arrjson.add(mark);
+                        arrjson.add("");
+                        arrlist.add(arrjson);
+
+                        if (n == 0) {
+                            PLANT = rec.getString("PLANT");
+                            ITEM = rec.getString("ITEM");
+                            PO = rec.getString("PO");
+                            DESC1 = rec.getString("DESC1");
+                            DESC2 = rec.getString("DESC2");
+                            DESC3 = rec.getString("DESC3");
+                            INVOICEDATE = rec.getString("INVOICEDATE");
+                            MRNO = rec.getString("MRNO");
+                            UNIT = rec.getString("UNIT");
+                            QCDATE = rec.getString("QCDATE");
+                            REMARK1 = rec.getString("REMARK1");
+                            REMARK2 = rec.getString("REMARK2");
+                            REMARK3 = rec.getString("REMARK3");
+                            SUPNAME = rec.getString("SUPNAME");
+                            INVOICE = rec.getString("INVOICE");
+                            PALET = rec.getString("PALET");
+                            BYNAME = rec.getString("BYNAME");
+                        }
+
+
+                        n++;
+                    }
+
+                    obj.put("PLANT", PLANT);
+                    obj.put("ITEM", ITEM);
+                    obj.put("PO", PO);
+                    obj.put("DESC1", DESC1);
+                    obj.put("DESC2", DESC2);
+                    obj.put("DESC3", DESC3);
+                    obj.put("INVOICEDATE", INVOICEDATE);
+                    obj.put("MRNO", MRNO);
+                    obj.put("UNIT", UNIT);
+                    obj.put("QCDATE", QCDATE);
+                    obj.put("REMARKRM1", REMARK1);
+                    obj.put("REMARKRM2", REMARK2);
+                    obj.put("REMARKRM3", REMARK3);
+                    obj.put("SUPNAME", SUPNAME);
+                    obj.put("INVOICE", INVOICE);
+                    obj.put("PALET", PALET);
+                    obj.put("BYNAME", BYNAME);
+
+
+                    obj.put("sumweight", sumweight);
+                    obj.put("sumqt", sumqt);
+                    obj.put("sumaqt", sumaqt);
+                    obj.put("count", n);
+                    obj.put("data", arrlist);
+                    out.print(obj);
+
+
+                //getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
             }
 
 

@@ -400,7 +400,7 @@
                 $("#btn-send").click(function(){
                     var mrno = $("#mrno").val();
                     var palet = $("#pallet").val();
-                    var url = "report/qcreport.jsp?mrno="+mrno+"&palet="+palet;
+                    var url = "getdata/qcreport.jsp?mrno="+mrno+"&palet="+palet;
                  
                     window.open(url, '_blank');
                
