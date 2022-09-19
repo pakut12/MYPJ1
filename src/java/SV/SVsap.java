@@ -83,13 +83,13 @@ public class SVsap extends HttpServlet {
                         arrjson.add(output.getString("POLN"));
                         arrjson.add(output.getString("INVOICE"));
                         arrjson.add(output.getString("INVOICEDATE"));
-                        arrjson.add(output.getString("DESC1"));
-                        arrjson.add(output.getString("DESC2"));
-                        arrjson.add(output.getString("DESC3"));
                         arrjson.add(output.getString("CODE"));
                         arrjson.add(output.getString("BATCH"));
                         arrjson.add(output.getString("COLOR"));
                         arrjson.add(output.getString("GRADE"));
+                        arrjson.add(output.getString("DESC1"));
+                        arrjson.add(output.getString("DESC2"));
+                        arrjson.add(output.getString("DESC3"));
 
                         arrlist.add(arrjson);
                         n++;

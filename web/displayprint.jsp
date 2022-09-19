@@ -17,7 +17,7 @@
     </head>
     <style>
         body{
-            font-size:11px;
+            font-size:12px;
             height:5.0in;
             width:9in; 
             margin: 15px;          
@@ -88,12 +88,12 @@
             
         </div>
         <div class="row">
-            <div  class="col-8 ">
+            <div  class="col-6">
                 <label class="fw-bold ">Materal : </label>
                 <label class="h3"><%=request.getAttribute("ITEM")%></label> 
             </div>
             
-            <div  class="col-4 ">
+            <div  class="col-6 ">
                 <label><%=request.getAttribute("DESC1")%></label> 
             </div> 
             
@@ -113,7 +113,7 @@
         
         <div class="row ">
             <div  class="col-12 ">
-                <table class="table table-bordered border-dark text-center w-100">
+                <table class="table table-bordered border-dark text-center" style="width: 45rem;">
                     <thead>
                         <tr>
                             <th>เบอร์สี</th>
@@ -245,7 +245,7 @@
     
     
     
-                window.print();
+                //window.print();
                 
             });
         </script>

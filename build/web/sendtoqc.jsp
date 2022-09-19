@@ -57,14 +57,14 @@
                                             <th class="text-center">PO</th>
                                             <th class="text-center">POLN </th>
                                             <th class="text-center">INV </th>
-                                            <th class="text-center">INV.DATE </th>
-                                            <th class="text-center">DESC1 </th>
-                                            <th class="text-center">DESC2 </th>
-                                            <th class="text-center">DESC3 </th>
+                                            <th class="text-center">INV.DATE </th> 
                                             <th class="text-center">BARCODE </th>
                                             <th class="text-center">BATCH </th>
                                             <th class="text-center">COLOR </th>
                                             <th class="text-center">GRADE </th>
+                                            <th class="text-center">DESC1 </th>
+                                            <th class="text-center">DESC2 </th>
+                                            <th class="text-center">DESC3 </th>
                                             
                                         </tr>
                                     </thead>
@@ -98,12 +98,14 @@
                                     selectRow:true
                                 }
                             },
-                            { "width": "10rem", "targets":2 },
-                            { "width": "10rem", "targets": 11 },
-                            { "width": "23rem", "targets": 12 },
-                            { "width": "23rem", "targets": 13 },
-                            { "width": "23rem", "targets": 14 },
-                            { "width": "10rem", "targets": 16 },
+                            { "width": "7rem", "targets":2 },
+                            { "width": "5rem", "targets": 11 },
+                            { "width": "5rem", "targets": 12 },
+                            { "width": "5rem", "targets": 13 },
+                            { "width": "5rem", "targets": 14 },
+                            { "width": "25rem", "targets": 16 },
+                            { "width": "25rem", "targets": 17 },
+                            { "width": "25rem", "targets": 18 },
                         ],
                         'select': {
                             'style': 'multi'
@@ -233,7 +235,7 @@
                 })
             })()
         </script>
-     
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>

@@ -76,13 +76,13 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("POLN"));
                         arrjson.add(rec.getString("INVOICE"));
                         arrjson.add(rec.getString("INVOICEDATE").replace(" 00:00:00.0", ""));
-                        arrjson.add(rec.getString("DESC1"));
-                        arrjson.add(rec.getString("DESC2"));
-                        arrjson.add(rec.getString("DESC3"));
                         arrjson.add(rec.getString("CODE"));
                         arrjson.add(rec.getString("BATCH"));
                         arrjson.add(rec.getString("COLOR"));
                         arrjson.add(rec.getString("GRADE"));
+                        arrjson.add(rec.getString("DESC1"));
+                        arrjson.add(rec.getString("DESC2"));
+                        arrjson.add(rec.getString("DESC3"));
 
 
                         arrlist.add(arrjson);
