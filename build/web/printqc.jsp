@@ -112,7 +112,7 @@
                                 <div class="row mt-4">
                                     <div class="col-sm-12 col-md-12">
                                         
-                                        <table class="table table-sm table-bordered  text-center" id="mytable"  >
+                                        <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
                                             <thead >
                                                 <tr>
                                                     <th class="text-center">ม้วนที่</th>
@@ -400,7 +400,7 @@
                 $("#btn-send").click(function(){
                     var mrno = $("#mrno").val();
                     var palet = $("#pallet").val();
-                    var url = "getdata/qcreport.jsp?mrno="+mrno+"&palet="+palet;
+                    var url = "report/qcreport.jsp?mrno="+mrno+"&palet="+palet;
                  
                     window.open(url, '_blank');
                
@@ -426,7 +426,7 @@
                 })
             })()
         </script>
-        <br><br><br><br><br>
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>

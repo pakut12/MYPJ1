@@ -18,8 +18,10 @@
     <style>
         body{
             font-size:11px;
-            margin-right: 50px;
-            margin-left: 50px;
+            height:5.0in;
+            width:9in; 
+            margin: 15px;          
+            
         }
     </style>
     <%!
@@ -34,7 +36,7 @@
     
     <body >
         
-        <div class="h5 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
+        <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
         
         <div class="row">
             <div  class="col-8 ">
@@ -109,7 +111,7 @@
             </div> 
         </div>
         
-        <div class="row mt-2">
+        <div class="row ">
             <div  class="col-12 ">
                 <table class="table table-bordered border-dark text-center w-100">
                     <thead>
@@ -175,7 +177,7 @@
             </div>
             
         </div>
-        <div class="row">
+        <div class="row mt-4">
             <div  class="col-4 ">
                 <label class="fw-bold">ผู้เเจ้งเข้า : </label>
                 <label>.........................</label> 

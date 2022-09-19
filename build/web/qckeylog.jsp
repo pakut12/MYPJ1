@@ -80,11 +80,11 @@
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึกข้อมูล</button>
                                         </div>
                                     </div>
-                                    <div class="row mt-4">
+                                    <div class="row mt-2">
                                         <div class="col-sm-12 col-md-12">
                                             
                                             
-                                            <table class="table table-sm table-bordered  text-center" id="mytable"  >
+                                            <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
                                                 <thead >
                                                     <tr>
                                                         <th class="text-center">ม้วนที่</th>
@@ -191,6 +191,7 @@
                 </div>
             </div>
         </form>
+        <%@ include file="share/footer.jsp" %>
         <script>
             
             $(document).ready(function () {
@@ -371,8 +372,8 @@
                 })
             })()
         </script>
-        <br><br><br><br><br>
-        <%@ include file="share/footer.jsp" %>
+   
+        
         
     </body>
 </html>

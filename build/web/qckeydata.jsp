@@ -528,7 +528,7 @@
                 })
             })()
         </script>
-        <br><br><br><br><br>
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>

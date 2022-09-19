@@ -18,11 +18,11 @@
     </head>
     <style>    
         
-            /* body{
+            body{
                  height:11in;
                  width:9in;                                 
              }
-        */
+        
         
         
     </style>

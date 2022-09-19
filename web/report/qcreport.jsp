@@ -98,10 +98,6 @@
                         
                     }
                    
-        
-                    
-                                        
-        
                     pdfMake.fonts = {
                         THSarabunNew: {
                             normal: 'THSarabunNew.ttf',
@@ -117,7 +113,7 @@
                         }
                     }
                     var docDefinition = {
-                        pageSize: 'A4',
+                        
                         content: [{
                                 columns: [
                                     {
@@ -268,7 +264,7 @@
                                     },
                                     {
                                         width: '*',
-                                        text: 'สรุปผล \n REMARKRM1 : '+de.REMARKRM1+'\n REMARKRM2 : '+de.REMARKRM2+'\n REMARKRM3 : '+de.REMARKRM3+'',
+                                        text: 'สรุปผล \n / '+de.REMARKRM1+'\n / '+de.REMARKRM2+'\n / '+de.REMARKRM3+'',
                                         fontSize: 12,
                                         alignment: 'center'
                                

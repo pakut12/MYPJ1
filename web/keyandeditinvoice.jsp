@@ -22,13 +22,13 @@
                 
                 <div class="col-sm-12 col-md-12">
                     <div id="pageview">
-                        <div class="card shadow ">
+                        <div class="card shadow  h-25" >
                             <div class="card-header text-center">
                                 โปรเเกรมคีย์เเละเเก้ไขข้อมูลใบ Invoice
                             </div>
                             <div class="card-body">
                                 <form id="myform" class="">
-                                    <div class="row mb-3">
+                                    <div class="row ">
                                         <div class="col-sm-12 col-md-4">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
@@ -41,7 +41,7 @@
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึก</button>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row ">
                                         <div class="col-sm-12 col-md-4">
                                             <label>สาขา : </label>
                                             <input class="form-control form-control-sm text-center" type="number" name="PLANT" id="PLANT" value="" readonly></input>
@@ -56,7 +56,7 @@
                                         </div>
                                         
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row ">
                                         <div class="col-sm-12 col-md-4">
                                             <label>Invoice : </label>
                                             <input class="form-control form-control-sm text-center" type="text" name="INVOICE" id="INVOICE" value="" required></input>
@@ -70,7 +70,7 @@
                                             <input class="form-control form-control-sm text-center" type="number" name="DELIVERYNO" id="DELIVERYNO" value="" readonly></input>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row  mb-3">
                                         <div class="col-sm-12 col-md-9">
                                             <label>เลขที่ Lot : </label>
                                             <input class="form-control form-control-sm text-center" type="number" name="LOT" id="LOT" value="" required></input>
@@ -82,7 +82,7 @@
                                     </div>
                                 </form> 
                                 
-                                <table class="table table-sm table-bordered  text-center" id="mytable"  >
+                                <table class="table table-sm table-bordered  text-center " id="mytable"  >
                                     <thead >
                                         <tr>
                                             <th class="text-center">รหัสวัตดุดิบ</th>
@@ -263,7 +263,7 @@
                 })
             })()
         </script>
-        <br><br><br><br><br>
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>

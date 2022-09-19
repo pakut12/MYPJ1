@@ -22,7 +22,7 @@
                 
                 <div class="col-sm-12 col-md-12">
                     <div id="pageview">
-                        <div class="card shadow ">
+                        <div class="card shadow h-25 ">
                             <div class="card-header text-center">
                                 คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ
                             </div>
@@ -205,7 +205,7 @@
                 })
             })()
         </script>
-        <br><br><br><br><br>
+
         <%@ include file="share/footer.jsp" %>
         
     </body>

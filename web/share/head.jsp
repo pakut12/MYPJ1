@@ -43,5 +43,6 @@
 <style>
     body{
         font-family: 'Kanit', sans-serif;
+         font-size: 15px;
     }
 </style>

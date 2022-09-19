@@ -52,7 +52,7 @@
                                     <div class="col-sm-12 col-md-12">
                                         
                                         
-                                        <table class="table table-sm table-bordered  text-center" id="mytable"  >
+                                        <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
                                             <thead >
                                                 <tr>
                                                     <th class="text-center">รหัสวัตถุดิบ</th>
@@ -182,7 +182,7 @@
                 })
             })()
         </script>
-        <br><br><br><br><br>
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>
