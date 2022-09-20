@@ -40,20 +40,25 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-3">
+                                            <button class="btn btn-secondary mt-4 btn-sm " id="getpalet" type="button"><i class="bi bi-download"></i> ดึงเลขที่พาเลต</button>
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
                                             <label>พาเลท : </label>
-                                            <input class="form-control form-control-sm" type="number" name="pallet" id="pallet" value="" ></input>
+                                            <select class="form-select form-select-sm" id="pallet" name="pallet">
+                                                
+                                            </select>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 col-md-3">
+                                        <div class="col-sm-12 col-md-2">
                                             <label>รหัสวัตถุดิบ : </label>
                                             <input class="form-control form-control-sm" type="text" name="item" id="item" value="" readonly></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>
-                                        <div class="col-sm-12 col-md-3">
+                                        <div class="col-sm-12 col-md-2">
                                             <label>จำนวนม้วนผ้า : </label>
                                             <input class="form-control form-control-sm" type="text" name="count" id="count" value="" readonly></input>
                                             <div class="invalid-feedback mb-3 text-center">
@@ -193,6 +198,43 @@
         <script>
             
             $(document).ready(function () {
+                function getpalet(mrno){
+                    $("#pallet").empty();
+                    $("#btn-getdata").removeClass("disabled");
+                    
+                    var url = "getdatawm?status=G19";
+                    var data = '&mrno='+mrno;
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data:data,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            if(de.status == "true"){
+                                Swal.fire({
+                                    icon:"success",                    
+                                    title:"ดึงเลขที่พาเลตสำเร็จ",
+                                    text:"ดึงเลขที่พาเลตสำเร็จ" 
+                                });
+                                $.each(de.palet,function(k,v){
+                                    $("#pallet").append( "<option value='"+v+"'>"+v+"</option>" ); 
+                                });
+                            }else if(de.status == "false"){
+                                Swal.fire({
+                                    icon:"error",                    
+                                    title:"ดึงเลขที่พาเลตไม่สำเร็จ",
+                                    text:"ดึงเลขที่พาเลตไม่สำเร็จ" 
+                                });
+                            }
+                                  
+                        }    
+                    });
+                     
+                }
+                $("#getpallet").click(function(){
+                    var mrno = $("#mrno").val();
+                    getpalet(mrno);
+                })
                 var table;
                 function getdata(mrno,pallet){
                     $("#suma").val(0);
