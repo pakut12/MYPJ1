@@ -52,10 +52,10 @@
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">เมนูควบคุม</h6></li>
                         <li><a class="dropdown-item" href="keyandeditinvoice.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์เเละเเก้ไขข้อมูลใบ Invoice</a></li>
-                        <li><a class="dropdown-item" href="deldoc.jsp"><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
                         <li><a class="dropdown-item" href="displayshowdoc.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่เอกสาร</a></li>
                         <li><a class="dropdown-item" href="displayshowpo.jsp"><i class="bi bi-book"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่ใบสั้งซื้อ (PO)</a></li>
                         <li><a class="dropdown-item" href="displayshowitamfinddate.jsp"><i class="bi bi-box-seam"></i> โปรเเกรมเเสดงข้อมูลตามรหัสวัตถุดิบเเละวันที่สร้างรหัส</a></li>
+                        <li><a class="dropdown-item" href="deldoc.jsp"><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown ">
@@ -121,16 +121,16 @@
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">เมนูผ้าถัก</h6></li>
                         <li><a class="dropdown-item" href="getdatafromsap.jsp"><i class="bi bi-arrow-bar-down"></i> ดึงข้อมูลจาก SAP ด้วยเลขที่ PO</a></li>
-                        <li><a class="dropdown-item" href="sendtoqc.jsp"><i class="bi bi-send"></i> ส่งข้อมูลให้ทาง QC</a></li>
                         <li><a class="dropdown-item" href="keyitem.jsp"><i class="bi bi-key"></i> คีย์ข้อมูลใบเเจ้งเข้าวัตถุดิบ</a></li>
                         <li><a class="dropdown-item" href="printitemrm.jsp"><i class="bi bi-printer"></i> พิมพ์ใบเเจ้งเข้าวัตถุดิบ</a></li> 
+                        <li><a class="dropdown-item" href="sendtoqc.jsp"><i class="bi bi-send"></i> ส่งข้อมูลให้ทาง QC</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><h6 class="dropdown-header">เมนูควบคุม</h6></li>
                         <li><a class="dropdown-item" href="keyandeditinvoice.jsp"><i class="bi bi-keyboard"></i> โปรเเกรมคีย์เเละเเก้ไขข้อมูลใบ Invoice</a></li>
-                        <li><a class="dropdown-item" href="deldoc.jsp"><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
                         <li><a class="dropdown-item" href="displayshowdoc.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่เอกสาร</a></li>
                         <li><a class="dropdown-item" href="displayshowpo.jsp"><i class="bi bi-book"></i> โปรเเกรมเเสดงข้อมูลตามเลขที่ใบสั้งซื้อ (PO)</a></li>
                         <li><a class="dropdown-item" href="displayshowitamfinddate.jsp"><i class="bi bi-box-seam"></i> โปรเเกรมเเสดงข้อมูลตามรหัสวัตถุดิบเเละวันที่สร้างรหัส</a></li>
+                        <li><a class="dropdown-item" href="deldoc.jsp"><i class="bi bi-trash"></i> โปรเเกรมลบข้อมูลตามเลขที่เอกสาร</a></li>
                     </ul>
                 </li>
                 

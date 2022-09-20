@@ -80,55 +80,62 @@
                                 <div class="row mt-4">
                                     <div class="col-sm-12 col-md-6">
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6">
+                                            <div class="col-sm-12 col-md-4">
                                                 <label class="h6">Table WMBARCODE</label> 
                                             </div>
-                                            <div class="col-sm-12 col-md-6 text-end">
+                                            <div class="col-sm-12 col-md-4 text-end">
                                                 <label class="h5 ">จำนวนทั้งหมด : <label id="countwmbarcode"></label></label> 
                                             </div>
+                                            <div class="col-sm-12 col-md-4 text-end">
+                                                <a href=""></a><button class="btn btn-sm btn-danger w-50">ลบข้อมูล</button>
+                                            </div>
                                         </div>
-                                        
-                                        <table class="table table-sm table-bordered  text-center" id="mytable"  >
-                                            <thead >
-                                                <tr>
-                                                    <th class="text-center">เลขที่ใบสั้งซื้อ</th>
-                                                    <th class="text-center">สาขา</th>
-                                                    <th class="text-center">รหัสวัตถุ</th>
-                                                    <th class="text-center">ม้วนที่</th>
-                                                    <th class="text-center">จำนวน</th>
-                                                    <th class="text-center">หน่วย</th>
-                                                    <th class="text-center">ลบ</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                        <div class="row mt-3">
+                                            <table class="table table-sm table-bordered  text-center w-100 " id="mytable"  >
+                                                <thead >
+                                                    <tr>
+                                                        <th class="text-center">เลขที่ใบสั้งซื้อ</th>
+                                                        <th class="text-center">สาขา</th>
+                                                        <th class="text-center">รหัสวัตถุ</th>
+                                                        <th class="text-center">ม้วนที่</th>
+                                                        <th class="text-center">จำนวน</th>
+                                                        <th class="text-center">หน่วย</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
                                                 
-                                            </tbody>
-                                            
-                                        </table> 
+                                            </table> 
+                                        </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-6">
+                                            <div class="col-sm-12 col-md-4">
                                                 <label class="h6">Table WMQCK</label> 
                                             </div>
-                                            <div class="col-sm-12 col-md-6 text-end">
+                                            <div class="col-sm-12 col-md-4 text-end">
                                                 <label class="h5">จำนวนทั้งหมด : <label id="countwmqck"></label></label> 
                                             </div>
+                                            <div class="col-sm-12 col-md-4 text-end">
+                                                <a href=""></a><button class="btn btn-sm btn-danger w-50">ลบข้อมูล</button>
+                                            </div>
                                         </div>
-                                        
-                                        <table class="table table-sm table-bordered  text-center" id="mytable1"  >
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center">รหัสวัตดุดิบ</th>
-                                                    <th class="text-center">ม้วนที่</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                        <div class="row mt-3">
+                                            <table class="table table-sm table-bordered  text-center w-100" id="mytable1"  >
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">รหัสวัตดุดิบ</th>
+                                                        <th class="text-center">ม้วนที่</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
                                                 
-                                            </tbody>
-                                            
-                                        </table> 
-                                        
+                                            </table> 
+                                        </div>
                                     </div>
                                 </div>
                                 
@@ -151,22 +158,19 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                        searching: false,
+                        searching: true,
                         select:true,
-                        info: false,
+                        info: true,
                         columnDefs: [
-                            { "width": "10rem", "targets": 0 },
+                            { "width": "6rem", "targets": 0 },
                             { "width": "5rem", "targets": 1 },
-                            { "width": "10rem", "targets": 2 },
-                            { "width": "5rem", "targets": 3 },
-                            { "width": "5rem", "targets": 4 },
-                            { "width": "5rem", "targets": 5 }, 
-                            { "width": "5rem", "targets": 6 }, 
-                        ],
-                        fixedColumns:   {
-                            left: false,
-                            right: 1
-                        }
+                            { "width": "8rem", "targets": 2 },
+                            { "width": "2rem", "targets": 3 },
+                            { "width": "2rem", "targets": 4 },
+                            { "width": "2rem", "targets": 5 }, 
+                            
+                        ]
+                       
                                             
                     }); 
                     $.ajax({
@@ -204,14 +208,10 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                        searching: false,
+                        searching: true,
                         select:true,
-                        info: false,
-                        columnDefs: [
-                            { "width": "18rem", "targets": 0 },
-                            { "width": "18rem", "targets": 1 },
-                            
-                        ]
+                        info: true
+                       
                                             
                     });
                     $.ajax({
@@ -294,7 +294,7 @@
                 })
             })()
         </script>
-       
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>

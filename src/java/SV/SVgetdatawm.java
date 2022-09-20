@@ -126,10 +126,10 @@ public class SVgetdatawm extends HttpServlet {
                         JSONArray arrjson = new JSONArray();
 
 
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ROLL") + "' name='txt0' id='txt0' readonly></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("PALET") + "' name='txt1' id='txt1'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("BATCH") + "' name='txt3' id='txt3'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:15px;' value='" + rec.getString("ROLL") + "' name='txt0' id='txt0' readonly></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("PALET") + "' name='txt1' id='txt1'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("BATCH") + "' name='txt3' id='txt3'></input>");
 
 
                         arrlist.add(arrjson);
@@ -182,15 +182,16 @@ public class SVgetdatawm extends HttpServlet {
 
 
                         JSONArray arrjson = new JSONArray();
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ITEM") + "' name='txt0' id='txt0' ></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ROLL") + "' name='txt1' id='txt1'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("UNIT") + "' name='txt3' id='txt3'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("COLOR") + "' name='txt4' id='txt4'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("DESC1") + "' name='txt6' id='txt6'></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ITEM") + "' name='txt7' id='txt7' type='hidden' readonly></input>");
-                        arrjson.add("<input class='form-control form-control-sm text-center' value='" + rec.getString("ROLL") + "' name='txt8' id='txt8' type='hidden' readonly></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("ITEM") + "' name='txt0' id='txt0' ></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt1' id='txt1'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("UNIT") + "' name='txt3' id='txt3'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("PALET") + "' name='txt9' id='txt9'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("COLOR") + "' name='txt4' id='txt4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("DESC1") + "' name='txt6' id='txt6'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ITEM") + "' name='txt7' id='txt7' type='hidden' readonly></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt8' id='txt8' type='hidden' readonly></input>");
 
                         arrlist.add(arrjson);
                         n++;
@@ -240,8 +241,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("ROLL"));
                         arrjson.add(rec.getString("QUANTITY"));
                         arrjson.add(rec.getString("UNIT"));
-                        arrjson.add("<a href='del?status=D1&mrno=" + menr + "&item=" + rec.getString("ITEM") + "&roll=" + rec.getString("ROLL") + "'><button class='btn btn-danger btn-sm' id='btn-send' type='button'>ลบ</button></a>");
-
+                       
                         arrlist.add(arrjson);
                         n++;
                     }
@@ -479,7 +479,7 @@ public class SVgetdatawm extends HttpServlet {
                 String mrno = request.getParameter("mrno").trim();
                 String item = request.getParameter("item").toUpperCase().trim();
                 String palet = request.getParameter("palet").trim();
-                String date = request.getParameter("today").trim();
+                String date = request.getParameter("today").trim().replace("T", " ");
                 String row = request.getParameter("totalrow").trim();
                 String roll = request.getParameter("totallong").trim();
 
@@ -541,7 +541,7 @@ public class SVgetdatawm extends HttpServlet {
                     request.setAttribute("DESC1", DESC1);
                     request.setAttribute("LOT", LOT);
                     request.setAttribute("UNIT", UNIT);
-
+                    request.setAttribute("date", date);
                     request.setAttribute("row", row);
                     request.setAttribute("roll", roll);
                     request.setAttribute("data", arr);

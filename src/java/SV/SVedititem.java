@@ -77,8 +77,9 @@ public class SVedititem extends HttpServlet {
                     String MRNO = (String) request.getParameter("MRNO");
                     String ITEM1 = (String) request.getParameter("ITEM1");
                     String ROLL1 = (String) request.getParameter("ROLL1");
+                    String PALET = (String) request.getParameter("PALET");
 
-                    String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
+                    String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=?,wmbarcode.PALET=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
 
                     ps = con.prepareStatement(sql);
                     ps.setString(1, ITEM);
@@ -91,9 +92,10 @@ public class SVedititem extends HttpServlet {
                     ps.setString(8, INVOICE);
                     ps.setString(9, INVOICEDATE);
                     ps.setString(10, LOT);
-                    ps.setString(11, MRNO);
-                    ps.setString(12, ITEM1);
-                    ps.setString(13, ROLL1);
+                    ps.setString(11, PALET);
+                    ps.setString(12, MRNO);
+                    ps.setString(13, ITEM1);
+                    ps.setString(14, ROLL1);
 
                     if (ps.executeUpdate() > 0) {
                         out.print("true");
@@ -226,13 +228,13 @@ public class SVedititem extends HttpServlet {
                     ps.setString(1, byname1);
                     ps.setString(2, mrno);
                     ps.setString(3, pallet);
-                    
+
                     if (ps.executeUpdate() > 0) {
                         out.print("true");
                     } else {
                         out.print("false");
                     }
-                }else if (status.equals("G6")) {
+                } else if (status.equals("G6")) {
                     String qicheck = request.getParameter("qicheck");
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
@@ -243,7 +245,7 @@ public class SVedititem extends HttpServlet {
                     ps.setString(1, qicheck);
                     ps.setString(2, mrno);
                     ps.setString(3, pallet);
-                    
+
                     if (ps.executeUpdate() > 0) {
                         out.print("true");
                     } else {

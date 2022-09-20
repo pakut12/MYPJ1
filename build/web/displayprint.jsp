@@ -17,11 +17,14 @@
     </head>
     <style>
         body{
-            font-size:12px;
+            font-size:14px;
             height:5.0in;
             width:9in; 
             margin: 15px;          
             
+        }
+        .test{
+            font-size:20px;
         }
     </style>
     <%!
@@ -32,11 +35,22 @@
         String F = D + "/" + M + "/" + Y;
         return F;
     }
+
+    public static String ctoDm(String txt) {
+        String Y = txt.substring(0, 4);
+        String M = txt.substring(5, 7);
+        String D = txt.substring(8, 10);
+        String F = D + "/" + M + "/" + Y;
+        String Time = F + txt.substring(10, 19);
+        return Time;
+    }
+
+    
     %>
     
     <body >
         
-        <div class="h3 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
+        <div class="h2 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
         
         <div class="row">
             <div  class="col-8 ">
@@ -63,11 +77,12 @@
         <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">Current Date : </label>
-                <label id="today"></label> 
+                <label><%=ctoDm(request.getAttribute("date").toString())%></label> 
+                
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ผ้าเข้า : </label>
-                <label class="h3" id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
+                <label class="h2" id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice No : </label>
@@ -90,7 +105,7 @@
         <div class="row">
             <div  class="col-6">
                 <label class="fw-bold ">Materal : </label>
-                <label class="h3"><%=request.getAttribute("ITEM")%></label> 
+                <label class="h2"><%=request.getAttribute("ITEM")%></label> 
             </div>
             
             <div  class="col-6 ">
@@ -106,14 +121,15 @@
             
             <div  class="col-4 ">
                 <label class="fw-bold">Quantity : </label>
-                <label class="h3"><%=request.getAttribute("roll")%></label> 
+                <label class="h1"><%=request.getAttribute("roll")%></label> 
+                <label>  </label> 
                 <label><%=request.getAttribute("UNIT")%></label> 
             </div> 
         </div>
         
         <div class="row ">
             <div  class="col-12 ">
-                <table class="table table-bordered border-dark text-center" style="width: 45rem;">
+                <table class="table table-bordered border-dark text-center " style="width: 49rem;" >
                     <thead>
                         <tr>
                             <th>เบอร์สี</th>
@@ -177,7 +193,7 @@
             </div>
             
         </div>
-        <div class="row mt-4">
+        <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">ผู้เเจ้งเข้า : </label>
                 <label>.........................</label> 
@@ -245,7 +261,7 @@
     
     
     
-                //window.print();
+                window.print();
                 
             });
         </script>

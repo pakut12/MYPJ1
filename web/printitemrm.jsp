@@ -19,7 +19,15 @@
         
         <div class="container">
             <div class="row">
-                
+                <%
+            String pt = "yyyy-MM-dd'T'HH:mm:ss";
+            SimpleDateFormat ft1 = new SimpleDateFormat(pt);
+            String d1 = ft1.format(new Date());
+            int d3 = Integer.valueOf(d1.substring(0, 4)) - 543;
+            String textdate = String.valueOf(d3) + d1.substring(4, 19);
+
+
+                %>
                 <div class="col-sm-12 col-md-12">
                     <div id="pageview">
                         <div class="card shadow ">
@@ -71,7 +79,7 @@
                                     <div class="row mt-3 text-center">
                                         <div class="col-sm-12 col-md-3">
                                             <label>วันที่ผ้าเข้า</label>
-                                            <input class="form-control form-control-sm text-center" type="date" name="today" id="today" value="" readonly></input>
+                                            <input class="form-control form-control-sm text-center" type="datetime-local" name="today" id="today" value="<%=textdate%>"></input>
                                         </div>
                                         <div class="col-sm-12 col-md-3">
                                             <label>เเถวทั้งหมด</label>
@@ -172,21 +180,36 @@
                         }    
                     });                    
                 }
+             
                 function today(){
                     var date = new Date();
                     var d =date.getDate()
                     var m = date.getMonth()+1;
                     var y = date.getFullYear();
+                    var h = date.getHours();
+                    var i = date.getMinutes()
+                    var s = date.getSeconds();
                     if(m <10){
                         m = "0"+m;
                     }
-                    if(d <10){
+                    if(i<10){
+                        i = "0"+i;
+                    }
+                    if(s<10){
+                        s = "0"+s;
+                    }
+                    if(d<10){
                         d = "0"+d;
                     }
-                    var today = y+"-"+m+"-"+d;
-                    return today;
+                    if(h<10){
+                        h = "0"+h;
+                    }
+                    var today = y+"-"+m+"-"+d+"T"+h+":"+i+":"+s;
+                   
+                    return String(today);
                 }
-                $("#today").val(today);
+                // document.getElementById("today").value = today();
+                //$("#today").val(today);
                 getdatawmqck("", "", "");
                 
                 $("#printout").addClass("disabled");

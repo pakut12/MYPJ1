@@ -31,7 +31,7 @@
                                     <div class="row ">
                                         <div class="col-sm-12 col-md-4">
                                             <label>เลขที่เอกสาร : </label>
-                                            <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required></input>
+                                            <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required ></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
@@ -42,36 +42,33 @@
                                         </div>
                                     </div>
                                     <div class="row ">
-                                        <div class="col-sm-12 col-md-4">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>สาขา : </label>
-                                            <input class="form-control form-control-sm text-center" type="number" name="PLANT" id="PLANT" value="" readonly></input>
+                                            <input class="form-control form-control-sm text-center "  type="number" name="PLANT" id="PLANT" value="" readonly></input>
                                         </div>
-                                        <div class="col-sm-12 col-md-4">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>รหัสใบสั่งซื้อ : </label>
                                             <input class="form-control form-control-sm text-center" type="number" name="PO" id="PO" value="" readonly></input>
                                         </div>
-                                        <div class="col-sm-12 col-md-4">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>Sup.Name : </label>
                                             <input class="form-control form-control-sm text-center" type="text" name="SUPNAME" id="SUPNAME" value="" readonly></input>
                                         </div>
-                                        
-                                    </div>
-                                    <div class="row ">
-                                        <div class="col-sm-12 col-md-4">
-                                            <label>Invoice : </label>
-                                            <input class="form-control form-control-sm text-center" type="text" name="INVOICE" id="INVOICE" value="" required></input>
-                                        </div>
-                                        <div class="col-sm-12 col-md-4">
-                                            <label>Invoice date : </label>
-                                            <input class="form-control form-control-sm text-center" type="date" name="INVOICEDATE" id="INVOICEDATE" value="" required></input>
-                                        </div>
-                                        <div class="col-sm-12 col-md-4">
+                                        <div class="col-sm-12 col-md-3">
                                             <label>Delivery No : </label>
                                             <input class="form-control form-control-sm text-center" type="number" name="DELIVERYNO" id="DELIVERYNO" value="" readonly></input>
                                         </div>
                                     </div>
-                                    <div class="row  mb-3">
-                                        <div class="col-sm-12 col-md-9">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3">
+                                            <label>Invoice : </label>
+                                            <input class="form-control form-control-sm text-center" type="text" name="INVOICE" id="INVOICE" value="" required></input>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <label>Invoice date : </label>
+                                            <input class="form-control form-control-sm text-center" type="date" name="INVOICEDATE" id="INVOICEDATE" value="" required></input>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
                                             <label>เลขที่ Lot : </label>
                                             <input class="form-control form-control-sm text-center" type="number" name="LOT" id="LOT" value="" required></input>
                                         </div>
@@ -79,29 +76,33 @@
                                             <label>จำนวนทั้งหมด : </label>
                                             <input class="form-control form-control-sm text-center" type="number" name="count" id="count" value="" readonly></input>
                                         </div>
-                                    </div>
-                                </form> 
-                                
-                                <table class="table table-sm table-bordered  text-center " id="mytable"  >
-                                    <thead >
-                                        <tr>
-                                            <th class="text-center">รหัสวัตดุดิบ</th>
-                                            <th class="text-center">ม้วน</th>
-                                            <th class="text-center">จำนวน</th>
-                                            <th class="text-center">หน่วยนับ</th>
-                                            <th class="text-center">สี</th>
-                                            <th class="text-center">หม้อย้อน</th>
-                                            <th class="text-center">รายละเอียด</th>
-                                            <th class="text-center"></th>
-                                            <th class="text-center"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
                                         
-                                    </tbody>
+                                    </div>
                                     
-                                </table> 
-                                
+                                </form> 
+                                <div class="row mt-3">
+                                    <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
+                                        <thead >
+                                            <tr>
+                                                <th class="text-center">รหัสวัตดุดิบ</th>
+                                                <th class="text-center">ม้วน</th>
+                                               
+                                                <th class="text-center">จำนวน</th>
+                                                <th class="text-center">หน่วยนับ</th>
+                                                 <th class="text-center">พาเลท</th>
+                                                <th class="text-center">สี</th>
+                                                <th class="text-center">หม้อย้อน</th>
+                                                <th class="text-center">รายละเอียด</th>
+                                                <th class="text-center"></th>
+                                                <th class="text-center"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                        </tbody>
+                                        
+                                    </table> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,13 +122,14 @@
                         scrollY: true ,
                         scrollX: true ,
                         columnDefs: [
-                            { "width": "10rem", "targets": 0 },
+                            { "width": "7rem", "targets": 0 },
                             { "width": "5rem", "targets": 1 },
                             { "width": "5rem", "targets": 2 },
                             { "width": "5rem", "targets": 3 },
                             { "width": "5rem", "targets": 4 },
-                            { "width": "15rem", "targets": 5 },
-                            { "width": "25rem", "targets": 6 },
+                            { "width": "5rem", "targets": 5 },
+                            { "width": "5rem", "targets": 6 },
+                            { "width": "25rem", "targets": 7 },
                           
                         ]   
                                              
@@ -204,9 +206,9 @@
                     var MRNO = $("#mrno").val();  
                     var ITEM1 = table.$('#txt7').serializeArray();
                     var ROLL1 = table.$('#txt8').serializeArray();
-                      
+                    var PALET = table.$('#txt9').serializeArray();
                     $.each(ITEM,function(k,v){
-                        var url = "edititem?status=G2&ITEM="+ITEM[k].value+"&ROLL="+ROLL[k].value+"&QUANTITY="+QUANTITY[k].value+"&UNIT="+UNIT[k].value+"&COLOR="+COLOR[k].value+"&BATCH="+BATCH[k].value+"&DESC1="+DESC1[k].value.replace("#", "!")+"&INVOICE="+INVOICE+"&INVOICEDATE="+INVOICEDATE+"&LOT="+LOT+"&MRNO="+MRNO+"&ITEM1="+ITEM1[k].value+"&ROLL1="+ROLL1[k].value;
+                        var url = "edititem?status=G2&ITEM="+ITEM[k].value+"&ROLL="+ROLL[k].value+"&QUANTITY="+QUANTITY[k].value+"&UNIT="+UNIT[k].value+"&COLOR="+COLOR[k].value+"&BATCH="+BATCH[k].value+"&DESC1="+DESC1[k].value.replace("#", "!")+"&INVOICE="+INVOICE+"&INVOICEDATE="+INVOICEDATE+"&LOT="+LOT+"&MRNO="+MRNO+"&ITEM1="+ITEM1[k].value+"&ROLL1="+ROLL1[k].value+"&PALET="+PALET[k].value;
                         $.ajax({
                             type: "POST",
                             url: url,
