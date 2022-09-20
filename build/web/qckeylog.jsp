@@ -13,9 +13,7 @@
         <%@include file="share/head.jsp"%> 
     </head>
     <style>
-        table{
-            font-size:10px;
-        }
+        
     </style>
     <body>
         
@@ -147,7 +145,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-12 col-md-6">
-                                                            <label>จำนวนที่รวมได้ : </label>
+                                                            <label>จำนวนที่ได้รวม : </label>
                                                             <input class="form-control form-control-sm" type="text" name="suma" id="suma" value="" readonly></input>
                                                             <div class="invalid-feedback mb-3 text-center">
                                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -209,7 +207,10 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                      
+                        columnDefs: [
+                            { "width": "7rem", "targets":14 },
+                           
+                        ],
                         select: true
                                              
                     }); 
@@ -372,7 +373,7 @@
                 })
             })()
         </script>
-   
+        
         
         
     </body>

@@ -19,7 +19,7 @@
         
         <div class="container h-50 ">
             <div class="row">
-      
+                
                 <div class="col-sm-12 col-md-12" >
                     <div id="pageview">
                         <div class="card shadow ">
@@ -81,30 +81,28 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row ">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>จำนวนที่มา : </label>
                                                 <input class="form-control form-control-sm" type="text" name="quantity" id="quantity" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>จำนวนที่ได้ : </label>
                                                 <input class="form-control form-control-sm" type="text" name="actqty" id="actqty" value="" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>หน้าผ้าที่วัดได้ : </label>
                                                 <input class="form-control form-control-sm" type="number" name="width" id="width" value="" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>จุดสี-น้ำมัน-สกปรก : </label>
                                                 <input class="form-control form-control-sm" type="number" name="ethread" id="ethread" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 
@@ -112,129 +110,133 @@
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>ลายขวาง : </label>
                                                 <input class="form-control form-control-sm" type="number" name="ealkali" id="ealkali" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>ความกว้างไม่ได้มาตรฐาน : </label>
                                                 <input class="form-control form-control-sm" type="number" name="edirty" id="edirty" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>ปุ่มปม : </label>
                                                 <input class="form-control form-control-sm" type="number" name="eoil" id="eoil" value=""  onClick="this.select();" onkeyup="sum();" required ></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>เส้นด้ายขาด : </label>
                                                 <input class="form-control form-control-sm" type="number" name="ebroken" id="ebroken" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                        </div>
+                                        <div class="row ">
+                                            
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>รอยต่าง : </label>
                                                 <input class="form-control form-control-sm" type="number" name="eknot" id="eknot" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>รอยเข็ม : </label>
                                                 <input class="form-control form-control-sm" type="number" name="ejoint" id="ejoint" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>รอยเข็มเข้าลึก : </label>
                                                 <input class="form-control form-control-sm" type="number" name="efurrow" id="efurrow" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>ตำหนิรวม : </label>
                                                 <input class="form-control form-control-sm" type="number" name="sum" id="sum" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
+                                            
                                         </div>
+                                        
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>บาร์โค๊ดร้านค้า : </label>
                                                 <input class="form-control form-control-sm" type="number" name="erepeat" id="erepeat" value="" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>สี : </label>
                                                 <input class="form-control form-control-sm" type="text" name="color" id="color" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>มาตรฐานสี : </label>
                                                 <input class="form-control form-control-sm" type="number" name="scolor" id="scolor" value="" ></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>วันที่ตรวจสอบ : </label>
                                                 <input class="form-control form-control-sm" type="date" name="qcdate" id="qcdate" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                        </div>
+                                        <div class="row ">
+                                            
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>เกรดที่มา : </label>
                                                 <input class="form-control form-control-sm" type="text" name="grade" id="grade" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>หม้อย้อม : </label>
                                                 <input class="form-control form-control-sm" type="text" name="batch" id="batch" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            
-                                        </div>
-                                        <div class="row ">
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>น้ำหนักผ้า : </label>
                                                 <input class="form-control form-control-sm" type="text" name="weight" id="weight" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-4">
+                                            <div class="col-sm-12 col-md-3">
                                                 <label>การวางผ้า : </label>
                                                 <input class="form-control form-control-sm" type="text" name="qtylay" id="qtylay" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row ">
+                                            
                                             <div class="col-sm-12 col-md-4">
                                                 <label>คะเเนน : </label>
                                                 <input class="form-control form-control-sm" type="text" name="point" id="point" value="" readonly></input>
@@ -243,16 +245,14 @@
                                                 </div>
                                                 
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12 col-md-6">
+                                            <div class="col-sm-12 col-md-4">
                                                 <label>ชื่อผู้ตรวจสอบ : </label>
                                                 <input class="form-control form-control-sm" type="text" name="byname1" id="byname1" value="<%=session.getAttribute("name")%>" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-6">
+                                            <div class="col-sm-12 col-md-4">
                                                 <label>ชื่อผู้ตรวจสอบล่าสุด : </label>
                                                 <input class="form-control form-control-sm" type="text" name="byname" id="byname" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
@@ -261,6 +261,7 @@
                                             </div>
                                             <input class="form-control form-control-sm" type="hidden" name="mark_toterr" id="mark_toterr" value="" required></input>
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 

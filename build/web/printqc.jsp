@@ -84,19 +84,18 @@
                                                 QI Approve
                                             </div>
                                             <div class="card-body "> 
-                                                <div class="row  ">
-                                                    <div class="col-sm-12 col-md-9">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-4">
                                                         <label>รายชื่อ QI Approve ล่าสุด : </label>
-                                                        <input class="form-control form-control-sm" type="text" name="rebyname1" id="rebyname1" value="" readonly></input>
+                                                        <input class="form-control form-control-sm" type="text" name="rebyname1" id="rebyname1" value="" readonly></input> 
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-4">
                                                         <label>Approve by  : </label>
                                                         <select class="form-select form-select-sm " id="byname1" name="byname1">
                                                             
                                                         </select>
-                                                        <div class="invalid-feedback mb-3 text-center">
-                                                            กรุณาใส่ข้อมูลให้ถูกต้อง
-                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-12 col-md-3">
+                                                    <div class="col-sm-12 col-md-4">
                                                         <button class="btn btn-success mt-4 btn-sm" id="btn-qi" type="button"><i class="bi bi-send"></i> QI Approve</button>
                                                         
                                                     </div>
@@ -205,10 +204,7 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                        columnDefs: [
-                            { "width": "12rem", "targets": 1 }
-                              
-                        ],
+                        
                         
                         select: true
                                              

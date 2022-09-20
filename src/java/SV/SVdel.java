@@ -38,47 +38,118 @@ public class SVdel extends HttpServlet {
             String status = request.getParameter("status");
             if (status.equals("D1")) {
                 try {
+                    JSONObject obj = new JSONObject();
                     String mrno = request.getParameter("mrno").trim();
-                    String item = request.getParameter("item").trim();
-                    String roll = request.getParameter("roll").trim();
+                    String item = request.getParameter("item").trim().toUpperCase();
 
-                    String sql = "DELETE FROM wmbarcode WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
+
+                    String sql = "DELETE FROM wmbarcode WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
                     ps.setString(2, item);
-                    ps.setString(3, roll);
+
                     int t = 0;
 
                     if (ps.executeUpdate() > 0) {
                         t++;
+
                     }
 
                     ResultSet rec1 = null;
                     Connection conn1 = null;
                     PreparedStatement ps1 = null;
 
-                    String sql1 = "DELETE FROM wmqck WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
+                    String sql1 = "DELETE FROM wmqck WHERE wmqck.MRNO = ? AND wmqck.ITEM = ?";
                     ps1 = conn.prepareStatement(sql1);
                     ps1.setString(1, mrno);
                     ps1.setString(2, item);
-                    ps1.setString(3, roll);
+
+
+                    if (ps1.executeUpdate() > 0) {
+                        t++;
+
+                    }
+
+                    ResultSet rec2 = null;
+                    Connection conn2 = null;
+                    PreparedStatement ps2 = null;
+
+                    String sql2 = "DELETE FROM wmmaster WHERE wmmaster.MRNO = ? AND wmmaster.ITEM = ?";
+                    ps2 = conn.prepareStatement(sql2);
+                    ps2.setString(1, mrno);
+                    ps2.setString(2, item);
+
+
+                    if (ps2.executeUpdate() > 0) {
+                        t++;
+
+                    }
+                    if (t > 0) {
+                        obj.put("status", "true");
+                    } else {
+                        obj.put("status", "false");
+                    }
+                    out.print(obj);
+
+
+//                    if (t == 3) {
+//                        out.print("true");
+//                    } else {
+//                        out.print("false");
+//                    }
+//                    out.print(t);
+//
+//                    request.setAttribute("mrno", mrno);
+//                    request.setAttribute("item", item);
+//
+//                    getServletContext().getRequestDispatcher("/deldoc.jsp").forward(request, response);
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (status.equals("D2")) {
+                try {
+                    JSONObject obj = new JSONObject();
+                    String mrno = request.getParameter("mrno").trim();
+                    String item = request.getParameter("item").trim().toUpperCase();
+
+
+
+                    int t = 0;
+                    ResultSet rec1 = null;
+                    Connection conn1 = null;
+                    PreparedStatement ps1 = null;
+
+                    String sql1 = "DELETE FROM wmqck WHERE wmqck.MRNO = ? AND wmqck.ITEM = ?";
+                    ps1 = conn.prepareStatement(sql1);
+                    ps1.setString(1, mrno);
+                    ps1.setString(2, item);
 
                     if (ps1.executeUpdate() > 0) {
                         t++;
                     }
 
-
-                    if (t == 2) {
-                        out.print("true");
+                    if (t > 0) {
+                        obj.put("status", "true");
                     } else {
-                        out.print("false");
+                        obj.put("status", "false");
                     }
+                    out.print(obj);
 
-                    request.setAttribute("mrno", mrno);
-                    request.setAttribute("item", item);
 
-                    getServletContext().getRequestDispatcher("/deldoc.jsp").forward(request, response);
+//                    if (t == 3) {
+//                        out.print("true");
+//                    } else {
+//                        out.print("false");
+//                    }
+//                    out.print(t);
+//
+//                    request.setAttribute("mrno", mrno);
+//                    request.setAttribute("item", item);
+//
+//                    getServletContext().getRequestDispatcher("/deldoc.jsp").forward(request, response);
 
 
                 } catch (Exception e) {

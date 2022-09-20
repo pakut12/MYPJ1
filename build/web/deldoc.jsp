@@ -87,11 +87,11 @@
                                                 <label class="h5 ">จำนวนทั้งหมด : <label id="countwmbarcode"></label></label> 
                                             </div>
                                             <div class="col-sm-12 col-md-4 text-end">
-                                                <a href=""></a><button class="btn btn-sm btn-danger w-50">ลบข้อมูล</button>
+                                                <button class="btn btn-sm btn-danger w-50" id="del_wmbarcode">ลบข้อมูล</button>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
-                                            <table class="table table-sm table-bordered  text-center w-100 " id="mytable"  >
+                                            <table class="table table-sm table-bordered  text-center w-100 " id="mytable">
                                                 <thead >
                                                     <tr>
                                                         <th class="text-center">เลขที่ใบสั้งซื้อ</th>
@@ -119,7 +119,7 @@
                                                 <label class="h5">จำนวนทั้งหมด : <label id="countwmqck"></label></label> 
                                             </div>
                                             <div class="col-sm-12 col-md-4 text-end">
-                                                <a href=""></a><button class="btn btn-sm btn-danger w-50">ลบข้อมูล</button>
+                                                <button class="btn btn-sm btn-danger w-50" id="del_wmqck">ลบข้อมูล</button>
                                             </div>
                                         </div>
                                         <div class="row mt-3">
@@ -264,11 +264,67 @@
                     }         
                 });
          
-                $("#btn-send").click(function(){
+                $("#del_wmbarcode").click(function(){
                     //$("#btn-send").addClass("disabled");
                     //$("#btn-send").text("กำลังส่ง....");
+                    var mrno = $("#mrno").val();
+                    var item = $("#item").val();
+                    $.ajax({
+                        type: "POST",
+                        url: 'del?status=D1&mrno='+mrno+'&item='+item,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            console.log(de);
+                            if(de.status == "true"){
+                                Swal.fire({
+                                    icon:"success",
+                                    title:"ลบข้อมูลสำเร็จ",
+                                    text:"ลบข้อมูลสำเร็จ"
+                                });
+                            }else if(de.status  == "false"){
+                                Swal.fire({
+                                    icon:"error",
+                                    title:"ลบข้อมูลไม่สำเร็จ",
+                                    text:"ลบข้อมูลไม่สำเร็จ"
+                                });
+                            } 
+                            getdata($("#mrno").val(),$("#item").val());  
+                            getdata1($("#mrno").val(),$("#item").val());  
+                            
+                                      
+                        }    
+                    });
+                
+                });
+                $("#del_wmqck").click(function(){
+                    var mrno = $("#mrno").val();
+                    var item = $("#item").val();
+                    $.ajax({
+                        type: "POST",
+                        url: 'del?status=D2&mrno='+mrno+'&item='+item,
+                        success: function(msg,status){
+                            var de = $.parseJSON(msg);
+                            console.log(de);
+                            if(de.status == "true"){
+                                Swal.fire({
+                                    icon:"success",
+                                    title:"ลบข้อมูลสำเร็จ",
+                                    text:"ลบข้อมูลสำเร็จ"
+                                });
+                            }else if(de.status  == "false"){
+                                Swal.fire({
+                                    icon:"error",
+                                    title:"ลบข้อมูลไม่สำเร็จ",
+                                    text:"ลบข้อมูลไม่สำเร็จ"
+                                });
+                            } 
+                            getdata($("#mrno").val(),$("#item").val());  
+                            getdata1($("#mrno").val(),$("#item").val());  
+                            
+                                      
+                        }    
+                    });
                    
-                    
                    
                     
        
