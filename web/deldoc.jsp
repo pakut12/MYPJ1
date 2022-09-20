@@ -242,7 +242,8 @@
                     });                    
                 }
 
-
+                $("#del_wmbarcode").addClass("disabled");
+                $("#del_wmqck").addClass("disabled");
                 $("#page2").addClass("active");
                 $("#btn-send").addClass("disabled");
                 getdata($("#mrno").val(),$("#item").val());  
@@ -258,7 +259,9 @@
                         })
                        
                     }else{
-                        $("#btn-send").removeClass("disabled");                       
+                        $("#btn-send").removeClass("disabled");    
+                        $("#del_wmbarcode").removeClass("disabled");
+                        $("#del_wmqck").removeClass("disabled");                        
                         getdata($("#mrno").val(),$("#item").val());  
                         getdata1($("#mrno").val(),$("#item").val());  
                     }         
