@@ -231,7 +231,7 @@
                     });
                      
                 }
-                $("#getpallet").click(function(){
+                $("#getpalet").click(function(){
                     var mrno = $("#mrno").val();
                     getpalet(mrno);
                 })

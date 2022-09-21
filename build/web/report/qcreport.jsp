@@ -112,116 +112,185 @@
                             bolditalics: 'Roboto-MediumItalic.ttf'
                         }
                     }
+                    
+                    
                     var docDefinition = {
-                        
-                        content: [{
-                                columns: [
-                                    {
-                                        width: '*',
-                                        text: 'สาขา : '+ de.PLANT,
-                                        fontSize: 12,
-                                        alignment: 'left'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'บริษัท ไทยสปอร์ตการ์เมนต์ จำกัด \n ใบตรวจสอบผ้าถัก',
-                                        fontSize: 15,
-                                        alignment: 'center',
-                                        bold:true
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'หน้า : ',
-                                        fontSize: 12,
-                                        alignment: 'right'
-                                    }
+                        pageSize: {
+                            width: 600,
+                            height: 800
+                        },
+                        pageMargins: [ 40, 120, 40, 120 ],
+                       
+                        footer: function(currentPage, pageCount) { 
+                            return [
+                                
+                                {
+                                    columns: [
+                                        {
+                                            width: '*',
+                                            text: 'จำนวนที่มา : '+de.sumqt+' '+de.UNIT+' \n จำนวนที่ได้ : '+de.sumaqt+' '+ de.UNIT,
+                                            fontSize: 12,
+                                            alignment: 'left',
+                                            margin: [40,0, 0, 50]
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'สรุปผล \n / '+de.REMARKRM1+'\n / '+de.REMARKRM2+'\n / '+de.REMARKRM3+'',
+                                            fontSize: 12,
+                                            alignment: 'center',
+                                            margin: [0,0, 0, 50]
+                               
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'น้ำหนัก KG/M: \n '+de.sumweight,
+                                            fontSize: 12,
+                                            alignment: 'center',
+                                            margin: [0,0, 0, 50]
+                               
+                                        },
+                                        {
+                                            width: 'auto',
+                                            text: 'ชื่อผู้ตรวจสอบ : '+de.BYNAME+'\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',
+                                            fontSize: 12,
+                                            alignment: 'right',
+                                            margin: [0,0, 40, 50]
+                                        }
                             
-                                ]
-                            },
-                            {
-                                columns: [{
-                                        width: '*',
-                                        text: 'รหัส : ' + de.ITEM,
-                                        fontSize: 12,
-                                        alignment: 'left'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'เลขที่ใบสั้งซื้อ : ' + de.PO,
-                                        fontSize: 12,
-                                        alignment: 'center'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'เลขที่บิล : ' + de.INVOICE,
-                                        fontSize: 12,
-                                        alignment: 'center'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'วันที่บิล : ' + covertoday(de.INVOICEDATE),
-                                        fontSize: 12,
-                                        alignment: 'right'
-                                    }]
-                            },
-                            {
-                                columns: [{
-                                        width: '*',
-                                        text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ' + de.DESC1,
-                                        fontSize: 12,
-                                        alignment: 'left'
-                                    },
+                                    ]
+                                }
+                            ]
+                        },
+                        header: function(currentPage, pageCount, pageSize) {
+                            // you can apply any logic and return any valid pdfmake element
                             
-                                    {
-                                        width: '*',
-                                        text: 'พาเลต : ' + de.PALET,
-                                        fontSize: 12,
-                                        alignment: 'right'
-                                    }]
-                            }
-                            ,{
-                                columns: [
-                                    {
-                                        width: '*',
-                                        text: 'Description 2 : ' + de.DESC2,
-                                        fontSize: 12,
-                                        alignment: 'left'
-                                    }, 
-                                    {
-                                        width: '*',
-                                        text: 'Description 3 : ' + de.DESC3,
-                                        fontSize: 12,
-                                        alignment: 'right'
-                                    }
+                            return [
+                                
+                                {
+                                    columns: [
+                                        {
+                                            width: '*',
+                                            text: 'สาขา : '+ de.PLANT,
+                                            fontSize: 12,
+                                            alignment: 'left',
+                                            margin: [40,10, 0, 0]
+                                           
+                                            
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'บริษัท ไทยสปอร์ตการ์เมนต์ จำกัด \n ใบตรวจสอบผ้าถัก',
+                                            fontSize: 15,
+                                            alignment: 'center',
+                                            bold:true,
+                                            margin: [0,10, 0, 0]
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'หน้า : '+currentPage,
+                                            fontSize: 12,
+                                            alignment: 'right',
+                                            margin: [0,10, 40, 0]
+                                        }
                             
-                                ]
-                            },
-                            {
-                                columns: [{
-                                        width: 200,
-                                        text: 'ร้านค้า : ' + de.SUPNAME,
-                                        fontSize: 12,
-                                        alignment: 'left'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'เลขที่เอกสาร : ' + de.MRNO,
-                                        fontSize: 12,
-                                        alignment: 'center'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'หน่วยนับ : ' + de.UNIT,
-                                        fontSize: 12,
-                                        alignment: 'center'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'วันที่ : ' + covertoday(de.QCDATE),
-                                        fontSize: 12,
-                                        alignment: 'right'
-                                    }]
-                            },
+                                    ]
+                                },
+                                {
+                                    columns: [{
+                                            width: '*',
+                                            text: 'รหัส : ' + de.ITEM,
+                                            fontSize: 12,
+                                            alignment: 'left',
+                                            margin: [40,0, 0, 0]
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'เลขที่ใบสั้งซื้อ : ' + de.PO,
+                                            fontSize: 12,
+                                            alignment: 'center'
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'เลขที่บิล : ' + de.INVOICE,
+                                            fontSize: 12,
+                                            alignment: 'center'
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'วันที่บิล : ' + covertoday(de.INVOICEDATE),
+                                            fontSize: 12,
+                                            alignment: 'right',
+                                            margin: [0,0, 40, 0]
+                                        }]
+                                },
+                                {
+                                    columns: [{
+                                            width: 'auto',
+                                            text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ' + de.DESC1,
+                                            fontSize: 12,
+                                            alignment: 'left',
+                                            margin: [40,0, 0, 0]
+                                        },
+                            
+                                        {
+                                            width: '*',
+                                            text: 'พาเลต : ' + de.PALET,
+                                            fontSize: 12,
+                                            alignment: 'right',
+                                            margin: [0,0, 40, 0]
+                                            
+                                        }]
+                                }
+                                ,{
+                                    columns: [
+                                        {
+                                            width: '*',
+                                            text: 'Description 2 : ' + de.DESC2,
+                                            fontSize: 12,
+                                            alignment: 'left',
+                                            margin: [40,0, 0, 0]
+                                        }, 
+                                        {
+                                            width: '*',
+                                            text: 'Description 3 : ' + de.DESC3,
+                                            fontSize: 12,
+                                            alignment: 'right',
+                                            margin: [0,0, 40, 0]
+                                        }
+                            
+                                    ]
+                                },
+                                {
+                                    columns: [{
+                                            width: 200,
+                                            text: 'ร้านค้า : ' + de.SUPNAME,
+                                            fontSize: 12,
+                                            alignment: 'left',
+                                            margin: [40,0, 0, 0]
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'เลขที่เอกสาร : ' + de.MRNO,
+                                            fontSize: 12,
+                                            alignment: 'center'
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'หน่วยนับ : ' + de.UNIT,
+                                            fontSize: 12,
+                                            alignment: 'center'
+                                        },
+                                        {
+                                            width: '*',
+                                            text: 'วันที่ : ' + covertoday(de.QCDATE),
+                                            fontSize: 12,
+                                            alignment: 'right',
+                                            margin: [0,0, 40, 0]
+                                        }]
+                                },
+                            ]
+                        },
+                        content: [
                             {
                                 style: 'tableExample',
                                 table: {
@@ -245,46 +314,10 @@
                                         'auto', 
                                         'auto'],
                                     body: arr1
-                                        
-                                        
-                               
-                               
-                                       
-                               
-                                    
+                                   
                                 }
                             },
-                            {
-                                columns: [
-                                    {
-                                        width: '*',
-                                        text: 'จำนวนที่มา : '+de.sumqt+' '+de.UNIT+' \n จำนวนที่ได้ : '+de.sumaqt+' '+ de.UNIT,
-                                        fontSize: 12,
-                                        alignment: 'left'
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'สรุปผล \n / '+de.REMARKRM1+'\n / '+de.REMARKRM2+'\n / '+de.REMARKRM3+'',
-                                        fontSize: 12,
-                                        alignment: 'center'
-                               
-                                    },
-                                    {
-                                        width: '*',
-                                        text: 'น้ำหนัก KG/M: \n '+de.sumweight,
-                                        fontSize: 12,
-                                        alignment: 'center'
-                               
-                                    },
-                                    {
-                                        width: 'auto',
-                                        text: 'ชื่อผู้ตรวจสอบ : '+de.BYNAME+'\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',
-                                        fontSize: 12,
-                                        alignment: 'right'
-                                    }
                             
-                                ]
-                            }
                     
                         ],
                         styles: {

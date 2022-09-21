@@ -18,11 +18,18 @@
     </head>
     <style>    
         
-            body{
-                 height:11in;
-                 width:9in;                                 
-             }
-        
+         body{
+             font-size:12px;
+         } 
+         div.divFooter {
+             position: fixed;
+             bottom: 0;
+             display: none;
+         }
+         div.main {
+             position: fixed;
+             top: 0;
+         }
         
         
     </style>
@@ -33,7 +40,8 @@
     
     <body>
         
-        <div class="container" id="main">
+        <div class="main w-100" id="main">
+            
             <div class="row mb-3">
                 <div class="col-3">
                     <div class="text-start"><b>สาขา :</b> <label id="PLANT"></label></div>
@@ -92,7 +100,8 @@
         </div>
         <div class="row ">
             <div class="col-sm-12">
-                <table class="table table-bordered border-dark text-center" id="mytable">
+                <br>  <br>  <br>  <br>  <br>  <br><br>  <br>  <br>  <br>  <br>  
+                <table class="table table-bordered border-dark text-center  w-100" id="mytable">
                     
                     <thead>
                         
@@ -116,8 +125,7 @@
                             <th>ตำหนิรวม</th>
                             <th>คะ<br>เเนน</th>
                             <th>Mark</th>
-                            
-                            <th></th>
+                         
                         </tr>
                     </thead>
                     <tbody>
@@ -128,7 +136,7 @@
             
         </div>
         <hr>
-        <div class="container">
+        <div class="divFooter w-100">
             <div class="row ">
                 <div class="col-6 ">
                     <div class="row">
@@ -167,6 +175,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
         <script>
             $(document).ready(function(){
@@ -236,29 +245,8 @@
                     searching: false,
                     paging: false,
                     info: false,
-                    ajax: 'getdatawm?status=G16&mrno='+mrno+'&pallet='+pallet+'',
-                    columnDefs: [
-                        { "width": "1rem", "targets": 0 },
-                        { "width": "1rem", "targets": 1 },
-                        { "width": "1rem", "targets": 2 },
-                        { "width": "1rem", "targets": 3 },
-                        { "width": "1rem", "targets": 4 },
-                        { "width": "1rem", "targets": 5 },
-                        { "width": "1rem", "targets": 6 },
-                        { "width": "1rem", "targets": 7 },
-                        { "width": "1rem", "targets": 8 },
-                        { "width": "1rem", "targets": 9 },
-                        { "width": "1rem", "targets": 10 },
-                        { "width": "1rem", "targets": 11},
-                        { "width": "1rem", "targets": 12},
-                        { "width": "1rem", "targets": 13},
-                        { "width": "1rem", "targets": 14},
-                        { "width": "7rem", "targets": 15},
-                        { "width": "1rem", "targets": 16},
-                        { "width": "1rem", "targets": 17},
-                        { "width": "1rem", "targets": 18},
-                      
-                    ] 
+                    ajax: 'getdatawm?status=G16&mrno='+mrno+'&pallet='+pallet+''
+                    
                 });
     
                 
