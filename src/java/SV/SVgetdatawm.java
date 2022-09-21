@@ -241,7 +241,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("ROLL"));
                         arrjson.add(rec.getString("QUANTITY"));
                         arrjson.add(rec.getString("UNIT"));
-                       
+
                         arrlist.add(arrjson);
                         n++;
                     }
@@ -1038,9 +1038,9 @@ public class SVgetdatawm extends HttpServlet {
                     String MRNO = null;
                     String UNIT = null;
                     String QCDATE = null;
-                    String REMARK1 = null;
-                    String REMARK2 = null;
-                    String REMARK3 = null;
+                    String REMARK1 = "";
+                    String REMARK2 = "";
+                    String REMARK3 = "";
                     String SUPNAME = null;
                     String INVOICE = null;
                     String PALET = null;
@@ -1112,7 +1112,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         n++;
                     }
-
+                   
                     obj.put("PLANT", PLANT);
                     obj.put("ITEM", ITEM);
                     obj.put("PO", PO);

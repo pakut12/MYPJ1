@@ -20,11 +20,13 @@
             font-size:14px;
             height:5.0in;
             width:9in; 
-            margin: 15px;          
+            
+            
+            
             
         }
         .test{
-            font-size:12px;
+            font-size:13px;
         }
     </style>
     <%!
@@ -45,9 +47,16 @@
         return Time;
     }
 
-    
+
     %>
-    
+    <%
+            String lot = null;
+            if (request.getAttribute("LOT") == null) {
+                lot = "";
+            } else {
+                lot = (String) request.getAttribute("LOT");
+            }
+    %>
     <body >
         
         <div class="h2 fw-bold">ใบเเจ้งเข้าวัตถุดิบ</div>
@@ -55,49 +64,49 @@
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Name of Vendor : </label>
-                <label><%=request.getAttribute("SUPNAME")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("SUPNAME")%></label> 
             </div>
             
             <div  class="col-4">
                 <label class="fw-bold">Documaent No. :</label>
-                <label><%=request.getAttribute("MRNO")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("MRNO")%></label> 
             </div>
         </div>
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Po No. : </label>
-                <label><%=request.getAttribute("PO")%>  / <%=request.getAttribute("POLN")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("PO")%>  / <%=request.getAttribute("POLN")%></label> 
             </div>
             
             <div  class="col-4 ">
                 <label class="fw-bold">Pallet : </label>
-                <label><%=request.getAttribute("PALET")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("PALET")%></label> 
             </div> 
         </div>
         <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">Current Date : </label>
-                <label><%=ctoDm(request.getAttribute("date").toString())%></label> 
+                <label class="fw-bold"><%=ctoDm(request.getAttribute("date").toString())%></label> 
                 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ผ้าเข้า : </label>
-                <label class="h2" id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
+                <label class="fw-bold h2"  id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice No : </label>
-                <label><%=request.getAttribute("INVOICE")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("INVOICE")%></label> 
             </div> 
         </div>
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Plant : </label>
-                <label><%=request.getAttribute("PLANT")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("PLANT")%></label> 
             </div>
             
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice date : </label>
-                <label><%=ctoD(request.getAttribute("INVOICEDATE").toString())%></label> 
+                <label class="fw-bold"><%=ctoD(request.getAttribute("INVOICEDATE").toString())%></label> 
             </div> 
             
             
@@ -105,25 +114,25 @@
         <div class="row">
             <div  class="col-6">
                 <label class="fw-bold ">Materal : </label>
-                <label class="h2"><%=request.getAttribute("ITEM")%></label> 
+                <label class="fw-bold h2"><%=request.getAttribute("ITEM")%></label> 
             </div>
             
             <div  class="col-6 ">
-                <label><%=request.getAttribute("DESC1")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("DESC1")%></label> 
             </div> 
             
         </div>
         <div class="row">
             <div  class="col-8 ">
                 <label class="fw-bold">Lot : </label>
-                <label><%=request.getAttribute("LOT")%></label> 
+                <label class="fw-bold"><%=lot%></label> 
             </div>
             
             <div  class="col-4 ">
                 <label class="fw-bold">Quantity : </label>
-                <label class="h1"><%=request.getAttribute("roll")%></label> 
+                <label class="h1 "><%=request.getAttribute("roll")%></label> 
                 <label>  </label> 
-                <label><%=request.getAttribute("UNIT")%></label> 
+                <label class="fw-bold"><%=request.getAttribute("UNIT")%></label> 
             </div> 
         </div>
         
@@ -170,16 +179,16 @@
                             <%
                             for (int col = 1; col <= 10; col++) {
                                 try {
-                                    out.print("<td>" + num[x] + "</td>");
+                                    out.print("<td class='fw-bold'>" + num[x] + "</td>");
                                 } catch (Exception e) {
-                                    out.print("<td height='35'> </td>");
+                                    out.print("<td height='35' class='fw-bold'> </td>");
                                 }
                                 x++;
                             }
                             if (row == 0) {
                             %>
-                            <td><%=request.getAttribute("roll")%></td>
-                            <td><%=request.getAttribute("row")%></td> 
+                            <td class="fw-bold"><%=request.getAttribute("roll")%></td>
+                            <td class="fw-bold"><%=request.getAttribute("row")%></td> 
                         </tr>
                         <%
                 } else {

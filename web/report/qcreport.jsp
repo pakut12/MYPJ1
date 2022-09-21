@@ -42,14 +42,34 @@
             }
             var a = <%=mrno%>
             var b = <%=palet%>
-            console.log('../getdatawm?status=G20&mrno='+a+'&pallet='+b);
+            
             $.ajax({
                 type: "POST",
                 url: '../getdatawm?status=G20&mrno='+a+'&pallet='+b,
                 success: function(msg,status){
                     var de = $.parseJSON(msg);
-                    
+                    var re1 = "";
+                    var re2 = "";
+                    var re3 = "";
+                    if(de.REMARKRM1 == null){
+                        re1 = "";
+                    }else{
+                        re1 = de.REMARKRM1;
+                    }
+                        
+                    if(de.REMARKRM2 == null){
+                        re2 = "";
+                    }else{
+                        re2 = de.REMARKRM2;
+                    }
+                    if(de.REMARKRM3 == null){
+                        re3 = "";
+                    }else{
+                        re3 = de.REMARKRM3;
+                    }
                    
+        
+        
                     var arr1 = [];
                     arr1[0] = [
                         'ม้วนที่', 
@@ -121,7 +141,7 @@
                             width: 600,
                             height: 800
                         },
-                        pageMargins: [ 40, 120, 40, 120 ],
+                        pageMargins: [ 35, 130, 30, 130 ],
                        
                         footer: function(currentPage, pageCount) { 
                             return [
@@ -129,18 +149,18 @@
                                 {
                                     columns: [
                                         {
-                                            width: '*',
+                                            width: 'auto',
                                             text: 'จำนวนที่มา : '+de.sumqt+' '+de.UNIT+' \n จำนวนที่ได้ : '+de.sumaqt+' '+ de.UNIT,
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [40,0, 0, 50]
+                                            margin: [60,20, 0, 50]
                                         },
                                         {
-                                            width: '*',
-                                            text: 'สรุปผล \n / '+de.REMARKRM1+'\n / '+de.REMARKRM2+'\n / '+de.REMARKRM3+'',
+                                            width: 'auto',
+                                            text: 'สรุปผล \n  '+re1+'\n '+re2+'\n  '+re3+'\n FORM NO.FM-TWN-02/1 เเก้ไขครั้งที่ 01 อนุมัติใช้ 01/07/49',
                                             fontSize: 12,
-                                            alignment: 'center',
-                                            margin: [35,0, 0, 0]
+                                            alignment: 'left',
+                                            margin: [35,10, 0, 0]
                                
                                         },
                                         {
@@ -148,7 +168,7 @@
                                             text: 'น้ำหนัก KG/M: \n '+de.sumweight,
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [15,0, 0, 0]
+                                            margin: [0,20, 0, 0]
                                
                                         },
                                         {
@@ -173,7 +193,7 @@
                                         {
                                             width: '*',
                                             text: 'สาขา : '+ de.PLANT,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,10, 0, 0]
                                            
@@ -190,7 +210,7 @@
                                         {
                                             width: '*',
                                             text: 'หน้า : '+currentPage,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,10, 40, 0]
                                         }
@@ -201,26 +221,26 @@
                                     columns: [{
                                             width: '*',
                                             text: 'รหัส : ' + de.ITEM,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
                                             text: 'เลขที่ใบสั้งซื้อ : ' + de.PO,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
                                             text: 'เลขที่บิล : ' + de.INVOICE,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
                                             text: 'วันที่บิล : ' + covertoday(de.INVOICEDATE),
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
                                         }]
@@ -229,7 +249,7 @@
                                     columns: [{
                                             width: 'auto',
                                             text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ' + de.DESC1,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
@@ -237,7 +257,7 @@
                                         {
                                             width: '*',
                                             text: 'พาเลต : ' + de.PALET,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
                                             
@@ -248,14 +268,14 @@
                                         {
                                             width: '*',
                                             text: 'Description 2 : ' + de.DESC2,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         }, 
                                         {
                                             width: '*',
                                             text: 'Description 3 : ' + de.DESC3,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
                                         }
@@ -264,28 +284,28 @@
                                 },
                                 {
                                     columns: [{
-                                            width: 200,
+                                            width: 'auto',
                                             text: 'ร้านค้า : ' + de.SUPNAME,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
                                             text: 'เลขที่เอกสาร : ' + de.MRNO,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
                                             text: 'หน่วยนับ : ' + de.UNIT,
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
                                             text: 'วันที่ : ' + covertoday(de.QCDATE),
-                                            fontSize: 12,
+                                            fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
                                         }]
@@ -339,7 +359,7 @@
                                         type: 'rect',
                                         x: 155,
                                         y: 665,
-                                        w: 175,
+                                        w: 215,
                                         h: 115,
                                         r: 0,
                                         lineWidth: 1,
@@ -347,9 +367,9 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 330,
+                                        x: 370,
                                         y: 665,
-                                        w: 120,
+                                        w: 80,
                                         h: 115,
                                         r: 0,
                                         lineWidth: 1,
@@ -415,6 +435,11 @@
                         }
                     };
                     pdfMake.createPdf(docDefinition).open({}, window); 
+                
+        
+        
+        
+        
                 }
             });
             
