@@ -24,7 +24,7 @@
             
         }
         .test{
-            font-size:20px;
+            font-size:12px;
         }
     </style>
     <%!
@@ -129,7 +129,7 @@
         
         <div class="row ">
             <div  class="col-12 ">
-                <table class="table table-bordered border-dark text-center " style="width: 49rem;" >
+                <table class="table table-bordered border-dark text-center test" style="width: 49rem;" >
                     <thead>
                         <tr>
                             <th>เบอร์สี</th>
@@ -172,7 +172,7 @@
                                 try {
                                     out.print("<td>" + num[x] + "</td>");
                                 } catch (Exception e) {
-                                    out.print("<td height='30'> </td>");
+                                    out.print("<td height='35'> </td>");
                                 }
                                 x++;
                             }

@@ -48,6 +48,8 @@
                 url: '../getdatawm?status=G20&mrno='+a+'&pallet='+b,
                 success: function(msg,status){
                     var de = $.parseJSON(msg);
+                    
+                   
                     var arr1 = [];
                     arr1[0] = [
                         'ม้วนที่', 
@@ -130,7 +132,7 @@
                                             width: '*',
                                             text: 'จำนวนที่มา : '+de.sumqt+' '+de.UNIT+' \n จำนวนที่ได้ : '+de.sumaqt+' '+ de.UNIT,
                                             fontSize: 12,
-                                            alignment: 'left',
+                                            alignment: 'center',
                                             margin: [40,0, 0, 50]
                                         },
                                         {
@@ -138,7 +140,7 @@
                                             text: 'สรุปผล \n / '+de.REMARKRM1+'\n / '+de.REMARKRM2+'\n / '+de.REMARKRM3+'',
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [0,0, 0, 50]
+                                            margin: [35,0, 0, 0]
                                
                                         },
                                         {
@@ -146,15 +148,15 @@
                                             text: 'น้ำหนัก KG/M: \n '+de.sumweight,
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [0,0, 0, 50]
+                                            margin: [15,0, 0, 0]
                                
                                         },
                                         {
                                             width: 'auto',
                                             text: 'ชื่อผู้ตรวจสอบ : '+de.BYNAME+'\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',
                                             fontSize: 12,
-                                            alignment: 'right',
-                                            margin: [0,0, 40, 50]
+                                            alignment: 'left',
+                                            margin: [0,0, 35, 50]
                                         }
                             
                                     ]
@@ -290,6 +292,83 @@
                                 },
                             ]
                         },
+                        background: [
+                            {
+                                canvas: [
+                                    {
+                                        type: 'rect',
+                                        x: 35,
+                                        y: 5,
+                                        w: 535,
+                                        h: 775,
+                                        r: 0,
+                                        lineWidth: 1,
+                                        lineColor: '#000000'
+                                    },
+                                    {
+                                        type: 'rect',
+                                        x: 35,
+                                        y: 5,
+                                        w: 535,
+                                        h: 115,
+                                        r: 0,
+                                        lineWidth: 1,
+                                        lineColor: '#000000'
+                                    },
+                                    {
+                                        type: 'rect',
+                                        x: 35,
+                                        y: 665,
+                                        w: 120,
+                                        h: 115,
+                                        r: 0,
+                                        lineWidth: 1,
+                                        lineColor: '#000000'
+                                    },
+                                    {
+                                        type: 'rect',
+                                        x: 155,
+                                        y: 665,
+                                        w: 0,
+                                        h: 115,
+                                        r: 0,
+                                        lineWidth: 1,
+                                        lineColor: '#000000'
+                                    },
+                                    {
+                                        type: 'rect',
+                                        x: 155,
+                                        y: 665,
+                                        w: 175,
+                                        h: 115,
+                                        r: 0,
+                                        lineWidth: 1,
+                                        lineColor: '#000000'
+                                    },
+                                    {
+                                        type: 'rect',
+                                        x: 330,
+                                        y: 665,
+                                        w: 120,
+                                        h: 115,
+                                        r: 0,
+                                        lineWidth: 1,
+                                        lineColor: '#000000'
+                                    },
+                                    {
+                                        type: 'rect',
+                                        x: 450,
+                                        y: 665,
+                                        w: 120,
+                                        h: 115,
+                                        r: 0,
+                                        lineWidth: 1,
+                                        lineColor: '#000000'
+                                    },
+                                ]
+                            }
+                            
+                        ],
                         content: [
                             {
                                 style: 'tableExample',
