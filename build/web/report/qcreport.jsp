@@ -343,7 +343,7 @@
                             width: 600,
                             height: 800
                         },
-                        pageMargins: [ 35, 130, 30, 130 ],
+                        pageMargins: [ 35, 150, 30, 130 ],
                        
                         footer: function(currentPage, pageCount) { 
                             return [
@@ -351,23 +351,26 @@
                                 {
                                     columns: [
                                         {
-                                            width: 'auto',
-                                            text: 'จำนวนที่มา : '+de.sumqt+' '+de.UNIT+' \n จำนวนที่ได้ : '+de.sumaqt+' '+ de.UNIT,
+                                            width: 'auto', 
+                                            text: [{ text: 'จำนวนที่มา : ', bold:true },{ text: de.sumqt+' '+de.UNIT },{ text: '\nจำนวนที่ได้ : ', bold:true },{ text: de.sumaqt+' '+de.UNIT }],
                                             fontSize: 12,
                                             alignment: 'center',
                                             margin: [60,20, 0, 50]
                                         },
                                         {
                                             width: 'auto',
-                                            text: 'สรุปผล \n  '+re1+'\n '+re2+'\n  '+re3+'\n FORM NO.FM-TWN-02/1 เเก้ไขครั้งที่ 01 อนุมัติใช้ 01/07/49',
+                                            
+                                            text: [{ text: 'สรุปผล : \n', bold:true },{ text: re1+'\n'+re2+'\n'+re3 },{ text: '\nFORM NO.FM-TWN-02/1 เเก้ไขครั้งที่ 01 อนุมัติใช้ 01/07/49', bold:true }],
+                                            
                                             fontSize: 12,
                                             alignment: 'left',
-                                            margin: [35,10, 0, 0]
+                                            margin: [36,10, 0, 0]
                                
                                         },
                                         {
                                             width: '*',
-                                            text: 'น้ำหนัก KG/M: \n '+de.sumweight,
+                                   
+                                            text: [{ text: 'น้ำหนัก KG/M : \n', bold:true },{ text: de.sumweight }],
                                             fontSize: 12,
                                             alignment: 'center',
                                             margin: [0,20, 0, 0]
@@ -375,7 +378,7 @@
                                         },
                                         {
                                             width: 'auto',
-                                            text: 'ชื่อผู้ตรวจสอบ : '+de.BYNAME+'\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',
+                                            text: [{ text: 'ชื่อผู้ตรวจสอบ : ', bold:true },{ text: de.BYNAME+'\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n' }],
                                             fontSize: 12,
                                             alignment: 'left',
                                             margin: [0,10, 35, 50]
@@ -394,10 +397,10 @@
                                     columns: [
                                         {
                                             width: '*',
-                                            text: 'สาขา : '+ de.PLANT,
+                                            text: [{ text: 'สาขา : ', bold:true },{ text: de.PLANT , bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
-                                            margin: [40,10, 0, 0]
+                                            margin: [40,20, 0, 0]
                                            
                                             
                                         },
@@ -407,14 +410,14 @@
                                             fontSize: 17,
                                             alignment: 'center',
                                             bold:true,
-                                            margin: [0,10, 0, 0]
+                                            margin: [0,20, 0, 0]
                                         },
                                         {
                                             width: '*',
-                                            text: 'หน้า : '+currentPage,
+                                            text: [{ text: 'หน้า : ', bold:true },{ text: currentPage , bold:true }],
                                             fontSize: 14,
                                             alignment: 'right',
-                                            margin: [0,10, 40, 0]
+                                            margin: [0,20, 40, 0]
                                         }
                             
                                     ]
@@ -422,26 +425,26 @@
                                 {
                                     columns: [{
                                             width: '*',
-                                            text: 'รหัส : ' + de.ITEM,
+                                            text: [{ text: 'รหัส : ', bold:true },{ text: de.ITEM , bold:true}],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
-                                            text: 'เลขที่ใบสั้งซื้อ : ' + de.PO,
+                                            text: [{ text: 'เลขที่ใบสั้งซื้อ : ', bold:true },{ text: de.PO  , bold:true}],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: 'เลขที่บิล : ' + de.INVOICE,
+                                            text: [{ text: 'เลขที่บิล : ', bold:true },{ text: de.INVOICE , bold:true }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: 'วันที่บิล : ' + covertoday(de.INVOICEDATE),
+                                            text: [{ text: 'วันที่บิล : ', bold:true },{ text: covertoday(de.INVOICEDATE)  , bold:true}],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -450,7 +453,7 @@
                                 {
                                     columns: [{
                                             width: 'auto',
-                                            text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ' + de.DESC1,
+                                            text: [{ text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ', bold:true },{ text: de.DESC1 , bold:true}],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
@@ -458,7 +461,7 @@
                             
                                         {
                                             width: '*',
-                                            text: 'พาเลต : ' + de.PALET,
+                                            text: [{ text: 'พาเลต : ', bold:true },{ text: de.PALET , bold:true}],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -469,15 +472,15 @@
                                     columns: [
                                         {
                                             width: '*',
-                                            text: 'Description 2 : ' + de.DESC2,
-                                            fontSize: 14,
+                                            text: [{ text: 'Description 2 : ', bold:true },{ text: de.DESC2, bold:true }],
+                                            fontSize: 13,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         }, 
                                         {
                                             width: '*',
-                                            text: 'Description 3 : ' + de.DESC3,
-                                            fontSize: 14,
+                                            text: [{ text: 'Description 3 : ', bold:true },{ text: de.DESC3, bold:true }],
+                                            fontSize: 13,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
                                         }
@@ -487,26 +490,27 @@
                                 {
                                     columns: [{
                                             width: 'auto',
-                                            text: 'ร้านค้า : ' + de.SUPNAME,
+                                            text: [{ text: 'ร้านค้า : ', bold:true },{ text: de.SUPNAME, bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
-                                            text: 'เลขที่เอกสาร : ' + de.MRNO,
+                                            text: [{ text: 'เลขที่เอกสาร : ', bold:true },{ text: de.MRNO, bold:true }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: 'หน่วยนับ : ' + de.UNIT,
+                                            text: [{ text: 'หน่วยนับ : ', bold:true },{ text: de.UNIT, bold:true }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: 'วันที่ : ' + covertoday(de.QCDATE),
+                                            text: [{ text: 'วันที่ : ', bold:true },{ text: covertoday(de.QCDATE), bold:true }],
+                                        
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -520,9 +524,9 @@
                                     {
                                         type: 'rect',
                                         x: 35,
-                                        y: 5,
+                                        y: 20,
                                         w: 535,
-                                        h: 775,
+                                        h: 750,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -530,9 +534,9 @@
                                     {
                                         type: 'rect',
                                         x: 35,
-                                        y: 5,
+                                        y: 20,
                                         w: 535,
-                                        h: 125,
+                                        h: 130,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -542,7 +546,7 @@
                                         x: 35,
                                         y: 665,
                                         w: 120,
-                                        h: 115,
+                                        h: 105,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -552,7 +556,7 @@
                                         x: 155,
                                         y: 665,
                                         w: 0,
-                                        h: 115,
+                                        h: 105,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -561,18 +565,18 @@
                                         type: 'rect',
                                         x: 155,
                                         y: 665,
-                                        w: 215,
-                                        h: 115,
+                                        w: 225,
+                                        h: 105,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
                                     },
                                     {
                                         type: 'rect',
-                                        x: 370,
+                                        x: 380,
                                         y: 665,
-                                        w: 80,
-                                        h: 115,
+                                        w: 70,
+                                        h: 105,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -582,7 +586,7 @@
                                         x: 450,
                                         y: 665,
                                         w: 120,
-                                        h: 115,
+                                        h: 105,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -594,7 +598,7 @@
                         content: [
                             {
                                 style: 'tableExample',
-                                margin: [0, 0, 0, 0],
+                                
                                 table: {
                                     widths: ['auto', 
                                         'auto', 
@@ -624,12 +628,13 @@
                         ],
                         styles: {
                             footer:{
-                                margin: [0, 5, 0, 15]
+                                margin: [0, 0, 0, 15]
                             },
                             tableExample: {
-                                margin: [0, 5, 0, 15],
+                                margin: [0, 0, 0, 0],
                                 fontSize: 10,
                                 alignment: 'center'
+                                , bold:true
                             }
                     
                         },
