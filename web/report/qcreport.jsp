@@ -72,50 +72,252 @@
         
                     var arr1 = [];
                     arr1[0] = [
-                        'ม้วนที่', 
-                        'หน้าผ้า\nที่วัดได้', 
-                        'สี', 
-                        'มาตรฐาน\nสี', 
-                        'จำนวน\nที่มา', 
-                        'จำนวน\nที่ได้', 
-                        'จุดสี-น้ำมัน-สกปรก', 
-                        'ลาย\nขวาง', 
-                        'ความกว้าง\nไม่ได้\nมาตรฐาน', 
-                        'ปุ่ม\nปม', 
-                        'เส้นด้าย\nขาด', 
-                        'รอย\nด่าง', 
-                        'รอย\nเข็ม', 
-                        'รอยเข็ม\nเข้าลึก', 
-                        'บาร์โค็ด\nร้านค้า', 
-                        'หม้อ\nย้อม', 
-                        'ตำหนิ\nรวม', 
-                        'คะเเนน', 
-                        'MARK'
+                        {
+                            border: [true, true, true, true],  
+                            text: 'ม้วนที'
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text: 'หน้าผ้า\nที่วัดได้'
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text: 'สี'
+                        },
+                        {
+                            border: [true, true, true, true],  
+                            text:   'มาตรฐาน\nสี'
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text:  'จำนวน\nที่มา'
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text:   'จำนวน\nที่ได้'
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text: 'จุดสี-น้ำมัน-สกปรก'
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text: 'ลาย\nขวาง' 
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text:    'ความกว้าง\nไม่ได้\nมาตรฐาน' 
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text:  'ปุ่ม\nปม' 
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text:  'เส้นด้าย\nขาด' 
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text: 'รอย\nด่าง' 
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text:  'รอย\nเข็ม' 
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text: 'รอยเข็ม\nเข้าลึก' 
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text: 'บาร์โค็ด\nร้านค้า' 
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text: 'หม้อ\nย้อม' 
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text:  'ตำหนิ\nรวม' 
+                        }, 
+                        {
+                            border: [true, true, true, true],  
+                            text: 'คะเเนน'
+                        },  
+                        {
+                            border: [true, true, true, true],  
+                            text: 'MARK'
+                        }
+                        
+                        
                     ]
-                   
-                    for(var x =0; x<de.data.length; x++){
-                        var arr = [
-                            de.data[x][0], 
-                            de.data[x][1], 
-                            de.data[x][2], 
-                            de.data[x][3], 
-                            de.data[x][4], 
-                            de.data[x][5], 
-                            de.data[x][6], 
-                            de.data[x][7], 
-                            de.data[x][8], 
-                            de.data[x][9], 
-                            de.data[x][10], 
-                            de.data[x][11], 
-                            de.data[x][12], 
-                            de.data[x][13], 
-                            de.data[x][14], 
-                            de.data[x][15], 
-                            de.data[x][16], 
-                            de.data[x][17], 
-                            de.data[x][18],
+                    var arr = [];
+                    var row = de.data.length;
+                    var rowclose = row - 1;
+                    for(var x =0; x<row; x++){
+                        if(rowclose == x){
+                            arr = [
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][0]
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][1]
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][2]
+                                },
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][3]
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][4]
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][5]
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][6]
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][7] 
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][8] 
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][9]
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][10] 
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][11]
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][12] 
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][13] 
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][14] 
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][15] 
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text:  de.data[x][16] 
+                                }, 
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][17]
+                                },  
+                                {
+                                    border: [false, false, true, true],  
+                                    text: de.data[x][18]
+                                }
                                             
-                        ];
+                            ];
+                        
+                        }else{
+                            arr = [
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][0]
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][1]
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][2]
+                                },
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][3]
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][4]
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][5]
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][6]
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][7] 
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][8] 
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][9]
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][10] 
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][11]
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][12] 
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][13] 
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][14] 
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][15] 
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text:  de.data[x][16] 
+                                }, 
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][17]
+                                },  
+                                {
+                                    border: [false, false, true, false],  
+                                    text: de.data[x][18]
+                                }
+                                            
+                            ];
+                        }
+                        
                         arr1[x+1] = arr ;
                         
                     }
