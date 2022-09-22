@@ -144,7 +144,7 @@
                         },  
                         {
                             border: [true, true, true, true],  
-                            text: 'MARK'
+                            text: 'M'
                         }
                         
                         
@@ -599,25 +599,25 @@
                                 table: {
                                     
                                     widths: [
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto', 
-                                        'auto'],
+                                        12, 
+                                        20, 
+                                        10, 
+                                        16, 
+                                        20, 
+                                        20, 
+                                        20, 
+                                        15, 
+                                        30, 
+                                        10, 
+                                        22, 
+                                        15, 
+                                        23, 
+                                        22, 
+                                        35, 
+                                        35, 
+                                        17, 
+                                        21, 
+                                       4],
                                     body: arr1
                                    
                                    
@@ -633,8 +633,8 @@
                             tableExample: {
                                 margin: [0, 0, 0, 0],
                                 fontSize: 10,
-                                alignment: 'center'
-                                , bold:true
+                                alignment: 'center',
+                                bold:true
                             }
                     
                         },
