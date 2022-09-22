@@ -67,9 +67,7 @@
                     }else{
                         re3 = de.REMARKRM3;
                     }
-                   
-        
-        
+                  
                     var arr1 = [];
                     arr1[0] = [
                         {
@@ -397,12 +395,11 @@
                                     columns: [
                                         {
                                             width: '*',
-                                            text: [{ text: 'สาขา : ', bold:true },{ text: de.PLANT , bold:true }],
+                                            text: [{ text: 'สาขา : ', bold:true },{ text: de.PLANT }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,20, 0, 0]
-                                           
-                                            
+                                             
                                         },
                                         {
                                             width: '*',
@@ -414,7 +411,7 @@
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'หน้า : ', bold:true },{ text: currentPage , bold:true }],
+                                            text: [{ text: 'หน้า : ', bold:true },{ text: currentPage  }],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,20, 40, 0]
@@ -425,26 +422,26 @@
                                 {
                                     columns: [{
                                             width: '*',
-                                            text: [{ text: 'รหัส : ', bold:true },{ text: de.ITEM , bold:true}],
+                                            text: [{ text: 'รหัส : ', bold:true },{ text: de.ITEM }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'เลขที่ใบสั้งซื้อ : ', bold:true },{ text: de.PO  , bold:true}],
+                                            text: [{ text: 'เลขที่ใบสั้งซื้อ : ', bold:true },{ text: de.PO  }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'เลขที่บิล : ', bold:true },{ text: de.INVOICE , bold:true }],
+                                            text: [{ text: 'เลขที่บิล : ', bold:true },{ text: de.INVOICE }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'วันที่บิล : ', bold:true },{ text: covertoday(de.INVOICEDATE)  , bold:true}],
+                                            text: [{ text: 'วันที่บิล : ', bold:true },{ text: covertoday(de.INVOICEDATE)  }],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -453,7 +450,7 @@
                                 {
                                     columns: [{
                                             width: 'auto',
-                                            text: [{ text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ', bold:true },{ text: de.DESC1 , bold:true}],
+                                            text: [{ text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ', bold:true },{ text: de.DESC1 }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
@@ -461,7 +458,7 @@
                             
                                         {
                                             width: '*',
-                                            text: [{ text: 'พาเลต : ', bold:true },{ text: de.PALET , bold:true}],
+                                            text: [{ text: 'พาเลต : ', bold:true },{ text: de.PALET }],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -472,14 +469,14 @@
                                     columns: [
                                         {
                                             width: '*',
-                                            text: [{ text: 'Description 2 : ', bold:true },{ text: de.DESC2, bold:true }],
+                                            text: [{ text: 'Description 2 : ', bold:true },{ text: de.DESC2 }],
                                             fontSize: 13,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         }, 
                                         {
                                             width: '*',
-                                            text: [{ text: 'Description 3 : ', bold:true },{ text: de.DESC3, bold:true }],
+                                            text: [{ text: 'Description 3 : ', bold:true },{ text: de.DESC3 }],
                                             fontSize: 13,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -490,26 +487,26 @@
                                 {
                                     columns: [{
                                             width: 'auto',
-                                            text: [{ text: 'ร้านค้า : ', bold:true },{ text: de.SUPNAME, bold:true }],
+                                            text: [{ text: 'ร้านค้า : ', bold:true },{ text: de.SUPNAME }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'เลขที่เอกสาร : ', bold:true },{ text: de.MRNO, bold:true }],
+                                            text: [{ text: 'เลขที่เอกสาร : ', bold:true },{ text: de.MRNO }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'หน่วยนับ : ', bold:true },{ text: de.UNIT, bold:true }],
+                                            text: [{ text: 'หน่วยนับ : ', bold:true },{ text: de.UNIT }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'วันที่ : ', bold:true },{ text: covertoday(de.QCDATE), bold:true }],
+                                            text: [{ text: 'วันที่ : ', bold:true },{ text: covertoday(de.QCDATE) }],
                                         
                                             fontSize: 14,
                                             alignment: 'right',
@@ -525,7 +522,7 @@
                                         type: 'rect',
                                         x: 35,
                                         y: 20,
-                                        w: 535,
+                                        w: 539,
                                         h: 750,
                                         r: 0,
                                         lineWidth: 1,
@@ -535,7 +532,7 @@
                                         type: 'rect',
                                         x: 35,
                                         y: 20,
-                                        w: 535,
+                                        w: 539,
                                         h: 130,
                                         r: 0,
                                         lineWidth: 1,
@@ -565,7 +562,7 @@
                                         type: 'rect',
                                         x: 155,
                                         y: 665,
-                                        w: 225,
+                                        w: 230,
                                         h: 105,
                                         r: 0,
                                         lineWidth: 1,
@@ -573,9 +570,9 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 380,
+                                        x: 385,
                                         y: 665,
-                                        w: 70,
+                                        w: 65,
                                         h: 105,
                                         r: 0,
                                         lineWidth: 1,
@@ -585,7 +582,7 @@
                                         type: 'rect',
                                         x: 450,
                                         y: 665,
-                                        w: 120,
+                                        w: 124,
                                         h: 105,
                                         r: 0,
                                         lineWidth: 1,
@@ -598,9 +595,11 @@
                         content: [
                             {
                                 style: 'tableExample',
-                                
+                               
                                 table: {
-                                    widths: ['auto', 
+                                    
+                                    widths: [
+                                        'auto', 
                                         'auto', 
                                         'auto', 
                                         'auto', 
@@ -620,6 +619,7 @@
                                         'auto', 
                                         'auto'],
                                     body: arr1
+                                   
                                    
                                 }
                             },

@@ -1051,7 +1051,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("width"));
                         arrjson.add(rec.getString("color"));
                         arrjson.add(rec.getString("scolor"));//rec.getString("scolor")
-
+                        
                         arrjson.add(rec.getString("quantity"));
                         arrjson.add(rec.getString("actqty"));
                         arrjson.add(rec.getString("ethread"));
