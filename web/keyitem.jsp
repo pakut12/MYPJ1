@@ -163,7 +163,7 @@
                                     })
                                     $("#btn-send").removeClass("disabled");
                                     $("#btn-send").addClass("disabled");
-                                    $("#btn-send").text("ส่งข้อมูลไป QC");
+                                    $("#btn-send").text("กำลังบันทึก");
                                 }else if(msg == "true"){
                                     Swal.fire({
                                         icon: 'success',

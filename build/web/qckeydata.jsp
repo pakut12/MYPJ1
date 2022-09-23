@@ -197,11 +197,12 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>วันที่ตรวจสอบ : </label>
-                                                <input class="form-control form-control-sm" type="date" name="qcdate" id="qcdate" value="" readonly></input>
+                                                <label>คะเเนน : </label>
+                                                <input class="form-control form-control-sm" type="text" name="point" id="point" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="row ">
@@ -237,13 +238,13 @@
                                         </div>
                                         <div class="row ">
                                             
-                                            <div class="col-sm-12 col-md-4">
-                                                <label>คะเเนน : </label>
-                                                <input class="form-control form-control-sm" type="text" name="point" id="point" value="" readonly></input>
+                                            
+                                            <div class="col-sm-12 col-md-3">
+                                                <label>วันที่ตรวจสอบ : </label>
+                                                <input class="form-control form-control-sm" type="date" name="qcdate" id="qcdate" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
-                                                
                                             </div>
                                             <div class="col-sm-12 col-md-4">
                                                 <label>ชื่อผู้ตรวจสอบ : </label>

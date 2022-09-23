@@ -56,6 +56,7 @@
                                         <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                         <a href="printqc.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เคลียร์ข้อมูล</button></a>
                                         <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-printer"></i> พิมพ์รายงาน</button>
+                                        <button class="btn btn-success mt-4 btn-sm" id="btn-pdf" type="button"><i class="bi bi-filetype-pdf"></i> PDF</button>
                                     </div>
                                     
                                 </div>
@@ -256,6 +257,7 @@
                 $("#qifalse").prop("disabled",true);
                 $("#page3").addClass("active");
                 $("#btn-send").addClass("disabled");
+                $("#btn-pdf").addClass("disabled");
                 $("#btn-qi").addClass("disabled");
                 getdata("","");  
        
@@ -272,7 +274,8 @@
                         $("#qitrue").prop("disabled",false);
                         $("#qifalse").prop("disabled",false);
                         $("#btn-send").removeClass("disabled");     
-                        $("#btn-qi").removeClass("disabled");                          
+                        $("#btn-qi").removeClass("disabled");   
+                        $("#btn-pdf").removeClass("disabled");                        
                         getdata($("#mrno").val(),$("#pallet").val());  
                        
                     }         
@@ -397,6 +400,14 @@
                     var mrno = $("#mrno").val();
                     var palet = $("#pallet").val();
                     var url = "report/qcreport.jsp?mrno="+mrno+"&palet="+palet;
+                 
+                    window.open(url, '_blank');
+               
+                });
+                $("#btn-pdf").click(function(){
+                    var mrno = $("#mrno").val();
+                    var palet = $("#pallet").val();
+                    var url = "report/qcreportpdf.jsp?mrno="+mrno+"&palet="+palet;
                  
                     window.open(url, '_blank');
                

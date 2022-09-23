@@ -40,7 +40,7 @@ public class SVedititem extends HttpServlet {
 
                 if (status.equals("G1")) {
                     String mrno = request.getParameter("mrno");
-                    String item = request.getParameter("item");
+                    String item = request.getParameter("item").toUpperCase();
                     String ROLL = request.getParameter("ROLL");
                     String PALET = request.getParameter("PALET");
                     String QUANTITY = request.getParameter("QUANTITY");
@@ -63,7 +63,7 @@ public class SVedititem extends HttpServlet {
                     }
 
                 } else if (status.equals("G2")) {
-                    String ITEM = (String) request.getParameter("ITEM");
+                    String ITEM = (String) request.getParameter("ITEM").toUpperCase();
                     String ROLL = (String) request.getParameter("ROLL");
                     String QUANTITY = (String) request.getParameter("QUANTITY");
                     String UNIT = (String) request.getParameter("UNIT");
@@ -197,7 +197,7 @@ public class SVedititem extends HttpServlet {
                     String remark2 = (String) request.getParameter("remark2");
                     String remark3 = (String) request.getParameter("remark3");
                     String mrno = (String) request.getParameter("mrno");
-                    String item = (String) request.getParameter("item");
+                    String item = (String) request.getParameter("item").toUpperCase();
                     String roll = (String) request.getParameter("roll");
                     String gradeqc = (String) request.getParameter("gradeqc");
 

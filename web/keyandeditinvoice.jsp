@@ -122,7 +122,7 @@
                         scrollY: true ,
                         scrollX: true ,
                         columnDefs: [
-                            { "width": "7rem", "targets": 0 },
+                            { "width": "15rem", "targets": 0 },
                             { "width": "5rem", "targets": 1 },
                             { "width": "5rem", "targets": 2 },
                             { "width": "5rem", "targets": 3 },
