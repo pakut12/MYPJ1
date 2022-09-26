@@ -49,16 +49,15 @@ public class SVgetdatawm extends HttpServlet {
             ResultSet rec = null;
             Connection conn = null;
             PreparedStatement ps = null;
-
-//            conn = DB.ConnDB.getConnection();
+            String partwork = "C:/Users/pakutsing/Desktop/Github/MYPJ1/web/file/";
+            String partweb = "/web/webapps/MYPJ1/file/";
+            //            conn = DB.ConnDB.getConnection();
             conn = DB.ConnDB.getConnection();
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
 
                 try {
                     String menr = request.getParameter("mrno").trim();
-
-
                     String page = "";
 
                     String sql = "select * from wmbarcode where  wmbarcode.MRNO = ? ";
@@ -805,7 +804,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("remark2"));
                         arrjson.add(rec.getString("remark3"));
                         arrjson.add(rec.getString("toterr"));
-                        arrjson.add(rec.getString("mark_toterr"));
+
                         if (rec.getInt("toterr") > 8) {
                             mark = "*";
                         } else {
@@ -1177,7 +1176,7 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page =  mrno.trim() + palet.trim() + ".xlsx";
+                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
                     XSSFFont font = workbook.createFont();
                     font.setFontName("Arial");
@@ -1197,7 +1196,7 @@ public class SVgetdatawm extends HttpServlet {
                     s1.setBorderRight(BorderStyle.THIN);
                     s1.setFont((Font) font);
                     XSSFCell cell = row1.createCell(0);
-                   
+
                     row1.createCell(0).setCellValue("ม้วนที่");
                     row1.createCell(1).setCellValue("รหัสวัตถุดิบ");
                     row1.createCell(2).setCellValue("พาเลต");
