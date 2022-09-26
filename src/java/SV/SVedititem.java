@@ -78,8 +78,8 @@ public class SVedititem extends HttpServlet {
                     if (ps1.executeUpdate() > 0) {
                         n++;
                     }
-                    
-                    if (n == 2) {
+
+                    if (n > 0) {
                         out.print("true");
                     } else {
                         out.print("false");
@@ -87,6 +87,7 @@ public class SVedititem extends HttpServlet {
 
 
                 } else if (status.equals("G2")) {
+                    int n = 0;
                     String ITEM = (String) request.getParameter("ITEM").toUpperCase();
                     String ROLL = (String) request.getParameter("ROLL");
                     String QUANTITY = (String) request.getParameter("QUANTITY");
@@ -99,7 +100,7 @@ public class SVedititem extends HttpServlet {
                     String INVOICEDATE = (String) request.getParameter("INVOICEDATE");
                     String LOT = (String) request.getParameter("LOT");
                     String MRNO = (String) request.getParameter("MRNO");
-                    String ITEM1 = (String) request.getParameter("ITEM1");
+                    String ITEM1 = (String) request.getParameter("ITEM1").toUpperCase();
                     String ROLL1 = (String) request.getParameter("ROLL1");
                     String PALET = (String) request.getParameter("PALET");
 
@@ -122,10 +123,30 @@ public class SVedititem extends HttpServlet {
                     ps.setString(14, ROLL1);
 
                     if (ps.executeUpdate() > 0) {
+                        n++;
+                    }
+
+                    String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =?, wmqck.ITEM= ? , wmqck.ROLL= ? WHERE wmqck.MRNO = ? AND wmqck.ITEM= ? AND wmqck.ROLL =?";
+
+                    ps1 = con.prepareStatement(sql1);
+                    ps1.setString(1, PALET);
+                    ps1.setString(2, QUANTITY);
+                    ps1.setString(3, ITEM);
+                    ps1.setString(4, ROLL);
+                    ps1.setString(5, MRNO);
+                    ps1.setString(6, ITEM1);
+                    ps1.setString(7, ROLL1);
+
+                    if (ps1.executeUpdate() > 0) {
+                        n++;
+                    }
+
+                    if (n > 0) {
                         out.print("true");
                     } else {
                         out.print("false");
                     }
+
                 } else if (status.equals("G3")) {
                     String actqty = request.getParameter("actqty");
                     String ethread = request.getParameter("ethread");

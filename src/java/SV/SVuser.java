@@ -124,6 +124,8 @@ public class SVuser extends HttpServlet {
                             status = "RM";
                         } else if (status.equals("03")) {
                             status = "QC RM";
+                        } else if (status.equals("04")) {
+                            status = "PT";
                         }
 
                         if (statusqi.equals("Y")) {
@@ -217,7 +219,7 @@ public class SVuser extends HttpServlet {
                         rec = ps.executeQuery();
                         String url = "/displayedituser.jsp";
                         while ((rec.next()) && (rec != null)) {
-               
+
                             request.setAttribute("userid", rec.getString("userid"));
                             request.setAttribute("password", rec.getString("password"));
                             request.setAttribute("firstname", rec.getString("firstname"));
@@ -226,7 +228,7 @@ public class SVuser extends HttpServlet {
                             request.setAttribute("statusqi", rec.getString("statusqi"));
 
                         }
-                      
+
                         getServletContext().getRequestDispatcher(url).forward(request, response);
 
 

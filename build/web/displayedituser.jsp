@@ -46,6 +46,8 @@
                 msgstatus = "RM";
             } else if (status.equals("03")) {
                 msgstatus = "QC RM";
+            }else if (status.equals("04")) {
+                msgstatus = "PT";
             }
 
             if (statusqi.equals("Y")) {
@@ -89,6 +91,7 @@
                                                         <option value="01">Admin</option>
                                                         <option value="02">RM</option>
                                                         <option value="03">QC RM</option>
+                                                        <option value="04">PT</option>
                                                     </select>
                                                     <label>Approve  : </label>
                                                     <select class="form-select form-select-sm" id="statusqi" required>
@@ -157,7 +160,9 @@
                                         icon: 'success',
                                         title: 'บันทึกข้อมูลสำเร็จ',
                                         text: 'บันทึกข้อมูลสำเร็จ'
-                                    })
+                                    });
+                                    setInterval(function () {window.location="displayuser.jsp";}, 1000);
+                                  
                                 }else if(msg == 'false'){
                                     Swal.fire({
                                         icon: 'error',

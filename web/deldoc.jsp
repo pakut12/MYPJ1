@@ -268,8 +268,8 @@
                 });
          
                 $("#del_wmbarcode").click(function(){
-                    //$("#btn-send").addClass("disabled");
-                    //$("#btn-send").text("กำลังส่ง....");
+                    $("#del_wmbarcode").addClass("disabled");
+                    $("#del_wmbarcode").text("กำลังลบ....");
                     var mrno = $("#mrno").val();
                     var item = $("#item").val();
                     $.ajax({
@@ -291,6 +291,8 @@
                                     text:"ลบข้อมูลไม่สำเร็จ"
                                 });
                             } 
+                            $("#del_wmbarcode").removeClass("disabled");
+                            $("#del_wmbarcode").text("ลบ");
                             getdata($("#mrno").val(),$("#item").val());  
                             getdata1($("#mrno").val(),$("#item").val());  
                             
@@ -302,6 +304,8 @@
                 $("#del_wmqck").click(function(){
                     var mrno = $("#mrno").val();
                     var item = $("#item").val();
+                    $("#del_wmqck").addClass("disabled");
+                    $("#del_wmqck").text("กำลังลบ....");
                     $.ajax({
                         type: "POST",
                         url: 'del?status=D2&mrno='+mrno+'&item='+item,
@@ -321,6 +325,8 @@
                                     text:"ลบข้อมูลไม่สำเร็จ"
                                 });
                             } 
+                            $("#del_wmbarcode").removeClass("disabled");
+                            $("#del_wmbarcode").text("ลบ");
                             getdata($("#mrno").val(),$("#item").val());  
                             getdata1($("#mrno").val(),$("#item").val());  
                             

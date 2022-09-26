@@ -158,78 +158,97 @@
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][0]
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][1]
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][2]
+                                    ,color:'#1700FF',bold:true
                                 },
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][3]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][4]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][5]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][6]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][7] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][8] 
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][9]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][10] 
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][11]
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][12] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][13] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][14] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][15] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text:  de.data[x][16] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][17]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][18]
+                                    ,color:'#1700FF',bold:true
                                 }
                                             
                             ];
@@ -239,78 +258,97 @@
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][0]
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][1]
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][2]
+                                    ,color:'#1700FF',bold:true
                                 },
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][3]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][4]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][5]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][6]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][7] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][8] 
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][9]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][10] 
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][11]
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][12] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][13] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][14] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][15] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text:  de.data[x][16] 
+                                    ,color:'#1700FF',bold:true
                                 }, 
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][17]
+                                    ,color:'#1700FF',bold:true
                                 },  
                                 {
                                     border: [false, false, true, false],  
                                     text: de.data[x][18]
+                                    ,color:'#1700FF',bold:true
                                 }
                                             
                             ];
@@ -350,7 +388,7 @@
                                     columns: [
                                         {
                                             width: 'auto', 
-                                            text: [{ text: 'จำนวนที่มา : ', bold:true },{ text: de.sumqt+' '+de.UNIT },{ text: '\nจำนวนที่ได้ : ', bold:true },{ text: de.sumaqt+' '+de.UNIT }],
+                                            text: [{ text: 'จำนวนที่มา : ', bold:true },{ text: de.sumqt+' '+de.UNIT,color:'#1700FF',bold:true },{ text: '\nจำนวนที่ได้ : ', bold:true },{ text: de.sumaqt+' '+de.UNIT ,color:'#1700FF',bold:true}],
                                             fontSize: 12,
                                             alignment: 'center',
                                             margin: [60,20, 0, 50]
@@ -358,7 +396,7 @@
                                         {
                                             width: 'auto',
                                             
-                                            text: [{ text: 'สรุปผล : \n', bold:true },{ text: re1+'\n'+re2+'\n'+re3 },{ text: '\nFORM NO.FM-TWN-02/1 เเก้ไขครั้งที่ 01 อนุมัติใช้ 01/07/49', bold:true }],
+                                            text: [{ text: 'สรุปผล : \n', bold:true },{ text: re1+'\n'+re2+'\n'+re3 ,color:'#1700FF',bold:true },{ text: '\nFORM NO.FM-TWN-02/1 เเก้ไขครั้งที่ 01 อนุมัติใช้ 01/07/49', bold:true }],
                                             
                                             fontSize: 12,
                                             alignment: 'left',
@@ -368,7 +406,7 @@
                                         {
                                             width: '*',
                                    
-                                            text: [{ text: 'น้ำหนัก KG/M : \n', bold:true },{ text: de.sumweight }],
+                                            text: [{ text: 'น้ำหนัก KG/M : \n', bold:true },{ text: de.sumweight ,color:'#1700FF',bold:true  }],
                                             fontSize: 12,
                                             alignment: 'center',
                                             margin: [0,20, 0, 0]
@@ -376,7 +414,7 @@
                                         },
                                         {
                                             width: 'auto',
-                                            text: [{ text: 'ชื่อผู้ตรวจสอบ : ', bold:true },{ text: de.BYNAME+'\n ผู้รับผิดชอบ.................................\n จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n' }],
+                                            text: [{ text: 'ชื่อผู้ตรวจสอบ : ', bold:true },{ text: de.BYNAME ,color:'#1700FF',bold:true  },{ text: '\nผู้รับผิดชอบ : ' ,bold:true  },{ text: de.BYNAME1,bold:true,color:'#1700FF'  },{ text: '\n  จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',bold:true  }],
                                             fontSize: 12,
                                             alignment: 'left',
                                             margin: [0,10, 35, 50]
@@ -395,7 +433,7 @@
                                     columns: [
                                         {
                                             width: '*',
-                                            text: [{ text: 'สาขา : ', bold:true },{ text: de.PLANT }],
+                                            text: [{ text: 'สาขา : ', bold:true },{ text: de.PLANT ,color:'#1700FF',bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,20, 0, 0]
@@ -411,7 +449,7 @@
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'หน้า : ', bold:true },{ text: currentPage  }],
+                                            text: [{ text: 'หน้า : ', bold:true },{ text: currentPage ,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,20, 40, 0]
@@ -422,26 +460,26 @@
                                 {
                                     columns: [{
                                             width: '*',
-                                            text: [{ text: 'รหัส : ', bold:true },{ text: de.ITEM }],
+                                            text: [{ text: 'รหัส : ', bold:true },{ text: de.ITEM ,color:'#1700FF',bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'เลขที่ใบสั้งซื้อ : ', bold:true },{ text: de.PO  }],
+                                            text: [{ text: 'เลขที่ใบสั้งซื้อ : ', bold:true },{ text: de.PO ,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'เลขที่บิล : ', bold:true },{ text: de.INVOICE }],
+                                            text: [{ text: 'เลขที่บิล : ', bold:true },{ text: de.INVOICE ,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'วันที่บิล : ', bold:true },{ text: covertoday(de.INVOICEDATE)  }],
+                                            text: [{ text: 'วันที่บิล : ', bold:true },{ text: covertoday(de.INVOICEDATE) ,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -450,7 +488,7 @@
                                 {
                                     columns: [{
                                             width: 'auto',
-                                            text: [{ text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ', bold:true },{ text: de.DESC1 }],
+                                            text: [{ text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ', bold:true },{ text: de.DESC1 ,color:'#1700FF',bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
@@ -458,7 +496,7 @@
                             
                                         {
                                             width: '*',
-                                            text: [{ text: 'พาเลต : ', bold:true },{ text: de.PALET }],
+                                            text: [{ text: 'พาเลต : ', bold:true },{ text: de.PALET,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -469,14 +507,14 @@
                                     columns: [
                                         {
                                             width: '*',
-                                            text: [{ text: 'Description 2 : ', bold:true },{ text: de.DESC2 }],
+                                            text: [{ text: 'Description 2 : ', bold:true },{ text: de.DESC2 ,color:'#1700FF',bold:true }],
                                             fontSize: 13,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         }, 
                                         {
                                             width: '*',
-                                            text: [{ text: 'Description 3 : ', bold:true },{ text: de.DESC3 }],
+                                            text: [{ text: 'Description 3 : ', bold:true },{ text: de.DESC3,color:'#1700FF',bold:true }],
                                             fontSize: 13,
                                             alignment: 'right',
                                             margin: [0,0, 40, 0]
@@ -487,26 +525,26 @@
                                 {
                                     columns: [{
                                             width: 'auto',
-                                            text: [{ text: 'ร้านค้า : ', bold:true },{ text: de.SUPNAME }],
+                                            text: [{ text: 'ร้านค้า : ', bold:true },{ text: de.SUPNAME ,color:'#1700FF',bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
                                             margin: [40,0, 0, 0]
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'เลขที่เอกสาร : ', bold:true },{ text: de.MRNO }],
+                                            text: [{ text: 'เลขที่เอกสาร : ', bold:true },{ text: de.MRNO,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'หน่วยนับ : ', bold:true },{ text: de.UNIT }],
+                                            text: [{ text: 'หน่วยนับ : ', bold:true },{ text: de.UNIT,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
                                             width: '*',
-                                            text: [{ text: 'วันที่ : ', bold:true },{ text: covertoday(de.QCDATE) }],
+                                            text: [{ text: 'วันที่ : ', bold:true },{ text: covertoday(de.QCDATE) ,color:'#1700FF',bold:true }],
                                         
                                             fontSize: 14,
                                             alignment: 'right',
@@ -617,7 +655,7 @@
                                         35, 
                                         17, 
                                         21, 
-                                       4],
+                                        4],
                                     body: arr1
                                    
                                    
