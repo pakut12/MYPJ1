@@ -223,12 +223,12 @@
 
 <%
                 } else if (status0.equals("04")) {
-                    x = "PT";
+                    x = "CUT";
 
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
-        <a class="navbar-brand" href="#">PT</a>
+        <a class="navbar-brand" href="#">CUT</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -243,7 +243,7 @@
                 
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  id="page3">
-                        <i class="bi bi-list"></i> PT
+                        <i class="bi bi-list"></i> CUT
                     </a>
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">เมนูผ้าถัก</h6></li>

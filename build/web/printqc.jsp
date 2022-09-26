@@ -295,8 +295,6 @@
                     var qitrue = $("#qitrue").val(); 
                     var qifalse = $("#qifalse").val(); 
                   
-                    
-                   
                     if($("#qitrue").is(":checked")){
                         $.ajax({
                             type: "POST",

@@ -47,7 +47,7 @@
             } else if (status.equals("03")) {
                 msgstatus = "QC RM";
             }else if (status.equals("04")) {
-                msgstatus = "PT";
+                msgstatus = "CUT";
             }
 
             if (statusqi.equals("Y")) {

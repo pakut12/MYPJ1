@@ -125,7 +125,7 @@ public class SVuser extends HttpServlet {
                         } else if (status.equals("03")) {
                             status = "QC RM";
                         } else if (status.equals("04")) {
-                            status = "PT";
+                            status = "CUT";
                         }
 
                         if (statusqi.equals("Y")) {

@@ -18,8 +18,10 @@
     <style>
         body{
             font-size:14px;
-            height:5.0in;
-            width:9in; 
+            
+            
+            height:4.0in;
+            width:9in;
             
             
             
@@ -91,7 +93,7 @@
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">วันที่ผ้าเข้า : </label>
-                <label class="fw-bold h2"  id="today1"><%=ctoD(request.getAttribute("CREATEDATE").toString())%></label> 
+                <label class="fw-bold h2"  id=""><%=ctoD(request.getAttribute("date").toString())%></label> 
             </div>
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice No : </label>

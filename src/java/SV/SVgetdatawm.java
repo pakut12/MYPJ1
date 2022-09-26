@@ -1172,12 +1172,12 @@ public class SVgetdatawm extends HttpServlet {
                     String page = null;
                     XSSFWorkbook workbook = new XSSFWorkbook();
                     XSSFSheet sheet = workbook.createSheet("name");
-                    String sql = "select wmqck.* from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+                    String sql = "select * from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page = partweb + mrno.trim() + palet.trim() + ".xlsx";
+                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
                     XSSFFont font = workbook.createFont();
                     font.setFontName("Arial");
@@ -1201,14 +1201,16 @@ public class SVgetdatawm extends HttpServlet {
                     row1.createCell(0).setCellValue("ม้วนที่");
                     row1.createCell(1).setCellValue("รหัสวัตถุดิบ");
                     row1.createCell(2).setCellValue("พาเลต");
-                    row1.createCell(3).setCellValue("จำนวนนับได้");
-                    row1.createCell(4).setCellValue("% การสูญเสีย");
-                    row1.createCell(5).setCellValue("ผู้ตรวจสอบ");
-                    row1.createCell(6).setCellValue("สรุปผล1");
-                    row1.createCell(7).setCellValue("สรุปผล2");
-                    row1.createCell(8).setCellValue("สรุปผล3");
-                    row1.createCell(9).setCellValue("ตำหนิรวม");
-                    row1.createCell(10).setCellValue("Mark");
+                    row1.createCell(3).setCellValue("หม้อย้อม");
+                    row1.createCell(4).setCellValue("บาร์โค๊ดร้านค้า");
+                    row1.createCell(5).setCellValue("จำนวนนับได้");
+                    row1.createCell(6).setCellValue("% การสูญเสีย");
+                    row1.createCell(7).setCellValue("ผู้ตรวจสอบ");
+                    row1.createCell(8).setCellValue("สรุปผล1");
+                    row1.createCell(9).setCellValue("สรุปผล2");
+                    row1.createCell(10).setCellValue("สรุปผล3");
+                    row1.createCell(11).setCellValue("ตำหนิรวม");
+                    row1.createCell(12).setCellValue("Mark");
 
 
                     row1.getCell(0).setCellStyle((CellStyle) s1);
@@ -1222,28 +1224,33 @@ public class SVgetdatawm extends HttpServlet {
                     row1.getCell(8).setCellStyle((CellStyle) s1);
                     row1.getCell(9).setCellStyle((CellStyle) s1);
                     row1.getCell(10).setCellStyle((CellStyle) s1);
+                    row1.getCell(11).setCellStyle((CellStyle) s1);
+                    row1.getCell(12).setCellStyle((CellStyle) s1);
+
                     int n = 1;
                     while (rec.next() && rec != null) {
                         String mark = "";
                         XSSFRow row = sheet.createRow(n);
                         sheet.autoSizeColumn(n);
-                        
+
                         row.createCell(0).setCellValue(rec.getString("roll"));
                         row.createCell(1).setCellValue(rec.getString("item"));
                         row.createCell(2).setCellValue(rec.getString("palet"));
-                        row.createCell(3).setCellValue(rec.getString("actqty"));
-                        row.createCell(4).setCellValue(rec.getString("gradeqc"));
-                        row.createCell(5).setCellValue(rec.getString("byname"));
-                        row.createCell(6).setCellValue(rec.getString("remark1"));
-                        row.createCell(7).setCellValue(rec.getString("remark2"));
-                        row.createCell(8).setCellValue(rec.getString("remark3"));
-                        row.createCell(9).setCellValue(rec.getString("toterr"));
+                        row.createCell(3).setCellValue(rec.getString("batch"));
+                        row.createCell(4).setCellValue(rec.getString("code"));
+                        row.createCell(5).setCellValue(rec.getString("actqty"));
+                        row.createCell(6).setCellValue(rec.getString("gradeqc"));
+                        row.createCell(7).setCellValue(rec.getString("byname"));
+                        row.createCell(8).setCellValue(rec.getString("remark1"));
+                        row.createCell(9).setCellValue(rec.getString("remark2"));
+                        row.createCell(10).setCellValue(rec.getString("remark3"));
+                        row.createCell(11).setCellValue(rec.getString("toterr"));
                         if (rec.getInt("toterr") > 8) {
                             mark = "*";
                         } else {
                             mark = "";
                         }
-                        row.createCell(10).setCellValue(mark);
+                        row.createCell(12).setCellValue(mark);
                         row.getCell(0).setCellStyle((CellStyle) s);
                         row.getCell(1).setCellStyle((CellStyle) s);
                         row.getCell(2).setCellStyle((CellStyle) s);
@@ -1255,12 +1262,15 @@ public class SVgetdatawm extends HttpServlet {
                         row.getCell(8).setCellStyle((CellStyle) s);
                         row.getCell(9).setCellStyle((CellStyle) s);
                         row.getCell(10).setCellStyle((CellStyle) s);
+                        row.getCell(11).setCellStyle((CellStyle) s);
+                        row.getCell(12).setCellStyle((CellStyle) s);
                         n++;
                     }
                     FileOutputStream fos = new FileOutputStream(page);
                     workbook.write(fos);
                     fos.close();
-                    out.print(page.replace("/web/webapps", ""));
+                    out.print(page);
+                //out.print(page.replace("/web/webapps", ""));
 
                 } catch (Exception e) {
                     e.printStackTrace();
