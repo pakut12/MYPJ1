@@ -143,7 +143,7 @@
          
                 $("#btn-send").click(function(){
                     $("#btn-send").addClass("disabled");
-                    $("#btn-send").text("กำลังส่ง....");
+                    $("#btn-send").text("กำลังบันทึก....");
                     var mrno = $('#mrno').val();
                     var item = $('#item').val();
                     var ROLL = table.$('#txt0').serializeArray();

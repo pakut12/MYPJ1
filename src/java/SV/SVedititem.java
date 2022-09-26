@@ -37,13 +37,14 @@ public class SVedititem extends HttpServlet {
                 ResultSet res = null;
                 PreparedStatement ps = null;
                 con = DB.ConnDB.getConnection();
-                
+
                 Connection con1 = null;
                 ResultSet res1 = null;
                 PreparedStatement ps1 = null;
                 con = DB.ConnDB.getConnection();
 
                 if (status.equals("G1")) {
+                    int n = 0;
                     String mrno = request.getParameter("mrno");
                     String item = request.getParameter("item").toUpperCase();
                     String ROLL = request.getParameter("ROLL");
@@ -62,10 +63,28 @@ public class SVedititem extends HttpServlet {
                     ps.setString(6, ROLL);
 
                     if (ps.executeUpdate() > 0) {
+                        n++;
+                    }
+
+                    String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
+
+                    ps1 = con.prepareStatement(sql1);
+                    ps1.setString(1, PALET);
+                    ps1.setString(2, QUANTITY);
+                    ps1.setString(3, mrno);
+                    ps1.setString(4, item);
+                    ps1.setString(5, ROLL);
+
+                    if (ps1.executeUpdate() > 0) {
+                        n++;
+                    }
+                    
+                    if (n == 2) {
                         out.print("true");
                     } else {
                         out.print("false");
                     }
+
 
                 } else if (status.equals("G2")) {
                     String ITEM = (String) request.getParameter("ITEM").toUpperCase();
