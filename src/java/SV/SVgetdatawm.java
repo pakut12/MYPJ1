@@ -467,7 +467,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         arrjson.add(rec.getString("ROLL"));
                         arrjson.add(rec.getString("QUANTITY"));
-
+                        obj.put("INVOICEDATE", rec.getString("INVOICEDATE").replace(" 00:00:00.0", ""));
                         arrlist.add(arrjson);
                         n++;
                     }
@@ -477,6 +477,7 @@ public class SVgetdatawm extends HttpServlet {
                         x += sum.get(z);
                         z++;
                     }
+
                     obj.put("sum", x);
                     obj.put("count", n);
                     obj.put("data", arrlist);

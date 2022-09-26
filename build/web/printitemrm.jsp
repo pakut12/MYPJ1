@@ -23,7 +23,7 @@
             String pt = "yyyy-MM-dd";
             SimpleDateFormat ft1 = new SimpleDateFormat(pt, Locale.ENGLISH);
             String d1 = ft1.format(new Date());
-            
+
 
 
                 %>
@@ -158,6 +158,7 @@
                             var de = $.parseJSON(msg);
                             $("#totalrow").val(de.count);   
                             $("#totallong").val(de.sum);  
+                            $("#today").val(de.INVOICEDATE); 
                             
                             if(mrno != "" && item != "" && palet != ""){
                                 if(de.count > 0){
