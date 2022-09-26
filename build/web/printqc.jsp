@@ -52,11 +52,12 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-6">
                                         <button class="btn btn-secondary mt-4 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i> ดึงข้อมูล</button>
                                         <a href="printqc.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เคลียร์ข้อมูล</button></a>
                                         <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-printer"></i> พิมพ์รายงาน</button>
                                         <button class="btn btn-success mt-4 btn-sm" id="btn-pdf" type="button"><i class="bi bi-filetype-pdf"></i> PDF</button>
+                                        <button class="btn btn-success mt-4 btn-sm" id="btn-exportexcal" type="button"><i class="bi bi-file-spreadsheet"></i> Excal</button>
                                     </div>
                                     
                                 </div>
@@ -150,6 +151,9 @@
         <script>
             
             $(document).ready(function () {
+                
+                var qi = "<%=statusqi%>"
+              
                 $("#btn-getdata").addClass("disabled");
                 function getpalet(mrno){
                     $("#pallet").empty();
@@ -274,7 +278,10 @@
                         $("#qitrue").prop("disabled",false);
                         $("#qifalse").prop("disabled",false);
                         $("#btn-send").removeClass("disabled");     
-                        $("#btn-qi").removeClass("disabled");   
+                        if(qi == "Y"){
+                            $("#btn-qi").removeClass("disabled");   
+                        }
+                       
                         $("#btn-pdf").removeClass("disabled");                        
                         getdata($("#mrno").val(),$("#pallet").val());  
                        
@@ -412,6 +419,23 @@
                     window.open(url, '_blank');
                
                 });
+                
+                $("#btn-exportexcal").click(function(){
+                    var mrno = $("#mrno").val();
+                    var palet = $("#pallet").val();
+                    $.ajax({
+                        type: "POST",
+                        url: 'getdatawm?status=G21&mrno='+mrno+'&palet='+palet,
+                        success: function(msg,status){
+                           
+                            console.log(msg);
+                           window.open(msg, '_blank');
+                            
+                        }    
+                    }); 
+               
+                });
+    
             });
         </script>
         <script>

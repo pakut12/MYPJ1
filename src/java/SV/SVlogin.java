@@ -54,6 +54,7 @@ public class SVlogin extends HttpServlet {
                     page = "home.jsp";
 
                     request.getSession().setAttribute("status", rec.getString("status"));
+                    request.getSession().setAttribute("statusqi", rec.getString("statusqi"));
                     request.getSession().setAttribute("user", user);
                     request.getSession().setAttribute("name", rec.getString("firstname").replace(" ", ""));
                     request.getSession().setAttribute("surname", rec.getString("lastname"));

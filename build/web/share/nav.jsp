@@ -7,6 +7,7 @@
 <%@page import="java.text.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+            String statusqi = (String) session.getAttribute("statusqi");
             try {
 
 
@@ -19,10 +20,11 @@
 
 %>
 <%
-    String x = null;
 
-    if (status0.equals("01")) {
-        x = "Admin";
+                String x = null;
+
+                if (status0.equals("01")) {
+                    x = "Admin";
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -100,8 +102,8 @@
 
 <br><br><br><br>
 <%
-} else if (status0.equals("02")) {
-    x = "RM";
+                } else if (status0.equals("02")) {
+                    x = "RM";
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -164,8 +166,8 @@
 
 <br><br><br><br>
 <%
-} else if (status0.equals("03")) {
-    x = "QC RM";
+                } else if (status0.equals("03")) {
+                    x = "QC RM";
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
     <div class="container">
@@ -220,8 +222,8 @@
 
 
 <%
-} else if (status0.equals("04")) {
-      x = "PT";
+                } else if (status0.equals("04")) {
+                    x = "PT";
 
 %>
 <nav class="navbar navbar-expand-lg bg-light fixed-top shadow ">
@@ -245,7 +247,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><h6 class="dropdown-header">เมนูผ้าถัก</h6></li>
-                       
+                        
                         <li><a class="dropdown-item" href="printqc.jsp"><i class="bi bi-bar-chart"></i> โปรเเกรมพิมพ์ใบตรวจสอบผ้าถัก</a></li>
                         
                     </ul>

@@ -14,7 +14,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import org.json.simple.*;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -781,6 +792,7 @@ public class SVgetdatawm extends HttpServlet {
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
+                    String mark = "";
                     while ((rec.next()) && (rec != null)) {
                         JSONArray arrjson = new JSONArray();
                         arrjson.add(rec.getString("roll"));
@@ -794,7 +806,12 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("remark3"));
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add(rec.getString("mark_toterr"));
-
+                        if (rec.getInt("toterr") > 8) {
+                            mark = "*";
+                        } else {
+                            mark = "";
+                        }
+                        arrjson.add(mark);
 
                         arrlist.add(arrjson);
                         n++;
@@ -1143,6 +1160,107 @@ public class SVgetdatawm extends HttpServlet {
 
 
                 //getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            } else if (status.equals("G21")) {
+                try {
+                    String mrno = request.getParameter("mrno");
+                    String palet = request.getParameter("palet");
+                    String page = null;
+                    XSSFWorkbook workbook = new XSSFWorkbook();
+                    XSSFSheet sheet = workbook.createSheet("name");
+                    String sql = "select wmqck.* from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1, mrno);
+                    ps.setString(2, palet);
+                    rec = ps.executeQuery();
+                    page = webRootPath + mrno.trim() + palet.trim() + ".xlsx";
+                    XSSFRow row1 = sheet.createRow(0);
+                    XSSFFont font = workbook.createFont();
+                    font.setFontName("Arial");
+                    font.setFontHeightInPoints((short) 10);
+                    font.setBold(true);
+                    XSSFCellStyle s = workbook.createCellStyle();
+                    s.setAlignment(HorizontalAlignment.CENTER);
+                    s.setBorderBottom(BorderStyle.THIN);
+                    s.setBorderTop(BorderStyle.THIN);
+                    s.setBorderLeft(BorderStyle.THIN);
+                    s.setBorderRight(BorderStyle.THIN);
+                    XSSFCellStyle s1 = workbook.createCellStyle();
+                    s1.setAlignment(HorizontalAlignment.CENTER);
+                    s1.setBorderBottom(BorderStyle.THIN);
+                    s1.setBorderTop(BorderStyle.THIN);
+                    s1.setBorderLeft(BorderStyle.THIN);
+                    s1.setBorderRight(BorderStyle.THIN);
+                    s1.setFont((Font) font);
+                    XSSFCell cell = row1.createCell(0);
+                   
+                    row1.createCell(0).setCellValue("ม้วนที่");
+                    row1.createCell(1).setCellValue("รหัสวัตถุดิบ");
+                    row1.createCell(2).setCellValue("พาเลต");
+                    row1.createCell(3).setCellValue("จำนวนนับได้");
+                    row1.createCell(4).setCellValue("% การสูญเสีย");
+                    row1.createCell(5).setCellValue("ผู้ตรวจสอบ");
+                    row1.createCell(6).setCellValue("สรุปผล1");
+                    row1.createCell(7).setCellValue("สรุปผล2");
+                    row1.createCell(8).setCellValue("สรุปผล3");
+                    row1.createCell(9).setCellValue("ตำหนิรวม");
+                    row1.createCell(10).setCellValue("Mark");
+
+                    row1.createCell(10).setCellValue("Mark");
+                    row1.getCell(0).setCellStyle((CellStyle) s1);
+                    row1.getCell(1).setCellStyle((CellStyle) s1);
+                    row1.getCell(2).setCellStyle((CellStyle) s1);
+                    row1.getCell(3).setCellStyle((CellStyle) s1);
+                    row1.getCell(4).setCellStyle((CellStyle) s1);
+                    row1.getCell(5).setCellStyle((CellStyle) s1);
+                    row1.getCell(6).setCellStyle((CellStyle) s1);
+                    row1.getCell(7).setCellStyle((CellStyle) s1);
+                    row1.getCell(8).setCellStyle((CellStyle) s1);
+                    row1.getCell(9).setCellStyle((CellStyle) s1);
+                    row1.getCell(10).setCellStyle((CellStyle) s1);
+                    int n = 1;
+                    while (rec.next() && rec != null) {
+                        String mark = "";
+                        XSSFRow row = sheet.createRow(n);
+                        sheet.autoSizeColumn(n);
+                        row.createCell(0).setCellValue(rec.getString("roll"));
+                        row.createCell(1).setCellValue(rec.getString("item"));
+                        row.createCell(2).setCellValue(rec.getString("palet"));
+                        row.createCell(3).setCellValue(rec.getString("actqty"));
+                        row.createCell(4).setCellValue(rec.getString("gradeqc"));
+                        row.createCell(5).setCellValue(rec.getString("byname"));
+                        row.createCell(6).setCellValue(rec.getString("remark1"));
+                        row.createCell(7).setCellValue(rec.getString("remark2"));
+                        row.createCell(8).setCellValue(rec.getString("remark3"));
+                        row.createCell(9).setCellValue(rec.getString("toterr"));
+                        if (rec.getInt("toterr") > 8) {
+                            mark = "*";
+                        } else {
+                            mark = "";
+                        }
+                        row.createCell(10).setCellValue(mark);
+                        row.getCell(0).setCellStyle((CellStyle) s);
+                        row.getCell(1).setCellStyle((CellStyle) s);
+                        row.getCell(2).setCellStyle((CellStyle) s);
+                        row.getCell(3).setCellStyle((CellStyle) s);
+                        row.getCell(4).setCellStyle((CellStyle) s);
+                        row.getCell(5).setCellStyle((CellStyle) s);
+                        row.getCell(6).setCellStyle((CellStyle) s);
+                        row.getCell(7).setCellStyle((CellStyle) s);
+                        row.getCell(8).setCellStyle((CellStyle) s);
+                        row.getCell(9).setCellStyle((CellStyle) s);
+                        row.getCell(10).setCellStyle((CellStyle) s);
+                        n++;
+                    }
+                    FileOutputStream fos = new FileOutputStream(page);
+                    workbook.write(fos);
+                    fos.close();
+                    out.print(page);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
