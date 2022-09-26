@@ -263,6 +263,7 @@
                 $("#btn-send").addClass("disabled");
                 $("#btn-pdf").addClass("disabled");
                 $("#btn-qi").addClass("disabled");
+                $("#btn-exportexcal").addClass("disabled");
                 getdata("","");  
        
                 
@@ -281,7 +282,7 @@
                         if(qi == "Y"){
                             $("#btn-qi").removeClass("disabled");   
                         }
-                       
+                        $("#btn-exportexcal").removeClass("disabled");
                         $("#btn-pdf").removeClass("disabled");                        
                         getdata($("#mrno").val(),$("#pallet").val());  
                        
@@ -428,8 +429,8 @@
                         url: 'getdatawm?status=G21&mrno='+mrno+'&palet='+palet,
                         success: function(msg,status){
                            
-                            console.log(msg);
-                           window.open(msg, '_blank');
+                            console.log(window.origin + msg);
+                            window.open(window.origin + msg, '_blank');
                             
                         }    
                     }); 

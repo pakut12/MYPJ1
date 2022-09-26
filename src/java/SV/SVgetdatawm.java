@@ -1177,7 +1177,7 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
+                    page = partweb + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
                     XSSFFont font = workbook.createFont();
                     font.setFontName("Arial");
@@ -1210,7 +1210,7 @@ public class SVgetdatawm extends HttpServlet {
                     row1.createCell(9).setCellValue("ตำหนิรวม");
                     row1.createCell(10).setCellValue("Mark");
 
-                    row1.createCell(10).setCellValue("Mark");
+
                     row1.getCell(0).setCellStyle((CellStyle) s1);
                     row1.getCell(1).setCellStyle((CellStyle) s1);
                     row1.getCell(2).setCellStyle((CellStyle) s1);
@@ -1227,6 +1227,7 @@ public class SVgetdatawm extends HttpServlet {
                         String mark = "";
                         XSSFRow row = sheet.createRow(n);
                         sheet.autoSizeColumn(n);
+                        
                         row.createCell(0).setCellValue(rec.getString("roll"));
                         row.createCell(1).setCellValue(rec.getString("item"));
                         row.createCell(2).setCellValue(rec.getString("palet"));
@@ -1259,7 +1260,7 @@ public class SVgetdatawm extends HttpServlet {
                     FileOutputStream fos = new FileOutputStream(page);
                     workbook.write(fos);
                     fos.close();
-                    out.print(page);
+                    out.print(page.replace("/web/webapps", ""));
 
                 } catch (Exception e) {
                     e.printStackTrace();
