@@ -7,7 +7,7 @@
 <%@page import="java.text.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-            String statusqi = (String) session.getAttribute("statusqi");
+            String statusqi1 = (String) session.getAttribute("statusqi");
             try {
 
 

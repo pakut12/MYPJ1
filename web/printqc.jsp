@@ -152,7 +152,7 @@
             
             $(document).ready(function () {
                 
-                var qi = "<%=statusqi%>"
+                var qi = "<%=statusqi1%>"
               
                 $("#btn-getdata").addClass("disabled");
                 function getpalet(mrno){
