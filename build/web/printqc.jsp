@@ -31,7 +31,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row mb-3">
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-2">
                                         <label>เลขที่เอกสาร : </label>
                                         <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" value="" required></input>
                                         <div class="invalid-feedback mb-3 text-center">
@@ -61,7 +61,7 @@
                                     
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-sm-12 col-md-6">
+                                    <div class="col-sm-12 col-md-4">
                                         <div class="card">
                                             <div class="card-header">
                                                 ผลการตรวจสอบของ QI
@@ -79,7 +79,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-6">
+                                    <div class="col-sm-12 col-md-8">
                                         <div class="card">
                                             <div class="card-header">
                                                 QI Approve

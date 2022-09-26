@@ -37,6 +37,11 @@ public class SVedititem extends HttpServlet {
                 ResultSet res = null;
                 PreparedStatement ps = null;
                 con = DB.ConnDB.getConnection();
+                
+                Connection con1 = null;
+                ResultSet res1 = null;
+                PreparedStatement ps1 = null;
+                con = DB.ConnDB.getConnection();
 
                 if (status.equals("G1")) {
                     String mrno = request.getParameter("mrno");

@@ -239,7 +239,7 @@
                                         <div class="row ">
                                             
                                             
-                                            <div class="col-sm-12 col-md-3">
+                                            <div class="col-sm-12 col-md-4">
                                                 <label>วันที่ตรวจสอบ : </label>
                                                 <input class="form-control form-control-sm" type="date" name="qcdate" id="qcdate" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">

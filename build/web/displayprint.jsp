@@ -86,7 +86,7 @@
         <div class="row">
             <div  class="col-4 ">
                 <label class="fw-bold">Current Date : </label>
-                <label class="fw-bold"><%=ctoDm(request.getAttribute("date").toString())%></label> 
+                <label class="fw-bold"><div id="currentdate"></div></label> 
                 
             </div>
             <div  class="col-4 ">
@@ -106,7 +106,7 @@
             
             <div  class="col-4 ">
                 <label class="fw-bold">Invoice date : </label>
-                <label class="fw-bold"><%=ctoD(request.getAttribute("INVOICEDATE").toString())%></label> 
+                <label class="fw-bold"><%=ctoD(request.getAttribute("date").toString())%></label> 
             </div> 
             
             
@@ -265,10 +265,8 @@
                     var today = d+"/"+m+"/"+y;
                     return today;
                 }
-                $("#today").text(today());
+                $("#currentdate").text(today());
                 $("#today1").text(today1());
-    
-    
     
                 window.print();
                 

@@ -20,11 +20,10 @@
         <div class="container">
             <div class="row">
                 <%
-            String pt = "yyyy-MM-dd'T'HH:mm:ss";
-            SimpleDateFormat ft1 = new SimpleDateFormat(pt);
+            String pt = "yyyy-MM-dd";
+            SimpleDateFormat ft1 = new SimpleDateFormat(pt, Locale.ENGLISH);
             String d1 = ft1.format(new Date());
-            int d3 = Integer.valueOf(d1.substring(0, 4)) - 543;
-            String textdate = String.valueOf(d3) + d1.substring(4, 19);
+            
 
 
                 %>
@@ -79,7 +78,7 @@
                                     <div class="row mt-3 text-center">
                                         <div class="col-sm-12 col-md-3">
                                             <label>วันที่ผ้าเข้า</label>
-                                            <input class="form-control form-control-sm text-center" type="datetime-local" name="today" id="today" value="<%=textdate%>"></input>
+                                            <input class="form-control form-control-sm text-center" type="date" name="today" id="today" value="<%=d1%>"></input>
                                         </div>
                                         <div class="col-sm-12 col-md-3">
                                             <label>เเถวทั้งหมด</label>

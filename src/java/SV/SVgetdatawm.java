@@ -479,7 +479,7 @@ public class SVgetdatawm extends HttpServlet {
                 String mrno = request.getParameter("mrno").trim();
                 String item = request.getParameter("item").toUpperCase().trim();
                 String palet = request.getParameter("palet").trim();
-                String date = request.getParameter("today").trim().replace("T", " ");
+                String date = request.getParameter("today").trim();
                 String row = request.getParameter("totalrow").trim();
                 String roll = request.getParameter("totallong").trim();
 
@@ -1045,13 +1045,14 @@ public class SVgetdatawm extends HttpServlet {
                     String INVOICE = null;
                     String PALET = null;
                     String BYNAME = null;
+                    String BYNAME1 = null;
                     while ((rec.next()) && (rec != null)) {
                         JSONArray arrjson = new JSONArray();
                         arrjson.add(rec.getString("roll"));
                         arrjson.add(rec.getString("width"));
                         arrjson.add(rec.getString("color"));
                         arrjson.add(rec.getString("scolor"));//rec.getString("scolor")
-                        
+
                         arrjson.add(rec.getString("quantity"));
                         arrjson.add(rec.getString("actqty"));
                         arrjson.add(rec.getString("ethread"));
@@ -1107,12 +1108,13 @@ public class SVgetdatawm extends HttpServlet {
                             INVOICE = rec.getString("INVOICE");
                             PALET = rec.getString("PALET");
                             BYNAME = rec.getString("BYNAME");
+                            BYNAME1 = rec.getString("BYNAME1");
                         }
 
 
                         n++;
                     }
-                   
+
                     obj.put("PLANT", PLANT);
                     obj.put("ITEM", ITEM);
                     obj.put("PO", PO);
@@ -1130,7 +1132,7 @@ public class SVgetdatawm extends HttpServlet {
                     obj.put("INVOICE", INVOICE);
                     obj.put("PALET", PALET);
                     obj.put("BYNAME", BYNAME);
-
+                    obj.put("BYNAME1", BYNAME1);
 
                     obj.put("sumweight", sumweight);
                     obj.put("sumqt", sumqt);
