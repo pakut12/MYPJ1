@@ -220,7 +220,7 @@
     </div>
 </nav>
 
-
+<br><br><br><br>
 <%
                 } else if (status0.equals("04")) {
                     x = "CUT";
