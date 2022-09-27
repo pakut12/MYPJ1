@@ -633,9 +633,9 @@
                         content: [
                             {
                                 style: 'tableExample',
-                               
+                                
                                 table: {
-                                    
+                                    headerRows: 1,
                                     widths: [
                                         12, 
                                         20, 

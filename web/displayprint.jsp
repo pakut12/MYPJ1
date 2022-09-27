@@ -20,7 +20,6 @@
             font-size:14px;
             height:5.0in;
             width:9in;
-            
         }
         .test{
             font-size:13px;

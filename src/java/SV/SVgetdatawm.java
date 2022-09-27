@@ -1177,14 +1177,14 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
+                    page = partweb + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
-                   
+
                     XSSFFont font = workbook.createFont();
                     font.setFontName("Arial");
                     font.setFontHeightInPoints((short) 10);
                     font.setBold(true);
-                    
+
                     XSSFCellStyle s = workbook.createCellStyle();
                     s.setAlignment(HorizontalAlignment.CENTER);
                     s.setBorderBottom(BorderStyle.THIN);
@@ -1198,7 +1198,7 @@ public class SVgetdatawm extends HttpServlet {
                     s1.setBorderLeft(BorderStyle.THIN);
                     s1.setBorderRight(BorderStyle.THIN);
                     s1.setFont((Font) font);
-                    
+
                     XSSFCell cell = row1.createCell(0);
 
                     row1.createCell(0).setCellValue("ม้วนที่");
@@ -1254,7 +1254,7 @@ public class SVgetdatawm extends HttpServlet {
                             mark = "";
                         }
                         row.createCell(12).setCellValue(mark);
-                        
+
                         row.getCell(0).setCellStyle((CellStyle) s);
                         row.getCell(1).setCellStyle((CellStyle) s);
                         row.getCell(2).setCellStyle((CellStyle) s);
@@ -1273,8 +1273,8 @@ public class SVgetdatawm extends HttpServlet {
                     FileOutputStream fos = new FileOutputStream(page);
                     workbook.write(fos);
                     fos.close();
-                    out.print(page);
-                //out.print(page.replace("/web/webapps", ""));
+                    //out.print(page);
+                    out.print(page.replace("/web/webapps", ""));
 
                 } catch (Exception e) {
                     e.printStackTrace();
