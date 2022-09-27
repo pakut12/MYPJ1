@@ -72,79 +72,98 @@
                     arr1[0] = [
                         {
                             border: [true, true, true, true],  
-                            text: 'ม้วนที'
+                            text: 'ม้วนที',
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'หน้าผ้า\nที่วัดได้'
+                            text: 'หน้าผ้า\nที่วัดได้',
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'สี'
+                            text: 'สี',
+                            fontSize: 10
                         },
                         {
                             border: [true, true, true, true],  
-                            text:   'มาตรฐาน\nสี'
+                            text:   'มาตรฐาน\nสี',
+                            fontSize: 10
                         },  
                         {
                             border: [true, true, true, true],  
-                            text:  'จำนวน\nที่มา'
+                            text:  'จำนวน\nที่มา',
+                            fontSize: 10
                         },  
                         {
                             border: [true, true, true, true],  
-                            text:   'จำนวน\nที่ได้'
+                            text:   'จำนวน\nที่ได้',
+                            fontSize: 10
                         },  
                         {
                             border: [true, true, true, true],  
-                            text: 'จุดสี-น้ำมัน-สกปรก'
+                            text: 'จุดสี-น้ำมัน-สกปรก',
+                            fontSize: 10
                         },  
                         {
                             border: [true, true, true, true],  
-                            text: 'ลาย\nขวาง' 
+                            text: 'ลาย\nขวาง' ,
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text:    'ความกว้าง\nไม่ได้\nมาตรฐาน' 
+                            text:    'ความ\nกว้าง',
+                            fontSize: 10 
                         },  
                         {
                             border: [true, true, true, true],  
-                            text:  'ปุ่ม\nปม' 
+                            text:  'ปุ่ม\nปม' ,
+                            fontSize: 10
                         },  
                         {
                             border: [true, true, true, true],  
-                            text:  'เส้นด้าย\nขาด' 
+                            text:  'เส้นด้าย\nขาด' ,
+                            fontSize: 10
                         },  
                         {
                             border: [true, true, true, true],  
-                            text: 'รอย\nด่าง' 
+                            text: 'รอย\nด่าง' ,
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text:  'รอย\nเข็ม' 
+                            text:  'รอย\nเข็ม' ,
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'รอยเข็ม\nเข้าลึก' 
+                            text: 'รอยเข็ม\nเข้าลึก' ,
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'บาร์โค็ด\nร้านค้า' 
+                            text: 'บาร์โค็ด\nร้านค้า' ,
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'หม้อ\nย้อม' 
+                            text: 'หม้อ\nย้อม' ,
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text:  'ตำหนิ\nรวม' 
+                            text:  'ตำหนิ\nรวม' ,
+                            fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'คะเเนน'
+                            text: 'คะเเนน',
+                            fontSize: 10
                         },  
                         {
                             border: [true, true, true, true],  
-                            text: 'M'
+                            text: 'M',
+                            fontSize: 10
                         }
                         
                         
@@ -158,97 +177,116 @@
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][0]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][1]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][2]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][3]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][4]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][5]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][6]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][7] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][8] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][9]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][10] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][11]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][12] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][13] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][14] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][15] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text:  de.data[x][16] 
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }, 
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][17]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 },  
                                 {
                                     border: [false, false, true, true],  
                                     text: de.data[x][18]
-                                    ,color:'#1700FF',bold:true
+                                    ,color:'#1700FF',
+                                    fontSize: 12
                                 }
                                             
                             ];
@@ -639,23 +677,23 @@
                                     widths: [
                                         12, 
                                         20, 
-                                        10, 
+                                        12, 
                                         16, 
                                         20, 
                                         20, 
                                         20, 
                                         15, 
-                                        30, 
+                                        16, 
                                         10, 
                                         22, 
                                         15, 
                                         23, 
                                         22, 
-                                        35, 
-                                        35, 
+                                        45, 
+                                        40, 
                                         17, 
                                         21, 
-                                        4],
+                                        1],
                                     body: arr1
                                    
                                    
@@ -670,7 +708,7 @@
                             },
                             tableExample: {
                                 margin: [0, 0, 0, 0],
-                                fontSize: 10,
+                                
                                 alignment: 'center',
                                 bold:true
                             }
