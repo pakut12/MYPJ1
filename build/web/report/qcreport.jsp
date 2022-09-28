@@ -77,7 +77,7 @@
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'หน้าผ้า\nที่วัดได้',
+                            text: 'หน้าผ้าที่วัดได้',
                             fontSize: 10
                         }, 
                         {
@@ -137,7 +137,7 @@
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'รอยเข็ม\nเข้าลึก' ,
+                            text: 'รอยเข็มเข้าลึก' ,
                             fontSize: 10
                         }, 
                         {
@@ -429,7 +429,7 @@
                                             text: [{ text: 'จำนวนที่มา : ', bold:true },{ text: de.sumqt+' '+de.UNIT,color:'#1700FF',bold:true },{ text: '\nจำนวนที่ได้ : ', bold:true },{ text: de.sumaqt+' '+de.UNIT ,color:'#1700FF',bold:true}],
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [60,20, 0, 50]
+                                            margin: [50,20, 0, 50]
                                         },
                                         {
                                             width: 'auto',
@@ -447,15 +447,15 @@
                                             text: [{ text: 'น้ำหนัก KG/M : \n', bold:true },{ text: de.sumweight ,color:'#1700FF',bold:true  }],
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [0,20, 0, 0]
+                                            margin: [5,20, 0, 0]
                                
                                         },
                                         {
                                             width: 'auto',
-                                            text: [{ text: 'ชื่อผู้ตรวจสอบ : ', bold:true },{ text: de.BYNAME ,color:'#1700FF',bold:true  },{ text: '\nผู้รับผิดชอบ : ' ,bold:true  },{ text: de.BYNAME1,bold:true,color:'#1700FF'  },{ text: '\n  จัดซื้อ.................................\n สต็อกวัตถุดิบ.................................\n เเผนกตัด.................................\n',bold:true  }],
+                                            text: [{ text: 'ชื่อผู้ตรวจสอบ : ', bold:true },{ text: de.BYNAME ,color:'#1700FF',bold:true  },{ text: '\nผู้รับผิดชอบ : ' ,bold:true  },{ text: de.BYNAME1,bold:true,color:'#1700FF'  },{ text: '\n  จัดซื้อ............................................\n สต็อกวัตถุดิบ................................\n เเผนกตัด.......................................\n',bold:true  }],
                                             fontSize: 12,
                                             alignment: 'left',
-                                            margin: [0,10, 35, 50]
+                                            margin: [0,10, 30, 0]
                                         }
                             
                                     ]
@@ -676,7 +676,7 @@
                                     headerRows: 1,
                                     widths: [
                                         12, 
-                                        20, 
+                                        19, 
                                         12, 
                                         16, 
                                         20, 
@@ -688,8 +688,8 @@
                                         22, 
                                         15, 
                                         23, 
-                                        22, 
-                                        45, 
+                                        20, 
+                                        48, 
                                         40, 
                                         17, 
                                         21, 

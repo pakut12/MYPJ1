@@ -654,6 +654,7 @@ public class SVgetdatawm extends HttpServlet {
                     float sumstar = 0;
                     float gradeqc = 0;
                     JSONArray arrroll = new JSONArray();
+                    String mark = null;
                     while ((rec.next()) && (rec != null)) {
                         arrroll.add(rec.getString("roll"));
                         JSONArray arrjson = new JSONArray();
@@ -673,9 +674,15 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("point")); // คะเเนน ถ้า con จำลองใส่ point เเต่ถ้าจริงใส่ "" เพราะยังไม่ได้สร้างฟิวpoint ใหม่ในดาต้าจริง 2/9/2565
 
                         arrjson.add(rec.getString("EREPEAT"));
-                        arrjson.add(rec.getString("MARK_TOTERR"));
+                        if (rec.getFloat("point") > 7) {
+                            mark = "*";
+                        } else {
+                            mark = "";
+                        }
+                        arrjson.add(mark);
 
-                        if (rec.getString("MARK_TOTERR") != null) {
+
+                        if (!mark.equals("")) {
                             countstar++;
                             sumstar += rec.getInt("ACTQTY");
                         }
@@ -804,9 +811,11 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("remark1"));
                         arrjson.add(rec.getString("remark2"));
                         arrjson.add(rec.getString("remark3"));
-                        arrjson.add(rec.getString("toterr"));
 
-                        if (rec.getInt("toterr") > 8) {
+                        arrjson.add(rec.getString("toterr"));
+                        arrjson.add(rec.getString("point"));
+
+                        if (rec.getFloat("point") > 7) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1085,12 +1094,9 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add(rec.getString("point"));//rec.getString("point")
 
-                        String toterr = rec.getString("toterr");
-                        if (toterr == null) {
-                            toterr = "0";
-                        }
+
                         String mark = "";
-                        if (Integer.valueOf(toterr) > 8) {
+                        if (rec.getFloat("point") > 7) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1213,7 +1219,8 @@ public class SVgetdatawm extends HttpServlet {
                     row1.createCell(9).setCellValue("สรุปผล2");
                     row1.createCell(10).setCellValue("สรุปผล3");
                     row1.createCell(11).setCellValue("ตำหนิรวม");
-                    row1.createCell(12).setCellValue("Mark");
+                    row1.createCell(12).setCellValue("คะเเนน");
+                    row1.createCell(13).setCellValue("Mark");
 
 
                     row1.getCell(0).setCellStyle((CellStyle) s1);
@@ -1229,12 +1236,25 @@ public class SVgetdatawm extends HttpServlet {
                     row1.getCell(10).setCellStyle((CellStyle) s1);
                     row1.getCell(11).setCellStyle((CellStyle) s1);
                     row1.getCell(12).setCellStyle((CellStyle) s1);
+                    row1.getCell(13).setCellStyle((CellStyle) s1);
 
                     int n = 1;
                     while (rec.next() && rec != null) {
                         String mark = "";
                         XSSFRow row = sheet.createRow(n);
-                        sheet.autoSizeColumn(n);
+                        sheet.autoSizeColumn(0);
+                        sheet.autoSizeColumn(1);
+                        sheet.autoSizeColumn(2);
+                        sheet.autoSizeColumn(3);
+                        sheet.autoSizeColumn(4);
+                        sheet.autoSizeColumn(5);
+                        sheet.autoSizeColumn(6);
+                        sheet.autoSizeColumn(7);
+                        sheet.autoSizeColumn(9);
+                        sheet.autoSizeColumn(10);
+                        sheet.autoSizeColumn(11);
+                        sheet.autoSizeColumn(12);
+                        sheet.autoSizeColumn(13);
 
                         row.createCell(0).setCellValue(rec.getString("roll"));
                         row.createCell(1).setCellValue(rec.getString("item"));
@@ -1248,12 +1268,14 @@ public class SVgetdatawm extends HttpServlet {
                         row.createCell(9).setCellValue(rec.getString("remark2"));
                         row.createCell(10).setCellValue(rec.getString("remark3"));
                         row.createCell(11).setCellValue(rec.getString("toterr"));
-                        if (rec.getInt("toterr") > 8) {
+                        row.createCell(12).setCellValue(rec.getString("point"));
+
+                        if (rec.getFloat("point") > 7) {
                             mark = "*";
                         } else {
                             mark = "";
                         }
-                        row.createCell(12).setCellValue(mark);
+                        row.createCell(13).setCellValue(mark);
 
                         row.getCell(0).setCellStyle((CellStyle) s);
                         row.getCell(1).setCellStyle((CellStyle) s);
@@ -1268,13 +1290,14 @@ public class SVgetdatawm extends HttpServlet {
                         row.getCell(10).setCellStyle((CellStyle) s);
                         row.getCell(11).setCellStyle((CellStyle) s);
                         row.getCell(12).setCellStyle((CellStyle) s);
+                        row.getCell(13).setCellStyle((CellStyle) s);
                         n++;
                     }
                     FileOutputStream fos = new FileOutputStream(page);
                     workbook.write(fos);
                     fos.close();
                     //out.print(page);
-                    out.print(page.replace("/web/webapps", ""));
+                out.print(page.replace("/web/webapps", ""));
 
                 } catch (Exception e) {
                     e.printStackTrace();

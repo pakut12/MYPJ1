@@ -24,6 +24,9 @@
         .test{
             font-size:13px;
         }
+        .test1{
+            font-size:20px;
+        }
     </style>
     <%!
     public static String ctoD(String txt) {
@@ -175,16 +178,16 @@
                             <%
                             for (int col = 1; col <= 10; col++) {
                                 try {
-                                    out.print("<td class='fw-bold'>" + num[x] + "</td>");
+                                    out.print("<td class='fw-bold test1'>" + num[x] + "</td>");
                                 } catch (Exception e) {
-                                    out.print("<td height='35' class='fw-bold'> </td>");
+                                    out.print("<td height='35' class='fw-bold '> </td>");
                                 }
                                 x++;
                             }
                             if (row == 0) {
                             %>
-                            <td class="fw-bold"><%=request.getAttribute("roll")%></td>
-                            <td class="fw-bold"><%=request.getAttribute("row")%></td> 
+                            <td class="fw-bold test1"><%=request.getAttribute("roll")%></td>
+                            <td class="fw-bold test1"><%=request.getAttribute("row")%></td> 
                         </tr>
                         <%
                 } else {

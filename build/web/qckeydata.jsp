@@ -296,7 +296,7 @@
                 var sum1 = ((sum / 100)* $("#actqty").val());
                
                 $("#point").val(sum1.toFixed(2));
-                if(sum > 8){
+                if($("#point").val() > 7){
                     $("#mark_toterr").val("*");  
                 }else{
                     $("#mark_toterr").val("");  
