@@ -127,12 +127,12 @@
                         },  
                         {
                             border: [true, true, true, true],  
-                            text: 'รอย\nด่าง' ,
+                            text: 'รอยด่าง' ,
                             fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text:  'รอย\nเข็ม' ,
+                            text:  'รอยเข็ม' ,
                             fontSize: 10
                         }, 
                         {
@@ -686,11 +686,11 @@
                                         16, 
                                         10, 
                                         22, 
-                                        15, 
-                                        23, 
+                                        12, 
+                                        12, 
                                         20, 
-                                        48, 
-                                        40, 
+                                        52, 
+                                        50, 
                                         17, 
                                         21, 
                                         1],
