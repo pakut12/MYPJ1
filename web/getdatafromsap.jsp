@@ -102,7 +102,7 @@
                         scrollX: true,
                         select: true,
                         columnDefs: [
-                            { "width": "7rem", "targets":2 },
+                            { "width": "10rem", "targets":2 },
                             { "width": "5rem", "targets": 11 },
                             { "width": "5rem", "targets": 12 },
                             { "width": "5rem", "targets": 13 },
