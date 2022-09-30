@@ -90,7 +90,7 @@
                         <li> <p class="mx-4">ไอดี : <%= session.getAttribute("user")%></p></li>
                         <li> <p class="mx-4">ชื่อ : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger text-center " href="index.jsp"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
+                        <li><a class="dropdown-item text-danger text-center " href="index.jsp?logout=1"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
                         
                         
                     </ul>
@@ -154,7 +154,7 @@
                         <li> <p class="mx-4">ไอดี : <%= session.getAttribute("user")%></p></li>
                         <li> <p class="mx-4">ชื่อ : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger text-center " href="index.jsp"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
+                        <li><a class="dropdown-item text-danger text-center " href="index.jsp?logout=1"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
                         
                         
                     </ul>
@@ -210,7 +210,7 @@
                         <li> <p class="mx-4">ไอดี : <%= session.getAttribute("user")%></p></li>
                         <li> <p class="mx-4">ชื่อ : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger text-center " href="index.jsp"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
+                        <li><a class="dropdown-item text-danger text-center " href="index.jsp?logout=1"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
                         
                         
                     </ul>
@@ -265,7 +265,7 @@
                         <li> <p class="mx-4">ไอดี : <%= session.getAttribute("user")%></p></li>
                         <li> <p class="mx-4">ชื่อ : คุณ <%= session.getAttribute("name")%> <%= session.getAttribute("surname")%></p></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger text-center " href="index.jsp"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
+                        <li><a class="dropdown-item text-danger text-center " href="index.jsp?logout=1"><i class="bi bi-box-arrow-left"></i> ออกจากระบบ</a></li>
                         
                         
                     </ul>

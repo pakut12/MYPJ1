@@ -13,7 +13,22 @@
     <head>
         <%@include file="share/head.jsp"%> 
     </head>
+    
     <body>
+        <%
+            if (request.getParameter("logout") != null) {
+                session.invalidate();
+        %>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'ออกจากระบบเรียบร้อย',
+                text: 'ออกจากระบบเรียบร้อย'
+            })
+        </script>
+        <%
+            }
+        %>
         <%
             Object error = (Object) request.getAttribute("status");
             if (error == "error") {
@@ -49,7 +64,7 @@
                         <br>
                         <div class="text-center">
                             <button type="submit" class="btn btn-sm btn-success "><i class="bi bi-box-arrow-in-right"></i> OK</button>
-                           
+                            
                         </div>
                     </div>
                 </div>
