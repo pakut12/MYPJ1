@@ -91,7 +91,7 @@
                                                         <option value="01">Admin</option>
                                                         <option value="02">RM</option>
                                                         <option value="03">QC RM</option>
-                                                        <option value="04">PT</option>
+                                                        <option value="04">CUT</option>
                                                     </select>
                                                     <label>Approve  : </label>
                                                     <select class="form-select form-select-sm" id="statusqi" required>
