@@ -210,7 +210,11 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                        
+                        columnDefs: [
+                            { "width": "10rem", "targets":1 }
+                           
+                            
+                        ],
                         
                         select: true
                                              
