@@ -497,7 +497,7 @@
                                 },
                                 {
                                     columns: [{
-                                            width: '*',
+                                            width: 190,
                                             text: [{ text: 'รหัส : ', bold:true },{ text: de.ITEM ,color:'#1700FF',bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
@@ -525,7 +525,7 @@
                                 },
                                 {
                                     columns: [{
-                                            width: 'auto',
+                                            width: 500,
                                             text: [{ text: 'Description 1/หน้าผ้าที่สั่งซื้อ : ', bold:true },{ text: de.DESC1 ,color:'#1700FF',bold:true }],
                                             fontSize: 14,
                                             alignment: 'left',
