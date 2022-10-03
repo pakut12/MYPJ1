@@ -8,6 +8,7 @@ import java.sql.*;
 import java.io.*;
 import java.net.*;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -472,7 +473,7 @@ public class SVgetdatawm extends HttpServlet {
                         n++;
                     }
                     int z = 0;
-                    int x = 0;
+                    float x = 0;
                     while (z < sum.size()) {
                         x += sum.get(z);
                         z++;
@@ -637,7 +638,7 @@ public class SVgetdatawm extends HttpServlet {
                 try {
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
-
+                    DecimalFormat df = new DecimalFormat("#.##");
                     String sql = "select*  from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
 
                     ps = conn.prepareStatement(sql);
@@ -648,7 +649,7 @@ public class SVgetdatawm extends HttpServlet {
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
-                    int sumq = 0;
+                    float sumq = 0;
                     float suma = 0;
                     int countstar = 0;
                     float sumstar = 0;
@@ -684,7 +685,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         if (!mark.equals("")) {
                             countstar++;
-                            sumstar += rec.getInt("ACTQTY");
+                            sumstar += rec.getFloat("ACTQTY");
                         }
 
 
@@ -692,12 +693,12 @@ public class SVgetdatawm extends HttpServlet {
                         obj.put("item", rec.getString("item"));
                         obj.put("desc1", rec.getString("desc1"));
                         arrlist.add(arrjson);
-                        sumq += rec.getInt("QUANTITY");
-                        suma += rec.getInt("ACTQTY");
+                        sumq += rec.getFloat("QUANTITY");
+                        suma += rec.getFloat("ACTQTY");
                         n++;
                     }
-                    obj.put("sumq", sumq);
-                    obj.put("suma", suma);
+                    obj.put("sumq", df.format(sumq));
+                    obj.put("suma", df.format(suma));
                     obj.put("countstar", countstar);
                     obj.put("sumstar", sumstar);
 
@@ -1041,16 +1042,16 @@ public class SVgetdatawm extends HttpServlet {
 
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
-
+                    DecimalFormat df = new DecimalFormat("#.##");
                     String sql = "select * from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
                     // conn = DB.ConnDB.getConnection();
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
                     ps.setString(2, pallet);
                     rec = ps.executeQuery();
-                    int sumqt = 0;
-                    int sumaqt = 0;
-                    int sumweight = 0;
+                    float sumqt = 0;
+                    float sumaqt = 0;
+                    float sumweight = 0;
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
@@ -1105,9 +1106,10 @@ public class SVgetdatawm extends HttpServlet {
                         if (wm == null) {
                             wm = "0";
                         }
-                        sumqt += Integer.valueOf(rec.getString("quantity"));
-                        sumaqt += Integer.valueOf(rec.getString("actqty"));
-                        sumweight += Integer.valueOf(wm);
+
+                        sumqt += Double.parseDouble(rec.getString("quantity"));
+                        sumaqt += Double.parseDouble(rec.getString("actqty"));
+                        sumweight +=  Double.parseDouble(wm);
 
                         arrjson.add(mark);
                         arrjson.add("");
@@ -1157,9 +1159,9 @@ public class SVgetdatawm extends HttpServlet {
                     obj.put("BYNAME", BYNAME);
                     obj.put("BYNAME1", BYNAME1);
 
-                    obj.put("sumweight", sumweight);
-                    obj.put("sumqt", sumqt);
-                    obj.put("sumaqt", sumaqt);
+                    obj.put("sumweight", df.format(sumweight));
+                    obj.put("sumqt", df.format(sumqt));
+                    obj.put("sumaqt", df.format(sumaqt));
                     obj.put("count", n);
                     obj.put("data", arrlist);
                     out.print(obj);
@@ -1208,19 +1210,21 @@ public class SVgetdatawm extends HttpServlet {
                     XSSFCell cell = row1.createCell(0);
 
                     row1.createCell(0).setCellValue("ม้วนที่");
-                    row1.createCell(1).setCellValue("รหัสวัตถุดิบ");
-                    row1.createCell(2).setCellValue("พาเลต");
-                    row1.createCell(3).setCellValue("หม้อย้อม");
-                    row1.createCell(4).setCellValue("บาร์โค๊ดร้านค้า");
-                    row1.createCell(5).setCellValue("จำนวนนับได้");
-                    row1.createCell(6).setCellValue("% การสูญเสีย");
-                    row1.createCell(7).setCellValue("ผู้ตรวจสอบ");
-                    row1.createCell(8).setCellValue("สรุปผล1");
-                    row1.createCell(9).setCellValue("สรุปผล2");
-                    row1.createCell(10).setCellValue("สรุปผล3");
-                    row1.createCell(11).setCellValue("ตำหนิรวม");
-                    row1.createCell(12).setCellValue("คะเเนน");
-                    row1.createCell(13).setCellValue("Mark");
+                    row1.createCell(1).setCellValue("บาร์โค๊ดร้านค้า");
+                    row1.createCell(2).setCellValue("หม้อย้อม");
+                    row1.createCell(3).setCellValue("รหัสวัตถุดิบ");
+                    row1.createCell(4).setCellValue("พาเลต");
+                    row1.createCell(5).setCellValue("บาร์โค๊ด");
+                    row1.createCell(6).setCellValue("หน้าผ้าที่วัดได้");
+                    row1.createCell(7).setCellValue("จำนวนนับได้");
+                    row1.createCell(8).setCellValue("% การสูญเสีย");
+                    row1.createCell(9).setCellValue("ผู้ตรวจสอบ");
+                    row1.createCell(10).setCellValue("สรุปผล1");
+                    row1.createCell(11).setCellValue("สรุปผล2");
+                    row1.createCell(12).setCellValue("สรุปผล3");
+                    row1.createCell(13).setCellValue("ตำหนิรวม");
+                    row1.createCell(14).setCellValue("คะเเนน");
+                    row1.createCell(15).setCellValue("Mark");
 
 
                     row1.getCell(0).setCellStyle((CellStyle) s1);
@@ -1237,6 +1241,8 @@ public class SVgetdatawm extends HttpServlet {
                     row1.getCell(11).setCellStyle((CellStyle) s1);
                     row1.getCell(12).setCellStyle((CellStyle) s1);
                     row1.getCell(13).setCellStyle((CellStyle) s1);
+                    row1.getCell(14).setCellStyle((CellStyle) s1);
+                    row1.getCell(15).setCellStyle((CellStyle) s1);
 
                     int n = 1;
                     while (rec.next() && rec != null) {
@@ -1255,27 +1261,31 @@ public class SVgetdatawm extends HttpServlet {
                         sheet.autoSizeColumn(11);
                         sheet.autoSizeColumn(12);
                         sheet.autoSizeColumn(13);
+                        sheet.autoSizeColumn(14);
+                        sheet.autoSizeColumn(15);
 
                         row.createCell(0).setCellValue(rec.getString("roll"));
-                        row.createCell(1).setCellValue(rec.getString("item"));
-                        row.createCell(2).setCellValue(rec.getString("palet"));
-                        row.createCell(3).setCellValue(rec.getString("batch"));
-                        row.createCell(4).setCellValue(rec.getString("code"));
-                        row.createCell(5).setCellValue(rec.getString("actqty"));
-                        row.createCell(6).setCellValue(rec.getString("gradeqc"));
-                        row.createCell(7).setCellValue(rec.getString("byname"));
-                        row.createCell(8).setCellValue(rec.getString("remark1"));
-                        row.createCell(9).setCellValue(rec.getString("remark2"));
-                        row.createCell(10).setCellValue(rec.getString("remark3"));
-                        row.createCell(11).setCellValue(rec.getString("toterr"));
-                        row.createCell(12).setCellValue(rec.getString("point"));
+                        row.createCell(1).setCellValue(rec.getString("erepeat"));
+                        row.createCell(2).setCellValue(rec.getString("batch"));
+                        row.createCell(3).setCellValue(rec.getString("item"));
+                        row.createCell(4).setCellValue(rec.getString("palet"));
+                        row.createCell(5).setCellValue(rec.getString("code"));
+                        row.createCell(6).setCellValue(rec.getString("width"));
+                        row.createCell(7).setCellValue(rec.getString("actqty"));
+                        row.createCell(8).setCellValue(rec.getString("gradeqc"));
+                        row.createCell(9).setCellValue(rec.getString("byname"));
+                        row.createCell(10).setCellValue(rec.getString("remark1"));
+                        row.createCell(11).setCellValue(rec.getString("remark2"));
+                        row.createCell(12).setCellValue(rec.getString("remark3"));
+                        row.createCell(13).setCellValue(rec.getString("toterr"));
+                        row.createCell(14).setCellValue(rec.getString("point"));
 
                         if (rec.getFloat("point") > 7) {
                             mark = "*";
                         } else {
                             mark = "";
                         }
-                        row.createCell(13).setCellValue(mark);
+                        row.createCell(15).setCellValue(mark);
 
                         row.getCell(0).setCellStyle((CellStyle) s);
                         row.getCell(1).setCellStyle((CellStyle) s);
@@ -1291,13 +1301,15 @@ public class SVgetdatawm extends HttpServlet {
                         row.getCell(11).setCellStyle((CellStyle) s);
                         row.getCell(12).setCellStyle((CellStyle) s);
                         row.getCell(13).setCellStyle((CellStyle) s);
+                        row.getCell(14).setCellStyle((CellStyle) s);
+                        row.getCell(15).setCellStyle((CellStyle) s);
                         n++;
                     }
                     FileOutputStream fos = new FileOutputStream(page);
                     workbook.write(fos);
                     fos.close();
                     //out.print(page);
-                out.print(page.replace("/web/webapps", ""));
+                    out.print(page.replace("/web/webapps", ""));
 
                 } catch (Exception e) {
                     e.printStackTrace();
