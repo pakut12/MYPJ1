@@ -306,7 +306,7 @@
             function today(){
                 var date = new Date();
                 var d =date.getDate()
-                var m = date.getMonth();
+                var m = date.getMonth()+1;
                 var y = date.getFullYear();
                 if(m <10){
                     m = "0"+m;
@@ -326,9 +326,11 @@
                         type: "POST",
                         url: 'getdatawm?status=G11&barcode='+barcode,
                         success: function(msg,status){
+                            console.log(msg);
                             try{
+                                
                                 var de = $.parseJSON(msg);
-                            
+                               
                                 $("#doc").val(de.mrno);  
                                 $("#item").val(de.item);   
                                 $("#roll").val(de.roll);   
@@ -338,34 +340,34 @@
                                 $("#actqty").val(de.data[1]); 
                                 $("#width").val(de.data[2]); 
 
-                                if(de.data[3] == null){
+                                if(de.data[3] == null ||de.data[3] == " "||de.data[3] == ""){
                                     de.data[3] = 0 ;
                                 }
-                                if(de.data[4] == null){
+                                if(de.data[4] == null ||de.data[4] == " " ||de.data[4] == ""){
                                     de.data[4] = 0 ;
                                 }
-                                if(de.data[5] == null){
+                                if(de.data[5] == null ||de.data[5] == " " ||de.data[5] == ""){
                                     de.data[5] = 0 ;
                                 }
-                                if(de.data[6] == null){
+                                if(de.data[6] == null ||de.data[6] == " " ||de.data[6] == ""){
                                     de.data[6] = 0 ;
                                 }
-                                if(de.data[7] == null){
+                                if(de.data[7] == null ||de.data[7] == " " ||de.data[7] == ""){
                                     de.data[7] = 0 ;
                                 }
-                                if(de.data[8] == null){
+                                if(de.data[8] == null ||de.data[8] == " " ||de.data[8] == ""){
                                     de.data[8] = 0 ;
                                 }
-                                if(de.data[8] == null){
+                                if(de.data[8] == null ||de.data[8] == " " ||de.data[8] == ""){
                                     de.data[8] = 0 ;
                                 }
-                                if(de.data[9] == null){
+                                if(de.data[9] == null || de.data[9] == " " ||de.data[9] == ""){
                                     de.data[9] = 0 ;
                                 }
-                                if(de.data[10] == null){
+                                if(de.data[10] == null || de.data[10] == " " ||de.data[10] == ""){
                                     de.data[10] = 0 ;
                                 }
-                                if(de.data[11] == null){
+                                if(de.data[11] == null || de.data[11] == " " ||de.data[11] == ""){
                                     de.data[11] = 0 ;
                                 }
         

@@ -71,7 +71,7 @@
                                     <div class="col-sm-12 col-md-6 mx-auto">
                                         <div class="card mb-3">
                                             <div class="card-header">
-                                                เพิ่มสมาชิก
+                                                เเก้ไขสมาชิก
                                             </div>
                                             <div class="card-body">
                                                 <form class="" id="myform">
