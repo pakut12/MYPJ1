@@ -60,6 +60,11 @@ public class ConnDB {
         return con;
     }
 
+    public static void closeConnection(Connection conn) throws SQLException {
+        conn.close();
+        conn = null;
+    }
+
     public static String coverdate(String date) {
         if (date == null) {
             date = null;

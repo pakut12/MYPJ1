@@ -67,6 +67,13 @@ public class SVlogin extends HttpServlet {
 
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    ps.close();
+                    DB.ConnDB.closeConnection(conn);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         } finally {
             out.close();

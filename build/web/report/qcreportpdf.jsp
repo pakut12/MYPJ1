@@ -617,9 +617,9 @@
                                     {
                                         type: 'rect',
                                         x: 35,
-                                        y: 665,
+                                        y: 670,
                                         w: 110,
-                                        h: 105,
+                                        h: 100,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -627,9 +627,9 @@
                                     {
                                         type: 'rect',
                                         x: 145,
-                                        y: 665,
+                                        y: 670,
                                         w: 0,
-                                        h: 105,
+                                        h: 100,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -637,9 +637,9 @@
                                     {
                                         type: 'rect',
                                         x: 145,
-                                        y: 665,
+                                        y: 670,
                                         w: 240,
-                                        h: 105,
+                                        h: 100,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -647,9 +647,9 @@
                                     {
                                         type: 'rect',
                                         x: 385,
-                                        y: 665,
+                                        y: 670,
                                         w: 65,
-                                        h: 105,
+                                        h: 100,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -657,9 +657,9 @@
                                     {
                                         type: 'rect',
                                         x: 450,
-                                        y: 665,
+                                        y: 670,
                                         w: 124,
-                                        h: 105,
+                                        h: 100,
                                         r: 0,
                                         lineWidth: 1,
                                         lineColor: '#000000'
@@ -718,7 +718,7 @@
                             font: 'THSarabunNew'
                         }
                     };
-                    pdfMake.createPdf(docDefinition).download(de.MRNO+de.PALET+'.pdf');  
+                    pdfMake.createPdf(docDefinition).download(de.MRNO+de.PALET+'.pdf'); 
                 
         
         

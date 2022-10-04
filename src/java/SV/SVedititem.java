@@ -8,6 +8,8 @@ import java.sql.*;
 import java.io.*;
 import java.net.*;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -23,7 +25,7 @@ public class SVedititem extends HttpServlet {
      * @param response servlet response
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
 
@@ -31,17 +33,17 @@ public class SVedititem extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String status = request.getParameter("status").trim();
+            Connection con = null;
+            ResultSet res = null;
+            PreparedStatement ps = null;
+            con = DB.ConnDB.getConnection();
 
+            Connection con1 = null;
+            ResultSet res1 = null;
+            PreparedStatement ps1 = null;
+            con1 = DB.ConnDB.getConnection();
             try {
-                Connection con = null;
-                ResultSet res = null;
-                PreparedStatement ps = null;
-                con = DB.ConnDB.getConnection();
 
-                Connection con1 = null;
-                ResultSet res1 = null;
-                PreparedStatement ps1 = null;
-                con = DB.ConnDB.getConnection();
 
                 if (status.equals("G1")) {
                     int n = 0;
@@ -300,6 +302,13 @@ public class SVedititem extends HttpServlet {
 
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    ps.close();
+                    DB.ConnDB.closeConnection(con);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
         } finally {
@@ -316,7 +325,13 @@ public class SVedititem extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVedititem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVedititem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 
@@ -326,7 +341,13 @@ public class SVedititem extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SVedititem.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SVedititem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** 

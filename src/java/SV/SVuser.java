@@ -74,6 +74,13 @@ public class SVuser extends HttpServlet {
                     } catch (Exception e) {
                         e.printStackTrace();
                         out.print("false");
+                    } finally {
+                        try {
+                            ps.close();
+                            DB.ConnDB.closeConnection(con);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
 
 
@@ -315,6 +322,13 @@ public class SVuser extends HttpServlet {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    ps.close();
+                    DB.ConnDB.closeConnection(con);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         } finally {
             out.close();

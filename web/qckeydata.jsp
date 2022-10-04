@@ -31,7 +31,7 @@
                                 <div class="row ">
                                     <div class="col-sm-12 col-md-6">
                                         <label>รหัสบาร์โค๊ด : </label>
-                                        <input class="form-control form-control-sm" type="number" name="barcode" id="barcode" value="" required></input>
+                                        <input class="form-control form-control-sm" type="number" name="barcode" id="barcode" value="" onClick="this.select();" required></input>
                                         <div class="invalid-feedback mb-3 text-center">
                                             กรุณาใส่ข้อมูลให้ถูกต้อง
                                         </div>
@@ -292,7 +292,7 @@
                 var sum = e1+e2+e3+e4+e5+e6+e7+e8 ;
                 
                 $("#sum").val(sum);
-                
+                console.log(sum);
                 var sum1 = ((sum / 100)* $("#actqty").val());
                
                 $("#point").val(sum1.toFixed(2));

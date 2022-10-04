@@ -113,6 +113,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G2")) {
                 try {
@@ -154,6 +161,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
             } else if (status.equals("G3")) {
@@ -223,6 +237,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G4")) {
                 try {
@@ -264,6 +285,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G5")) {
                 try {
@@ -302,6 +330,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G6")) {
                 try {
@@ -342,6 +377,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G7")) {
                 try {
@@ -384,6 +426,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G8")) {
                 try {
@@ -441,6 +490,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G9")) {
 
@@ -486,6 +542,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G10")) {
                 String mrno = request.getParameter("mrno").trim();
@@ -568,6 +631,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G11")) {
                 try {
@@ -631,6 +701,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -717,6 +794,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -782,6 +866,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -834,6 +925,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -933,6 +1031,13 @@ public class SVgetdatawm extends HttpServlet {
                 //getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             } else if (status.equals("G17")) {
                 try {
@@ -962,6 +1067,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -998,6 +1110,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -1034,6 +1153,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -1109,7 +1235,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         sumqt += Double.parseDouble(rec.getString("quantity"));
                         sumaqt += Double.parseDouble(rec.getString("actqty"));
-                        sumweight +=  Double.parseDouble(wm);
+                        sumweight += Double.parseDouble(wm);
 
                         arrjson.add(mark);
                         arrjson.add("");
@@ -1170,6 +1296,13 @@ public class SVgetdatawm extends HttpServlet {
                 //getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -1313,6 +1446,13 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
