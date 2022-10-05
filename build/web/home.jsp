@@ -28,6 +28,8 @@
                             </div>
                             <div class="card-body">
                                 Welcome <% out.print(request.getSession().getAttribute("user"));%>
+                                <br> <br>
+                               [ คู่มือระบบ RM / QC RM <a href="manual.pdf" target="_blank">คลิก</a>]
                             </div>
                         </div>
                     </div>
