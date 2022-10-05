@@ -157,7 +157,15 @@
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
                             $("#totalrow").val(de.count);   
-                            $("#totallong").val(de.sum);  
+                            var x = de.sum.toString();
+                            if(x.includes(".")){
+                                $("#totallong").val(de.sum.toFixed(2)); 
+                            }else{
+                                $("#totallong").val(de.sum);   
+                            }
+                           
+                            
+                           
                             $("#today").val(de.INVOICEDATE); 
                             
                             if(mrno != "" && item != "" && palet != ""){
