@@ -115,6 +115,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -163,6 +164,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -239,6 +241,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -287,6 +290,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -332,6 +336,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -379,6 +384,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -428,6 +434,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -492,6 +499,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -544,6 +552,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -633,6 +642,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -703,6 +713,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -796,6 +807,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -832,6 +844,14 @@ public class SVgetdatawm extends HttpServlet {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        rec.close();
+                        ps.close();
+                        DB.ConnDB.closeConnection(conn);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
             } else if (status.equals("G14")) {
@@ -868,6 +888,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -927,6 +948,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -1033,6 +1055,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -1069,6 +1092,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -1112,6 +1136,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -1155,6 +1180,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -1298,6 +1324,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {
@@ -1448,6 +1475,7 @@ public class SVgetdatawm extends HttpServlet {
                     e.printStackTrace();
                 } finally {
                     try {
+                        rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(conn);
                     } catch (Exception e) {

@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <label>จำนวนที่ได้ : </label>
-                                                <input class="form-control form-control-sm" type="text" name="actqty" id="actqty" value="" required></input>
+                                                <input class="form-control form-control-sm" type="text" name="actqty" id="actqty" value="" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>

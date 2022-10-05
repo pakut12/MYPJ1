@@ -78,6 +78,7 @@ public class SVsendtoqc extends HttpServlet {
                 e.printStackTrace();
             } finally {
                 try {
+                    rec.close();
                     ps.close();
                     DB.ConnDB.closeConnection(con);
                 } catch (Exception e) {
