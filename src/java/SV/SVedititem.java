@@ -305,6 +305,7 @@ public class SVedititem extends HttpServlet {
             } finally {
                 try {
                     ps.close();
+                    ps1.close();
                     DB.ConnDB.closeConnection(con);
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -231,7 +231,7 @@
                                     $("#btn-send").removeClass("disabled");
                                     $("#btn-send").text("บันทึก");
                                 }  
-                                getdata("");
+                               
                                 $("#btn-send").removeClass("disabled");
                                 $("#btn-send").addClass("disabled");
                                 
@@ -240,7 +240,7 @@
                               
                         
                     });
-                   
+                    getdata("");
                     
        
                 });

@@ -122,10 +122,6 @@ public class SVsap extends HttpServlet {
                     client.execute(function1);
                     JCO.Table output = function1.getTableParameterList().getTable("TABLEDATA");
 
-
-
-
-
                     String sqlwmbarcode = "INSERT INTO wmbarcode (MRNO, ITEM, ROLL, PALET, PLANT, DESC1, DESC2, DESC3, " +
                             "PO, POLN, INVOICEDATE, CREATEDATE, QUANTITY, UNIT, SUPNAME, INVOICE, GRADE, CODE, BATCH, " +
                             "CHANGEDATE, COLOR, SUPPLIER, DELIVERYNO, PUGROUP, PUNAME, TELEPHONE, PRICE, PRD, LOT, PER, CURR, " +
@@ -187,10 +183,16 @@ public class SVsap extends HttpServlet {
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
+                        } finally {
+                            try {
+                                rec.close();
+                                pr.close();
+                                pr1.close();
+                                DB.ConnDB.closeConnection(con);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-
-
-
                     }
                     if (chack > 0) {
                         out.print("true");
