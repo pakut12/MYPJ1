@@ -211,7 +211,6 @@
                         searching: true,
                         select:true,
                         info: true
-                       
                                             
                     });
                     $.ajax({

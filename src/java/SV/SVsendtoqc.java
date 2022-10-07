@@ -34,7 +34,7 @@ public class SVsendtoqc extends HttpServlet {
             try {
                 con = DB.ConnDB.getConnection();
                 String id = request.getParameter("mrno");
-                String sql = "SELECT * FROM wmbarcode WHERE wmbarcode.MRNO = ?";
+                String sql = "SELECT MRNO,ITEM,ROLL,PALET,QUANTITY FROM wmbarcode WHERE wmbarcode.MRNO = ?";
                 ps = con.prepareStatement(sql);
                 ps.setString(1, id);
                 rec = ps.executeQuery();

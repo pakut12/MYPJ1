@@ -61,7 +61,7 @@ public class SVgetdatawm extends HttpServlet {
                     String menr = request.getParameter("mrno").trim();
                     String page = "";
 
-                    String sql = "select * from wmbarcode where  wmbarcode.MRNO = ? ";
+                    String sql = "select wmbarcode.MRNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.POLN,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.CODE,wmbarcode.BATCH,wmbarcode.COLOR,wmbarcode.GRADE,wmbarcode.DESC1,wmbarcode.DESC2,wmbarcode.DESC3 from wmbarcode where wmbarcode.MRNO = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -130,7 +130,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? ";
+                    String sql = "select wmbarcode.ROLL,wmbarcode.PALET,wmbarcode.QUANTITY,wmbarcode.BATCH from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -178,7 +178,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ?";
+                    String sql = "select wmbarcode.LOT,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.SUPNAME,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.DELIVERYNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.COLOR,wmbarcode.BATCH,wmbarcode.DESC1 from wmbarcode where wmbarcode.MRNO = ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -256,7 +256,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? ";
+                    String sql = "select wmbarcode.PO,wmbarcode.PLANT,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -305,7 +305,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select * from wmqck where wmqck.MRNO = ? and wmqck.ITEM = ? ";
+                    String sql = "select wmqck.ITEM,wmqck.ROLL from wmqck where wmqck.MRNO = ? and wmqck.ITEM = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -350,7 +350,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? ";
+                    String sql = "select wmbarcode.ITEM,wmbarcode.DESC1,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.ROLL,wmbarcode.INVOICE,wmbarcode.COLOR from wmbarcode where wmbarcode.MRNO = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -513,7 +513,7 @@ public class SVgetdatawm extends HttpServlet {
                     String item = request.getParameter("item").trim().toUpperCase();
                     String palet = request.getParameter("palet").trim();
 
-                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
+                    String sql = "select wmbarcode.QUANTITY,wmbarcode.ROLL,wmbarcode.INVOICEDATE from wmbarcode where wmbarcode.MRNO = ? and wmbarcode.ITEM = ? and wmbarcode.PALET =?";
 
 
                     ps = conn.prepareStatement(sql);
@@ -653,7 +653,7 @@ public class SVgetdatawm extends HttpServlet {
                 try {
                     String barcode = request.getParameter("barcode");
 
-                    String sql = "select * from (wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE) inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmmaster.ROLL  where wmmaster.BARCODE = ?";
+                    String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmmaster.ROLL  where wmmaster.BARCODE = ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, barcode);
@@ -902,7 +902,7 @@ public class SVgetdatawm extends HttpServlet {
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
 
-                    String sql = "select wmqck.* from wmbarcode inner join wmqck on wmbarcode.MRNO = wmqck.MRNO  and wmbarcode.ITEM = wmqck.ITEM and wmbarcode.ROLL = wmqck.ROLL and wmbarcode.PALET = wmqck.PALET  where wmbarcode.MRNO = ?  and wmbarcode.PALET= ?";
+                    String sql = "select  roll,item,palet,actqty,gradeqc,byname,remark1,remark2,remark3,toterr,point from wmqck  where wmqck.MRNO = ? and wmqck.PALET= ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
@@ -1083,9 +1083,7 @@ public class SVgetdatawm extends HttpServlet {
                         obj.put("BYNAME1", rec.getString("BYNAME1"));
 
                         n++;
-
                     }
-
                     out.print(obj);
 
                 } catch (Exception e) {
@@ -1150,7 +1148,7 @@ public class SVgetdatawm extends HttpServlet {
                     String mrno = request.getParameter("mrno").trim();
 
 
-                    String sql = "select * from wmbarcode where wmbarcode.MRNO = ?";
+                    String sql = "select wmbarcode.PALET from wmbarcode where wmbarcode.MRNO = ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, mrno);
@@ -1345,7 +1343,7 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page = partweb + mrno.trim() + palet.trim() + ".xlsx";
+                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
 
                     XSSFFont font = workbook.createFont();

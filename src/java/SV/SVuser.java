@@ -109,6 +109,9 @@ public class SVuser extends HttpServlet {
                     } else {
                         obj.put("status", "false");
                     }
+                    rec.close();
+                    ps.close();
+                    DB.ConnDB.closeConnection(con);
                     out.print(obj);
                 } else if (status1.equals("G2")) {
                     String userid = request.getParameter("userid");
@@ -155,7 +158,9 @@ public class SVuser extends HttpServlet {
 
                     }
                     obj.put("data", arrlist);
-
+                    rec.close();
+                    ps.close();
+                    DB.ConnDB.closeConnection(con);
                     out.print(obj);
                 } else if (status1.equals("S2")) {
                     try {
@@ -186,6 +191,9 @@ public class SVuser extends HttpServlet {
                         } else {
                             out.print("false");
                         }
+                        rec.close();
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
                     } catch (Exception e) {
                         out.print("false");
                     }
@@ -206,6 +214,9 @@ public class SVuser extends HttpServlet {
                         } else {
                             out.print("false");
                         }
+                        rec.close();
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
                         out.print("<script langquage='javascript'>window.location='displayuser.jsp';</script>");
 
 
@@ -236,7 +247,9 @@ public class SVuser extends HttpServlet {
                             request.setAttribute("statusqi", rec.getString("statusqi"));
 
                         }
-
+                        rec.close();
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
                         getServletContext().getRequestDispatcher(url).forward(request, response);
 
 
@@ -269,6 +282,9 @@ public class SVuser extends HttpServlet {
                         } else {
                             out.print("false");
                         }
+                        rec.close();
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -290,6 +306,9 @@ public class SVuser extends HttpServlet {
                         obj.put("value", arrlist);
                         out.print(obj);
 
+                        rec.close();
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -315,7 +334,9 @@ public class SVuser extends HttpServlet {
                             out.print("false");
                         }
 
-
+                        rec.close();
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -323,14 +344,6 @@ public class SVuser extends HttpServlet {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-                try {
-                    rec.close();
-                    ps.close();
-                    DB.ConnDB.closeConnection(con);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         } finally {
             out.close();
