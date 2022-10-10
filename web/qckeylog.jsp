@@ -361,33 +361,38 @@
                             url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                             success: function(msg,status){
                                 var de = $.parseJSON(msg);
-                                $.each(de.arrroll,function(k,v){
-                                    
-                                    var url = 'edititem?status=G4';
-                                    $.ajax({
-                                        type: "POST",
-                                        url: url,
-                                        data:'&remark1='+remark1+'&remark2='+remark2+'&remark3='+remark3+'&mrno='+mrno+'&item='+item+'&roll='+v+'&gradeqc='+gradeqc,
-                                        success: function(msg,status){
-                                            if(msg == 'true'){
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'บันทึกข้อมูลสำเร็จ',
-                                                    text: 'บันทึกข้อมูลสำเร็จ'
-                                                })
-                                                
-                                            }else{
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
-                                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                                })
-                                            }
-                                        }    
-                                    });   
-                                });
-                                getdata($("#mrno").val(),$("#pallet").val());  
-                         
+                                console.log(de.arrroll);
+                              
+                                var url = 'edititem?status=G4';
+                                $.ajax({
+                                    type: "POST",
+                                    url: url,
+                                    data:{
+                                        remark1:remark1,
+                                        remark2:remark2,
+                                        remark3:remark3,
+                                        mrno:mrno,
+                                        item:item,
+                                        roll:de.arrroll,
+                                        gradeqc:gradeqc            
+                                    },
+                                    success: function(msg,status){
+                                        if(msg == 'true'){
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'บันทึกข้อมูลสำเร็จ',
+                                                text: 'บันทึกข้อมูลสำเร็จ'
+                                            }) 
+                                        }else if(msg == 'false'){
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                                text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                            })
+                                        }
+                                    }    
+                                });   
+                              
                             }
                         });   
                     }

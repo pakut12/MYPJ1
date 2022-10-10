@@ -1427,7 +1427,7 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page = partweb + mrno.trim() + palet.trim() + ".xlsx";
+                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
 
                     XSSFFont font = workbook.createFont();

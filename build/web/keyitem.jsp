@@ -142,43 +142,63 @@
                 });
          
                 $("#btn-send").click(function(){
-                    $("#btn-send").addClass("disabled");
-                    $("#btn-send").text("กำลังบันทึก....");
+                    //$("#btn-send").addClass("disabled");
+                    //$("#btn-send").text("กำลังบันทึก....");
                     var mrno = $('#mrno').val();
                     var item = $('#item').val();
                     var ROLL = table.$('#txt0').serializeArray();
                     var PALET = table.$('#txt1').serializeArray();
                     var QUANTITY = table.$('#txt2').serializeArray();
                     var BATCH = table.$('#txt3').serializeArray();
+                    
+                    var arrROLL = new Array();
+                    var arrPALET = new Array();
+                    var arrQUANTITY = new Array();
+                    var arrBATCH = new Array();
+                    
                     $.each(ROLL,function(k,v){
-                        $.ajax({
-                            type: "POST",
-                            url: "edititem?status=G1&mrno="+mrno+"&item="+item+"&ROLL="+ROLL[k].value+"&PALET="+PALET[k].value+"&QUANTITY="+QUANTITY[k].value+"&BATCH="+BATCH[k].value,
-                            success: function(msg,status){
-                                if(msg == "false"){ 
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'ไม่สำเร็จ',
-                                        text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                    })
-                                    $("#btn-send").removeClass("disabled");
-                                    $("#btn-send").addClass("disabled");
-                                    $("#btn-send").text("กำลังบันทึก");
-                                }else if(msg == "true"){
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'สำเร็จ',
-                                        text: 'บันทึกข้อมูลสำเร็จ'
-                                    })
-                                    $("#btn-send").removeClass("disabled");
-                                    $("#btn-send").text("บันทึก");
-                                } 
+                        arrROLL.push(ROLL[k].value);
+                        arrPALET.push(PALET[k].value);
+                        arrQUANTITY.push(QUANTITY[k].value);
+                        arrBATCH.push(BATCH[k].value);
+                    });
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: "edititem?status=G1",
+                        data:{
+                            arrROLL:arrROLL,
+                            arrPALET:arrPALET,
+                            arrQUANTITY:arrQUANTITY,
+                            arrBATCH:arrBATCH,
+                            mrno:mrno,
+                            item:item  
+                        },
+                        success: function(msg,status){
+                            if(msg == "false"){ 
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'ไม่สำเร็จ',
+                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                })
+                                $("#btn-send").removeClass("disabled");
+                                $("#btn-send").addClass("disabled");
+                                $("#btn-send").text("กำลังบันทึก");
+                            }else if(msg == "true"){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'สำเร็จ',
+                                    text: 'บันทึกข้อมูลสำเร็จ'
+                                })
+                                $("#btn-send").removeClass("disabled");
+                                $("#btn-send").text("บันทึก");
+                            } 
                                         
-                            }    
-                        });
+                        }    
+                    });
                            
                         
-                    });
+                   
                     //getdata($("#mrno").val(),$("#item").val());   
                    
                                     
@@ -205,7 +225,7 @@
                 })
             })()
         </script>
-
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>

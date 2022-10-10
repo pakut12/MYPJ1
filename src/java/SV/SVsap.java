@@ -37,13 +37,16 @@ public class SVsap extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            Connection con = null;
-            ResultSet rec = null;
-            PreparedStatement pr = null;
-            PreparedStatement pr1 = null;
+
             try {
+
                 String status = request.getParameter("stasus").trim();
                 if (status.equals("G")) {
+                    Connection con = null;
+                    ResultSet rec = null;
+                    PreparedStatement pr = null;
+                    PreparedStatement pr1 = null;
+
                     String PO = request.getParameter("PO").trim();
                     String DOCQC = request.getParameter("DOCQC").trim();
 
@@ -105,6 +108,7 @@ public class SVsap extends HttpServlet {
                     obj.put("data", arrlist);
                     out.print(obj);
                 } else if (status.equals("S")) {
+
                     String PO = request.getParameter("PO").trim();
                     String DOCQC = request.getParameter("DOCQC").trim();
 
@@ -129,14 +133,24 @@ public class SVsap extends HttpServlet {
                             "?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
                     String sqlwmmaster = "INSERT INTO wmmaster (BARCODE, MRNO, ITEM, ROLL) VALUES (?,?,?,?)";
-                    con = DB.ConnDB.getConnection();
 
-                    pr = con.prepareStatement(sqlwmbarcode);
-                    pr1 = con.prepareStatement(sqlwmmaster);
+
+
                     int chack = 0;
 
                     for (int z = 0; z < output.getNumRows(); z++) {
                         try {
+                            Connection con = null;
+                            Connection con1 = null;
+                            ResultSet rec = null;
+                            PreparedStatement pr = null;
+                            PreparedStatement pr1 = null;
+
+                            con = DB.ConnDB.getConnection();
+                            con1 = DB.ConnDB.getConnection();
+                            
+                            pr = con.prepareStatement(sqlwmbarcode);
+                            pr1 = con1.prepareStatement(sqlwmmaster);
                             output.setRow(z);
 
                             pr1.setString(1, output.getString(17));
@@ -181,19 +195,18 @@ public class SVsap extends HttpServlet {
                             if (pr.executeUpdate() > 0 && pr1.executeUpdate() > 0) {
                                 chack++;
                             }
+
+                            rec.close();
+                            pr.close();
+                            pr1.close();
+                            DB.ConnDB.closeConnection(con);
+                            DB.ConnDB.closeConnection(con1);
+
                         } catch (Exception e) {
                             e.printStackTrace();
-                        } finally {
-                            try {
-                                rec.close();
-                                pr.close();
-                                pr1.close();
-                                DB.ConnDB.closeConnection(con);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
                         }
                     }
+
                     if (chack > 0) {
                         out.print("true");
                     } else {

@@ -39,63 +39,109 @@ public class SVedititem extends HttpServlet {
 
             try {
                 if (status.equals("G1")) {
+                    String[] arrROLL = request.getParameterValues("arrROLL[]");
+                    String[] arrPALET = request.getParameterValues("arrPALET[]");
+                    String[] arrQUANTITY = request.getParameterValues("arrQUANTITY[]");
+                    String[] arrBATCH = request.getParameterValues("arrBATCH[]");
+                    String mrno = request.getParameter("mrno");
+                    String item = request.getParameter("item");
+
+                    int ck = 0;
+                    int n = 0;
                     try {
-                        Connection con = null;
-                        ResultSet res = null;
-                        PreparedStatement ps = null;
-                        con = DB.ConnDB.getConnection();
+                        for (String ROLL : arrROLL) {
 
-                        Connection con1 = null;
-                        ResultSet res1 = null;
-                        PreparedStatement ps1 = null;
-                        con1 = DB.ConnDB.getConnection();
+                            Connection con = null;
+                            ResultSet res = null;
+                            PreparedStatement ps = null;
+                            con = DB.ConnDB.getConnection();
 
-                        int n = 0;
-                        String mrno = request.getParameter("mrno");
-                        String item = request.getParameter("item").toUpperCase();
-                        String ROLL = request.getParameter("ROLL");
-                        String PALET = request.getParameter("PALET");
-                        String QUANTITY = request.getParameter("QUANTITY");
-                        String BATCH = request.getParameter("BATCH");
+                            Connection con1 = null;
+                            ResultSet res1 = null;
+                            PreparedStatement ps1 = null;
+                            con1 = DB.ConnDB.getConnection();
 
-                        String sql = "UPDATE wmbarcode SET wmbarcode.PALET = ?,wmbarcode.QUANTITY=?,wmbarcode.BATCH =? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
+                            String sql = "UPDATE wmbarcode SET wmbarcode.PALET = ?,wmbarcode.QUANTITY=?,wmbarcode.BATCH =? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
 
-                        ps = con.prepareStatement(sql);
-                        ps.setString(1, PALET);
-                        ps.setString(2, QUANTITY);
-                        ps.setString(3, BATCH);
-                        ps.setString(4, mrno);
-                        ps.setString(5, item);
-                        ps.setString(6, ROLL);
+                            ps = con.prepareStatement(sql);
+                            ps.setString(1, arrPALET[n].toString());
+                            ps.setString(2, arrQUANTITY[n].toString());
+                            ps.setString(3, arrBATCH[n].toString());
+                            ps.setString(4, mrno.toString());
+                            ps.setString(5, item.toString());
+                            ps.setString(6, arrROLL[n].toString());
 
-                        if (ps.executeUpdate() > 0) {
+                            if (ps.executeUpdate() > 0) {
+                                ck++;
+                            }
+
+                            String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
+
+                            ps1 = con1.prepareStatement(sql1);
+                            ps1.setString(1, arrPALET[n].toString());
+                            ps1.setString(2, arrQUANTITY[n].toString());
+                            ps1.setString(3, mrno.toString());
+                            ps1.setString(4, item.toString());
+                            ps1.setString(5, arrROLL[n].toString());
+
+                            if (ps1.executeUpdate() > 0) {
+                                ck++;
+                            }
+
+                            ps.close();
+                            ps1.close();
+                            DB.ConnDB.closeConnection(con);
+                            DB.ConnDB.closeConnection(con1);
                             n++;
                         }
 
-                        String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
-
-                        ps1 = con.prepareStatement(sql1);
-                        ps1.setString(1, PALET);
-                        ps1.setString(2, QUANTITY);
-                        ps1.setString(3, mrno);
-                        ps1.setString(4, item);
-                        ps1.setString(5, ROLL);
-
-                        if (ps1.executeUpdate() > 0) {
-                            n++;
-                        }
-
-                        if (n > 0) {
+                        if (ck > 0) {
                             out.print("true");
                         } else {
                             out.print("false");
                         }
-                        ps.close();
-                        ps1.close();
-                        DB.ConnDB.closeConnection(con);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
+//
+//                        String sql = "UPDATE wmbarcode SET wmbarcode.PALET = ?,wmbarcode.QUANTITY=?,wmbarcode.BATCH =? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
+//
+//                        ps = con.prepareStatement(sql);
+//                        ps.setString(1, PALET);
+//                        ps.setString(2, QUANTITY);
+//                        ps.setString(3, BATCH);
+//                        ps.setString(4, mrno);
+//                        ps.setString(5, item);
+//                        ps.setString(6, ROLL);
+//
+//                        if (ps.executeUpdate() > 0) {
+//                            n++;
+//                        }
+//
+//                        String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
+//
+//                        ps1 = con.prepareStatement(sql1);
+//                        ps1.setString(1, PALET);
+//                        ps1.setString(2, QUANTITY);
+//                        ps1.setString(3, mrno);
+//                        ps1.setString(4, item);
+//                        ps1.setString(5, ROLL);
+//
+//                        if (ps1.executeUpdate() > 0) {
+//                            n++;
+//                        }
+//
+//                        if (n > 0) {
+//                            out.print("true");
+//                        } else {
+//                            out.print("false");
+//                        }
+//                        ps.close();
+//                        ps1.close();
+//                        DB.ConnDB.closeConnection(con);
+
 
                 } else if (status.equals("G2")) {
                     String[] arrITEM = request.getParameterValues("arrITEM[]");
@@ -148,7 +194,6 @@ public class SVedititem extends HttpServlet {
                             if (ps.executeUpdate() > 0) {
                                 ck++;
                             }
-
 
                             String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =?, wmqck.ITEM= ? , wmqck.ROLL= ? WHERE wmqck.MRNO = ? AND wmqck.ITEM= ? AND wmqck.ROLL =?";
 
@@ -343,54 +388,55 @@ public class SVedititem extends HttpServlet {
                     DB.ConnDB.closeConnection(con);
 
                 } else if (status.equals("G4")) {
-                    Connection con = null;
-                    ResultSet res = null;
-                    PreparedStatement ps = null;
-                    con = DB.ConnDB.getConnection();
-
-                    Connection con1 = null;
-                    ResultSet res1 = null;
-                    PreparedStatement ps1 = null;
-                    con1 = DB.ConnDB.getConnection();
-
                     request.setCharacterEncoding("UTF-8");
+
+
+
                     String remark1 = (String) request.getParameter("remark1");
                     String remark2 = (String) request.getParameter("remark2");
                     String remark3 = (String) request.getParameter("remark3");
                     String mrno = (String) request.getParameter("mrno");
                     String item = (String) request.getParameter("item").toUpperCase();
-                    String roll = (String) request.getParameter("roll");
+                    String[] arrroll = (String[]) request.getParameterValues("roll[]");
                     String gradeqc = (String) request.getParameter("gradeqc");
+                    int ck = 0;
+                    for (String roll : arrroll) {
 
-                    String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
 
-                    ps = con.prepareStatement(sql);
-                    ps.setString(1, remark1);
-                    ps.setString(2, remark2);
-                    ps.setString(3, remark3);
-                    ps.setString(4, gradeqc);
-                    ps.setString(5, mrno);
-                    ps.setString(6, item);
-                    ps.setString(7, roll);
+                        Connection con = null;
+                        ResultSet res = null;
+                        PreparedStatement ps = null;
+                        con = DB.ConnDB.getConnection();
 
-                    if (ps.executeUpdate() > 0) {
+                        String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
+
+                        ps = con.prepareStatement(sql);
+                        ps.setString(1, remark1.toString());
+                        ps.setString(2, remark2.toString());
+                        ps.setString(3, remark3.toString());
+                        ps.setString(4, gradeqc.toString());
+                        ps.setString(5, mrno.toString());
+                        ps.setString(6, item.toString());
+                        ps.setString(7, roll.toString());
+
+                        if (ps.executeUpdate() > 0) {
+                            ck++;
+                        }
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
+                    }
+
+                    if (ck > 0) {
                         out.print("true");
                     } else {
                         out.print("false");
                     }
-                    ps.close();
 
-                    DB.ConnDB.closeConnection(con);
                 } else if (status.equals("G5")) {
                     Connection con = null;
                     ResultSet res = null;
                     PreparedStatement ps = null;
                     con = DB.ConnDB.getConnection();
-
-                    Connection con1 = null;
-                    ResultSet res1 = null;
-                    PreparedStatement ps1 = null;
-                    con1 = DB.ConnDB.getConnection();
 
                     String byname1 = request.getParameter("byname1");
                     String mrno = request.getParameter("mrno");
@@ -420,7 +466,7 @@ public class SVedititem extends HttpServlet {
                     ResultSet res1 = null;
                     PreparedStatement ps1 = null;
                     con1 = DB.ConnDB.getConnection();
-                    
+
                     String qicheck = request.getParameter("qicheck");
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");

@@ -4,6 +4,7 @@
  */
 package SV;
 
+import com.sun.org.apache.bcel.internal.generic.DNEG;
 import java.sql.*;
 import java.io.*;
 import java.net.*;
@@ -31,13 +32,15 @@ public class SVdel extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            ResultSet rec = null;
-            Connection conn = null;
-            PreparedStatement ps = null;
-            conn = DB.ConnDB.getConnection();
+
             String status = request.getParameter("status");
             if (status.equals("D1")) {
                 try {
+                    ResultSet rec = null;
+                    Connection conn = null;
+                    PreparedStatement ps = null;
+                    conn = DB.ConnDB.getConnection();
+
                     JSONObject obj = new JSONObject();
                     String mrno = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").trim().toUpperCase();
@@ -92,6 +95,10 @@ public class SVdel extends HttpServlet {
                     }
                     out.print(obj);
 
+                    ps.close();
+                    ps1.close();
+                    ps2.close();
+                    DB.ConnDB.closeConnection(conn);
 
 //                    if (t == 3) {
 //                        out.print("true");
@@ -111,11 +118,14 @@ public class SVdel extends HttpServlet {
                 }
             } else if (status.equals("D2")) {
                 try {
+                    ResultSet rec = null;
+                    Connection conn = null;
+                    PreparedStatement ps = null;
+                    conn = DB.ConnDB.getConnection();
+                    
                     JSONObject obj = new JSONObject();
                     String mrno = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").trim().toUpperCase();
-
-
 
                     int t = 0;
                     ResultSet rec1 = null;
