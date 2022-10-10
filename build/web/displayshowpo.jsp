@@ -98,8 +98,7 @@
                             { "width": "10rem", "targets": 0}, 
                             { "width": "20rem", "targets": 7 }, 
                         ]
-                       
-                                            
+                                         
                     }); 
                     $.ajax({
                         type: "POST",
@@ -129,8 +128,6 @@
                     });                    
                 }
                
-
-
                 $("#page2").addClass("active");
                 $("#btn-send").addClass("disabled");
                 getdata("");  
@@ -144,22 +141,15 @@
                             title: 'ข้อมูลไม่ถูกต้อง',
                             text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
                         })
-                       
                     }else{
                         $("#btn-send").removeClass("disabled");                       
                         getdata($("#po").val());  
-                       
                     }         
                 });
          
                 $("#btn-send").click(function(){
                     //$("#btn-send").addClass("disabled");
-                    //$("#btn-send").text("กำลังส่ง....");
-                   
-                    
-                   
-                    
-       
+                    //$("#btn-send").text("กำลังส่ง...."); 
                 });
             });
         </script>

@@ -14,7 +14,7 @@
         <%@include file="share/head.jsp"%> 
     </head>
     
-    <body>
+    <body >
         <%
             if (request.getParameter("logout") != null) {
                 session.invalidate();

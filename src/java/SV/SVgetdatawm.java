@@ -17,6 +17,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -423,7 +424,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select * from wmbarcode where wmbarcode.PO = ? ";
+                    String sql = "select ITEM,ROLL,QUANTITY,UNIT,COLOR,INVOICE,MRNO,DESC1 from wmbarcode where wmbarcode.PO = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, po);
