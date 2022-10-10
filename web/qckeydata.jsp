@@ -486,12 +486,13 @@
                     var roll = $("#roll").val();
                     var pallet = $("#pallet").val();
         
-                    var url = "edititem?status=G3&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&scolor="+scolor+"&byname1="+byname1+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet+"";
+                    var url = "edititem?status=G3";
             
-                    console.log(url);
+                   
                     $.ajax({
                         type: "POST",
                         url: url,
+                        data: "&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&scolor="+scolor+"&byname1="+byname1+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet,
                         success: function(msg,status){          
                             if(msg == "true"){
                                 Swal.fire({
@@ -499,7 +500,7 @@
                                     title: 'บันทึกข้อมูลสำเร็จ',
                                     text: 'บันทึกข้อมูลสำเร็จ'
                                 });
-                                getdata($("#barcode").val()); 
+                                //getdata($("#barcode").val()); 
                             }else if(msg == "false"){
                                 Swal.fire({
                                     icon: 'error',

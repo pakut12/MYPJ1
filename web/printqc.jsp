@@ -389,7 +389,7 @@
                             text: 'กรุณาเลือกผลการตรวจสอบของ QI'
                         })
                     }
-                    getdata($("#mrno").val(),$("#pallet").val());  
+                    //getdata($("#mrno").val(),$("#pallet").val());  
                     /*
                     $.ajax({
                         type: "POST",

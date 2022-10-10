@@ -293,11 +293,6 @@ public class SVedititem extends HttpServlet {
                     PreparedStatement ps = null;
                     con = DB.ConnDB.getConnection();
 
-                    Connection con1 = null;
-                    ResultSet res1 = null;
-                    PreparedStatement ps1 = null;
-                    con1 = DB.ConnDB.getConnection();
-
                     String actqty = request.getParameter("actqty");
                     String ethread = request.getParameter("ethread");
                     String eoil = request.getParameter("eoil");
