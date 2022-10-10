@@ -86,10 +86,10 @@
                                             <tr>
                                                 <th class="text-center">รหัสวัตดุดิบ</th>
                                                 <th class="text-center">ม้วน</th>
-                                               
+                                                
                                                 <th class="text-center">จำนวน</th>
                                                 <th class="text-center">หน่วยนับ</th>
-                                                 <th class="text-center">พาเลท</th>
+                                                <th class="text-center">พาเลท</th>
                                                 <th class="text-center">สี</th>
                                                 <th class="text-center">หม้อย้อน</th>
                                                 <th class="text-center">รายละเอียด</th>
@@ -110,9 +110,11 @@
             </div>
         </div>
         
-        <script>
-            
+        <script>   
+          
+          
             $(document).ready(function () {
+               
                 var table;
                 function getdata(mrno){
                     table = $("#mytable").DataTable({
@@ -148,7 +150,7 @@
                             $("#INVOICEDATE").val(de.INVOICEDATE);           
                             $("#DELIVERYNO").val(de.DELIVERYNO);
                             $("#LOT").val(de.LOT);           
-                            console.log(de);       
+                            // console.log(de);       
                             if(mrno != ""){
                                 if(de.count > 0){
                                     Swal.fire({
@@ -172,7 +174,7 @@
 
                 $("#page2").addClass("active");
                 $("#btn-send").addClass("disabled");
-                getdata("");
+                
                 
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == ""){
@@ -189,10 +191,10 @@
                        
                     }         
                 });
-         
+                
                 $("#btn-send").click(function(){
-                    $("#btn-send").addClass("disabled");
-                    $("#btn-send").text("กำลังบันทึก....");
+                    // $("#btn-send").addClass("disabled");
+                    //$("#btn-send").text("กำลังบันทึก....");
                     var ITEM = table.$('#txt0').serializeArray();
                     var ROLL = table.$('#txt1').serializeArray();
                     var QUANTITY = table.$('#txt2').serializeArray();
@@ -207,42 +209,71 @@
                     var ITEM1 = table.$('#txt7').serializeArray();
                     var ROLL1 = table.$('#txt8').serializeArray();
                     var PALET = table.$('#txt9').serializeArray();
-                    $.each(ITEM,function(k,v){
-                        var url = "edititem?status=G2&ITEM="+ITEM[k].value+"&ROLL="+ROLL[k].value+"&QUANTITY="+QUANTITY[k].value+"&UNIT="+UNIT[k].value+"&COLOR="+COLOR[k].value+"&BATCH="+BATCH[k].value+"&DESC1="+DESC1[k].value.replace("#", "!")+"&INVOICE="+INVOICE+"&INVOICEDATE="+INVOICEDATE+"&LOT="+LOT+"&MRNO="+MRNO+"&ITEM1="+ITEM1[k].value+"&ROLL1="+ROLL1[k].value+"&PALET="+PALET[k].value;
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            success: function(msg,status){ 
-                                if(msg == "false"){ 
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'ไม่สำเร็จ',
-                                        text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                    })
-                                    $("#btn-send").removeClass("disabled");
-                                    $("#btn-send").addClass("disabled");
-                                    $("#btn-send").text("กำลังบันทึก...");
-                                }else if(msg == "true"){
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'สำเร็จ',
-                                        text: 'บันทึกข้อมูลสำเร็จ'
-                                    })
-                                    $("#btn-send").removeClass("disabled");
-                                    $("#btn-send").text("บันทึก");
-                                }  
-                               
-                                $("#btn-send").removeClass("disabled");
-                                $("#btn-send").addClass("disabled");
-                                
-                            }    
-                        });      
-                              
-                        
-                    });
-                    getdata("");
+                  
+                  
+                    var arrITEM = new Array();
+                    var arrROLL = new Array();
+                    var arrQUANTITY = new Array();
+                    var arrUNIT = new Array();
+                    var arrCOLOR = new Array();
+                    var arrBATCH = new Array();
+                    var arrDESC1 = new Array();
+                    var arrITEM1 = new Array();
+                    var arrROLL1 = new Array();
+                    var arrPALET = new Array();
                     
-       
+                    $.each(ITEM,function(k,v){
+                        arrITEM.push(ITEM[k].value.toUpperCase());
+                        arrROLL.push(ROLL[k].value);
+                        arrQUANTITY.push(QUANTITY[k].value);
+                        arrUNIT.push(UNIT[k].value);
+                        arrCOLOR.push(COLOR[k].value);
+                        arrBATCH.push(BATCH[k].value);
+                        arrDESC1.push(DESC1[k].value);
+                        arrITEM1.push(ITEM1[k].value);
+                        arrROLL1.push(ROLL1[k].value);
+                        arrPALET.push(PALET[k].value);
+                    });
+                  
+                    var url = "edititem?status=G2";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {
+                            arrITEM:arrITEM,
+                            arrROLL:arrROLL,
+                            arrQUANTITY:arrQUANTITY,
+                            arrUNIT:arrUNIT,
+                            arrCOLOR:arrCOLOR,
+                            arrBATCH:arrBATCH,
+                            arrDESC1:arrDESC1,
+                            arrITEM1:arrITEM1,
+                            arrROLL1:arrROLL1,
+                            arrPALET:arrPALET,
+                            INVOICE:INVOICE,
+                            INVOICEDATE:INVOICEDATE,
+                            LOT:LOT,
+                            MRNO:MRNO
+                        },
+             
+                        success: function(msg,status){ 
+                            console.log(msg);
+                            if(msg == 'true'){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'บันทึกข้อมูลสำเร็จ',
+                                    text: 'บันทึกข้อมูลสำเร็จ'
+                                })
+                            }else if(msg == 'false'){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                })
+                            }
+                        }    
+                    });  
+                   
                 });
             });
         </script>

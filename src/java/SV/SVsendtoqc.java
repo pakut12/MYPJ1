@@ -30,7 +30,7 @@ public class SVsendtoqc extends HttpServlet {
             Connection con = null;
             ResultSet rec = null;
             PreparedStatement ps = null;
-            PreparedStatement psin = null;
+
             try {
                 con = DB.ConnDB.getConnection();
                 String id = request.getParameter("mrno");
@@ -40,30 +40,29 @@ public class SVsendtoqc extends HttpServlet {
                 rec = ps.executeQuery();
                 int numrow = 0;
                 while (rec.next()) {
+                    Connection conin = null;
+                    PreparedStatement psin = null;
                     try {
-                        String sqlin = "INSERT INTO wmqck (MRNO, ITEM, ROLL, PALET, ACTQTY, ETHREAD, EOIL, EKNOT, EJOINT, EARCH, EFURROW, EDIRTY, EALKALI, EBROKEN, EREPEAT, TOTERR, WIDTH, GRADEQC, QCDATE, BYNAME, WEIGHT, QTYLAY, MARK, REMARK1, REMARK2, REMARK3, REJECT, BYNAME1, REMARK4, WEIGHT1, MARK_TOTERR, REFMRNO) " +
-                                "VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        String sqlin = "INSERT INTO wmqck (MRNO, ITEM, ROLL, PALET, ACTQTY) " +
+                                "VALUES (?, ?,?, ?, ?)";
 
 //                        out.print(rec.getString("MRNO"));
 //                        out.print(rec.getString("ITEM"));
 //                        out.print(rec.getString("ROLL"));
 //                        out.print(rec.getString("QUANTITY"));
-
-                        psin = con.prepareStatement(sqlin);
+                        conin = DB.ConnDB.getConnection();
+                        psin = conin.prepareStatement(sqlin);
                         psin.setString(1, rec.getString("MRNO"));
                         psin.setString(2, rec.getString("ITEM"));
                         psin.setString(3, rec.getString("ROLL"));
                         psin.setString(4, rec.getString("PALET"));
                         psin.setString(5, rec.getString("QUANTITY"));
 
-                        for (int n = 6; n <= 32; n++) {
-                            psin.setString(n, null);
-                        }
                         if (psin.executeUpdate() > 0) {
                             numrow++;
                         }
-
-
+                        psin.close();
+                        DB.ConnDB.closeConnection(conin);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

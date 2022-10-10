@@ -47,17 +47,18 @@ public class SVgetdatawm extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            ResultSet rec = null;
-            Connection conn = null;
-            PreparedStatement ps = null;
+
             String partwork = "C:/Users/pakutsing/Desktop/Github/MYPJ1/web/file/";
             String partweb = "/web/webapps/MYPJ1/file/";
-            //            conn = DB.ConnDB.getConnection();
-            conn = DB.ConnDB.getConnection();
+
             String status = request.getParameter("status").trim();
             if (status.equals("G1")) {
-
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
+
                     String menr = request.getParameter("mrno").trim();
                     String page = "";
 
@@ -123,6 +124,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G2")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String menr = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").trim().toUpperCase();
@@ -173,6 +178,10 @@ public class SVgetdatawm extends HttpServlet {
                 }
 
             } else if (status.equals("G3")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String menr = request.getParameter("mrno").trim();
 
@@ -249,6 +258,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G4")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String menr = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").trim().toUpperCase();
@@ -298,6 +311,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G5")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String menr = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").trim().toUpperCase();
@@ -344,6 +361,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G6")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String menr = request.getParameter("mrno").trim();
 
@@ -392,6 +413,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G7")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String po = request.getParameter("po").trim();
 
@@ -442,6 +467,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G8")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
 
                     String item = request.getParameter("item").trim().toUpperCase();
@@ -507,6 +536,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G9")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
 
                 try {
                     String mrno = request.getParameter("mrno").trim();
@@ -560,6 +593,11 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G10")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
+
                 String mrno = request.getParameter("mrno").trim();
                 String item = request.getParameter("item").toUpperCase().trim();
                 String palet = request.getParameter("palet").trim();
@@ -650,6 +688,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G11")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String barcode = request.getParameter("barcode");
 
@@ -723,6 +765,11 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G12")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
+
                 try {
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
@@ -817,6 +864,11 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G13")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
+
                 try {
                     String mrno = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").toUpperCase().trim();
@@ -855,6 +907,10 @@ public class SVgetdatawm extends HttpServlet {
                 }
 
             } else if (status.equals("G14")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
@@ -898,6 +954,10 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G15")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String mrno = request.getParameter("mrno");
                     String pallet = request.getParameter("pallet");
@@ -958,6 +1018,10 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G16")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
 
                     String mrno = request.getParameter("mrno");
@@ -1063,6 +1127,10 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G17")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String mrno = request.getParameter("mrno").trim();
                     String pallet = request.getParameter("pallet").trim();
@@ -1100,6 +1168,10 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G18")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String mrno = request.getParameter("mrno").trim();
                     String item = request.getParameter("item").trim().toUpperCase();
@@ -1144,6 +1216,10 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G19")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String mrno = request.getParameter("mrno").trim();
 
@@ -1188,6 +1264,10 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G20")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
 
                     String mrno = request.getParameter("mrno");
@@ -1332,6 +1412,10 @@ public class SVgetdatawm extends HttpServlet {
 
 
             } else if (status.equals("G21")) {
+                ResultSet rec = null;
+                Connection conn = null;
+                PreparedStatement ps = null;
+                conn = DB.ConnDB.getConnection();
                 try {
                     String mrno = request.getParameter("mrno");
                     String palet = request.getParameter("palet");
@@ -1343,7 +1427,7 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
+                    page = partweb + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
 
                     XSSFFont font = workbook.createFont();
