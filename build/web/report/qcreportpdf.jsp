@@ -72,7 +72,7 @@
                     arr1[0] = [
                         {
                             border: [true, true, true, true],  
-                            text: 'ม้วนที',
+                            text: 'ม้วน\nที',
                             fontSize: 10
                         }, 
                         {
@@ -675,7 +675,7 @@
                                 table: {
                                     headerRows: 1,
                                     widths: [
-                                        12, 
+                                        14, 
                                         19, 
                                         12, 
                                         16, 
@@ -689,8 +689,8 @@
                                         12, 
                                         12, 
                                         20, 
-                                        52, 
-                                        50, 
+                                        51, 
+                                        49, 
                                         17, 
                                         21, 
                                         1],
@@ -720,10 +720,6 @@
                     };
                     pdfMake.createPdf(docDefinition).download(de.MRNO+de.PALET+'.pdf'); 
                 
-        
-        
-        
-        
                 }
             });
             

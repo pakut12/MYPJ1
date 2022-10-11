@@ -720,10 +720,6 @@
                     };
                     pdfMake.createPdf(docDefinition).open({}, window); 
                 
-        
-        
-        
-        
                 }
             });
             
