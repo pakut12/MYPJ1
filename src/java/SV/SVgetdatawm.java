@@ -696,7 +696,7 @@ public class SVgetdatawm extends HttpServlet {
                 try {
                     String barcode = request.getParameter("barcode");
 
-                    String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmmaster.ROLL  where wmmaster.BARCODE = ?";
+                    String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmbarcode.ROLL where wmmaster.BARCODE = ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, barcode);
@@ -1428,7 +1428,7 @@ public class SVgetdatawm extends HttpServlet {
                     ps.setString(1, mrno);
                     ps.setString(2, palet);
                     rec = ps.executeQuery();
-                    page = partwork + mrno.trim() + palet.trim() + ".xlsx";
+                    page = partweb + mrno.trim() + palet.trim() + ".xlsx";
                     XSSFRow row1 = sheet.createRow(0);
 
                     XSSFFont font = workbook.createFont();

@@ -193,8 +193,8 @@
                 });
                 
                 $("#btn-send").click(function(){
-                    // $("#btn-send").addClass("disabled");
-                    //$("#btn-send").text("กำลังบันทึก....");
+                    $("#btn-send").addClass("disabled");
+                    $("#btn-send").text("กำลังบันทึก....");
                     var ITEM = table.$('#txt0').serializeArray();
                     var ROLL = table.$('#txt1').serializeArray();
                     var QUANTITY = table.$('#txt2').serializeArray();
@@ -258,19 +258,23 @@
              
                         success: function(msg,status){ 
                             console.log(msg);
-                            if(msg == 'true'){
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'บันทึกข้อมูลสำเร็จ',
-                                    text: 'บันทึกข้อมูลสำเร็จ'
-                                })
-                            }else if(msg == 'false'){
+                            if(msg == "false"){ 
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                    title: 'ไม่สำเร็จ',
                                     text: 'บันทึกข้อมูลไม่สำเร็จ'
                                 })
-                            }
+                                $("#btn-send").removeClass("disabled");
+                                $("#btn-send").text("บันทึก");
+                            }else if(msg == "true"){
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'สำเร็จ',
+                                    text: 'บันทึกข้อมูลสำเร็จ'
+                                })
+                                $("#btn-send").removeClass("disabled");
+                                $("#btn-send").text("บันทึก");
+                            } 
                         }    
                     });  
                    

@@ -214,11 +214,11 @@ public class SVuser extends HttpServlet {
                         } else {
                             out.print("false");
                         }
+
+                        out.print("<script langquage='javascript'>window.location='displayuser.jsp';</script>");
                         rec.close();
                         ps.close();
                         DB.ConnDB.closeConnection(con);
-                        out.print("<script langquage='javascript'>window.location='displayuser.jsp';</script>");
-
 
 
 
@@ -282,7 +282,7 @@ public class SVuser extends HttpServlet {
                         } else {
                             out.print("false");
                         }
-                        rec.close();
+                       
                         ps.close();
                         DB.ConnDB.closeConnection(con);
 

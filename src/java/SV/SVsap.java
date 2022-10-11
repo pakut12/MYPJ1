@@ -72,8 +72,6 @@ public class SVsap extends HttpServlet {
                         output.setRow(z);
                         JSONArray arrjson = new JSONArray();
 
-
-
                         arrjson.add(n + 1);
                         arrjson.add(output.getString("MRNO"));
                         arrjson.add(output.getString("ITEM"));

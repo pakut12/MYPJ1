@@ -142,8 +142,8 @@
                 });
          
                 $("#btn-send").click(function(){
-                    //$("#btn-send").addClass("disabled");
-                    //$("#btn-send").text("กำลังบันทึก....");
+                    $("#btn-send").addClass("disabled");
+                    $("#btn-send").text("กำลังบันทึก....");
                     var mrno = $('#mrno').val();
                     var item = $('#item').val();
                     var ROLL = table.$('#txt0').serializeArray();
@@ -182,8 +182,7 @@
                                     text: 'บันทึกข้อมูลไม่สำเร็จ'
                                 })
                                 $("#btn-send").removeClass("disabled");
-                                $("#btn-send").addClass("disabled");
-                                $("#btn-send").text("กำลังบันทึก");
+                                $("#btn-send").text("บันทึก");
                             }else if(msg == "true"){
                                 Swal.fire({
                                     icon: 'success',
@@ -196,9 +195,7 @@
                                         
                         }    
                     });
-                           
-                        
-                   
+              
                     //getdata($("#mrno").val(),$("#item").val());   
                    
                                     
