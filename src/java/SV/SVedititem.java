@@ -48,13 +48,12 @@ public class SVedititem extends HttpServlet {
 
                     int ck = 0;
                     int n = 0;
+
+                    Connection con = null;
+                    PreparedStatement ps = null;
+                    PreparedStatement ps1 = null;
+                    con = DB.ConnDB.getConnection();
                     try {
-                        Connection con = null;
-
-                        PreparedStatement ps = null;
-                        con = DB.ConnDB.getConnection();
-
-                        PreparedStatement ps1 = null;
 
                         String sql = "UPDATE wmbarcode SET wmbarcode.PALET = ?,wmbarcode.QUANTITY=?,wmbarcode.BATCH =? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM = ? AND wmbarcode.ROLL = ?";
                         ps = con.prepareStatement(sql);
@@ -77,27 +76,18 @@ public class SVedititem extends HttpServlet {
                             ps1.setString(4, item.toString());
                             ps1.setString(5, arrROLL[n].toString());
                             ps1.addBatch();
-
-
-
                             n++;
                         }
-
-                        int ck1[] = ps.executeBatch();
-                        int ck2[] = ps1.executeBatch();
-
-                        if (ck1.length > 0 && ck2.length > 0) {
-                            out.print("true");
-                        } else {
-                            out.print("false");
-                        }
-
+                        ps.executeBatch();
+                        ps1.executeBatch();
+                        out.print("true");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        out.print("false");
+                    } finally {
                         ps.close();
                         ps1.close();
                         DB.ConnDB.closeConnection(con);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
 
 //
@@ -155,17 +145,16 @@ public class SVedititem extends HttpServlet {
                     String MRNO = (String) request.getParameter("MRNO");
 
                     int n = 0;
+                    Connection con = null;
+                    ResultSet res = null;
+                    PreparedStatement ps = null;
+                    con = DB.ConnDB.getConnection();
+
+                    Connection con1 = null;
+                    ResultSet res1 = null;
+                    PreparedStatement ps1 = null;
+                    con1 = DB.ConnDB.getConnection();
                     try {
-                        Connection con = null;
-                        ResultSet res = null;
-                        PreparedStatement ps = null;
-                        con = DB.ConnDB.getConnection();
-
-                        Connection con1 = null;
-                        ResultSet res1 = null;
-                        PreparedStatement ps1 = null;
-                        con1 = DB.ConnDB.getConnection();
-
                         String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=?,wmbarcode.PALET=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
                         ps = con.prepareStatement(sql);
 
@@ -174,7 +163,7 @@ public class SVedititem extends HttpServlet {
 
                         for (String xa : arrITEM) {
 
-                            ps.setString(1, arrITEM[n].toString());
+                            ps.setString(1, arrITEM[n].toString().toUpperCase());
                             ps.setString(2, arrROLL[n].toString());
                             ps.setString(3, arrQUANTITY[n].toString());
                             ps.setString(4, arrUNIT[n].toString());
@@ -202,20 +191,16 @@ public class SVedititem extends HttpServlet {
                             n++;
 
                         }
-                        int ck1[] = ps.executeBatch();
-                        int ck2[] = ps1.executeBatch();
-
-                        if (ck1.length > 0 && ck2.length > 0) {
-                            out.print("true");
-                        } else {
-                            out.print("false");
-                        }
-
+                        ps.executeBatch();
+                        ps1.executeBatch();
+                        out.print("true");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        out.print("false");
+                    } finally {
                         ps.close();
                         ps1.close();
                         DB.ConnDB.closeConnection(con);
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
 
 
@@ -380,42 +365,40 @@ public class SVedititem extends HttpServlet {
                 } else if (status.equals("G4")) {
                     request.setCharacterEncoding("UTF-8");
 
-
-
                     String remark1 = (String) request.getParameter("remark1");
                     String remark2 = (String) request.getParameter("remark2");
                     String remark3 = (String) request.getParameter("remark3");
                     String mrno = (String) request.getParameter("mrno");
                     String item = (String) request.getParameter("item").toUpperCase();
-                    String[] arrroll = (String[]) request.getParameterValues("roll[]");
+                    String[] arrroll = request.getParameterValues("roll[]");
                     String gradeqc = (String) request.getParameter("gradeqc");
-                    
+
                     Connection con = null;
                     ResultSet res = null;
                     PreparedStatement ps = null;
                     con = DB.ConnDB.getConnection();
-                    for (String roll : arrroll) {
-
+                    try {
                         String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
-
                         ps = con.prepareStatement(sql);
-                        ps.setString(1, remark1.toString());
-                        ps.setString(2, remark2.toString());
-                        ps.setString(3, remark3.toString());
-                        ps.setString(4, gradeqc.toString());
-                        ps.setString(5, mrno.toString());
-                        ps.setString(6, item.toString());
-                        ps.setString(7, roll.toString());
-                        ps.addBatch();
-                    }
-                    int ck[] = ps.executeBatch();
-                    if (ck.length > 0) {
+                        for (String roll : arrroll) {
+                            ps.setString(1, remark1.toString());
+                            ps.setString(2, remark2.toString());
+                            ps.setString(3, remark3.toString());
+                            ps.setString(4, gradeqc.toString());
+                            ps.setString(5, mrno.toString());
+                            ps.setString(6, item.toString());
+                            ps.setString(7, roll.toString());
+                            ps.addBatch();
+                        }
+                        ps.executeBatch();
                         out.print("true");
-                    } else {
+                    } catch (Exception e) {
+                        e.printStackTrace();
                         out.print("false");
+                    } finally {
+                        ps.close();
+                        DB.ConnDB.closeConnection(con);
                     }
-                    ps.close();
-                    DB.ConnDB.closeConnection(con);
 
                 } else if (status.equals("G5")) {
                     Connection con = null;

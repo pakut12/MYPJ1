@@ -328,8 +328,7 @@
                             $("#del_wmbarcode").text("ลบ");
                             $("#del_wmqck").removeClass("disabled");
                             $("#del_wmqck").text("ลบ");
-                            getdata($("#mrno").val(),$("#item").val());  
-                            getdata1($("#mrno").val(),$("#item").val());  
+                           
                             
                                       
                         }    

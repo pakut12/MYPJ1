@@ -132,29 +132,28 @@ public class SVsap extends HttpServlet {
 
                     String sqlwmmaster = "INSERT INTO wmmaster (BARCODE, MRNO, ITEM, ROLL) VALUES (?,?,?,?)";
 
+                    Connection con = null;
+                    Connection con1 = null;
+                    ResultSet rec = null;
+                    PreparedStatement pr = null;
+                    PreparedStatement pr1 = null;
 
+                    con = DB.ConnDB.getConnection();
+                    con1 = DB.ConnDB.getConnection();
 
-                    int chack = 0;
+                    pr = con.prepareStatement(sqlwmbarcode);
+                    pr1 = con1.prepareStatement(sqlwmmaster);
 
-                    for (int z = 0; z < output.getNumRows(); z++) {
-                        try {
-                            Connection con = null;
-                            Connection con1 = null;
-                            ResultSet rec = null;
-                            PreparedStatement pr = null;
-                            PreparedStatement pr1 = null;
-
-                            con = DB.ConnDB.getConnection();
-                            con1 = DB.ConnDB.getConnection();
-                            
-                            pr = con.prepareStatement(sqlwmbarcode);
-                            pr1 = con1.prepareStatement(sqlwmmaster);
+                    try {
+                        for (int z = 0; z < output.getNumRows(); z++) {
                             output.setRow(z);
 
                             pr1.setString(1, output.getString(17));
                             pr1.setString(2, output.getString(0));
                             pr1.setString(3, output.getString(1));
                             pr1.setString(4, output.getString(2));
+                            pr1.addBatch();
+
 
                             pr.setString(1, output.getString(0));
                             pr.setString(2, output.getString(1));
@@ -189,31 +188,28 @@ public class SVsap extends HttpServlet {
                             pr.setString(31, output.getString(30));
                             pr.setString(32, output.getString(31));
                             pr.setString(33, output.getString(32));
-
-                            if (pr.executeUpdate() > 0 && pr1.executeUpdate() > 0) {
-                                chack++;
-                            }
-
-                            rec.close();
-                            pr.close();
-                            pr1.close();
-                            DB.ConnDB.closeConnection(con);
-                            DB.ConnDB.closeConnection(con1);
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            pr.addBatch();
                         }
+                        pr.executeBatch();
+                        pr1.executeBatch();
+                        out.print("true");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        out.print("false");
+                    } finally {
+                        rec.close();
+                        pr.close();
+                        pr1.close();
+                        DB.ConnDB.closeConnection(con);
+                        DB.ConnDB.closeConnection(con1);
                     }
 
-                    if (chack > 0) {
-                        out.print("true");
-                    } else {
-                        out.print("false");
-                    }
 
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
+            } finally {
+                out.close();
             }
 
         } finally {

@@ -30,6 +30,8 @@ public class SVsendtoqc extends HttpServlet {
             Connection con = null;
             ResultSet rec = null;
             PreparedStatement ps = null;
+            Connection conin = null;
+            PreparedStatement psin = null;
 
             try {
                 con = DB.ConnDB.getConnection();
@@ -38,48 +40,40 @@ public class SVsendtoqc extends HttpServlet {
                 ps = con.prepareStatement(sql);
                 ps.setString(1, id);
                 rec = ps.executeQuery();
-                int numrow = 0;
+                conin = DB.ConnDB.getConnection();
+                String sqlin = "INSERT INTO wmqck (MRNO, ITEM, ROLL, PALET, ACTQTY) " +
+                        "VALUES (?, ?,?, ?, ?)";
+                psin = conin.prepareStatement(sqlin);
                 while (rec.next()) {
-                    Connection conin = null;
-                    PreparedStatement psin = null;
-                    try {
-                        String sqlin = "INSERT INTO wmqck (MRNO, ITEM, ROLL, PALET, ACTQTY) " +
-                                "VALUES (?, ?,?, ?, ?)";
+
 
 //                        out.print(rec.getString("MRNO"));
 //                        out.print(rec.getString("ITEM"));
 //                        out.print(rec.getString("ROLL"));
 //                        out.print(rec.getString("QUANTITY"));
-                        conin = DB.ConnDB.getConnection();
-                        psin = conin.prepareStatement(sqlin);
-                        psin.setString(1, rec.getString("MRNO"));
-                        psin.setString(2, rec.getString("ITEM"));
-                        psin.setString(3, rec.getString("ROLL"));
-                        psin.setString(4, rec.getString("PALET"));
-                        psin.setString(5, rec.getString("QUANTITY"));
 
-                        if (psin.executeUpdate() > 0) {
-                            numrow++;
-                        }
-                        psin.close();
-                        DB.ConnDB.closeConnection(conin);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+
+                    psin.setString(1, rec.getString("MRNO"));
+                    psin.setString(2, rec.getString("ITEM"));
+                    psin.setString(3, rec.getString("ROLL"));
+                    psin.setString(4, rec.getString("PALET"));
+                    psin.setString(5, rec.getString("QUANTITY"));
+                    psin.addBatch();
+
                 }
-                if (numrow > 0) {
-                    out.print("true");
-                } else {
-                    out.print("false");
-                }
+                psin.executeBatch();
+                out.print("true");
 
             } catch (Exception e) {
                 e.printStackTrace();
+                out.print("false");
             } finally {
                 try {
                     rec.close();
                     ps.close();
                     DB.ConnDB.closeConnection(con);
+                    psin.close();
+                    DB.ConnDB.closeConnection(conin);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

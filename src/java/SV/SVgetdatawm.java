@@ -421,7 +421,6 @@ public class SVgetdatawm extends HttpServlet {
                 try {
                     String po = request.getParameter("po").trim();
 
-
                     String page = "";
 
                     String sql = "select ITEM,ROLL,QUANTITY,UNIT,COLOR,INVOICE,MRNO,DESC1 from wmbarcode where wmbarcode.PO = ? ";

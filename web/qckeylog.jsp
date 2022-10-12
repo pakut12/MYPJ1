@@ -361,7 +361,7 @@
                             url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                             success: function(msg,status){
                                 var de = $.parseJSON(msg);
-                                console.log(de.arrroll);
+                               
                               
                                 var url = 'edititem?status=G4';
                                 $.ajax({
