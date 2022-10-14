@@ -29,7 +29,7 @@
                             <div class="card-body">
                                 Welcome <% out.print(request.getSession().getAttribute("user"));%>
                                 <br> <br>
-                               [ คู่มือระบบ RM / QC RM <a href="manual.pdf" target="_blank">คลิก</a>]
+                               [ คู่มือระบบ RM / QC RM <a href="manual.pdf" target="_blank">Click</a>]
                             </div>
                         </div>
                     </div>

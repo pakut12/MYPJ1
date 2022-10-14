@@ -159,46 +159,58 @@
                     }
                 });
                 $("#savedata_sap").click(function(){
-                    var getpo =  $("#PO").val();
-                    var getdocqc = $("#DOCQC").val();
-                    $("#savedata_sap").text("กำลังบันทึก...");
-                    $("#savedata_sap").addClass("disabled");
-                    $.ajax({
-                        type: "POST",
-                        url: 'sap?stasus=S&PO='+getpo+'&DOCQC='+getdocqc,
-                        success: function(msg){
-                            console.log(msg);
-                            if(msg == "false"){ 
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'ไม่สำเร็จ',
-                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                })
-                                $("#savedata_sap").text("จัดเก็บข้อมูล");
-                                $("#savedata_sap").removeClass("disabled");
-                                $("#savedata_sap").addClass("disabled");
-                            }else if(msg == "true"){
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'สำเร็จ',
-                                    text: 'บันทึกข้อมูลสำเร็จ'
-                                })
-                                $("#savedata_sap").text("จัดเก็บข้อมูล");
-                                $("#savedata_sap").removeClass("disabled");
-                            }
-                        },
-                        error:function(msg){
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'ไม่สำเร็จ',
-                                text: 'บันทึกข้อมูลไม่สำเร็จ'
-                            })
-                            $("#savedata_sap").text("จัดเก็บข้อมูล");
-                            $("#savedata_sap").removeClass("disabled");
+                    Swal.fire({
+                        title: 'คุณต้องการบันทึกหรือไม่',
+                        text: "คุณต้องการบันทึกหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            var getpo =  $("#PO").val();
+                            var getdocqc = $("#DOCQC").val();
+                            $("#savedata_sap").text("กำลังบันทึก...");
                             $("#savedata_sap").addClass("disabled");
+                            $.ajax({
+                                type: "POST",
+                                url: 'sap?stasus=S&PO='+getpo+'&DOCQC='+getdocqc,
+                                success: function(msg){
+                                    console.log(msg);
+                                    if(msg == "false"){ 
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'ไม่สำเร็จ',
+                                            text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                        })
+                                        $("#savedata_sap").text("จัดเก็บข้อมูล");
+                                        $("#savedata_sap").removeClass("disabled");
+                                        $("#savedata_sap").addClass("disabled");
+                                    }else if(msg == "true"){
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'สำเร็จ',
+                                            text: 'บันทึกข้อมูลสำเร็จ'
+                                        })
+                                        $("#savedata_sap").text("จัดเก็บข้อมูล");
+                                        $("#savedata_sap").removeClass("disabled");
+                                    }
+                                },
+                                error:function(msg){
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'ไม่สำเร็จ',
+                                        text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                    })
+                                    $("#savedata_sap").text("จัดเก็บข้อมูล");
+                                    $("#savedata_sap").removeClass("disabled");
+                                    $("#savedata_sap").addClass("disabled");
+                                }
+                            });
                         }
-                        
                     });
+                    
         
                 });
     
