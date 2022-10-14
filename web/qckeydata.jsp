@@ -459,57 +459,69 @@
                 });
          
                 $("#btn-send").click(function(){
-                    
-                    
-                    var actqty = $("#actqty").val();
-                    var ethread = $("#ethread").val();
-                    var eoil = $("#eoil").val();
-                    var eknot = $("#eknot").val();
-                    var ejoint = $("#ejoint").val();
-                    var efurrow = $("#efurrow").val();
-                    var edirty = $("#edirty").val();
-                    var ealkali = $("#ealkali").val();
-                    var ebroken = $("#ebroken").val();
-                    var erepeat = $("#erepeat").val();
-                    var sum = $("#sum").val();
-                    var width = $("#width").val();
-                    var scolor = $("#scolor").val();
-                    var byname1 = $("#byname1").val();
-                    var weight = $("#weight").val();
-                    var qtylay = $("#qtylay").val();
-                    var mark_toterr = $("#mark_toterr").val();
-                    var qcdate = $("#qcdate").val();
-                    var point = $("#point").val();
+                    Swal.fire({
+                        title: 'คุณต้องการบันทึกหรือไม่',
+                        text: "คุณต้องการบันทึกหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            var actqty = $("#actqty").val();
+                            var ethread = $("#ethread").val();
+                            var eoil = $("#eoil").val();
+                            var eknot = $("#eknot").val();
+                            var ejoint = $("#ejoint").val();
+                            var efurrow = $("#efurrow").val();
+                            var edirty = $("#edirty").val();
+                            var ealkali = $("#ealkali").val();
+                            var ebroken = $("#ebroken").val();
+                            var erepeat = $("#erepeat").val();
+                            var sum = $("#sum").val();
+                            var width = $("#width").val();
+                            var scolor = $("#scolor").val();
+                            var byname1 = $("#byname1").val();
+                            var weight = $("#weight").val();
+                            var qtylay = $("#qtylay").val();
+                            var mark_toterr = $("#mark_toterr").val();
+                            var qcdate = $("#qcdate").val();
+                            var point = $("#point").val();
                    
-                    var mrno = $("#doc").val();
-                    var item = $("#item").val();
-                    var roll = $("#roll").val();
-                    var pallet = $("#pallet").val();
+                            var mrno = $("#doc").val();
+                            var item = $("#item").val();
+                            var roll = $("#roll").val();
+                            var pallet = $("#pallet").val();
         
-                    var url = "edititem?status=G3";
+                            var url = "edititem?status=G3";
             
-                   
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: "&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&scolor="+scolor+"&byname1="+byname1+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet,
-                        success: function(msg,status){          
-                            if(msg == "true"){
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'บันทึกข้อมูลสำเร็จ',
-                                    text: 'บันทึกข้อมูลสำเร็จ'
-                                });
-                                //getdata($("#barcode").val()); 
-                            }else if(msg == "false"){
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'บันทึกข้อมูลไม่สำเร็จ',
-                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                });
-                            }
-                        }    
-                    });  
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                data: "&actqty="+actqty+"&ethread="+ethread+"&eoil="+eoil+"&eknot="+eknot+"&ejoint="+ejoint+"&efurrow="+efurrow+"&edirty="+edirty+"&ealkali="+ealkali+"&ebroken="+ebroken+"&erepeat="+erepeat+"&sum="+sum+"&width="+width+"&scolor="+scolor+"&byname1="+byname1+"&weight="+weight+"&qtylay="+qtylay+"&mark_toterr="+mark_toterr+"&qcdate="+qcdate+"&point="+point+"&mrno="+mrno+"&item="+item+"&roll="+roll+"&pallet="+pallet,
+                                success: function(msg,status){          
+                                    if(msg == "true"){
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'บันทึกข้อมูลสำเร็จ',
+                                            text: 'บันทึกข้อมูลสำเร็จ'
+                                        });
+                                        //getdata($("#barcode").val()); 
+                                    }else if(msg == "false"){
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                            text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                        });
+                                    }
+                                }    
+                            });  
+                        }
+                    });
+                    
+                    
+                    
                   
                 });
             });

@@ -193,90 +193,103 @@
                 });
                 
                 $("#btn-send").click(function(){
-                    $("#btn-send").addClass("disabled");
-                    $("#btn-send").text("กำลังบันทึก....");
-                    var ITEM = table.$('#txt0').serializeArray();
-                    var ROLL = table.$('#txt1').serializeArray();
-                    var QUANTITY = table.$('#txt2').serializeArray();
-                    var UNIT = table.$('#txt3').serializeArray();
-                    var COLOR = table.$('#txt4').serializeArray();
-                    var BATCH = table.$('#txt5').serializeArray();
-                    var DESC1 = table.$('#txt6').serializeArray();
-                    var INVOICE = $("#INVOICE").val();
-                    var INVOICEDATE = $("#INVOICEDATE").val();
-                    var LOT = $("#LOT").val();
-                    var MRNO = $("#mrno").val();  
-                    var ITEM1 = table.$('#txt7').serializeArray();
-                    var ROLL1 = table.$('#txt8').serializeArray();
-                    var PALET = table.$('#txt9').serializeArray();
+                    Swal.fire({
+                        title: 'คุณต้องการบันทึกหรือไม่',
+                        text: "คุณต้องการบันทึกหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            $("#btn-send").addClass("disabled");
+                            $("#btn-send").text("กำลังบันทึก....");
+                            var ITEM = table.$('#txt0').serializeArray();
+                            var ROLL = table.$('#txt1').serializeArray();
+                            var QUANTITY = table.$('#txt2').serializeArray();
+                            var UNIT = table.$('#txt3').serializeArray();
+                            var COLOR = table.$('#txt4').serializeArray();
+                            var BATCH = table.$('#txt5').serializeArray();
+                            var DESC1 = table.$('#txt6').serializeArray();
+                            var INVOICE = $("#INVOICE").val();
+                            var INVOICEDATE = $("#INVOICEDATE").val();
+                            var LOT = $("#LOT").val();
+                            var MRNO = $("#mrno").val();  
+                            var ITEM1 = table.$('#txt7').serializeArray();
+                            var ROLL1 = table.$('#txt8').serializeArray();
+                            var PALET = table.$('#txt9').serializeArray();
                   
                   
-                    var arrITEM = new Array();
-                    var arrROLL = new Array();
-                    var arrQUANTITY = new Array();
-                    var arrUNIT = new Array();
-                    var arrCOLOR = new Array();
-                    var arrBATCH = new Array();
-                    var arrDESC1 = new Array();
-                    var arrITEM1 = new Array();
-                    var arrROLL1 = new Array();
-                    var arrPALET = new Array();
+                            var arrITEM = new Array();
+                            var arrROLL = new Array();
+                            var arrQUANTITY = new Array();
+                            var arrUNIT = new Array();
+                            var arrCOLOR = new Array();
+                            var arrBATCH = new Array();
+                            var arrDESC1 = new Array();
+                            var arrITEM1 = new Array();
+                            var arrROLL1 = new Array();
+                            var arrPALET = new Array();
                     
-                    $.each(ITEM,function(k,v){
-                        arrITEM.push(ITEM[k].value.toUpperCase());
-                        arrROLL.push(ROLL[k].value);
-                        arrQUANTITY.push(QUANTITY[k].value);
-                        arrUNIT.push(UNIT[k].value);
-                        arrCOLOR.push(COLOR[k].value);
-                        arrBATCH.push(BATCH[k].value);
-                        arrDESC1.push(DESC1[k].value);
-                        arrITEM1.push(ITEM1[k].value);
-                        arrROLL1.push(ROLL1[k].value);
-                        arrPALET.push(PALET[k].value);
-                    });
+                            $.each(ITEM,function(k,v){
+                                arrITEM.push(ITEM[k].value.toUpperCase());
+                                arrROLL.push(ROLL[k].value);
+                                arrQUANTITY.push(QUANTITY[k].value);
+                                arrUNIT.push(UNIT[k].value);
+                                arrCOLOR.push(COLOR[k].value);
+                                arrBATCH.push(BATCH[k].value);
+                                arrDESC1.push(DESC1[k].value);
+                                arrITEM1.push(ITEM1[k].value);
+                                arrROLL1.push(ROLL1[k].value);
+                                arrPALET.push(PALET[k].value);
+                            });
                   
-                    var url = "edititem?status=G2";
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: {
-                            arrITEM:arrITEM,
-                            arrROLL:arrROLL,
-                            arrQUANTITY:arrQUANTITY,
-                            arrUNIT:arrUNIT,
-                            arrCOLOR:arrCOLOR,
-                            arrBATCH:arrBATCH,
-                            arrDESC1:arrDESC1,
-                            arrITEM1:arrITEM1,
-                            arrROLL1:arrROLL1,
-                            arrPALET:arrPALET,
-                            INVOICE:INVOICE,
-                            INVOICEDATE:INVOICEDATE,
-                            LOT:LOT,
-                            MRNO:MRNO
-                        },
+                            var url = "edititem?status=G2";
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                data: {
+                                    arrITEM:arrITEM,
+                                    arrROLL:arrROLL,
+                                    arrQUANTITY:arrQUANTITY,
+                                    arrUNIT:arrUNIT,
+                                    arrCOLOR:arrCOLOR,
+                                    arrBATCH:arrBATCH,
+                                    arrDESC1:arrDESC1,
+                                    arrITEM1:arrITEM1,
+                                    arrROLL1:arrROLL1,
+                                    arrPALET:arrPALET,
+                                    INVOICE:INVOICE,
+                                    INVOICEDATE:INVOICEDATE,
+                                    LOT:LOT,
+                                    MRNO:MRNO
+                                },
              
-                        success: function(msg,status){ 
-                            console.log(msg);
-                            if(msg == "false"){ 
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'ไม่สำเร็จ',
-                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                })
-                                $("#btn-send").removeClass("disabled");
-                                $("#btn-send").text("บันทึก");
-                            }else if(msg == "true"){
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'สำเร็จ',
-                                    text: 'บันทึกข้อมูลสำเร็จ'
-                                })
-                                $("#btn-send").removeClass("disabled");
-                                $("#btn-send").text("บันทึก");
-                            } 
-                        }    
-                    });  
+                                success: function(msg,status){ 
+                                    console.log(msg);
+                                    if(msg == "false"){ 
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'ไม่สำเร็จ',
+                                            text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                        })
+                                        $("#btn-send").removeClass("disabled");
+                                        $("#btn-send").text("บันทึก");
+                                    }else if(msg == "true"){
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'สำเร็จ',
+                                            text: 'บันทึกข้อมูลสำเร็จ'
+                                        })
+                                        $("#btn-send").removeClass("disabled");
+                                        $("#btn-send").text("บันทึก");
+                                    } 
+                                }    
+                            });    
+                        }
+                    });
+                    
                    
                 });
             });

@@ -57,7 +57,7 @@
                                         <a href="printqc.jsp"><button class="btn btn-danger mt-4 btn-sm" id="btn-reset" type="button"><i class="bi bi-arrow-clockwise"></i> เคลียร์ข้อมูล</button></a>
                                         <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-printer"></i> พิมพ์รายงาน</button>
                                         <button class="btn btn-success mt-4 btn-sm" id="btn-pdf" type="button"><i class="bi bi-filetype-pdf"></i> PDF</button>
-                                        <button class="btn btn-success mt-4 btn-sm" id="btn-exportexcal" type="button"><i class="bi bi-file-spreadsheet"></i> Excal</button>
+                                        <button class="btn btn-success mt-4 btn-sm" id="btn-exportexcal" type="button"><i class="bi bi-file-spreadsheet"></i> Excel</button>
                                     </div>
                                     
                                 </div>

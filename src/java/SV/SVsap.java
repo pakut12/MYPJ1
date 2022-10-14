@@ -154,7 +154,6 @@ public class SVsap extends HttpServlet {
                             pr1.setString(4, output.getString(2));
                             pr1.addBatch();
 
-
                             pr.setString(1, output.getString(0));
                             pr.setString(2, output.getString(1));
                             pr.setString(3, output.getString(2));

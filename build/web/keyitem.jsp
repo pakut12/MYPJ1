@@ -142,59 +142,72 @@
                 });
          
                 $("#btn-send").click(function(){
-                    $("#btn-send").addClass("disabled");
-                    $("#btn-send").text("กำลังบันทึก....");
-                    var mrno = $('#mrno').val();
-                    var item = $('#item').val();
-                    var ROLL = table.$('#txt0').serializeArray();
-                    var PALET = table.$('#txt1').serializeArray();
-                    var QUANTITY = table.$('#txt2').serializeArray();
-                    var BATCH = table.$('#txt3').serializeArray();
+                    Swal.fire({
+                        title: 'คุณต้องการบันทึกหรือไม่',
+                        text: "คุณต้องการบันทึกหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            $("#btn-send").addClass("disabled");
+                            $("#btn-send").text("กำลังบันทึก....");
+                            var mrno = $('#mrno').val();
+                            var item = $('#item').val();
+                            var ROLL = table.$('#txt0').serializeArray();
+                            var PALET = table.$('#txt1').serializeArray();
+                            var QUANTITY = table.$('#txt2').serializeArray();
+                            var BATCH = table.$('#txt3').serializeArray();
                     
-                    var arrROLL = new Array();
-                    var arrPALET = new Array();
-                    var arrQUANTITY = new Array();
-                    var arrBATCH = new Array();
+                            var arrROLL = new Array();
+                            var arrPALET = new Array();
+                            var arrQUANTITY = new Array();
+                            var arrBATCH = new Array();
                     
-                    $.each(ROLL,function(k,v){
-                        arrROLL.push(ROLL[k].value);
-                        arrPALET.push(PALET[k].value);
-                        arrQUANTITY.push(QUANTITY[k].value);
-                        arrBATCH.push(BATCH[k].value);
-                    });
+                            $.each(ROLL,function(k,v){
+                                arrROLL.push(ROLL[k].value);
+                                arrPALET.push(PALET[k].value);
+                                arrQUANTITY.push(QUANTITY[k].value);
+                                arrBATCH.push(BATCH[k].value);
+                            });
                    
-                    $.ajax({
-                        type: "POST",
-                        url: "edititem?status=G1",
-                        data:{
-                            arrROLL:arrROLL,
-                            arrPALET:arrPALET,
-                            arrQUANTITY:arrQUANTITY,
-                            arrBATCH:arrBATCH,
-                            mrno:mrno,
-                            item:item  
-                        },
-                        success: function(msg,status){
-                            if(msg == "false"){ 
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'ไม่สำเร็จ',
-                                    text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                })
-                                $("#btn-send").removeClass("disabled");
-                                $("#btn-send").text("บันทึก");
-                            }else if(msg == "true"){
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'สำเร็จ',
-                                    text: 'บันทึกข้อมูลสำเร็จ'
-                                })
-                                $("#btn-send").removeClass("disabled");
-                                $("#btn-send").text("บันทึก");
-                            } 
+                            $.ajax({
+                                type: "POST",
+                                url: "edititem?status=G1",
+                                data:{
+                                    arrROLL:arrROLL,
+                                    arrPALET:arrPALET,
+                                    arrQUANTITY:arrQUANTITY,
+                                    arrBATCH:arrBATCH,
+                                    mrno:mrno,
+                                    item:item  
+                                },
+                                success: function(msg,status){
+                                    if(msg == "false"){ 
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'ไม่สำเร็จ',
+                                            text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                        })
+                                        $("#btn-send").removeClass("disabled");
+                                        $("#btn-send").text("บันทึก");
+                                    }else if(msg == "true"){
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'สำเร็จ',
+                                            text: 'บันทึกข้อมูลสำเร็จ'
+                                        })
+                                        $("#btn-send").removeClass("disabled");
+                                        $("#btn-send").text("บันทึก");
+                                    } 
                                         
-                        }    
+                                }    
+                            });
+                        }
                     });
+                    
               
                     //getdata($("#mrno").val(),$("#item").val());   
                    

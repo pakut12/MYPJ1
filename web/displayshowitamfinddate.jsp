@@ -117,7 +117,7 @@
                     }); 
                     $.ajax({
                         type: "POST",
-                        url: 'getdatawm?status=G8&item='+item,
+                        url: 'getdatawm?status=G8&item='+item+'&date1='+date1+'&date2='+date2,
                         success: function(msg,status){
                             var de = $.parseJSON(msg);
                             $("#countwmbarcode").text(de.count);   

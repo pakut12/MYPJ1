@@ -17,8 +17,6 @@
     </style>
     <body>
         
-        
-        
         <%@include file="share/nav.jsp" %>
         <form id="myform" >
             <div class="container ">
@@ -337,66 +335,79 @@
                     });       
                 });
                 $("#btn-send").click(function(){
-                    var mrno = $("#mrno").val();
-                    var pallet = $("#pallet").val();
+                    Swal.fire({
+                        title: 'คุณต้องการบันทึกหรือไม่',
+                        text: "คุณต้องการบันทึกหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            var mrno = $("#mrno").val();
+                            var pallet = $("#pallet").val();
                    
-                    var remark1 = $("#remark1").val();
-                    var remark2 = $("#remark2").val();
-                    var remark3 = $("#remark3").val();
-                    var gradeqc = $("#gradeqc").val();
-                    var mrno = $("#mrno").val();
-                    var item = $("#item").val();
+                            var remark1 = $("#remark1").val();
+                            var remark2 = $("#remark2").val();
+                            var remark3 = $("#remark3").val();
+                            var gradeqc = $("#gradeqc").val();
+                            var mrno = $("#mrno").val();
+                            var item = $("#item").val();
                     
-                    if(mrno == "" || pallet == ""){
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'ข้อมูลไม่ถูกต้อง',
-                            text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
-                        })
-                    }else{
+                            if(mrno == "" || pallet == ""){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'ข้อมูลไม่ถูกต้อง',
+                                    text: 'กรุณาใส่ข้อมูลให้ถูกต้อง'
+                                })
+                            }else{
                        
                        
-                        $.ajax({
-                            type: "POST",
-                            url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
-                            success: function(msg,status){
-                                var de = $.parseJSON(msg);
-                               
-                              
-                                var url = 'edititem?status=G4';
                                 $.ajax({
                                     type: "POST",
-                                    url: url,
-                                    data:{
-                                        remark1:remark1,
-                                        remark2:remark2,
-                                        remark3:remark3,
-                                        mrno:mrno,
-                                        item:item,
-                                        roll:de.arrroll,
-                                        gradeqc:gradeqc            
-                                    },
+                                    url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                                     success: function(msg,status){
-                                        if(msg == 'true'){
-                                            Swal.fire({
-                                                icon: 'success',
-                                                title: 'บันทึกข้อมูลสำเร็จ',
-                                                text: 'บันทึกข้อมูลสำเร็จ'
-                                            }) 
-                                        }else if(msg == 'false'){
-                                            Swal.fire({
-                                                icon: 'error',
-                                                title: 'บันทึกข้อมูลไม่สำเร็จ',
-                                                text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                            })
-                                        }
-                                    }    
-                                });   
+                                        var de = $.parseJSON(msg);
+                               
                               
+                                        var url = 'edititem?status=G4';
+                                        $.ajax({
+                                            type: "POST",
+                                            url: url,
+                                            data:{
+                                                remark1:remark1,
+                                                remark2:remark2,
+                                                remark3:remark3,
+                                                mrno:mrno,
+                                                item:item,
+                                                roll:de.arrroll,
+                                                gradeqc:gradeqc            
+                                            },
+                                            success: function(msg,status){
+                                                if(msg == 'true'){
+                                                    Swal.fire({
+                                                        icon: 'success',
+                                                        title: 'บันทึกข้อมูลสำเร็จ',
+                                                        text: 'บันทึกข้อมูลสำเร็จ'
+                                                    }) 
+                                                }else if(msg == 'false'){
+                                                    Swal.fire({
+                                                        icon: 'error',
+                                                        title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                                        text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                                    })
+                                                }
+                                            }    
+                                        });   
+                              
+                                    }
+                                });   
                             }
-                        });   
-                    }
                   
+                        }
+                    });
+                   
        
                 });
             });

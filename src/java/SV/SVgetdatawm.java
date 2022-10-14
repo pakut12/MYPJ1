@@ -477,20 +477,21 @@ public class SVgetdatawm extends HttpServlet {
                     String date1 = request.getParameter("date1").trim();
                     String date2 = request.getParameter("date2").trim();
 
+
+
                     String Y = date1.substring(0, 4);
                     String M = date1.substring(5, 7);
                     String D = date1.substring(8, 10);
-                    String day1 = D + "/" + M + "/" + Y;
+                    String day1 = D + "-" + M + "-" + Y;
 
                     String Y1 = date2.substring(0, 4);
                     String M1 = date2.substring(5, 7);
                     String D1 = date2.substring(8, 10);
-                    String day2 = D1 + "/" + M1 + "/" + Y1;
-
+                    String day2 = D1 + "-" + M1 + "-" + Y1;
 
                     String sql = "select wmbarcode.MRNO,max(wmbarcode.ROLL) as MAX,wmbarcode.ITEM,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.INVOICEDATE,wmbarcode.INVOICE,wmbarcode.PUNAME from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.CREATEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY') GROUP BY wmbarcode.MRNO,wmbarcode.ITEM,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.INVOICEDATE,wmbarcode.INVOICE,wmbarcode.PUNAME";
-//                    String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.INVOICEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
-                    //conn = DB.ConnDB.getConnection();
+                    //String sql = "select * from wmbarcode where wmbarcode.ITEM = ? and wmbarcode.INVOICEDATE BETWEEN TO_DATE(?, 'DD/MM/YYYY') and TO_DATE(?, 'DD/MM/YYYY')";
+//conn = DB.ConnDB.getConnection();
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, item);
                     ps.setString(2, day1);
@@ -501,6 +502,12 @@ public class SVgetdatawm extends HttpServlet {
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
                     while ((rec.next()) && (rec != null)) {
+                        String idate = "";
+                        try {
+                            idate = rec.getString("INVOICEDATE").replace(" 00:00:00.0", "");
+                        } catch (Exception e) {
+                            idate = "";
+                        }
 
                         JSONArray arrjson = new JSONArray();
                         arrjson.add(rec.getString("ITEM"));
@@ -508,7 +515,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("MAX"));
                         arrjson.add(rec.getString("PLANT"));
                         arrjson.add(rec.getString("PO"));
-                        arrjson.add(rec.getString("INVOICEDATE").replace(" 00:00:00.0", ""));
+                        arrjson.add(idate);
                         //arrjson.add(rec.getString("CREATEDATE").replace(" 00:00:00.0", ""));
                         arrjson.add(rec.getString("INVOICE"));
 
@@ -518,6 +525,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrlist.add(arrjson);
                         n++;
                     }
+
                     obj.put("count", n);
                     obj.put("data", arrlist);
                     out.print(obj);

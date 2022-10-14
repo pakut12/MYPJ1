@@ -163,54 +163,67 @@
                 });
         
                 $("#btn-save").click(function(){
-                    $("#myform").addClass("was-validated");
-                    var userid = $("#userid").val();
-                    var password = $("#password").val();
-                    var firstname = $("#firstname").val();
-                    var lastname = $("#lastname").val();
-                    var status = $("#status").val();
-                    var statusqi = $("#statusqi").val();
-                    var form = $("#myform").serialize();
+                    Swal.fire({
+                        title: 'คุณต้องการบันทึกหรือไม่',
+                        text: "คุณต้องการบันทึกหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            $("#myform").addClass("was-validated");
+                            var userid = $("#userid").val();
+                            var password = $("#password").val();
+                            var firstname = $("#firstname").val();
+                            var lastname = $("#lastname").val();
+                            var status = $("#status").val();
+                            var statusqi = $("#statusqi").val();
+                            var form = $("#myform").serialize();
                    
-                    if(status == "" || statusqi == ""){
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'กรุณากรอกข้อมูลให้ถูกต้อง',
-                            text: 'กรุณากรอกข้อมูลให้ถูกต้อง'
-                        })
+                            if(status == "" || statusqi == ""){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'กรุณากรอกข้อมูลให้ถูกต้อง',
+                                    text: 'กรุณากรอกข้อมูลให้ถูกต้อง'
+                                })
                         
-                    }else {
-                        var data = $("#data").text();
-                        var url = null;
+                            }else {
+                                var data = $("#data").text();
+                                var url = null;
                         
-                        url = "user?status1=S1"
+                                url = "user?status1=S1"
                        
-                        // var url = "../user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
+                                // var url = "../user?status1=S1&userid="+userid+"&password="+password+"&firstname="+firstname+"&lastname="+lastname+"&status="+status+"&statusqi="+statusqi
 
-                        $.ajax({
-                            type:"POST",
-                            url:url,
-                            data:form, 
-                            success:function(msg,status){
-                                console.log(msg);
-                                if(msg == 'true'){
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'บันทึกข้อมูลสำเร็จ',
-                                        text: 'บันทึกข้อมูลสำเร็จ'
-                                    })
-                                }else if(msg == 'false'){
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'บันทึกข้อมูลไม่สำเร็จ',
-                                        text: 'บันทึกข้อมูลไม่สำเร็จ'
-                                    })
-                                }
-                            }
-                        });
-                        getdata();
+                                $.ajax({
+                                    type:"POST",
+                                    url:url,
+                                    data:form, 
+                                    success:function(msg,status){
+                                        console.log(msg);
+                                        if(msg == 'true'){
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'บันทึกข้อมูลสำเร็จ',
+                                                text: 'บันทึกข้อมูลสำเร็จ'
+                                            })
+                                        }else if(msg == 'false'){
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'บันทึกข้อมูลไม่สำเร็จ',
+                                                text: 'บันทึกข้อมูลไม่สำเร็จ'
+                                            })
+                                        }
+                                    }
+                                });
+                                getdata();
                          
-                    }
+                            }
+                        }
+                    });
+                    
                    
                 });
                

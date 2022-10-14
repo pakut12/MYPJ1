@@ -267,73 +267,102 @@
                 });
          
                 $("#del_wmbarcode").click(function(){
-                    $("#del_wmbarcode").addClass("disabled");
-                    $("#del_wmbarcode").text("กำลังลบ....");
-                    var mrno = $("#mrno").val();
-                    var item = $("#item").val();
-                    $.ajax({
-                        type: "POST",
-                        url: 'del?status=D1&mrno='+mrno+'&item='+item,
-                        success: function(msg,status){
-                            var de = $.parseJSON(msg);
-                            console.log(de);
-                            if(de.status == "true"){
-                                Swal.fire({
-                                    icon:"success",
-                                    title:"ลบข้อมูลสำเร็จ",
-                                    text:"ลบข้อมูลสำเร็จ"
-                                });
-                            }else if(de.status  == "false"){
-                                Swal.fire({
-                                    icon:"error",
-                                    title:"ลบข้อมูลไม่สำเร็จ",
-                                    text:"ลบข้อมูลไม่สำเร็จ"
-                                });
-                            } 
-                            $("#del_wmbarcode").removeClass("disabled");
-                            $("#del_wmbarcode").text("ลบ");
-                            getdata($("#mrno").val(),$("#item").val());  
-                            getdata1($("#mrno").val(),$("#item").val());  
+                    Swal.fire({
+                        title: 'คุณต้องการลบหรือไม่',
+                        text: "คุณต้องการลบหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            $("#del_wmbarcode").addClass("disabled");
+                            $("#del_wmbarcode").text("กำลังลบ....");
+                            var mrno = $("#mrno").val();
+                            var item = $("#item").val();
+                            $.ajax({
+                                type: "POST",
+                                url: 'del?status=D1&mrno='+mrno+'&item='+item,
+                                success: function(msg,status){
+                                    var de = $.parseJSON(msg);
+                                    console.log(de);
+                                    if(de.status == "true"){
+                                        Swal.fire({
+                                            icon:"success",
+                                            title:"ลบข้อมูลสำเร็จ",
+                                            text:"ลบข้อมูลสำเร็จ"
+                                        });
+                                    }else if(de.status  == "false"){
+                                        Swal.fire({
+                                            icon:"error",
+                                            title:"ลบข้อมูลไม่สำเร็จ",
+                                            text:"ลบข้อมูลไม่สำเร็จ"
+                                        });
+                                    } 
+                                    $("#del_wmbarcode").removeClass("disabled");
+                                    $("#del_wmbarcode").text("ลบ");
+                                    getdata($("#mrno").val(),$("#item").val());  
+                                    getdata1($("#mrno").val(),$("#item").val());  
                             
                                       
-                        }    
+                                }    
+                            });
+
+
+                        }
                     });
+                    
+                    
                 
                 });
                 $("#del_wmqck").click(function(){
-                    var mrno = $("#mrno").val();
-                    var item = $("#item").val();
-                    $("#del_wmqck").addClass("disabled");
-                    $("#del_wmqck").text("กำลังลบ....");
-                    $.ajax({
-                        type: "POST",
-                        url: 'del?status=D2&mrno='+mrno+'&item='+item,
-                        success: function(msg,status){
-                            var de = $.parseJSON(msg);
-                            console.log(de);
-                            if(de.status == "true"){
-                                Swal.fire({
-                                    icon:"success",
-                                    title:"ลบข้อมูลสำเร็จ",
-                                    text:"ลบข้อมูลสำเร็จ"
-                                });
-                            }else if(de.status  == "false"){
-                                Swal.fire({
-                                    icon:"error",
-                                    title:"ลบข้อมูลไม่สำเร็จ",
-                                    text:"ลบข้อมูลไม่สำเร็จ"
-                                });
-                            } 
-                            $("#del_wmbarcode").removeClass("disabled");
-                            $("#del_wmbarcode").text("ลบ");
-                            $("#del_wmqck").removeClass("disabled");
-                            $("#del_wmqck").text("ลบ");
-                           
-                            
-                                      
-                        }    
-                    });
+                    Swal.fire({
+                        title: 'คุณต้องการลบหรือไม่',
+                        text: "คุณต้องการลบหรือไม่",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'OK'
+                    }).then(function(result){
+                        if (result.isConfirmed) {
+                            var mrno = $("#mrno").val();
+                            var item = $("#item").val();
+                            $("#del_wmqck").addClass("disabled");
+                            $("#del_wmqck").text("กำลังลบ....");
+                            $.ajax({
+                                type: "POST",
+                                url: 'del?status=D2&mrno='+mrno+'&item='+item,
+                                success: function(msg,status){
+                                    var de = $.parseJSON(msg);
+                                    console.log(de);
+                                    if(de.status == "true"){
+                                        Swal.fire({
+                                            icon:"success",
+                                            title:"ลบข้อมูลสำเร็จ",
+                                            text:"ลบข้อมูลสำเร็จ"
+                                        });
+                                    }else if(de.status  == "false"){
+                                        Swal.fire({
+                                            icon:"error",
+                                            title:"ลบข้อมูลไม่สำเร็จ",
+                                            text:"ลบข้อมูลไม่สำเร็จ"
+                                        });
+                                    } 
+                                    $("#del_wmbarcode").removeClass("disabled");
+                                    $("#del_wmbarcode").text("ลบ");
+                                    $("#del_wmqck").removeClass("disabled");
+                                    $("#del_wmqck").text("ลบ");
+                              
+                                }    
+                            });
                    
+
+
+                        }
+                    });
+                    
                    
                     
        
