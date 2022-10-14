@@ -568,12 +568,18 @@ public class SVgetdatawm extends HttpServlet {
                     int n = 0;
                     ArrayList<Float> sum = new ArrayList<Float>();
                     while ((rec.next()) && (rec != null)) {
+                        String indate = "";
+                        try {
+                            indate = rec.getString("INVOICEDATE").replace(" 00:00:00.0", "");
+                        } catch (Exception e) {
+                            indate = "";
+                        }
                         sum.add(Float.parseFloat(rec.getString("QUANTITY")));
                         JSONArray arrjson = new JSONArray();
 
                         arrjson.add(rec.getString("ROLL"));
                         arrjson.add(rec.getString("QUANTITY"));
-                        obj.put("INVOICEDATE", rec.getString("INVOICEDATE").replace(" 00:00:00.0", ""));
+                        obj.put("INVOICEDATE", indate);
                         arrlist.add(arrjson);
                         n++;
                     }

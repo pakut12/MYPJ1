@@ -425,33 +425,36 @@
                                 {
                                     columns: [
                                         {
-                                            width: 'auto', 
+                                            width: '25%', 
                                             text: [{ text: 'จำนวนที่มา : ', bold:true },{ text: de.sumqt+' '+de.UNIT,color:'#1700FF',bold:true },{ text: '\nจำนวนที่ได้ : ', bold:true },{ text: de.sumaqt+' '+de.UNIT ,color:'#1700FF',bold:true}],
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [50,20, 0, 50]
+                                            margin: [40,20, 0, 0]
                                         },
                                         {
-                                            width: 'auto',
+                                            width: '39%', 
                                             
-                                            text: [{ text: 'สรุปผล : \n', bold:true },{ text: re1+'\n'+re2+'\n'+re3 ,color:'#1700FF',bold:true },{ text: '\nFORM NO.FM-TWN-02/1 เเก้ไขครั้งที่ 01 อนุมัติใช้ 01/07/49', bold:true }],
+                                            text: [
+                                                { text: 'สรุปผล : \n', bold:true },
+                                                { text: re1+'\n'+re2+'\n'+re3 ,color:'#1700FF',bold:true }
+                                                
+                                            ],
                                             
                                             fontSize: 12,
                                             alignment: 'left',
-                                            margin: [36,10, 0, 0]
+                                            margin: [0,10, 0, 0]
                                
                                         },
                                         {
-                                            width: '*',
-                                   
+                                            width: '12%', 
                                             text: [{ text: 'น้ำหนัก KG/M : \n', bold:true },{ text: de.sumweight ,color:'#1700FF',bold:true  }],
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [5,20, 0, 0]
+                                            margin: [0,20, 0, 0]
                                
                                         },
                                         {
-                                            width: 'auto',
+                                            width: '25%', 
                                             text: [{ text: 'ชื่อผู้ตรวจสอบ : ', bold:true },{ text: de.BYNAME ,color:'#1700FF',bold:true  },{ text: '\nผู้รับผิดชอบ : ' ,bold:true  },{ text: de.BYNAME1,bold:true,color:'#1700FF'  },{ text: '\n  จัดซื้อ............................................\n สต็อกวัตถุดิบ................................\n เเผนกตัด.......................................\n',bold:true  }],
                                             fontSize: 12,
                                             alignment: 'left',
@@ -459,7 +462,12 @@
                                         }
                             
                                     ]
-                                }
+                                },
+                                {
+                                    text: 'FORM NO.FM-TWN-02/1 เเก้ไขครั้งที่ 01 อนุมัติใช้ 01/07/49', 
+                                    bold:true ,
+                                    absolutePosition: {x:150, y:80}
+                                },
                             ]
                         },
                         header: function(currentPage, pageCount, pageSize) {
@@ -592,6 +600,7 @@
                             ]
                         },
                         background: [
+                            
                             {
                                 canvas: [
                                     {
@@ -669,6 +678,7 @@
                             
                         ],
                         content: [
+                           
                             {
                                 style: 'tableExample',
                                 
@@ -718,7 +728,7 @@
                             font: 'THSarabunNew'
                         }
                     };
-                    pdfMake.createPdf(docDefinition).download(de.MRNO+de.PALET+'.pdf'); 
+                    pdfMake.createPdf(docDefinition).download(de.MRNO+de.PALET+'.pdf');  
                 
                 }
             });

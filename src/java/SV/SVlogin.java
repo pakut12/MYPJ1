@@ -31,6 +31,7 @@ public class SVlogin extends HttpServlet {
             throws ServletException, IOException, SQLException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+    
         try {
             String user = request.getParameter("txt1");
             String pass = request.getParameter("txt2");
