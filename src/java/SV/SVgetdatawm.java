@@ -219,6 +219,7 @@ public class SVgetdatawm extends HttpServlet {
 
 
                         JSONArray arrjson = new JSONArray();
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + (n+1) + "' readonly></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("ITEM") + "' name='txt0' id='txt0' ></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt1' id='txt1'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");

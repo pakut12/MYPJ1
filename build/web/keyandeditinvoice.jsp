@@ -84,9 +84,9 @@
                                     <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
                                         <thead >
                                             <tr>
+                                                <th class="text-center">ลำดับ</th>
                                                 <th class="text-center">รหัสวัตดุดิบ</th>
-                                                <th class="text-center">ม้วน</th>
-                                                
+                                                <th class="text-center">ม้วน</th> 
                                                 <th class="text-center">จำนวน</th>
                                                 <th class="text-center">หน่วยนับ</th>
                                                 <th class="text-center">พาเลท</th>
@@ -117,6 +117,13 @@
                
                 var table;
                 function getdata(mrno){
+                    $.fn.dataTable.ext.order['dom-text'] = function(settings, col) {
+                        return this.api().column(col, {
+                            order: 'index'
+                        }).nodes().map(function(td, i) {
+                            return $('input', td).val();
+                        });
+                    };
                     table = $("#mytable").DataTable({
                         bDestroy: true,
                         ajax: 'getdatawm?status=G3&mrno='+mrno,
@@ -124,14 +131,114 @@
                         scrollY: true ,
                         scrollX: true ,
                         columnDefs: [
-                            { "width": "15rem", "targets": 0 },
-                            { "width": "5rem", "targets": 1 },
-                            { "width": "5rem", "targets": 2 },
-                            { "width": "5rem", "targets": 3 },
-                            { "width": "5rem", "targets": 4 },
-                            { "width": "5rem", "targets": 5 },
-                            { "width": "5rem", "targets": 6 },
-                            { "width": "25rem", "targets": 7 },
+                            { 
+                               
+                                targets: 0 ,
+                                orderDataType: "dom-text",
+                                type: 'num',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            { 
+                                width: "15rem", 
+                                targets: 1 ,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            {
+                                width: "5rem",
+                                targets: 2,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                } 
+                            },
+                            { 
+                                width: "5rem", 
+                                targets: 3 ,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            { 
+                                width: "5rem", 
+                                targets: 4 ,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            { 
+                                width: "5rem", 
+                                targets: 5 ,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            { 
+                                width: "5rem", 
+                                targets: 6 ,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            { 
+                                width: "5rem", 
+                                targets: 7,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            { 
+                                width: "25rem", 
+                                targets: 8,
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
                           
                         ]   
                                              

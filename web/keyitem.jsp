@@ -82,14 +82,50 @@
         <script>
             
             $(document).ready(function () {
+                
                 var table;
                 function getdata(mrno,item){
+                    $.fn.dataTable.ext.order['dom-text'] = function(settings, col) {
+                        return this.api().column(col, {
+                            order: 'index'
+                        }).nodes().map(function(td, i) {
+                            return $('input', td).val();
+                        });
+                    };
+                    
                     table = $("#mytable").DataTable({
                         bDestroy: true,
                         ajax: 'getdatawm?status=G2&mrno='+mrno+'&item='+item,
                         responsive: false,
-                        scrollY: true                   
+                        scrollY: true  ,
+                        columnDefs: [
+                            {
+                                targets: [1, 2, 3],
+                                orderDataType: "dom-text",
+                                type: 'string',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+                            {
+                                targets: [0],
+                                orderDataType: "dom-text",
+                                type: 'num',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
+                            },
+
+                        ]                        
                     }); 
+                 
+                    
                     $.ajax({
                         type: "POST",
                         url: 'getdatawm?status=G2&mrno='+mrno+'&item='+item,
