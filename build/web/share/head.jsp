@@ -44,6 +44,16 @@
     body{
         font-family: 'Kanit', sans-serif;
         font-size:15px;
+        
+        /*
+        background: url('https://wallpapercave.com/wp/wp3868165.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        */
     }
+    
+    
     
 </style>

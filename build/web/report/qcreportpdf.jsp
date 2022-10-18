@@ -607,7 +607,7 @@
                                         type: 'rect',
                                         x: 35,
                                         y: 20,
-                                        w: 539,
+                                        w: 542,
                                         h: 750,
                                         r: 0,
                                         lineWidth: 1,
@@ -617,7 +617,7 @@
                                         type: 'rect',
                                         x: 35,
                                         y: 20,
-                                        w: 539,
+                                        w: 542,
                                         h: 130,
                                         r: 0,
                                         lineWidth: 1,
@@ -667,7 +667,7 @@
                                         type: 'rect',
                                         x: 450,
                                         y: 670,
-                                        w: 124,
+                                        w: 127,
                                         h: 100,
                                         r: 0,
                                         lineWidth: 1,
@@ -687,7 +687,7 @@
                                     widths: [
                                         14, 
                                         19, 
-                                        12, 
+                                        15, 
                                         16, 
                                         20, 
                                         20, 
@@ -728,7 +728,7 @@
                             font: 'THSarabunNew'
                         }
                     };
-                    pdfMake.createPdf(docDefinition).download(de.MRNO+de.PALET+'.pdf');  
+                    pdfMake.createPdf(docDefinition).download(de.MRNO+de.PALET+'.pdf'); 
                 
                 }
             });
