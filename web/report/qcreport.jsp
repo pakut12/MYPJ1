@@ -417,7 +417,7 @@
                             width: 600,
                             height: 800
                         },
-                        pageMargins: [ 35, 150, 30, 130 ],
+                        pageMargins: [ 30, 150, 30, 130 ],
                        
                         footer: function(currentPage, pageCount) { 
                             return [
@@ -429,11 +429,10 @@
                                             text: [{ text: 'จำนวนที่มา : ', bold:true },{ text: de.sumqt+' '+de.UNIT,color:'#1700FF',bold:true },{ text: '\nจำนวนที่ได้ : ', bold:true },{ text: de.sumaqt+' '+de.UNIT ,color:'#1700FF',bold:true}],
                                             fontSize: 12,
                                             alignment: 'center',
-                                            margin: [40,20, 0, 0]
+                                            margin: [10,20, 0, 0]
                                         },
                                         {
-                                            width: '39%', 
-                                            
+                                            width: '38%', 
                                             text: [
                                                 { text: 'สรุปผล : \n', bold:true },
                                                 { text: re1+'\n'+re2+'\n'+re3 ,color:'#1700FF',bold:true }
@@ -605,7 +604,7 @@
                                 canvas: [
                                     {
                                         type: 'rect',
-                                        x: 35,
+                                        x: 30,
                                         y: 20,
                                         w: 542,
                                         h: 750,
@@ -615,7 +614,7 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 35,
+                                        x: 30,
                                         y: 20,
                                         w: 542,
                                         h: 130,
@@ -625,7 +624,7 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 35,
+                                        x: 30,
                                         y: 670,
                                         w: 110,
                                         h: 100,
@@ -635,7 +634,7 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 145,
+                                        x: 140,
                                         y: 670,
                                         w: 0,
                                         h: 100,
@@ -645,7 +644,7 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 145,
+                                        x: 140,
                                         y: 670,
                                         w: 240,
                                         h: 100,
@@ -655,7 +654,7 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 385,
+                                        x: 380,
                                         y: 670,
                                         w: 65,
                                         h: 100,
@@ -665,7 +664,7 @@
                                     },
                                     {
                                         type: 'rect',
-                                        x: 450,
+                                        x: 445,
                                         y: 670,
                                         w: 127,
                                         h: 100,
