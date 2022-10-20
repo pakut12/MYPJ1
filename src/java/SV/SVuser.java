@@ -130,19 +130,19 @@ public class SVuser extends HttpServlet {
                         String statusqi = rec.getString("statusqi");
 
                         if (status.equals("01")) {
-                            status = "Admin";
+                            status = "<div class='badge bg-danger text-wrap' >Admin</div>";
                         } else if (status.equals("02")) {
-                            status = "RM";
+                            status = "<div class='badge bg-primary text-wrap' >RM</div>";
                         } else if (status.equals("03")) {
-                            status = "QC RM";
+                            status = "<div class='badge bg-success text-wrap' >QC RM</div>";
                         } else if (status.equals("04")) {
-                            status = "CUT";
+                            status = "<div class='badge bg-secondary text-wrap' >CUT</div>";
                         }
 
                         if (statusqi.equals("Y")) {
-                            statusqi = "มีสิทธิ์";
+                            statusqi = "<div class='badge bg-success text-wrap' >มีสิทธิ์</div>";
                         } else if (statusqi.equals("N")) {
-                            statusqi = "ไม่มีสิทธิ์";
+                            statusqi = "<div class='badge bg-danger text-wrap' >ไม่มีสิทธิ์</div>";
                         }
 
                         arrjson.add(rec.getString("userid"));

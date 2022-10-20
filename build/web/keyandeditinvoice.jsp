@@ -147,7 +147,7 @@
                                 width: "15rem", 
                                 targets: 1 ,
                                 orderDataType: "dom-text",
-                                type: 'string',
+                                type: 'num',
                                 render: function(data, type, row, meta) {
                                     if (type === 'filter') {
                                         return $(data).val();
@@ -159,7 +159,7 @@
                                 width: "5rem",
                                 targets: 2,
                                 orderDataType: "dom-text",
-                                type: 'string',
+                                type: 'num',
                                 render: function(data, type, row, meta) {
                                     if (type === 'filter') {
                                         return $(data).val();

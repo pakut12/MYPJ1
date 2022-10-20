@@ -31,11 +31,9 @@
              top: 0;
          }
         
-        
     </style>
     <%
             String user = (String) session.getAttribute("name");
-
     %>
     
     <body>
