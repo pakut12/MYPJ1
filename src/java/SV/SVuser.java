@@ -130,19 +130,19 @@ public class SVuser extends HttpServlet {
                         String statusqi = rec.getString("statusqi");
 
                         if (status.equals("01")) {
-                            status = "<div class='badge bg-danger text-wrap' >Admin</div>";
+                            status = "<div class='badge bg-danger rounded-pill text-wrap text-danger bg-opacity-10 border border-danger border-opacity-10' >Admin</div>";
                         } else if (status.equals("02")) {
-                            status = "<div class='badge bg-primary text-wrap' >RM</div>";
+                            status = "<div class='badge bg-primary text-wrap rounded-pill text-primary bg-opacity-10 border border-primary border-opacity-10' >RM</div>";
                         } else if (status.equals("03")) {
-                            status = "<div class='badge bg-success text-wrap' >QC RM</div>";
+                            status = "<div class='badge bg-success text-wrap rounded-pill text-success bg-opacity-10 border success-danger border-opacity-10' >QC RM</div>";
                         } else if (status.equals("04")) {
-                            status = "<div class='badge bg-secondary text-wrap' >CUT</div>";
+                            status = "<div class='badge bg-secondary text-wrap rounded-pill text-secondary bg-opacity-10 border border-secondary border-opacity-10' >CUT</div>";
                         }
 
                         if (statusqi.equals("Y")) {
-                            statusqi = "<div class='badge bg-success text-wrap' >มีสิทธิ์</div>";
+                            statusqi = "<div class='badge bg-success  text-wrap rounded-pill text-success bg-opacity-10 border border-success border-opacity-10' >มีสิทธิ์</div>";
                         } else if (statusqi.equals("N")) {
-                            statusqi = "<div class='badge bg-danger text-wrap' >ไม่มีสิทธิ์</div>";
+                            statusqi = "<div class='badge bg-danger text-wrap rounded-pill text-danger bg-opacity-10 border border-danger border-opacity-10' >ไม่มีสิทธิ์</div>";
                         }
 
                         arrjson.add(rec.getString("userid"));
@@ -151,8 +151,8 @@ public class SVuser extends HttpServlet {
                         arrjson.add(rec.getString("lastname"));
                         arrjson.add(status);
                         arrjson.add(statusqi);
-                        arrjson.add("<a href='user?status1=E1&userid=" + rec.getString("userid") + "'><button class='btn btn-warning btn-sm' type='button'>เเก้ไข</button></a>");
-                        arrjson.add("<a href='user?status1=D2&userid=+" + rec.getString("userid") + "'><button class='btn btn-danger btn-sm' type='button'>ลบ</button></a>");
+                        arrjson.add("<a href='user?status1=E1&userid=" + rec.getString("userid") + "'><button class='btn btn-warning btn-sm' type='button'><i class='bi bi-pencil-square'></i></button></a>");
+                        arrjson.add("<a href='user?status1=D2&userid=+" + rec.getString("userid") + "'><button class='btn btn-danger btn-sm' type='button'><i class='bi bi-trash3'></i></button></a>");
                         arrlist.add(arrjson);
 
 
