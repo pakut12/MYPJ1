@@ -219,7 +219,7 @@ public class SVgetdatawm extends HttpServlet {
 
 
                         JSONArray arrjson = new JSONArray();
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + (n+1) + "' readonly></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + (n + 1) + "' readonly></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("ITEM") + "' name='txt0' id='txt0' ></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt1' id='txt1'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
@@ -703,15 +703,21 @@ public class SVgetdatawm extends HttpServlet {
                     }
                 }
             } else if (status.equals("G11")) {
+
                 ResultSet rec = null;
                 Connection conn = null;
                 PreparedStatement ps = null;
                 conn = DB.ConnDB.getConnection();
+
+                String mrno = null;
+                String item = null;
+                String roll = null;
+
                 try {
                     String barcode = request.getParameter("barcode");
 
-                    String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmbarcode.ROLL where wmmaster.BARCODE = ?";
-
+                    //String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmbarcode.ROLL where wmmaster.BARCODE = ?";
+                    String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmbarcode.MRNO = wmmaster.MRNO and wmbarcode.ITEM = wmmaster.ITEM and wmmaster.ROLL = wmbarcode.ROLL inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmbarcode.ROLL where wmmaster.BARCODE = ?";
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, barcode);
                     rec = ps.executeQuery();
