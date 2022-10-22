@@ -56,7 +56,6 @@ public class SVdel extends HttpServlet {
 
                     if (ps.executeUpdate() > 0) {
                         t++;
-
                     }
 
                     ResultSet rec1 = null;
@@ -71,7 +70,6 @@ public class SVdel extends HttpServlet {
 
                     if (ps1.executeUpdate() > 0) {
                         t++;
-
                     }
 
                     ResultSet rec2 = null;
@@ -86,7 +84,6 @@ public class SVdel extends HttpServlet {
 
                     if (ps2.executeUpdate() > 0) {
                         t++;
-
                     }
                     if (t > 0) {
                         obj.put("status", "true");
@@ -140,15 +137,17 @@ public class SVdel extends HttpServlet {
                     if (ps1.executeUpdate() > 0) {
                         t++;
                     }
-
+                    
                     if (t > 0) {
                         obj.put("status", "true");
                     } else {
                         obj.put("status", "false");
                     }
                     out.print(obj);
-
-
+                    
+                    ps1.close();
+                    DB.ConnDB.closeConnection(conn);
+                    
 //                    if (t == 3) {
 //                        out.print("true");
 //                    } else {
