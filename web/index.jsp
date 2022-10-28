@@ -3,6 +3,7 @@
     Created on : 29 ก.ค. 2565, 19:47:54
     Author     : Gus
 --%>
+<%@page import="java.net.InetAddress"%>
 <%@page import="java.util.*"%>
 <%@page import="java.text.*;"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +13,7 @@
 <html>
     <head>
         <%@include file="share/head.jsp"%> 
+        
     </head>
     
     <body class="">
@@ -43,12 +45,13 @@
         <%            }
 
         %>
-       
+        
         
         <form action="login" method="post" class="needs-validation" novalidate>
             <div class="container mt-5">
                 <div class="text-center h3 mb-3">RM / QC RM</div>
-                <div class="card shadow-lg col-sm-12 col-md-5 mx-auto ">
+                
+                <div class="card shadow-lg col-sm-12 col-md-5 mx-auto position-relative">
                     <div class="card-header">
                         Login
                     </div>
@@ -70,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
             
         </form>

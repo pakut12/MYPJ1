@@ -93,6 +93,7 @@
                 $("#page2").addClass("active");
                
                 function getdatasap(po,docqc){
+                    $.fn.dataTable.ext.errMode = 'none';
                     var url = 'sap?stasus=G&PO='+po+'&DOCQC='+docqc;
                     $("#mytable").DataTable({
                         bDestroy: true,
