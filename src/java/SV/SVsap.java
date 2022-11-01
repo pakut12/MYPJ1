@@ -51,7 +51,7 @@ public class SVsap extends HttpServlet {
                     String DOCQC = request.getParameter("DOCQC").trim();
 
                     JCO.Client client = ConnectSap.createpool();
-                       
+                    
                     JCO.Repository repository = new JCO.Repository("Myrep", client);
                     IFunctionTemplate ftemplate1 = repository.getFunctionTemplate("ZBAPI_BI_QI_DISPLAY");
                     JCO.Function function1 = new JCO.Function(ftemplate1);
@@ -64,7 +64,7 @@ public class SVsap extends HttpServlet {
 
                     client.execute(function1);
                     JCO.Table output = function1.getTableParameterList().getTable("TABLEDATA");
-                    
+
                     JSONObject obj = new JSONObject();
                     ArrayList arrlist = new ArrayList();
                     int n = 0;
@@ -106,7 +106,7 @@ public class SVsap extends HttpServlet {
 
                     obj.put("data", arrlist);
                     out.print(obj);
-                    
+                   
                 } else if (status.equals("S")) {
 
                     String PO = request.getParameter("PO").trim();

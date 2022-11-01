@@ -178,16 +178,16 @@
                             <%
                             for (int col = 1; col <= 10; col++) {
                                 try {
-                                    out.print("<td class='fw-bold test1'  >" + num[x] + "</td>");
+                                    out.print("<td class='fw-bold test1 p-0'  >" + num[x] + "</td>");
                                 } catch (Exception e) {
-                                    out.print("<td height='35' width='50' class='fw-bold '> </td>");
+                                    out.print("<td height='35' width='50' class='fw-bold  p-0'> </td>");
                                 }
                                 x++;
                             }
                             if (row == 0) {
                             %>
-                            <td class="fw-bold test1"><%=request.getAttribute("roll")%></td>
-                            <td class="fw-bold test1"><%=request.getAttribute("row")%></td> 
+                            <td class="fw-bold test1 p-0"><%=request.getAttribute("roll")%></td>
+                            <td class="fw-bold test1 p-0"><%=request.getAttribute("row")%></td> 
                         </tr>
                         <%
                 } else {
