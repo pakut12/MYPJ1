@@ -152,12 +152,12 @@
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text:  'ตำหนิ\nรวม' ,
+                            text:  'Point' ,
                             fontSize: 10
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'คะเเนน',
+                            text: '% Point',
                             fontSize: 10
                         },  
                         {

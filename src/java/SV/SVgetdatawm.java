@@ -831,7 +831,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("point")); // คะเเนน ถ้า con จำลองใส่ point เเต่ถ้าจริงใส่ "" เพราะยังไม่ได้สร้างฟิวpoint ใหม่ในดาต้าจริง 2/9/2565
 
                         arrjson.add(rec.getString("EREPEAT"));
-                        if (rec.getFloat("point") > 7) {
+                        if (rec.getFloat("point") > 27) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1009,7 +1009,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add(rec.getString("point"));
 
-                        if (rec.getFloat("point") > 7) {
+                        if (rec.getFloat("point") > 27) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1348,7 +1348,7 @@ public class SVgetdatawm extends HttpServlet {
 
 
                         String mark = "";
-                        if (rec.getFloat("point") > 7) {
+                        if (rec.getFloat("point") > 27) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1543,7 +1543,7 @@ public class SVgetdatawm extends HttpServlet {
                         row.createCell(13).setCellValue(rec.getString("toterr"));
                         row.createCell(14).setCellValue(rec.getString("point"));
 
-                        if (rec.getFloat("point") > 7) {
+                        if (rec.getFloat("point") > 27) {
                             mark = "*";
                         } else {
                             mark = "";

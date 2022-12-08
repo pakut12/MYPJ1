@@ -381,6 +381,7 @@ public class SVedititem extends HttpServlet {
                         String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
                         ps = con.prepareStatement(sql);
                         for (String roll : arrroll) {
+                            
                             ps.setString(1, remark1.toString());
                             ps.setString(2, remark2.toString());
                             ps.setString(3, remark3.toString());

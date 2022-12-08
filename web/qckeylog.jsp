@@ -88,23 +88,22 @@
                                             <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
                                                 <thead >
                                                     <tr>
-                                                        <th class="text-center">ม้วนที่</th>
-                                                        <th class="text-center">หน้าผ้าที่วัดได้</th>
-                                                        <th class="text-center">จำนวนที่มา</th>
-                                                        <th class="text-center">จำนวนที่ได้</th>
-                                                        <th class="text-center">จุดสี-น้ำมัน-สกปรก</th>
-                                                        <th class="text-center">ลายขวาง</th>
-                                                        <th class="text-center">ความกว้างไม่ได้มาตรฐาน</th>
-                                                        <th class="text-center">ปุ่มปม</th>
-                                                        <th class="text-center">เส้นด้ายขาด</th>
-                                                        <th class="text-center">รอยต่าง</th>
-                                                        <th class="text-center">รอยเข็ม</th>
-                                                        <th class="text-center">รอยเข็มเข้าลึก</th>
-                                                        <th class="text-center">ตำหนิรวม </th>
-                                                        <th class="text-center">คะเเนน</th>
-                                                        <th class="text-center">บาร์โค๊ดร้านค้า</th>
-                                                        <th class="text-center">Mark</th>
-                                                        
+                                                        <th class="text-center p-0">ม้วนที่</th>
+                                                        <th class="text-center p-0">หน้าผ้าที่วัดได้</th>
+                                                        <th class="text-center p-0">จำนวนที่มา</th>
+                                                        <th class="text-center p-0">จำนวนที่ได้</th>
+                                                        <th class="text-center p-0">จุดสี-น้ำมัน-สกปรก</th>
+                                                        <th class="text-center p-0">ลายขวาง</th>
+                                                        <th class="text-center p-0">ความกว้างไม่ได้มาตรฐาน</th>
+                                                        <th class="text-center p-0">ปุ่มปม</th>
+                                                        <th class="text-center p-0">เส้นด้ายขาด</th>
+                                                        <th class="text-center p-0">รอยต่าง</th>
+                                                        <th class="text-center p-0">รอยเข็ม</th>
+                                                        <th class="text-center p-0">รอยเข็มเข้าลึก</th>
+                                                        <th class="text-center p-0">คะเเนน</th>
+                                                        <th class="text-center p-0">% คะเเนน</th>
+                                                        <th class="text-center p-0">บาร์โค๊ดร้านค้า</th>
+                                                        <th class="text-center p-0">Mark</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -302,8 +301,6 @@
                 $("#page3").addClass("active");
                 $("#btn-send").addClass("disabled");
                 getdata("","");  
-                
-                
                 $("#btn-getdata").click(function(){
                     if($("#mrno").val() == "" || $("#pallet").val() == ""){
                         $("#myform").addClass("was-validated");
@@ -369,8 +366,6 @@
                                     url: 'getdatawm?status=G12&mrno='+mrno+'&pallet='+pallet,
                                     success: function(msg,status){
                                         var de = $.parseJSON(msg);
-                               
-                              
                                         var url = 'edititem?status=G4';
                                         $.ajax({
                                             type: "POST",

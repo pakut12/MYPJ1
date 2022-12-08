@@ -165,7 +165,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>ตำหนิรวม : </label>
+                                                <label>คะเเนน : </label>
                                                 <input class="form-control form-control-sm" type="number" name="sum" id="sum" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -197,7 +197,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>คะเเนน : </label>
+                                                <label>% คะเเนน : </label>
                                                 <input class="form-control form-control-sm" type="text" name="point" id="point" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -293,10 +293,10 @@
                 
                 $("#sum").val(sum);
                 console.log(sum);
-                var sum1 = ((sum / 100)* $("#actqty").val());
+                var sum1 = ((sum / $("#actqty").val())* 100);
                
                 $("#point").val(sum1.toFixed(2));
-                if($("#point").val() > 7){
+                if($("#point").val() > 27){
                     $("#mark_toterr").val("*");  
                 }else{
                     $("#mark_toterr").val("");  
