@@ -102,6 +102,7 @@
                                                         <th class="text-center p-0">รอยเข็มเข้าลึก</th>
                                                         <th class="text-center p-0">คะเเนน</th>
                                                         <th class="text-center p-0">% คะเเนน</th>
+                                                        <th class="text-center p-0">บาร์โค๊ด</th>
                                                         <th class="text-center p-0">บาร์โค๊ดร้านค้า</th>
                                                         <th class="text-center p-0">Mark</th>
                                                     </tr>

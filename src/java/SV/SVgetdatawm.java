@@ -830,6 +830,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("TOTERR"));
                         arrjson.add(rec.getString("point")); // คะเเนน ถ้า con จำลองใส่ point เเต่ถ้าจริงใส่ "" เพราะยังไม่ได้สร้างฟิวpoint ใหม่ในดาต้าจริง 2/9/2565
 
+                        arrjson.add(rec.getString("CODE"));
                         arrjson.add(rec.getString("EREPEAT"));
                         if (rec.getFloat("point") > 27) {
                             mark = "*";
