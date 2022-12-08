@@ -1485,8 +1485,8 @@ public class SVgetdatawm extends HttpServlet {
                     row1.createCell(10).setCellValue("สรุปผล1");
                     row1.createCell(11).setCellValue("สรุปผล2");
                     row1.createCell(12).setCellValue("สรุปผล3");
-                    row1.createCell(13).setCellValue("ตำหนิรวม");
-                    row1.createCell(14).setCellValue("คะเเนน");
+                    row1.createCell(13).setCellValue("คะเเนน");
+                    row1.createCell(14).setCellValue("%คะเเนน");
                     row1.createCell(15).setCellValue("Mark");
 
 

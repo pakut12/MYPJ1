@@ -125,8 +125,8 @@
                                                     <th class="text-center">สรุปผล1</th>
                                                     <th class="text-center">สรุปผล2</th>
                                                     <th class="text-center">สรุปผล3</th>
-                                                    <th class="text-center">ตำหนิรวม</th>
                                                     <th class="text-center">คะเเนน</th>
+                                                    <th class="text-center">% คะเเนน</th>
                                                     <th class="text-center">Mark</th>
                                                     
                                                 </tr>
