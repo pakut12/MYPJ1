@@ -300,6 +300,7 @@ public class SVgetdatawm extends HttpServlet {
                     out.print(obj);
 
 
+                    
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -832,7 +833,7 @@ public class SVgetdatawm extends HttpServlet {
 
                         arrjson.add(rec.getString("CODE"));
                         arrjson.add(rec.getString("EREPEAT"));
-                        if (rec.getFloat("point") > 27) {
+                        if (rec.getFloat("point") > 32) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1010,7 +1011,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("toterr"));
                         arrjson.add(rec.getString("point"));
 
-                        if (rec.getFloat("point") > 27) {
+                        if (rec.getFloat("point") > 32) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1349,7 +1350,7 @@ public class SVgetdatawm extends HttpServlet {
 
 
                         String mark = "";
-                        if (rec.getFloat("point") > 27) {
+                        if (rec.getFloat("point") > 32) {
                             mark = "*";
                         } else {
                             mark = "";
@@ -1417,6 +1418,7 @@ public class SVgetdatawm extends HttpServlet {
                     obj.put("count", n);
                     obj.put("data", arrlist);
                     out.print(obj);
+                    System.out.println(obj);
 
 
                 //getServletContext().getRequestDispatcher("/displayprint1.jsp").forward(request, response);
@@ -1544,7 +1546,7 @@ public class SVgetdatawm extends HttpServlet {
                         row.createCell(13).setCellValue(rec.getString("toterr"));
                         row.createCell(14).setCellValue(rec.getString("point"));
 
-                        if (rec.getFloat("point") > 27) {
+                        if (rec.getFloat("point") > 32) {
                             mark = "*";
                         } else {
                             mark = "";

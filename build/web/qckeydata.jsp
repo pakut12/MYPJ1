@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>ความกว้างไม่ได้มาตรฐาน : </label>
+                                                <label>รอยยับ : </label>
                                                 <input class="form-control form-control-sm" type="number" name="edirty" id="edirty" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -151,14 +151,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>รอยเข็ม : </label>
+                                                <label>เส้นแนวตั้ง : </label>
                                                 <input class="form-control form-control-sm" type="number" name="ejoint" id="ejoint" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>รอยเข็มเข้าลึก : </label>
+                                                <label>อื่นๆ : </label>
                                                 <input class="form-control form-control-sm" type="number" name="efurrow" id="efurrow" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง

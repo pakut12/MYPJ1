@@ -94,12 +94,12 @@
                                                         <th class="text-center p-0">จำนวนที่ได้</th>
                                                         <th class="text-center p-0">จุดสี-น้ำมัน-สกปรก</th>
                                                         <th class="text-center p-0">ลายขวาง</th>
-                                                        <th class="text-center p-0">ความกว้างไม่ได้มาตรฐาน</th>
+                                                        <th class="text-center p-0">รอยยับ</th>
                                                         <th class="text-center p-0">ปุ่มปม</th>
                                                         <th class="text-center p-0">เส้นด้ายขาด</th>
                                                         <th class="text-center p-0">รอยต่าง</th>
-                                                        <th class="text-center p-0">รอยเข็ม</th>
-                                                        <th class="text-center p-0">รอยเข็มเข้าลึก</th>
+                                                        <th class="text-center p-0">เส้นแนวตั้ง</th>
+                                                        <th class="text-center p-0">อื่นๆ</th>
                                                         <th class="text-center p-0">คะเเนน</th>
                                                         <th class="text-center p-0">% คะเเนน</th>
                                                         <th class="text-center p-0">บาร์โค๊ด</th>

@@ -112,7 +112,7 @@
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text:    'ความ\nกว้าง',
+                            text:    'รอย\nยับ',
                             fontSize: 10 
                         },  
                         {
@@ -132,12 +132,12 @@
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text:  'รอยเข็ม' ,
-                            fontSize: 10
+                            text:  'เส้นแนว\nตั้ง' ,
+                            fontSize: 9
                         }, 
                         {
                             border: [true, true, true, true],  
-                            text: 'รอยเข็มเข้าลึก' ,
+                            text: 'อื่นๆ' ,
                             fontSize: 10
                         }, 
                         {
