@@ -49,7 +49,7 @@
         
         <form action="login" method="post" class="needs-validation" novalidate>
             <div class="container mt-5">
-                <div class="text-center h3 mb-3">RM / Tiger</div>
+                <div class="text-center h3 mb-3">RM / QC RM</div>
                 
                 <div class="card shadow-lg col-sm-12 col-md-5 mx-auto position-relative">
                     <div class="card-header">
