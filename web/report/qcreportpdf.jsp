@@ -567,34 +567,35 @@
                             
                                     ]
                                 },
-                                {
-                                    columns: [{
-                                            width: 'auto',
+                                 {
+                                    margin: [40,0],
+                                    columns: [
+                                        {
+                                            width:'*',
                                             text: [{ text: 'ร้านค้า : ', bold:true },{ text: de.SUPNAME ,color:'#1700FF',bold:true }],
-                                            fontSize: 14,
-                                            alignment: 'left',
-                                            margin: [40,0, 0, 0]
+                                           
                                         },
                                         {
-                                            width: '*',
+                                            width:'*',
                                             text: [{ text: 'เลขที่เอกสาร : ', bold:true },{ text: de.MRNO,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
-                                            width: '*',
+                                            width:'*',
                                             text: [{ text: 'หน่วยนับ : ', bold:true },{ text: de.UNIT,color:'#1700FF',bold:true  }],
                                             fontSize: 14,
                                             alignment: 'center'
                                         },
                                         {
-                                            width: '*',
+                                            width:'*',
                                             text: [{ text: 'วันที่ : ', bold:true },{ text: covertoday(de.QCDATE) ,color:'#1700FF',bold:true }],
-                                        
                                             fontSize: 14,
-                                            alignment: 'right',
-                                            margin: [0,0, 40, 0]
-                                        }]
+                                            alignment: 'right'
+                                            
+                                        }],
+                                    columnGap: 5
+                                    
                                 },
                             ]
                         },
