@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                 </form> 
-                                <table class="table table-sm table-bordered text-center " id="mytable" >
+                                <table class="table table-sm table-bordered text-center text-nowrap" id="mytable" >
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -54,8 +54,8 @@
                                             <th class="text-center">UNIT </th>
                                             <th class="text-center">PALET </th>
                                             <th class="text-center">PLANT </th>
-                                            <th class="text-center">PO</th>
-                                            <th class="text-center">POLN </th>
+                                            <th class="text-center">CM </th>
+                                            <th class="text-center">CM2 </th>
                                             <th class="text-center">INV </th>
                                             <th class="text-center">INV.DATE </th> 
                                             <th class="text-center">BARCODE </th>
@@ -65,7 +65,8 @@
                                             <th class="text-center">DESC1 </th>
                                             <th class="text-center">DESC2 </th>
                                             <th class="text-center">DESC3 </th>
-                                            
+                                            <th class="text-center">PO</th>
+                                            <th class="text-center">POLN </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -88,7 +89,50 @@
                     var url = 'getdatawm?status=G1&mrno='+re;
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: url,
+                        ajax: {
+                            type:"post",
+                            url:url,
+                            dataSrc:function(json){
+                            
+                                var arr = [];
+                                var cm = $("#CM").val()
+                                var cm2 = $('input[name="CM2"]:checked').val();
+                          
+                                $.each(json.data,function(k,v){
+                                   
+                               
+                                    var result = {
+                                        NO:v[0],
+                                        MRNO:v[1],
+                                        ITEM:v[2],
+                                        ROLL:v[3],
+                                        QTY:v[4],
+                                        UNIT:v[5],
+                                        PALET:v[6],
+                                        PLANT:v[7],
+                                        PO:v[8],
+                                        POLN:v[9],
+                                        INV:v[10],
+                                        INVDATE:v[11],
+                                        BARCODE:v[12],
+                                        BATCH:v[13],
+                                        COLOR:v[14],
+                                        GRADE:v[15],
+                                        DESC1:v[16],
+                                        DESC2:v[17],
+                                        DESC3:v[18],
+                                        CM:v[19],
+                                        CM2:v[20]
+                                   
+                                    }
+                                
+                                    arr.push(result);
+                             
+                                })
+                            
+                                return arr
+                            }
+                        },
                         responsive: false,
                         scrollX: true,
                         scrollY: true,
@@ -109,7 +153,96 @@
                         ],
                         'select': {
                             'style': 'multi'
-                        }
+                        },
+                        columns: [
+                            {
+                                title : 'ลำดับ',
+                                data : 'NO'
+                            },
+                            {
+                                title:'MRNO',
+                                data : 'MRNO' 
+                            },
+                            {
+                                title:'ITEM',
+                                data : 'ITEM' 
+                            },
+                       
+                            {
+                                title:'ROLL',
+                                data : 'ROLL' 
+                            },
+                            {
+                                title:'QTY',
+                                data : 'QTY' 
+                            },
+                            {
+                                title:'UNIT',
+                                data : 'UNIT' 
+                            },
+                            {
+                                title:'PALET',
+                                data : 'PALET' 
+                            },
+                            {
+                                title:'PLANT',
+                                data : 'PLANT' 
+                            },
+                            {
+                                title:'หน้าผ้าที่ซื้อ (CM)',
+                                data : 'CM' 
+                            },
+                            {
+                                title:'CM2',
+                                data : 'CM2' 
+                            },
+                            
+                            {
+                                title:'INV',
+                                data : 'INV' 
+                            },
+                            {
+                                title:'INVDATE',
+                                data : 'INVDATE' 
+                            }, 
+                            {
+                                title:'BARCODE',
+                                data : 'BARCODE' 
+                            }, 
+                            {
+                                title:'BATCH',
+                                data : 'BATCH' 
+                            }, 
+                            {
+                                title:'COLOR',
+                                data : 'COLOR' 
+                            }, 
+                            {
+                                title:'GRADE',
+                                data : 'GRADE' 
+                            },
+                            {
+                                title:'DESC1',
+                                data : 'DESC1' 
+                            },
+                            {
+                                title:'DESC2',
+                                data : 'DESC2' 
+                            },
+                            {
+                                title:'DESC3',
+                                data : 'DESC3' 
+                            }, 
+                            {
+                                title:'PO',
+                                data : 'PO' 
+                            },
+                            {
+                                title:'POLN',
+                                data : 'POLN' 
+                            },                            
+                        
+                        ]
                     });  
                     
                     $.ajax({

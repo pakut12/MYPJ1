@@ -113,6 +113,8 @@ public class SVsap extends HttpServlet {
 
                         String PO = request.getParameter("PO").trim();
                         String DOCQC = request.getParameter("DOCQC").trim();
+                        String CM = request.getParameter("CM").trim();
+                        String CM2 = request.getParameter("CM2").trim();
 
                         JCO.Client client = ConnectSap.createpool();
                         JCO.Repository repository = new JCO.Repository("Myrep", client);
@@ -127,15 +129,15 @@ public class SVsap extends HttpServlet {
 
                         client.execute(function1);
                         JCO.Table output = function1.getTableParameterList().getTable("TABLEDATA");
-                        
+
                         System.out.println(output.getNumRows());
-                        
+
 
                         String sqlwmbarcode = "INSERT INTO wmbarcode (MRNO, ITEM, ROLL, PALET, PLANT, DESC1, DESC2, DESC3, " +
                                 "PO, POLN, INVOICEDATE, CREATEDATE, QUANTITY, UNIT, SUPNAME, INVOICE, GRADE, CODE, BATCH, " +
                                 "CHANGEDATE, COLOR, SUPPLIER, DELIVERYNO, PUGROUP, PUNAME, TELEPHONE, PRICE, PRD, LOT, PER, CURR, " +
-                                "TOQC, TOTEST) VALUES (?,?,?,?,?,?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),TO_DATE(?, 'yyyy/mm/dd'),?,?," +
-                                "?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                "TOQC, TOTEST,CM,CM2) VALUES (?,?,?,?,?,?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),TO_DATE(?, 'yyyy/mm/dd'),?,?," +
+                                "?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
                         String sqlwmmaster = "INSERT INTO wmmaster (BARCODE, MRNO, ITEM, ROLL) VALUES (?,?,?,?)";
 
@@ -159,12 +161,12 @@ public class SVsap extends HttpServlet {
                                 System.out.println(output.getString(0));
                                 System.out.println(output.getString(1));
                                 System.out.println(output.getString(2));
-                                
+
                                 pr1.setString(1, output.getString(17));
                                 pr1.setString(2, output.getString(0));
                                 pr1.setString(3, output.getString(1));
                                 pr1.setString(4, output.getString(2));
-                                
+
                                 pr1.addBatch();
 
                                 pr.setString(1, output.getString(0));
@@ -200,6 +202,9 @@ public class SVsap extends HttpServlet {
                                 pr.setString(31, output.getString(30));
                                 pr.setString(32, output.getString(31));
                                 pr.setString(33, output.getString(32));
+                                pr.setString(34, CM);
+                                pr.setString(35, CM2);
+                                
                                 pr.addBatch();
                             }
                             pr.executeBatch();

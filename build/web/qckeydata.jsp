@@ -82,20 +82,27 @@
                                     <div class="card-body">
                                         <div class="row ">
                                             <div class="col-sm-12 col-md-3">
-                                                <label>จำนวนที่มา : </label>
+                                                <label>จำนวนที่ซื้อ : </label>
                                                 <input class="form-control form-control-sm" type="text" name="quantity" id="quantity" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-3">
+                                            <div class="col-sm-12 col-md-2">
                                                 <label>จำนวนที่ได้ : </label>
                                                 <input class="form-control form-control-sm" type="text" name="actqty" id="actqty" value="" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-3">
+                                            <div class="col-sm-12 col-md-2">
+                                                <label>หน้าผ้าที่ซื้อ(เซนติเมตร) : </label>
+                                                <input class="form-control form-control-sm" type="number" name="clothbuy" id="clothbuy" value="" readonly required></input>
+                                                <div class="invalid-feedback mb-3 text-center">
+                                                    กรุณาใส่ข้อมูลให้ถูกต้อง
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-2">
                                                 <label>หน้าผ้าที่วัดได้ : </label>
                                                 <input class="form-control form-control-sm" type="number" name="width" id="width" value="" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
@@ -144,7 +151,7 @@
                                         <div class="row ">
                                             
                                             <div class="col-sm-12 col-md-3">
-                                                <label>รอยต่าง : </label>
+                                                <label>รอยด่าง : </label>
                                                 <input class="form-control form-control-sm" type="number" name="eknot" id="eknot" value="" onClick="this.select();" onkeyup="sum();" required></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -222,7 +229,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>น้ำหนักผ้า : </label>
+                                                <label>CM <sup>2</sup> ต่อหลา/เมตร</label>
                                                 <input class="form-control form-control-sm" type="text" name="weight" id="weight" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -389,11 +396,11 @@
                                 $("#qcdate").val(today());  
                                 $("#grade").val(de.data[16]);  
                                 $("#scolor").val(de.data[17]);  
-                                $("#weight").val(de.data[18]);  
+                                $("#weight").val(de.data[23]);  
                                 $("#qtylay").val(de.data[19]);
                                 $("#byname").val(de.data[20]);  
                                 $("#mark_toterr").val(de.data[21]);  
-                            
+                                $("#clothbuy").val(de.data[22]);
                                 sum();
                                 Swal.fire({
                                     icon:"success",

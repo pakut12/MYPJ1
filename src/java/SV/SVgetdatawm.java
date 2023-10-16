@@ -63,7 +63,7 @@ public class SVgetdatawm extends HttpServlet {
                     String menr = request.getParameter("mrno").trim();
                     String page = "";
 
-                    String sql = "select wmbarcode.MRNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.POLN,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.CODE,wmbarcode.BATCH,wmbarcode.COLOR,wmbarcode.GRADE,wmbarcode.DESC1,wmbarcode.DESC2,wmbarcode.DESC3 from wmbarcode where wmbarcode.MRNO = ? ";
+                    String sql = "select wmbarcode.MRNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.POLN,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.CODE,wmbarcode.BATCH,wmbarcode.COLOR,wmbarcode.GRADE,wmbarcode.DESC1,wmbarcode.DESC2,wmbarcode.DESC3,wmbarcode.CM,wmbarcode.CM2 from wmbarcode where wmbarcode.MRNO = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -96,7 +96,8 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("DESC1"));
                         arrjson.add(rec.getString("DESC2"));
                         arrjson.add(rec.getString("DESC3"));
-
+                        arrjson.add(rec.getString("CM"));
+                        arrjson.add(rec.getString("CM2"));
 
                         arrlist.add(arrjson);
                         n++;
@@ -188,7 +189,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select wmbarcode.LOT,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.SUPNAME,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.DELIVERYNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.COLOR,wmbarcode.BATCH,wmbarcode.DESC1 from wmbarcode where wmbarcode.MRNO = ?";
+                    String sql = "select wmbarcode.LOT,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.SUPNAME,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.DELIVERYNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.COLOR,wmbarcode.BATCH,wmbarcode.DESC1,wmbarcode.CM,wmbarcode.CM2 from wmbarcode where wmbarcode.MRNO = ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -228,6 +229,8 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("COLOR") + "' name='txt4' id='txt4'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("DESC1") + "' name='txt6' id='txt6'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("CM") + "' name='txt10' id='txt10'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("CM2") + "' name='txt11' id='txt11'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ITEM") + "' name='txt7' id='txt7' type='hidden' readonly></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt8' id='txt8' type='hidden' readonly></input>");
 
@@ -300,7 +303,7 @@ public class SVgetdatawm extends HttpServlet {
                     out.print(obj);
 
 
-                    
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -718,7 +721,7 @@ public class SVgetdatawm extends HttpServlet {
                     String barcode = request.getParameter("barcode");
 
                     //String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmmaster.BARCODE = wmbarcode.CODE inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmbarcode.ROLL where wmmaster.BARCODE = ?";
-                    String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr from wmmaster  inner join wmbarcode on wmbarcode.MRNO = wmmaster.MRNO and wmbarcode.ITEM = wmmaster.ITEM and wmmaster.ROLL = wmbarcode.ROLL inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmbarcode.ROLL where wmmaster.BARCODE = ?";
+                    String sql = "select mrno,item,roll,palet,ethread,ealkali,edirty,eoil,ebroken,eknot,ejoint,efurrow,quantity,actqty,width,erepeat,color,batch,qcdate,grade,scolor,weight,qtylay,byname,mark_toterr,cm,cm2  from wmmaster  inner join wmbarcode on wmbarcode.MRNO = wmmaster.MRNO and wmbarcode.ITEM = wmmaster.ITEM and wmmaster.ROLL = wmbarcode.ROLL inner join wmqck on wmqck.MRNO = wmmaster.MRNO and wmqck.ITEM = wmmaster.ITEM and wmqck.ROLL = wmbarcode.ROLL where wmmaster.BARCODE = ?";
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, barcode);
                     rec = ps.executeQuery();
@@ -765,6 +768,8 @@ public class SVgetdatawm extends HttpServlet {
                         arrlist.add(rec.getString("qtylay"));
                         arrlist.add(rec.getString("byname"));
                         arrlist.add(rec.getString("mark_toterr"));
+                        arrlist.add(rec.getString("cm"));
+                        arrlist.add(rec.getString("cm2"));
 
                         obj.put("data", arrlist);
                         n++;

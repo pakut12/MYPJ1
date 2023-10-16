@@ -81,7 +81,7 @@
                                     
                                 </form> 
                                 <div class="row mt-3">
-                                    <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
+                                    <table class="table table-sm table-bordered  text-center w-100 text-nowrap" id="mytable"  >
                                         <thead >
                                             <tr>
                                                 <th class="text-center">ลำดับ</th>
@@ -92,6 +92,8 @@
                                                 <th class="text-center">พาเลท</th>
                                                 <th class="text-center">สี</th>
                                                 <th class="text-center">หม้อย้อน</th>
+                                                <th class="text-center">หน้าผ้าที่ซื้อ (CM)</th>
+                                                <th class="text-center">CM2</th>
                                                 <th class="text-center">รายละเอียด</th>
                                                 <th class="text-center"></th>
                                                 <th class="text-center"></th>
@@ -126,7 +128,97 @@
                     };
                     table = $("#mytable").DataTable({
                         bDestroy: true,
-                        ajax: 'getdatawm?status=G3&mrno='+mrno,
+                        ajax: {
+                            type:"post",
+                            url:'getdatawm?status=G3&mrno='+mrno,
+                            dataSrc:function(json){
+                            
+                                var arr = [];
+                                var cm = $("#CM").val()
+                               
+                          
+                                $.each(json.data,function(k,v){
+                                   
+                                    var result = {
+                                        NO:v[0],
+                                        ITEM:v[1],
+                                        ROLL:v[2],
+                                        QTY:v[3],
+                                        UNIT:v[4],
+                                        PALET:v[5],
+                                        COLOR:v[6],
+                                        GRADE:v[7],
+                                        DESC1:v[8],
+                                        CM:v[9],
+                                        CM2:v[10],
+                                        ITEM1:v[11],
+                                        NO1:v[12]
+                                        
+                                    }
+                                
+                                    arr.push(result);
+                             
+                                })
+                            
+                                return arr
+                            }
+                        },
+                        columns: [
+                            {
+                                title : 'ลำดับ',
+                                data : 'NO'
+                            },
+                            {
+                                title:'รหัสวัตดุดิบ',
+                                data : 'ITEM' 
+                            },
+                            {
+                                title:'ม้วน',
+                                data : 'ROLL' 
+                            },   
+                            {
+                                title:'จำนวน',
+                                data : 'QTY' 
+                            }, 
+                            {
+                                title:'หน่วยนับ',
+                                data : 'UNIT' 
+                            }, 
+                            {
+                                title:'พาเลท',
+                                data : 'PALET' 
+                            }, 
+                            {
+                                title:'สี',
+                                data : 'COLOR' 
+                            }, 
+                            {
+                                title:'หม้อย้อน',
+                                data : 'GRADE' 
+                            }, 
+                            {
+                                title:'หน้าผ้าที่ซื้อ (CM)',
+                                data : 'CM' 
+                            }, 
+                            {
+                                title:'CM2',
+                                data : 'CM2' 
+                            },
+                            {
+                                title:'หน้าผ้าที่ซื้อ (CM)',
+                                data : 'DESC1' 
+                            }, 
+ 
+                            {
+                                
+                                data : 'ITEM1' 
+                            }, 
+                            {
+                                
+                                data : 'NO1' 
+                            },                             
+                        
+                        ],
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
@@ -217,7 +309,7 @@
                             },
                             { 
                                 width: "5rem", 
-                                targets: 7,
+                                targets: 9,
                                 orderDataType: "dom-text",
                                 type: 'string',
                                 render: function(data, type, row, meta) {
@@ -229,7 +321,7 @@
                             },
                             { 
                                 width: "25rem", 
-                                targets: 8,
+                                targets: 10,
                                 orderDataType: "dom-text",
                                 type: 'string',
                                 render: function(data, type, row, meta) {
@@ -326,7 +418,8 @@
                             var ITEM1 = table.$('#txt7').serializeArray();
                             var ROLL1 = table.$('#txt8').serializeArray();
                             var PALET = table.$('#txt9').serializeArray();
-                  
+                            var CM = table.$('#txt10').serializeArray();
+                            var CM2 = table.$('#txt11').serializeArray();
                   
                             var arrITEM = new Array();
                             var arrROLL = new Array();
@@ -338,6 +431,8 @@
                             var arrITEM1 = new Array();
                             var arrROLL1 = new Array();
                             var arrPALET = new Array();
+                            var arrCM = new Array();
+                            var arrCM2 = new Array();
                     
                             $.each(ITEM,function(k,v){
                                 arrITEM.push(ITEM[k].value.toUpperCase());
@@ -350,6 +445,11 @@
                                 arrITEM1.push(ITEM1[k].value);
                                 arrROLL1.push(ROLL1[k].value);
                                 arrPALET.push(PALET[k].value);
+                                arrCM.push(CM[k].value);
+                                arrCM2.push(CM2[k].value);
+        
+        
+        
                             });
                   
                             var url = "edititem?status=G2";
@@ -367,6 +467,8 @@
                                     arrITEM1:arrITEM1,
                                     arrROLL1:arrROLL1,
                                     arrPALET:arrPALET,
+                                    arrCM:arrCM,
+                                    arrCM2:arrCM2,
                                     INVOICE:INVOICE,
                                     INVOICEDATE:INVOICEDATE,
                                     LOT:LOT,

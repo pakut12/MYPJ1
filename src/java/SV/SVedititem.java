@@ -139,6 +139,9 @@ public class SVedititem extends HttpServlet {
                     String[] arrITEM1 = request.getParameterValues("arrITEM1[]");
                     String[] arrROLL1 = request.getParameterValues("arrROLL1[]");
                     String[] arrPALET = request.getParameterValues("arrPALET[]");
+                    String[] arrCM = request.getParameterValues("arrCM[]");
+                    String[] arrCM2 = request.getParameterValues("arrCM2[]");
+                    
                     String INVOICE = (String) request.getParameter("INVOICE");
                     String INVOICEDATE = (String) request.getParameter("INVOICEDATE");
                     String LOT = (String) request.getParameter("LOT");
@@ -155,7 +158,7 @@ public class SVedititem extends HttpServlet {
                     PreparedStatement ps1 = null;
                     con1 = DB.ConnDB.getConnection();
                     try {
-                        String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=?,wmbarcode.PALET=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
+                        String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=?,wmbarcode.PALET=?,wmbarcode.CM=?,wmbarcode.CM2=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
                         ps = con.prepareStatement(sql);
 
                         String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =?, wmqck.ITEM= ? , wmqck.ROLL= ? WHERE wmqck.MRNO = ? AND wmqck.ITEM= ? AND wmqck.ROLL =?";
@@ -174,9 +177,11 @@ public class SVedititem extends HttpServlet {
                             ps.setString(9, INVOICEDATE.toString());
                             ps.setString(10, LOT.toString());
                             ps.setString(11, arrPALET[n].toString());
-                            ps.setString(12, MRNO.toString());
-                            ps.setString(13, arrITEM1[n].toString());
-                            ps.setString(14, arrROLL1[n].toString());
+                            ps.setString(12, arrCM[n].toString());
+                            ps.setString(13, arrCM2[n].toString());
+                            ps.setString(14, MRNO.toString());
+                            ps.setString(15, arrITEM1[n].toString());
+                            ps.setString(16, arrROLL1[n].toString());
                             ps.addBatch();
 
                             ps1.setString(1, arrPALET[n].toString());
