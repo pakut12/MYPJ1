@@ -60,7 +60,7 @@
                                         <div class="col-sm-12 col-md-2">
                                             <label>CM<sup>2</sup> : </label>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="CM2" id="CM2" value="9144" required>
+                                                <input class="form-check-input" type="radio" name="CM2" id="CM2" value="9144" required checked >
                                                 <label class="form-check-label" for="CM2">
                                                     CM<sup>2</sup> หลา 9,144
                                                 </label>

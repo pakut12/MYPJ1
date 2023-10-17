@@ -229,8 +229,8 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("COLOR") + "' name='txt4' id='txt4'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("DESC1") + "' name='txt6' id='txt6'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("CM") + "' name='txt10' id='txt10'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("CM2") + "' name='txt11' id='txt11'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM")==null?"":rec.getString("CM")) + "' name='txt10' id='txt10'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM2")==null?"":rec.getString("CM2")) + "' name='txt11' id='txt11'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ITEM") + "' name='txt7' id='txt7' type='hidden' readonly></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt8' id='txt8' type='hidden' readonly></input>");
 
