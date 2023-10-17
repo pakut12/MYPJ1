@@ -29,17 +29,41 @@
                             <div class="card-body">
                                 <form id="myform" class="">
                                     <div class="row ">
-                                        <div class="col-sm-12 col-md-4">
+                                        <div class="col-sm-12 col-md-2">
                                             <label>เลขที่เอกสาร : </label>
                                             <input class="form-control form-control-sm" type="number" name="mrno" id="mrno" required ></input>
                                             <div class="invalid-feedback mb-3 text-center">
                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
                                             </div>
                                         </div>                                        
-                                        <div class="col-sm-12 col-md-4">
+                                        <div class="col-sm-12 col-md-2">
                                             <button class="btn btn-secondary mt-4 mx-1 btn-sm" id="btn-getdata" type="button"><i class="bi bi-download"></i>  ดึงข้อมูล</button>
                                             <button class="btn btn-success mt-4 btn-sm" id="btn-send" type="button"><i class="bi bi-hdd"></i> บันทึก</button>
                                         </div>
+                                        <div class="col-sm-12 col-md-2">
+                                            <label>หน้าผ้าที่ซื้อ (นิ้ว): </label>
+                                            <input class="form-control form-control-sm" type="number" name="CLOTHBUY" id="CLOTHBUY" required onkeyup="getcm()"></input>
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
+                                            <label>CM: </label>
+                                            <input class="form-control form-control-sm" type="number" name="CM" id="CM" disabled></input>
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
+                                            <label>CM<sup>2</sup> : </label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="CM2" id="CM2" value="9144" required  >
+                                                <label class="form-check-label" for="CM2">
+                                                    CM<sup>2</sup> หลา 9,144
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="CM2" id="CM2" value="10000" required>
+                                                <label class="form-check-label" for="CM2">
+                                                    CM<sup>2</sup> เมตร 10,000
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div class="row ">
                                         <div class="col-sm-12 col-md-3">
@@ -76,7 +100,6 @@
                                             <label>จำนวนทั้งหมด : </label>
                                             <input class="form-control form-control-sm text-center" type="number" name="count" id="count" value="" readonly></input>
                                         </div>
-                                        
                                     </div>
                                     
                                 </form> 
@@ -92,8 +115,7 @@
                                                 <th class="text-center">พาเลท</th>
                                                 <th class="text-center">สี</th>
                                                 <th class="text-center">หม้อย้อน</th>
-                                                <th class="text-center">หน้าผ้าที่ซื้อ (CM)</th>
-                                                <th class="text-center">CM2</th>
+                                                
                                                 <th class="text-center">รายละเอียด</th>
                                                 <th class="text-center"></th>
                                                 <th class="text-center"></th>
@@ -115,6 +137,19 @@
         <script>   
           
           
+            function getcm(){
+            
+                var gs = $("#CLOTHBUY").val()
+                var CM2 = gs * 2.54
+                console.log(CM2)
+                if(CM2 && CM2 != 'NaN'){
+                    $("#CM").val(CM2.toFixed(2))
+                }else{
+                    $("#CM").val(0)
+                }
+            
+            }
+    
             $(document).ready(function () {
                
                 var table;
@@ -196,16 +231,9 @@
                                 title:'หม้อย้อน',
                                 data : 'GRADE' 
                             }, 
+                            
                             {
-                                title:'หน้าผ้าที่ซื้อ (CM)',
-                                data : 'CM' 
-                            }, 
-                            {
-                                title:'CM2',
-                                data : 'CM2' 
-                            },
-                            {
-                                title:'หน้าผ้าที่ซื้อ (CM)',
+                                title:'Description',
                                 data : 'DESC1' 
                             }, 
  
@@ -348,7 +376,22 @@
                             $("#INVOICE").val(de.INVOICE);
                             $("#INVOICEDATE").val(de.INVOICEDATE);           
                             $("#DELIVERYNO").val(de.DELIVERYNO);
-                            $("#LOT").val(de.LOT);           
+                            $("#LOT").val(de.LOT);   
+                            $("#CM").val(de.CM);
+                            if(de.CM2 == 10000){
+                                $("input:radio[name='CM2']").filter("[value='10000']").prop("checked", true);
+                                
+                                console.log('T1')
+                            }else if(de.CM2 == 9144){
+                                $("input:radio[name='CM2']").filter("[value='9144']").prop("checked", true);
+                                console.log('T2')
+                            }else{
+                                $("input:radio[name='CM2']").prop("checked", false);
+                                console.log('T3')
+                              
+                            }
+        
+        
                             // console.log(de);       
                             if(mrno != ""){
                                 if(de.count > 0){
@@ -366,7 +409,10 @@
                                 }
                             }
                         }    
-                    });                    
+                    });
+
+                    $("#CLOTHBUY").val('')
+
                 }
                 
 
@@ -392,6 +438,7 @@
                 });
                 
                 $("#btn-send").click(function(){
+                  
                     Swal.fire({
                         title: 'คุณต้องการบันทึกหรือไม่',
                         text: "คุณต้องการบันทึกหรือไม่",
@@ -418,9 +465,11 @@
                             var ITEM1 = table.$('#txt7').serializeArray();
                             var ROLL1 = table.$('#txt8').serializeArray();
                             var PALET = table.$('#txt9').serializeArray();
-                            var CM = table.$('#txt10').serializeArray();
-                            var CM2 = table.$('#txt11').serializeArray();
-                  
+                            //var CM = table.$('#txt10').serializeArray();
+                            //var CM2 = table.$('#txt11').serializeArray();
+                            var CM =  $('#CM').val();
+                            var CM2 = $('input[name="CM2"]:checked').val();
+                            
                             var arrITEM = new Array();
                             var arrROLL = new Array();
                             var arrQUANTITY = new Array();
@@ -431,8 +480,7 @@
                             var arrITEM1 = new Array();
                             var arrROLL1 = new Array();
                             var arrPALET = new Array();
-                            var arrCM = new Array();
-                            var arrCM2 = new Array();
+                            
                     
                             $.each(ITEM,function(k,v){
                                 arrITEM.push(ITEM[k].value.toUpperCase());
@@ -445,8 +493,7 @@
                                 arrITEM1.push(ITEM1[k].value);
                                 arrROLL1.push(ROLL1[k].value);
                                 arrPALET.push(PALET[k].value);
-                                arrCM.push(CM[k].value);
-                                arrCM2.push(CM2[k].value);
+                                
         
         
         
@@ -467,8 +514,8 @@
                                     arrITEM1:arrITEM1,
                                     arrROLL1:arrROLL1,
                                     arrPALET:arrPALET,
-                                    arrCM:arrCM,
-                                    arrCM2:arrCM2,
+                                    CM:CM,
+                                    CM2:CM2,
                                     INVOICE:INVOICE,
                                     INVOICEDATE:INVOICEDATE,
                                     LOT:LOT,
@@ -500,7 +547,8 @@
                         
                     });
                     
-                   
+                  
+                  
                 });
             });
         </script>

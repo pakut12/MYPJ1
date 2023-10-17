@@ -139,8 +139,8 @@ public class SVedititem extends HttpServlet {
                     String[] arrITEM1 = request.getParameterValues("arrITEM1[]");
                     String[] arrROLL1 = request.getParameterValues("arrROLL1[]");
                     String[] arrPALET = request.getParameterValues("arrPALET[]");
-                    String[] arrCM = request.getParameterValues("arrCM[]");
-                    String[] arrCM2 = request.getParameterValues("arrCM2[]");
+                    String CM = (String) request.getParameter("CM");
+                    String CM2 = (String) request.getParameter("CM2");
                     
                     String INVOICE = (String) request.getParameter("INVOICE");
                     String INVOICEDATE = (String) request.getParameter("INVOICEDATE");
@@ -177,8 +177,8 @@ public class SVedititem extends HttpServlet {
                             ps.setString(9, INVOICEDATE.toString());
                             ps.setString(10, LOT.toString());
                             ps.setString(11, arrPALET[n].toString());
-                            ps.setString(12, arrCM[n].toString());
-                            ps.setString(13, arrCM2[n].toString());
+                            ps.setString(12, CM);
+                            ps.setString(13, CM2);
                             ps.setString(14, MRNO.toString());
                             ps.setString(15, arrITEM1[n].toString());
                             ps.setString(16, arrROLL1[n].toString());

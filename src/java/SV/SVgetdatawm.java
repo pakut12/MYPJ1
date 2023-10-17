@@ -207,7 +207,8 @@ public class SVgetdatawm extends HttpServlet {
                     String INVOICEDATE = null;
                     String DELIVERYNO = null;
                     String LOT = null;
-
+                    String CM = null;
+                    String CM2 = null;
                     while ((rec.next()) && (rec != null)) {
 
                         PLANT = rec.getString("PLANT");
@@ -217,6 +218,8 @@ public class SVgetdatawm extends HttpServlet {
                         INVOICEDATE = DB.ConnDB.coverdate(rec.getString("INVOICEDATE"));
                         DELIVERYNO = rec.getString("DELIVERYNO");
                         LOT = rec.getString("LOT");
+                        CM = (rec.getString("CM") == null ? "" : rec.getString("CM"));
+                        CM2 = (rec.getString("CM2") == null ? "" : rec.getString("CM2"));
 
 
                         JSONArray arrjson = new JSONArray();
@@ -229,8 +232,8 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("COLOR") + "' name='txt4' id='txt4'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("DESC1") + "' name='txt6' id='txt6'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM")==null?"":rec.getString("CM")) + "' name='txt10' id='txt10'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM2")==null?"":rec.getString("CM2")) + "' name='txt11' id='txt11'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM") == null ? "" : rec.getString("CM")) + "' name='txt10' id='txt10'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM2") == null ? "" : rec.getString("CM2")) + "' name='txt11' id='txt11'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ITEM") + "' name='txt7' id='txt7' type='hidden' readonly></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt8' id='txt8' type='hidden' readonly></input>");
 
@@ -244,6 +247,8 @@ public class SVgetdatawm extends HttpServlet {
                     obj.put("INVOICEDATE", INVOICEDATE);
                     obj.put("DELIVERYNO", DELIVERYNO);
                     obj.put("LOT", LOT);
+                    obj.put("CM", CM);
+                    obj.put("CM2", CM2);
 
                     obj.put("count", n);
                     obj.put("data", arrlist);
