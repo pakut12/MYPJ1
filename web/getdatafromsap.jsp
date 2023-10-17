@@ -131,7 +131,7 @@
                     var clothbuy = $("#CLOTHBUY").val();
                     var cm = 2.54 ;
                     var cm2 = clothbuy * 2.54
-                    $("#CM").val(cm2)
+                    $("#CM").val(cm2.toFixed(2))
                 })
         
         

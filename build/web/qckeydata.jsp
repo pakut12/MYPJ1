@@ -229,7 +229,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
-                                                <label>CM <sup>2</sup> ต่อหลา/เมตร</label>
+                                                <label>CM <sup>2</sup> ต่อหลา/เมตร : </label>
                                                 <input class="form-control form-control-sm" type="text" name="weight" id="weight" value="" readonly></input>
                                                 <div class="invalid-feedback mb-3 text-center">
                                                     กรุณาใส่ข้อมูลให้ถูกต้อง
@@ -299,16 +299,24 @@
                 var sum = e1+e2+e3+e4+e5+e6+e7+e8 ;
                 
                 $("#sum").val(sum);
-                console.log(sum);
-                var sum1 = ((sum / $("#actqty").val())* 100);
                
+                //var sum1 = ((sum / $("#actqty").val())* 100);
+                var sum1 = ((sum * $("#weight").val()) / ($("#quantity").val() * $("#clothbuy").val()));
+                
+                console.log(sum * $("#weight").val())
+                console.log($("#quantity").val() * $("#clothbuy").val())
+                
                 $("#point").val(sum1.toFixed(2));
-                if($("#point").val() > 27){
+                if($("#point").val() > 32.01){
                     $("#mark_toterr").val("*");  
                 }else{
                     $("#mark_toterr").val("");  
                 }
                 
+        
+        
+        
+                console.log($("#mark_toterr").val())
             }
             function today(){
                 var date = new Date();

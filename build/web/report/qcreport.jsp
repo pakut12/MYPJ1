@@ -92,7 +92,7 @@
                         },  
                         {
                             border: [true, true, true, true],  
-                            text:  'จำนวน\nที่มา',
+                            text:  'จำนวน\nที่ซื้อ',
                             fontSize: 10
                         },  
                         {

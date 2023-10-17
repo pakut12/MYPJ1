@@ -90,7 +90,7 @@
                                                     <tr>
                                                         <th class="text-center p-0">ม้วนที่</th>
                                                         <th class="text-center p-0">หน้าผ้าที่วัดได้</th>
-                                                        <th class="text-center p-0">จำนวนที่มา</th>
+                                                        <th class="text-center p-0">จำนวนที่ซื้อ</th>
                                                         <th class="text-center p-0">จำนวนที่ได้</th>
                                                         <th class="text-center p-0">จุดสี-น้ำมัน-สกปรก</th>
                                                         <th class="text-center p-0">ลายขวาง</th>
@@ -141,7 +141,7 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-sm-12 col-md-6">
-                                                            <label>จำนวนที่มารวม : </label>
+                                                            <label>จำนวนที่ซื้อรวม : </label>
                                                             <input class="form-control form-control-sm" type="text" name="sumq" id="sumq" value="" readonly></input>
                                                             <div class="invalid-feedback mb-3 text-center">
                                                                 กรุณาใส่ข้อมูลให้ถูกต้อง
