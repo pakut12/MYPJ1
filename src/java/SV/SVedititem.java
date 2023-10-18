@@ -139,9 +139,11 @@ public class SVedititem extends HttpServlet {
                     String[] arrITEM1 = request.getParameterValues("arrITEM1[]");
                     String[] arrROLL1 = request.getParameterValues("arrROLL1[]");
                     String[] arrPALET = request.getParameterValues("arrPALET[]");
+                    String[] arrCODE = request.getParameterValues("arrCODE[]");
                     String CM = (String) request.getParameter("CM");
                     String CM2 = (String) request.getParameter("CM2");
-                    
+                    String CLOTHBUY = (String) request.getParameter("CLOTHBUY");
+
                     String INVOICE = (String) request.getParameter("INVOICE");
                     String INVOICEDATE = (String) request.getParameter("INVOICEDATE");
                     String LOT = (String) request.getParameter("LOT");
@@ -158,7 +160,7 @@ public class SVedititem extends HttpServlet {
                     PreparedStatement ps1 = null;
                     con1 = DB.ConnDB.getConnection();
                     try {
-                        String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=?,wmbarcode.PALET=?,wmbarcode.CM=?,wmbarcode.CM2=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
+                        String sql = "UPDATE wmbarcode SET wmbarcode.ITEM = ? , wmbarcode.ROLL = ?,wmbarcode.QUANTITY = ?,wmbarcode.UNIT=?, wmbarcode.COLOR = ?,wmbarcode.BATCH = ?,wmbarcode.DESC1 = ?,wmbarcode.INVOICE=?,wmbarcode.INVOICEDATE=TO_DATE(?, 'yyyy/mm/dd'),wmbarcode.LOT=?,wmbarcode.PALET=?,wmbarcode.CM=?,wmbarcode.CM2=?,wmbarcode.CODE=?,wmbarcode.CLOTHBUY=? WHERE wmbarcode.MRNO = ? AND wmbarcode.ITEM= ? AND wmbarcode.ROLL =?";
                         ps = con.prepareStatement(sql);
 
                         String sql1 = "UPDATE wmqck SET wmqck.PALET = ?,wmqck.ACTQTY =?, wmqck.ITEM= ? , wmqck.ROLL= ? WHERE wmqck.MRNO = ? AND wmqck.ITEM= ? AND wmqck.ROLL =?";
@@ -179,9 +181,11 @@ public class SVedititem extends HttpServlet {
                             ps.setString(11, arrPALET[n].toString());
                             ps.setString(12, CM);
                             ps.setString(13, CM2);
-                            ps.setString(14, MRNO.toString());
-                            ps.setString(15, arrITEM1[n].toString());
-                            ps.setString(16, arrROLL1[n].toString());
+                            ps.setString(14, arrCODE[n].toString());
+                            ps.setString(15, CLOTHBUY);
+                            ps.setString(16, MRNO.toString());
+                            ps.setString(17, arrITEM1[n].toString());
+                            ps.setString(18, arrROLL1[n].toString());
                             ps.addBatch();
 
                             ps1.setString(1, arrPALET[n].toString());
@@ -386,7 +390,7 @@ public class SVedititem extends HttpServlet {
                         String sql = "UPDATE wmqck SET REMARK1 = ? ,REMARK2 = ? ,REMARK3 = ?,GRADEQC = ? WHERE wmqck.MRNO = ? AND wmqck.ITEM = ? AND wmqck.ROLL = ?";
                         ps = con.prepareStatement(sql);
                         for (String roll : arrroll) {
-                            
+
                             ps.setString(1, remark1.toString());
                             ps.setString(2, remark2.toString());
                             ps.setString(3, remark3.toString());

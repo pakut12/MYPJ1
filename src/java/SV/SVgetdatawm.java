@@ -189,7 +189,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select wmbarcode.LOT,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.SUPNAME,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.DELIVERYNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.COLOR,wmbarcode.BATCH,wmbarcode.DESC1,wmbarcode.CM,wmbarcode.CM2 from wmbarcode where wmbarcode.MRNO = ?";
+                    String sql = "select wmbarcode.LOT,wmbarcode.PLANT,wmbarcode.PO,wmbarcode.SUPNAME,wmbarcode.INVOICE,wmbarcode.INVOICEDATE,wmbarcode.DELIVERYNO,wmbarcode.ITEM,wmbarcode.ROLL,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.PALET,wmbarcode.COLOR,wmbarcode.BATCH,wmbarcode.DESC1,wmbarcode.CM,wmbarcode.CM2,wmbarcode.CODE,wmbarcode.CLOTHBUY from wmbarcode where wmbarcode.MRNO = ?";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -209,6 +209,7 @@ public class SVgetdatawm extends HttpServlet {
                     String LOT = null;
                     String CM = null;
                     String CM2 = null;
+                    String CLOTHBUY = null;
                     while ((rec.next()) && (rec != null)) {
 
                         PLANT = rec.getString("PLANT");
@@ -220,20 +221,21 @@ public class SVgetdatawm extends HttpServlet {
                         LOT = rec.getString("LOT");
                         CM = (rec.getString("CM") == null ? "" : rec.getString("CM"));
                         CM2 = (rec.getString("CM2") == null ? "" : rec.getString("CM2"));
-
+                        CLOTHBUY = (rec.getString("CLOTHBUY") == null ? "" : rec.getString("CLOTHBUY"));
 
                         JSONArray arrjson = new JSONArray();
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + (n + 1) + "' readonly></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("ITEM") + "' name='txt0' id='txt0' ></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt1' id='txt1'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("UNIT") + "' name='txt3' id='txt3'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("PALET") + "' name='txt9' id='txt9'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("COLOR") + "' name='txt4' id='txt4'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("DESC1") + "' name='txt6' id='txt6'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM") == null ? "" : rec.getString("CM")) + "' name='txt10' id='txt10'></input>");
-                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM2") == null ? "" : rec.getString("CM2")) + "' name='txt11' id='txt11'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + (n + 1) + "' readonly ></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("ITEM") + "' name='txt0' id='txt0' size='20'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt1' id='txt1' size='4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("QUANTITY") + "' name='txt2' id='txt2' size='4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("UNIT") + "' name='txt3' id='txt3' size='4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("PALET") + "' name='txt9' id='txt9' size='4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("COLOR") + "' name='txt4' id='txt4' size='4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;' value='" + rec.getString("BATCH") + "' name='txt5' id='txt5' size='10'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("DESC1") + "' name='txt6' id='txt6' size='60'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM") == null ? "" : rec.getString("CM")) + "' name='txt10' id='txt10' size='4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + (rec.getString("CM2") == null ? "" : rec.getString("CM2")) + "' name='txt11' id='txt11' size='4'></input>");
+                        arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("CODE") + "' name='txt12' id='txt12' size='20'></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ITEM") + "' name='txt7' id='txt7' type='hidden' readonly></input>");
                         arrjson.add("<input class='form-control  text-center' style='height:25px; font-size:13px;'  value='" + rec.getString("ROLL") + "' name='txt8' id='txt8' type='hidden' readonly></input>");
 
@@ -249,6 +251,7 @@ public class SVgetdatawm extends HttpServlet {
                     obj.put("LOT", LOT);
                     obj.put("CM", CM);
                     obj.put("CM2", CM2);
+                    obj.put("CLOTHBUY", CLOTHBUY);
 
                     obj.put("count", n);
                     obj.put("data", arrlist);
@@ -382,7 +385,7 @@ public class SVgetdatawm extends HttpServlet {
 
                     String page = "";
 
-                    String sql = "select wmbarcode.ITEM,wmbarcode.DESC1,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.ROLL,wmbarcode.INVOICE,wmbarcode.COLOR from wmbarcode where wmbarcode.MRNO = ? ";
+                    String sql = "select wmbarcode.ITEM,wmbarcode.DESC1,wmbarcode.QUANTITY,wmbarcode.UNIT,wmbarcode.ROLL,wmbarcode.INVOICE,wmbarcode.COLOR,wmbarcode.CODE from wmbarcode where wmbarcode.MRNO = ? ";
 
                     ps = conn.prepareStatement(sql);
                     ps.setString(1, menr);
@@ -402,6 +405,7 @@ public class SVgetdatawm extends HttpServlet {
                         arrjson.add(rec.getString("ROLL"));
                         arrjson.add(rec.getString("INVOICE"));
                         arrjson.add(rec.getString("COLOR"));
+                        arrjson.add(rec.getString("CODE"));
 
                         arrlist.add(arrjson);
                         n++;

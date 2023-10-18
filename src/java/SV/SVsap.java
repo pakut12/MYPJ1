@@ -115,6 +115,7 @@ public class SVsap extends HttpServlet {
                         String DOCQC = request.getParameter("DOCQC").trim();
                         String CM = request.getParameter("CM").trim();
                         String CM2 = request.getParameter("CM2").trim();
+                        String CLOTHBUY = request.getParameter("CLOTHBUY").trim();
 
                         JCO.Client client = ConnectSap.createpool();
                         JCO.Repository repository = new JCO.Repository("Myrep", client);
@@ -136,8 +137,8 @@ public class SVsap extends HttpServlet {
                         String sqlwmbarcode = "INSERT INTO wmbarcode (MRNO, ITEM, ROLL, PALET, PLANT, DESC1, DESC2, DESC3, " +
                                 "PO, POLN, INVOICEDATE, CREATEDATE, QUANTITY, UNIT, SUPNAME, INVOICE, GRADE, CODE, BATCH, " +
                                 "CHANGEDATE, COLOR, SUPPLIER, DELIVERYNO, PUGROUP, PUNAME, TELEPHONE, PRICE, PRD, LOT, PER, CURR, " +
-                                "TOQC, TOTEST,CM,CM2) VALUES (?,?,?,?,?,?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),TO_DATE(?, 'yyyy/mm/dd'),?,?," +
-                                "?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                "TOQC, TOTEST,CM,CM2,CLOTHBUY) VALUES (?,?,?,?,?,?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),TO_DATE(?, 'yyyy/mm/dd'),?,?," +
+                                "?,?,?,?,?,TO_DATE(?, 'yyyy/mm/dd'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
                         String sqlwmmaster = "INSERT INTO wmmaster (BARCODE, MRNO, ITEM, ROLL) VALUES (?,?,?,?)";
 
@@ -204,6 +205,7 @@ public class SVsap extends HttpServlet {
                                 pr.setString(33, output.getString(32));
                                 pr.setString(34, CM);
                                 pr.setString(35, CM2);
+                                pr.setString(36, CLOTHBUY);
                                 
                                 pr.addBatch();
                             }

@@ -115,7 +115,7 @@
                                                 <th class="text-center">พาเลท</th>
                                                 <th class="text-center">สี</th>
                                                 <th class="text-center">หม้อย้อน</th>
-                                                
+                                                <th class="text-center">บาร์โค้ด</th>
                                                 <th class="text-center">รายละเอียด</th>
                                                 <th class="text-center"></th>
                                                 <th class="text-center"></th>
@@ -174,6 +174,7 @@
                           
                                 $.each(json.data,function(k,v){
                                    
+                                    console.log(v)
                                     var result = {
                                         NO:v[0],
                                         ITEM:v[1],
@@ -186,8 +187,9 @@
                                         DESC1:v[8],
                                         CM:v[9],
                                         CM2:v[10],
-                                        ITEM1:v[11],
-                                        NO1:v[12]
+                                        CODE:v[11],
+                                        ITEM1:v[12],
+                                        NO1:v[13]
                                         
                                     }
                                 
@@ -201,42 +203,125 @@
                         columns: [
                             {
                                 title : 'ลำดับ',
-                                data : 'NO'
+                                data : 'NO',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
                             },
                             {
                                 title:'รหัสวัตดุดิบ',
-                                data : 'ITEM' 
+                                data : 'ITEM',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
                             },
                             {
                                 title:'ม้วน',
-                                data : 'ROLL' 
+                                data : 'ROLL',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
                             },   
                             {
                                 title:'จำนวน',
-                                data : 'QTY' 
+                                data : 'QTY',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
                             }, 
                             {
                                 title:'หน่วยนับ',
-                                data : 'UNIT' 
+                                data : 'UNIT',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }
                             }, 
                             {
                                 title:'พาเลท',
-                                data : 'PALET' 
+                                data : 'PALET',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                } 
                             }, 
                             {
                                 title:'สี',
-                                data : 'COLOR' 
+                                data : 'COLOR',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                } 
                             }, 
                             {
                                 title:'หม้อย้อน',
-                                data : 'GRADE' 
+                                data : 'GRADE',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                }                                
                             }, 
-                            
                             {
-                                title:'Description',
-                                data : 'DESC1' 
+                                title:'บาร์โค้ด',
+                                data : 'CODE',
+                                render: function(data, type, row, meta) {
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                } 
+                            },
+                            {
+                                title:'รายละเอียด',
+                                data : 'DESC1',
+                                render: function(data, type, row, meta) {
+                                    console.log(type)
+                                    if (type === 'filter') {
+                                        return $(data).val();
+                                    }else if(type === 'sort'){
+                                        return $(data).val();
+                                    }
+                                    return data;
+                                } 
                             }, 
- 
                             {
                                 
                                 data : 'ITEM1' 
@@ -250,119 +335,16 @@
                         responsive: false,
                         scrollY: true ,
                         scrollX: true ,
-                        columnDefs: [
-                            { 
-                               
-                                targets: 0 ,
-                                orderDataType: "dom-text",
-                                type: 'num',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
-                            { 
-                                width: "15rem", 
-                                targets: 1 ,
-                                orderDataType: "dom-text",
-                                type: 'num',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
-                            {
-                                width: "5rem",
-                                targets: 2,
-                                orderDataType: "dom-text",
-                                type: 'num',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                } 
-                            },
-                            { 
-                                width: "5rem", 
-                                targets: 3 ,
-                                orderDataType: "dom-text",
-                                type: 'string',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
-                            { 
-                                width: "5rem", 
-                                targets: 4 ,
-                                orderDataType: "dom-text",
-                                type: 'string',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
-                            { 
-                                width: "5rem", 
-                                targets: 5 ,
-                                orderDataType: "dom-text",
-                                type: 'string',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
-                            { 
-                                width: "5rem", 
-                                targets: 6 ,
-                                orderDataType: "dom-text",
-                                type: 'string',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
-                            { 
-                                width: "5rem", 
-                                targets: 9,
-                                orderDataType: "dom-text",
-                                type: 'string',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
-                            { 
-                                width: "25rem", 
-                                targets: 10,
-                                orderDataType: "dom-text",
-                                type: 'string',
-                                render: function(data, type, row, meta) {
-                                    if (type === 'filter') {
-                                        return $(data).val();
-                                    }
-                                    return data;
-                                }
-                            },
+                        
                           
-                        ]   
+                       
                                              
                     }); 
+                    
+                    table.on( 'search.dt', function () {
+                        console.log(table.search())
+                    } );
+
                     $.ajax({
                         type: "POST",
                         url: 'getdatawm?status=G3&mrno='+mrno,
@@ -378,9 +360,10 @@
                             $("#DELIVERYNO").val(de.DELIVERYNO);
                             $("#LOT").val(de.LOT);   
                             $("#CM").val(de.CM);
+                            $("#CLOTHBUY").val(de.CLOTHBUY);
+                            
                             if(de.CM2 == 10000){
                                 $("input:radio[name='CM2']").filter("[value='10000']").prop("checked", true);
-                                
                                 console.log('T1')
                             }else if(de.CM2 == 9144){
                                 $("input:radio[name='CM2']").filter("[value='9144']").prop("checked", true);
@@ -388,7 +371,6 @@
                             }else{
                                 $("input:radio[name='CM2']").prop("checked", false);
                                 console.log('T3')
-                              
                             }
         
         
@@ -411,7 +393,7 @@
                         }    
                     });
 
-                    $("#CLOTHBUY").val('')
+                    
 
                 }
                 
@@ -466,9 +448,10 @@
                             var ROLL1 = table.$('#txt8').serializeArray();
                             var PALET = table.$('#txt9').serializeArray();
                             //var CM = table.$('#txt10').serializeArray();
-                            //var CM2 = table.$('#txt11').serializeArray();
+                            var CODE = table.$('#txt12').serializeArray();
                             var CM =  $('#CM').val();
                             var CM2 = $('input[name="CM2"]:checked').val();
+                            var CLOTHBUY = $('#CLOTHBUY').val();
                             
                             var arrITEM = new Array();
                             var arrROLL = new Array();
@@ -480,7 +463,7 @@
                             var arrITEM1 = new Array();
                             var arrROLL1 = new Array();
                             var arrPALET = new Array();
-                            
+                            var arrCODE = new Array();
                     
                             $.each(ITEM,function(k,v){
                                 arrITEM.push(ITEM[k].value.toUpperCase());
@@ -493,9 +476,7 @@
                                 arrITEM1.push(ITEM1[k].value);
                                 arrROLL1.push(ROLL1[k].value);
                                 arrPALET.push(PALET[k].value);
-                                
-        
-        
+                                arrCODE.push(CODE[k].value);
         
                             });
                   
@@ -514,12 +495,14 @@
                                     arrITEM1:arrITEM1,
                                     arrROLL1:arrROLL1,
                                     arrPALET:arrPALET,
+                                    arrCODE:arrCODE,
                                     CM:CM,
                                     CM2:CM2,
                                     INVOICE:INVOICE,
                                     INVOICEDATE:INVOICEDATE,
                                     LOT:LOT,
-                                    MRNO:MRNO
+                                    MRNO:MRNO,
+                                    CLOTHBUY:CLOTHBUY
                                 },
              
                                 success: function(msg,status){ 
@@ -540,7 +523,13 @@
                                         })
                                         $("#btn-send").removeClass("disabled");
                                         $("#btn-send").text("บันทึก");
-                                    } 
+                                    }
+                                    
+        
+                                    $("#myform :input").not("input:radio[name='CM2']").val('')
+                                    table.clear()
+                                    table.draw();
+                                    $("input:radio[name='CM2']").prop("checked", false);
                                 }    
                             });    
                         }

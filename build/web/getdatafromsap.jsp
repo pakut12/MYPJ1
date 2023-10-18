@@ -86,7 +86,7 @@
                                     </div>
                                 </form> 
                                 <div class="col-auto">
-                                    <table class="table table-sm table-bordered text-center text-nowrap" id="mytable" >
+                                    <table class="table table-sm table-bordered text-center text-nowrap w-100" id="mytable" >
                                         <thead>
                                             <tr> 
                                                 <th class="text-center">ลำดับ </th>
@@ -125,8 +125,23 @@
             
         </div>
         <script>
-            $(document).ready(function () {
+            
+            function claerdata(){
+                $("#savedata_sap").addClass("disabled");
+                $("#myform :input").not("input:radio[name='CM2']").val('')
+                var table = $("#mytable").DataTable({
+                    scrollY: true,    
+                    scrollX: true
+                })
+                table.clear()
+                table.draw();
+                $("input:radio[name='CM2']").prop("checked", false);
+                $("input:radio[name='CM2']").filter("[value='9144']").prop("checked", true);
                 
+            }
+            
+            $(document).ready(function () {
+                claerdata()
                 $("#CLOTHBUY").on("input",function(){
                     var clothbuy = $("#CLOTHBUY").val();
                     var cm = 2.54 ;
@@ -305,17 +320,12 @@
                 }
                
                 
-                getdatasap("", "");
-                $("#savedata_sap").addClass("disabled");
-              
-                
                 $("#getdata_sap").click(function(){
                     var getpo =  $("#PO").val();
                     var getdocqc = $("#DOCQC").val();
                     var CLOTHBUY = $("#CLOTHBUY").val();
                     var CM2 = $('input[name="CM2"]').is(':checked');
                     
-                    console.log(CM2)
                     if(!getpo || !getdocqc || !CLOTHBUY  || !CM2){
                         $("#myform").addClass("was-validated");
                         Swal.fire({
@@ -344,10 +354,11 @@
                             var getdocqc = $("#DOCQC").val();
                             var cm = $("#CM").val()
                             var cm2 = $('input[name="CM2"]:checked').val();
+                            var CLOTHBUY = $("#CLOTHBUY").val()
                             
                             $("#savedata_sap").text("กำลังบันทึก...");
                             $("#savedata_sap").addClass("disabled");
-                            
+                            var table = $("#mytable").DataTable();
          
                             $.ajax({
                                 type: "POST",
@@ -357,7 +368,8 @@
                                     PO:getpo,
                                     DOCQC:getdocqc,
                                     CM:cm,
-                                    CM2:cm2
+                                    CM2:cm2,
+                                    CLOTHBUY:CLOTHBUY
                                 },
                                 success: function(msg){
                                     console.log(msg);
@@ -379,6 +391,8 @@
                                         $("#savedata_sap").text("จัดเก็บข้อมูล");
                                         $("#savedata_sap").removeClass("disabled");
                                     }
+                                    claerdata()
+                                    
                                 },
                                 error:function(msg){
                                     Swal.fire({
@@ -399,7 +413,7 @@
     
     
                 $("#claerdata_sap").click(function(){
-                    location.reload()
+                    claerdata()
                 });
         
                 

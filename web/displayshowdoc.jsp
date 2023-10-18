@@ -52,7 +52,7 @@
                                     <div class="col-12">
                                         
                                         
-                                        <table class="table table-sm table-bordered  text-center w-100" id="mytable"  >
+                                        <table class="table table-sm table-bordered  text-center w-100 text-nowrap"  id="mytable"  >
                                             <thead >
                                                 <tr>
                                                     <th class="text-center">รหัสวัตถุดิบ</th>
@@ -62,6 +62,7 @@
                                                     <th class="text-center">ม้วนที่</th>
                                                     <th class="text-center">เลขที่ Invoice</th>
                                                     <th class="text-center">สี</th>
+                                                    <th class="text-center">บาร์โค้ด</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -89,21 +90,9 @@
                     table = $("#mytable").DataTable({
                         bDestroy: true,
                         ajax: 'getdatawm?status=G6&mrno='+mrno,
-                        responsive: false,
                         scrollY: true ,
-                        scrollX: true ,
-                       
-                        columnDefs: [
-                            { "width": "10rem", "targets": 0 },
-                            { "width": "20rem", "targets": 1 },
-                            { "width": "5rem", "targets": 2 },
-                            { "width": "5rem", "targets": 3 },
-                            { "width": "5rem", "targets": 4 },
-                            { "width": "10rem", "targets": 5 }, 
-                            { "width": "5rem", "targets": 6 }, 
-                        ]
-                       
-                                            
+                        scrollX: true 
+                             
                     }); 
                     $.ajax({
                         type: "POST",
@@ -185,7 +174,7 @@
                 })
             })()
         </script>
-  
+        
         <%@ include file="share/footer.jsp" %>
         
     </body>
